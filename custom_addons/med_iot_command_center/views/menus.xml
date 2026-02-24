@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_med_root" name="MedIoT" sequence="10"/>
+
+    <record id="action_med_dashboard" model="ir.actions.client">
+        <field name="name">Command Center</field>
+        <field name="tag">med_iot_command_center.dashboard</field>
+    </record>
+
+    <menuitem id="menu_med_dashboard" name="Dashboard" parent="menu_med_root"
+              action="action_med_dashboard" sequence="10"/>
+
+    <menuitem id="menu_med_alerts" name="Real-time Alerts" parent="menu_med_root" sequence="20"
+              action="action_med_alerts"/>
+
+    <menuitem id="menu_med_patients" name="Patient List" parent="menu_med_root" sequence="30"
+              action="action_med_patients"/>
+
+    <menuitem id="menu_med_history" name="Data History" parent="menu_med_root" sequence="40"
+              action="action_med_readings"/>
+
+    <menuitem id="menu_med_devices" name="Devices" parent="menu_med_root" sequence="50"
+              action="action_med_devices"/>
+
+    <menuitem id="menu_med_settings" name="Settings" parent="menu_med_root" sequence="60"
+              action="action_med_settings" groups="med_iot_command_center.group_med_admin"/>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_med_settings_form" model="ir.ui.view">
+        <field name="name">med.settings.form</field>
+        <field name="model">med.settings</field>
+        <field name="arch" type="xml">
+            <form string="Settings">
+                <sheet>
+                    <group string="Heart Rate">
+                        <field name="hr_critical_min"/>
+                        <field name="hr_critical_max"/>
+                        <field name="hr_warning_min"/>
+                        <field name="hr_warning_max"/>
+                    </group>
+                    <group string="SpO2">
+                        <field name="spo2_critical_min"/>
+                        <field name="spo2_warning_min"/>
+                    </group>
+                    <group string="Temperature">
+                        <field name="temp_critical_min"/>
+                        <field name="temp_critical_max"/>
+                        <field name="temp_warning_min"/>
+                        <field name="temp_warning_max"/>
+                    </group>
+                    <group string="Polling">
+                        <field name="check_interval_seconds"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_med_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">med.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'search_default_singleton': 1}</field>
+    </record>
+</odoo>

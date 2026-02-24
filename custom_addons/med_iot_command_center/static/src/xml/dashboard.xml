@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="med_iot_command_center.Dashboard">
+        <div class="med_dashboard">
+            <div class="med_header">
+                <div>
+                    <h2>Command Center</h2>
+                    <div class="text-muted">Real-time patient monitoring overview</div>
+                </div>
+                <div class="med_header_actions">
+                    <button class="btn btn-outline-primary" t-on-click="openAlerts">
+                        Alerts <span class="badge text-bg-danger ms-1" t-esc="state.kpis.pending_alerts"/>
+                    </button>
+                    <button class="btn btn-primary ms-2" t-on-click="openPatients">
+                        Patient List
+                    </button>
+                </div>
+            </div>
+
+            <t t-if="state.loading">
+                <div class="mt-3">Loading…</div>
+            </t>
+
+            <t t-else="">
+                <div class="med_kpis">
+                    <div class="med_kpi">
+                        <div class="med_kpi_label">TOTAL PATIENTS</div>
+                        <div class="med_kpi_value" t-esc="state.kpis.total"/>
+                    </div>
+                    <div class="med_kpi">
+                        <div class="med_kpi_label">CRITICAL</div>
+                        <div class="med_kpi_value" t-esc="state.kpis.critical"/>
+                    </div>
+                    <div class="med_kpi">
+                        <div class="med_kpi_label">PENDING ALERTS</div>
+                        <div class="med_kpi_value" t-esc="state.kpis.pending_alerts"/>
+                    </div>
+                </div>
+
+                <h4 class="mt-4">Live Patient Monitors</h4>
+                <div class="med_live_grid">
+                    <t t-foreach="state.live" t-as="p" t-key="p.id">
+                        <div class="med_live_card" t-att-data-status="p.status" t-on-click="() => openPatient(p.id)">
+                            <div class="med_live_top">
+                                <div>
+                                    <div class="med_patient_name" t-esc="p.name"/>
+                                    <div class="text-muted small">
+                                        <span t-esc="p.ref"/> • <span t-esc="p.room or '-'"/>
+                                    </div>
+                                </div>
+                                <div class="med_status_badge" t-esc="p.status"/>
+                            </div>
+
+                            <div class="med_metrics">
+                                <div class="med_metric">
+                                    <div class="med_metric_label">TEMP</div>
+                                    <div class="med_metric_value">
+                                        <t t-esc="p.latest_temp or '-'"/>°C
+                                    </div>
+                                </div>
+                                <div class="med_metric">
+                                    <div class="med_metric_label">SpO2</div>
+                                    <div class="med_metric_value">
+                                        <t t-esc="p.latest_spo2 or '-'"/>%
+                                    </div>
+                                </div>
+                                <div class="med_metric">
+                                    <div class="med_metric_label">ECG</div>
+                                    <div class="med_metric_value">
+                                        <t t-esc="p.latest_ecg_bpm or '-'"/> BPM
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-muted small mt-2">
+                                Updated: <t t-esc="p.latest_reading_at or '-'"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

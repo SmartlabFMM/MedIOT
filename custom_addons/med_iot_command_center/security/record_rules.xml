@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_patient_assigned_only" model="ir.rule">
+        <field name="name">Patients: Assigned only</field>
+        <field name="model_id" ref="model_med_patient"/>
+        <field name="domain_force">[('assigned_doctor_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('med_iot_command_center.group_med_senior_doctor')), (4, ref('med_iot_command_center.group_med_junior_staff'))]"/>
+    </record>
+
+    <record id="rule_alert_patient_assigned_only" model="ir.rule">
+        <field name="name">Alerts: follow patient visibility</field>
+        <field name="model_id" ref="model_med_alert"/>
+        <field name="domain_force">[('patient_id.assigned_doctor_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('med_iot_command_center.group_med_senior_doctor')), (4, ref('med_iot_command_center.group_med_junior_staff'))]"/>
+    </record>
+
+    <record id="rule_reading_patient_assigned_only" model="ir.rule">
+        <field name="name">Readings: follow patient visibility</field>
+        <field name="model_id" ref="model_med_vital_reading"/>
+        <field name="domain_force">[('patient_id.assigned_doctor_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('med_iot_command_center.group_med_senior_doctor')), (4, ref('med_iot_command_center.group_med_junior_staff'))]"/>
+    </record>
+</odoo>
