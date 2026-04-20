@@ -5,8 +5,16 @@
         <div class="med_dashboard">
             <div class="med_header">
                 <div>
-                    <h2>Command Center</h2>
-                    <div class="text-muted">Real-time patient monitoring overview</div>
+                    <h1 class="med_hero_title">
+                        Transform Mental<br/>
+                        Health Care with <span class="med_hero_highlight">AI</span><br/>
+                        <span class="med_hero_highlight">&amp; IoT Solutions</span>
+                    </h1>
+                    <div class="med_hero_subtitle text-muted">
+                        Personalized therapeutic progress tracking at your fingertips.<br/>
+                        Empowering patients and healthcare providers with<br/>
+                        innovative tools.
+                    </div>
                 </div>
                 <div class="med_header_actions">
                     <button class="btn btn-outline-primary" t-on-click="openAlerts">
