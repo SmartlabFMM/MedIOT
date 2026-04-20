@@ -6,6 +6,20 @@
     justify-content: space-between;
     align-items: center;
 }
+.med_hero_title {
+    font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+.med_hero_highlight {
+    color: #f06a48;
+}
+.med_hero_subtitle {
+    font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    margin-top: 0.75rem;
+}
 .med_kpis {
     display: grid;
     grid-template-columns: repeat(3, minmax(180px, 1fr));
