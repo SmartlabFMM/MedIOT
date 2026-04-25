@@ -1,50 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="view_med_reading_tree" model="ir.ui.view">
-        <field name="name">med.vital.reading.tree</field>
-        <field name="model">med.vital.reading</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="reading_at"/>
-                <field name="patient_id"/>
-                <field name="temp_c"/>
-                <field name="spo2"/>
-                <field name="ecg_bpm"/>
-                <field name="device_id"/>
-            </list>
-        </field>
-    </record>
+# -*- coding: utf-8 -*-
+from odoo import api, fields, models
 
-    <record id="view_med_reading_graph" model="ir.ui.view">
-        <field name="name">med.vital.reading.graph</field>
-        <field name="model">med.vital.reading</field>
-        <field name="arch" type="xml">
-            <graph string="Vitals Over Time" type="line">
-                <field name="reading_at" type="row"/>
-                <field name="spo2" type="measure"/>
-                <field name="ecg_bpm" type="measure"/>
-                <field name="temp_c" type="measure"/>
-            </graph>
-        </field>
-    </record>
 
-    <record id="view_med_reading_pivot" model="ir.ui.view">
-        <field name="name">med.vital.reading.pivot</field>
-        <field name="model">med.vital.reading</field>
-        <field name="arch" type="xml">
-            <pivot>
-                <field name="patient_id" type="row"/>
-                <field name="reading_at" interval="day" type="col"/>
-                <field name="spo2" type="measure"/>
-                <field name="ecg_bpm" type="measure"/>
-                <field name="temp_c" type="measure"/>
-            </pivot>
-        </field>
-    </record>
+class MedVitalReading(models.Model):
+    _name = "med.vital.reading"
+    _description = "Vital Reading"
+    _order = "reading_at desc"
 
-    <record id="action_med_readings" model="ir.actions.act_window">
-        <field name="name">Data History</field>
-        <field name="res_model">med.vital.reading</field>
-        <field name="view_mode">list,graph,pivot</field>
-    </record>
-</odoo>
+    patient_id = fields.Many2one(
+        "med.patient",
+        required=True,
+        ondelete="cascade",
+        index=True,
+    )
+    device_id = fields.Many2one("med.device", index=True)
+
+    reading_at = fields.Datetime(
+        default=fields.Datetime.now,
+        required=True,
+        index=True,
+    )
+
+    temp_c = fields.Float(string="Temp (°C)")
+    spo2 = fields.Float(string="SpO2 (%)")
+    ecg_bpm = fields.Integer(string="ECG (BPM)")
+
+    raw_payload = fields.Text(help="Optional: store raw MQTT/JSON payload")
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        records._after_vital_change()
+        return records
+
+    def write(self, vals):
+        result = super().write(vals)
+        self._after_vital_change()
+        return result
+
+    def _after_vital_change(self):
+        for reading in self:
+            reading._update_patient_latest_values()
+            reading._evaluate_thresholds_and_create_alerts()
+
+    def _update_patient_latest_values(self):
+        for reading in self:
+            reading.patient_id.sudo().write({
+                "latest_temp": reading.temp_c,
+                "latest_spo2": reading.spo2,
+                "latest_ecg_bpm": reading.ecg_bpm,
+                "latest_reading_at": reading.reading_at,
+            })
+
+    def _evaluate_thresholds_and_create_alerts(self):
+        settings = self.env["med.settings"].sudo().get_settings()
+        Alert = self.env["med.alert"].sudo()
+
+        for reading in self:
+            patient_status = "stable"
+            alerts_to_create = []
+
+            if reading.spo2:
+                if reading.spo2 <= settings.spo2_critical_min:
+                    patient_status = "critical"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "spo2",
+                        "severity": "critical",
+                        "message": "Critical SpO2: %.0f%%" % reading.spo2,
+                    })
+                elif reading.spo2 <= settings.spo2_warning_min:
+                    patient_status = "warning"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "spo2",
+                        "severity": "warning",
+                        "message": "Low SpO2: %.0f%%" % reading.spo2,
+                    })
+
+            if reading.ecg_bpm:
+                if (
+                    reading.ecg_bpm <= settings.hr_critical_min
+                    or reading.ecg_bpm >= settings.hr_critical_max
+                ):
+                    patient_status = "critical"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "ecg",
+                        "severity": "critical",
+                        "message": "Critical heart rate: %s BPM" % reading.ecg_bpm,
+                    })
+                elif (
+                    reading.ecg_bpm <= settings.hr_warning_min
+                    or reading.ecg_bpm >= settings.hr_warning_max
+                ):
+                    if patient_status != "critical":
+                        patient_status = "warning"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "ecg",
+                        "severity": "warning",
+                        "message": "Abnormal heart rate: %s BPM" % reading.ecg_bpm,
+                    })
+
+            if reading.temp_c:
+                if (
+                    reading.temp_c <= settings.temp_critical_min
+                    or reading.temp_c >= settings.temp_critical_max
+                ):
+                    patient_status = "critical"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "temp",
+                        "severity": "critical",
+                        "message": "Critical temperature: %.1f °C" % reading.temp_c,
+                    })
+                elif (
+                    reading.temp_c <= settings.temp_warning_min
+                    or reading.temp_c >= settings.temp_warning_max
+                ):
+                    if patient_status != "critical":
+                        patient_status = "warning"
+                    alerts_to_create.append({
+                        "patient_id": reading.patient_id.id,
+                        "reading_id": reading.id,
+                        "alert_type": "temp",
+                        "severity": "warning",
+                        "message": "Abnormal temperature: %.1f °C" % reading.temp_c,
+                    })
+
+            for vals in alerts_to_create:
+                existing_alert = Alert.search([
+                    ("reading_id", "=", reading.id),
+                    ("alert_type", "=", vals["alert_type"]),
+                    ("severity", "=", vals["severity"]),
+                    ("state", "!=", "resolved"),
+                ], limit=1)
+
+                if not existing_alert:
+                    Alert.create(vals)
+
+            reading.patient_id.sudo().write({
+                "status": patient_status,
+            })

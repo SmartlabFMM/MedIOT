@@ -29,4 +29,4 @@ class MedSettings(models.Model):
         rec = self.search([], limit=1)
         if not rec:
             rec = self.create({})
-        return rec
+        return rec  # Remove the comma, it was causing a tuple return

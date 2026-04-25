@@ -5,26 +5,254 @@
         <field name="model">med.settings</field>
         <field name="arch" type="xml">
             <form string="Settings">
-                <sheet>
-                    <group string="Heart Rate">
-                        <field name="hr_critical_min"/>
-                        <field name="hr_critical_max"/>
-                        <field name="hr_warning_min"/>
-                        <field name="hr_warning_max"/>
-                    </group>
-                    <group string="SpO2">
-                        <field name="spo2_critical_min"/>
-                        <field name="spo2_warning_min"/>
-                    </group>
-                    <group string="Temperature">
-                        <field name="temp_critical_min"/>
-                        <field name="temp_critical_max"/>
-                        <field name="temp_warning_min"/>
-                        <field name="temp_warning_max"/>
-                    </group>
-                    <group string="Polling">
-                        <field name="check_interval_seconds"/>
-                    </group>
+                <sheet style="padding:0 !important; background:#f8f9fb;">
+
+                    <!-- HEADER BANNER -->
+                    <div style="background:linear-gradient(135deg,#5c6bc0 0%,#7986cb 50%,#9575cd 100%);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;margin:-16px -32px 28px -32px;">
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <div style="width:52px;height:52px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">⚙️</div>
+                            <div>
+                                <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;letter-spacing:.08em;">MedIoT Command Center</div>
+                                <div style="font-size:1.2rem;font-weight:700;color:#fff;">Settings</div>
+                            </div>
+                        </div>
+                        <div style="font-size:.75rem;color:rgba(255,255,255,.7);">Device · Alert Thresholds · System</div>
+                    </div>
+
+                    <div style="padding:0 32px 32px;">
+
+                        <!-- ══════════ DEVICE SECTION ══════════ -->
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                            <div style="width:30px;height:30px;border-radius:8px;background:#eef0fb;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                                <img src="/med_iot_command_center/static/description/l.png" style="width:22px;height:22px;object-fit:contain;"/>
+                            </div>
+                            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#5c6bc0;letter-spacing:.08em;">IoT Device</div>
+                            <div style="flex:1;height:1px;background:#dde0f5;"/>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:180px 1fr;gap:14px;margin-bottom:14px;">
+                            <div style="background:#fff;border:1px solid #e8eaf6;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:0 1px 4px rgba(92,107,192,.06);">
+                                <div style="width:60px;height:60px;border-radius:50%;border:3px solid #dde0f5;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+                                    <img src="/med_iot_command_center/static/description/s.png" style="width:44px;height:44px;object-fit:contain;"/>
+                                </div>
+                                <div style="text-align:center;">
+                                    <div style="font-size:.88rem;font-weight:700;color:#5c6bc0;">ESP32 Device</div>
+                                    <div style="font-size:.62rem;color:#94a3b8;margin-top:2px;">IoT Wearable · DOIT DevKit</div>
+                                </div>
+                            </div>
+                            <div style="background:#fff;border:1px solid #e8eaf6;border-radius:14px;padding:18px 22px;box-shadow:0 1px 4px rgba(92,107,192,.06);">
+                                <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:#5c6bc0;margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid #eef0fb;letter-spacing:.07em;">Device Configuration</div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                                    <div>
+                                        <div style="font-size:.58rem;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;font-weight:600;">MQTT Topic</div>
+                                        <div style="font-size:.85rem;background:#f5f6fd;border:1.5px solid #dde0f5;border-radius:7px;padding:8px 10px;font-family:monospace;color:#3730a3;">esp32/vitals</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:.58rem;text-transform:uppercase;color:#94a3b8;margin-bottom:4px;font-weight:600;">Connection</div>
+                                        <div style="font-size:.85rem;background:#f0fdf4;border:1.5px solid #a7f3d0;border-radius:7px;padding:8px 10px;color:#166534;font-weight:600;">● Online</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border:1px solid #e8eaf6;border-radius:14px;padding:18px 22px;margin-bottom:28px;box-shadow:0 1px 4px rgba(92,107,192,.06);">
+                            <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:#5c6bc0;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #eef0fb;letter-spacing:.07em;">Onboard Sensors</div>
+                            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+                                <div style="border:1px solid #bfdbfe;border-radius:10px;padding:14px 10px;text-align:center;background:linear-gradient(135deg,#f0f7ff,#dbeafe);">
+                                    <div style="width:46px;height:46px;border-radius:12px;background:#dbeafe;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_ecg.png" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'"/></div>
+                                    <div style="font-size:.8rem;font-weight:700;color:#1e40af;">AD8232</div>
+                                    <div style="font-size:.6rem;color:#3b82f6;margin-top:2px;">ECG Monitor</div>
+                                    <div style="margin-top:8px;display:inline-block;background:#1e40af;color:#fff;font-size:.52rem;font-weight:700;padding:3px 10px;border-radius:20px;">ACTIVE</div>
+                                </div>
+                                <div style="border:1px solid #a7f3d0;border-radius:10px;padding:14px 10px;text-align:center;background:linear-gradient(135deg,#f0fff8,#dcfce7);">
+                                    <div style="width:46px;height:46px;border-radius:12px;background:#dcfce7;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_spo2.png" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'"/></div>
+                                    <div style="font-size:.8rem;font-weight:700;color:#166534;">MAX30102</div>
+                                    <div style="font-size:.6rem;color:#16a34a;margin-top:2px;">SpO2 + Heart Rate</div>
+                                    <div style="margin-top:8px;display:inline-block;background:#166534;color:#fff;font-size:.52rem;font-weight:700;padding:3px 10px;border-radius:20px;">ACTIVE</div>
+                                </div>
+                                <div style="border:1px solid #fed7aa;border-radius:10px;padding:14px 10px;text-align:center;background:linear-gradient(135deg,#fffaf0,#ffedd5);">
+                                    <div style="width:46px;height:46px;border-radius:12px;background:#ffedd5;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_temp.png" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'"/></div>
+                                    <div style="font-size:.8rem;font-weight:700;color:#9a3412;">DS18B20</div>
+                                    <div style="font-size:.6rem;color:#ea580c;margin-top:2px;">Body Temperature</div>
+                                    <div style="margin-top:8px;display:inline-block;background:#9a3412;color:#fff;font-size:.52rem;font-weight:700;padding:3px 10px;border-radius:20px;">ACTIVE</div>
+                                </div>
+                                <div style="border:1px solid #c5cae9;border-radius:10px;padding:14px 10px;text-align:center;background:linear-gradient(135deg,#f5f6fd,#eef0fb);">
+                                    <div style="width:46px;height:46px;border-radius:12px;background:#dde0f5;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_lcd.png" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'"/></div>
+                                    <div style="font-size:.8rem;font-weight:700;color:#5c6bc0;">LCD 1602</div>
+                                    <div style="font-size:.6rem;color:#7986cb;margin-top:2px;">Local Display</div>
+                                    <div style="margin-top:8px;display:inline-block;background:#5c6bc0;color:#fff;font-size:.52rem;font-weight:700;padding:3px 10px;border-radius:20px;">ACTIVE</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ══════════ ALERT THRESHOLDS ══════════ -->
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                            <div style="width:30px;height:30px;border-radius:8px;background:#fff0f0;display:flex;align-items:center;justify-content:center;font-size:.9rem;">🚨</div>
+                            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#ef4444;letter-spacing:.08em;">Alert Thresholds</div>
+                            <div style="flex:1;height:1px;background:#fecaca;"/>
+                        </div>
+
+                        <div style="background:#fff;border:1px solid #e8eaf6;border-radius:16px;padding:28px 32px;margin-bottom:28px;box-shadow:0 1px 4px rgba(92,107,192,.06);">
+                            <div style="font-size:1rem;font-weight:700;color:#1e293b;margin-bottom:4px;">Les limites des alertes vitales</div>
+                            <div style="font-size:.78rem;color:#94a3b8;margin-bottom:28px;">Ajustez les seuils d'alerte selon vos besoins</div>
+
+                            <!-- HEART RATE -->
+                            <div style="margin-bottom:28px;">
+                                <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+                                    <span style="font-size:1rem;">❤️</span>
+                                    <span style="font-size:.82rem;font-weight:600;color:#374151;">Heart Rate (ECG)</span>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🔴 Critical Min — below this triggers immediate alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#ef4444;padding:3px 12px;border-radius:6px;">Seuil : <field name="hr_critical_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> bpm</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:20%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>0 bpm</span><span>200 bpm</span></div>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🔴 Critical Max — above this triggers immediate alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#ef4444;padding:3px 12px;border-radius:6px;">Seuil : <field name="hr_critical_max" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> bpm</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:65%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>0 bpm</span><span>200 bpm</span></div>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🟡 Warning Min — below this triggers warning alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#f59e0b;padding:3px 12px;border-radius:6px;">Seuil : <field name="hr_warning_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> bpm</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:25%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>0 bpm</span><span>200 bpm</span></div>
+                                </div>
+                                <div>
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🟡 Warning Max — above this triggers warning alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#f59e0b;padding:3px 12px;border-radius:6px;">Seuil : <field name="hr_warning_max" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> bpm</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:55%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>0 bpm</span><span>200 bpm</span></div>
+                                </div>
+                            </div>
+
+                            <div style="border-top:1px solid #f1f5f9;margin-bottom:28px;"/>
+
+                            <!-- SPO2 -->
+                            <div style="margin-bottom:28px;">
+                                <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+                                    <span style="font-size:1rem;">💧</span>
+                                    <span style="font-size:.82rem;font-weight:600;color:#374151;">Blood Oxygen (SpO2)</span>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🔴 Critical Min — below this = hypoxia alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#ef4444;padding:3px 12px;border-radius:6px;">Seuil : <field name="spo2_critical_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> %</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:85%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>70%</span><span>100%</span></div>
+                                </div>
+                                <div>
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🟡 Warning Min — below this = low SpO2 warning</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#f59e0b;padding:3px 12px;border-radius:6px;">Seuil : <field name="spo2_warning_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> %</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:90%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>70%</span><span>100%</span></div>
+                                </div>
+                            </div>
+
+                            <div style="border-top:1px solid #f1f5f9;margin-bottom:28px;"/>
+
+                            <!-- TEMPERATURE -->
+                            <div style="margin-bottom:28px;">
+                                <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+                                    <span style="font-size:1rem;">🌡️</span>
+                                    <span style="font-size:.82rem;font-weight:600;color:#374151;">Body Temperature</span>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🔴 Critical Min — below this = hypothermia alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#ef4444;padding:3px 12px;border-radius:6px;">Seuil : <field name="temp_critical_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:36px;text-align:center;"/> °C</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:33%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>30°C</span><span>45°C</span></div>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🔴 Critical Max — above this = high fever alert</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#ef4444;padding:3px 12px;border-radius:6px;">Seuil : <field name="temp_critical_max" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:36px;text-align:center;"/> °C</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:60%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>30°C</span><span>45°C</span></div>
+                                </div>
+                                <div style="margin-bottom:18px;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🟡 Warning Min — below this = low temp warning</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#f59e0b;padding:3px 12px;border-radius:6px;">Seuil : <field name="temp_warning_min" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:36px;text-align:center;"/> °C</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:40%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>30°C</span><span>45°C</span></div>
+                                </div>
+                                <div>
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                        <span style="font-size:.75rem;color:#6b7280;">🟡 Warning Max — above this = fever warning</span>
+                                        <span style="font-size:.75rem;font-weight:700;color:#fff;background:#f59e0b;padding:3px 12px;border-radius:6px;">Seuil : <field name="temp_warning_max" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:36px;text-align:center;"/> °C</span>
+                                    </div>
+                                    <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                        <div style="position:absolute;left:0;top:0;height:100%;width:52%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:999px;"/>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>30°C</span><span>45°C</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Footer note -->
+                            <div style="display:flex;align-items:center;gap:8px;font-size:.72rem;color:#94a3b8;background:#f8fafc;border-radius:8px;padding:10px 14px;margin-top:8px;">
+                                <span>ℹ️</span>
+                                <span>Ces seuils sont appliqués immédiatement après enregistrement.</span>
+                            </div>
+                        </div>
+
+                        <!-- ══════════ SYSTEM SECTION ══════════ -->
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                            <div style="width:30px;height:30px;border-radius:8px;background:#eef0fb;display:flex;align-items:center;justify-content:center;font-size:.9rem;">🔄</div>
+                            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#5c6bc0;letter-spacing:.08em;">System</div>
+                            <div style="flex:1;height:1px;background:#dde0f5;"/>
+                        </div>
+
+                        <div style="background:#fff;border:1px solid #e8eaf6;border-radius:16px;padding:28px 32px;box-shadow:0 1px 4px rgba(92,107,192,.06);">
+                            <div style="font-size:.82rem;font-weight:600;color:#374151;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
+                                <span>⏱️</span> Dashboard Auto-Refresh Interval
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                                <span style="font-size:.75rem;color:#6b7280;">Recommended: 15 seconds</span>
+                                <span style="font-size:.75rem;font-weight:700;color:#fff;background:#5c6bc0;padding:3px 12px;border-radius:6px;">Seuil : <field name="check_interval_seconds" nolabel="1" style="display:inline;background:transparent;border:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit;width:32px;text-align:center;"/> s</span>
+                            </div>
+                            <div style="position:relative;height:10px;background:#f1f5f9;border-radius:999px;overflow:hidden;">
+                                <div style="position:absolute;left:0;top:0;height:100%;width:22%;background:linear-gradient(90deg,#5c6bc0,#9575cd);border-radius:999px;"/>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:.6rem;color:#cbd5e1;margin-top:3px;"><span>5s</span><span>120s</span></div>
+                        </div>
+
+                    </div>
                 </sheet>
             </form>
         </field>
