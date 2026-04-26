@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
@@ -13,6 +13,8 @@ class MedPatient(models.Model):
 
     smoker = fields.Boolean(string="Smoker", default=False)
     sporty = fields.Boolean(string="Sporty", default=False)
+    elderly = fields.Boolean(string="Elderly", default=False)
+    prior_cardiac_event = fields.Boolean(string="Prior Cardiac Event", default=False)
     image_128 = fields.Image(string="Photo", max_width=128, max_height=128)
 
     name = fields.Char(required=True, tracking=True)
@@ -68,3 +70,25 @@ class MedPatient(models.Model):
 
 
 
+
+    def action_print_medical_report(self):
+        self.ensure_one()
+
+        report = self.env.ref(
+            "med_iot_command_center.action_report_patient_medical",
+            raise_if_not_found=False,
+        )
+
+        if report:
+            return report.report_action(self)
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": "Report not found",
+                "message": "The patient medical report action is missing.",
+                "type": "warning",
+                "sticky": False,
+            },
+        }

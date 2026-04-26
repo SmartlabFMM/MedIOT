@@ -1,3 +1,8 @@
+﻿/* =========================================================
+   MedIoT Auth Portal CSS
+   Restored file so Odoo frontend assets can compile
+   ========================================================= */
+
 :root {
     --med-main: #24395B;
     --med-main-2: #31466e;
@@ -10,596 +15,17 @@
     --med-shadow: 0 18px 50px rgba(18, 30, 56, 0.14);
 }
 
-/* =========================
-   GLOBAL
-   ========================= */
-body,
-body.o_login_page {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #ffffff;
-}
-
-.o_login_wrap {
-    display: none !important;
-}
-
+/* Hide default website header/footer on MedIoT auth pages */
+.med_login_wrap ~ header,
+.med_auth_page ~ header,
+.med_video_page ~ header,
 header#top,
 footer#bottom,
 .o_footer {
     display: none !important;
 }
 
-#wrapwrap {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* =========================
-   LANDING PAGE
-   ========================= */
-.med_video_page {
-    background: #ffffff;
-    color: var(--med-text);
-}
-
-.med_video_hero {
-    position: relative;
-    min-height: 760px;
-    overflow: hidden;
-    padding-bottom: 180px;
-}
-
-.med_video_bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.med_video_overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(24, 28, 33, 0.46) 0%, rgba(24, 28, 33, 0.18) 100%);
-}
-
-.med_video_nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    height: 70px;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, var(--med-main) 0%, var(--med-main-2) 100%);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-.med_video_brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-}
-
-.med_video_brand_icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.med_video_brand_icon img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: brightness(10);
-}
-
-.med_video_brand_text {
-    font-size: 18px;
-    font-weight: 800;
-    color: white;
-}
-
-.med_video_menu {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.med_video_menu a {
-    color: white;
-    text-decoration: none !important;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.med_video_btn {
-    min-width: 92px;
-    height: 36px;
-    padding: 0 16px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none !important;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.med_video_btn.ghost {
-    color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.med_video_btn.solid {
-    color: white !important;
-    background: var(--med-accent);
-    border: 1px solid var(--med-accent);
-}
-
-.med_video_content {
-    position: relative;
-    z-index: 4;
-    max-width: 540px;
-    padding: 102px 0 120px 120px;
-    color: white;
-}
-
-.med_video_content h1 {
-    margin: 0;
-    max-width: 500px !important;
-    font-size: 50px !important;
-    line-height: 1.02 !important;
-    font-weight: 800;
-    letter-spacing: -1px !important;
-    color: white;
-    word-break: normal !important;
-}
-
-.med_orange {
-    color: var(--med-accent) !important;
-}
-
-.med_video_content p {
-    margin-top: 18px;
-    max-width: 470px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.88);
-}
-
-.med_video_actions {
-    display: flex;
-    gap: 14px;
-    margin-top: 22px;
-}
-
-.med_video_cta {
-    min-width: 140px;
-    height: 44px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none !important;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.med_video_cta.primary {
-    background: var(--med-accent);
-    color: white !important;
-}
-
-.med_video_cta.secondary {
-    color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.med_video_stats {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 180px;
-    z-index: 4;
-    width: min(920px, calc(100% - 200px));
-    background: rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
-    padding: 18px 16px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    box-shadow: var(--med-shadow);
-}
-
-.med_video_stat {
-    text-align: center;
-}
-
-.med_video_stat_num {
-    font-size: 42px;
-    line-height: 1;
-    font-weight: 800;
-    color: var(--med-main-2) !important;
-}
-
-.med_video_stat_label {
-    margin-top: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #6d7788;
-}
-
-/* SECTIONS */
-.med_section {
-    padding: 95px 24px;
-}
-
-.med_section_light {
-    background: #ffffff;
-}
-
-.med_section_alt {
-    background: var(--med-soft);
-}
-
-.med_section_intro {
-    max-width: 860px;
-    margin: 0 auto 50px;
-    text-align: center;
-}
-
-.med_tag {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #eef3fb !important;
-    color: var(--med-main-2) !important;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 18px;
-}
-
-.med_section_intro h2 {
-    margin: 0 0 14px;
-    font-size: 40px;
-    line-height: 1.1;
-    font-weight: 800;
-    color: var(--med-text);
-}
-
-.med_section_intro p {
-    margin: 0 auto;
-    max-width: 720px;
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--med-muted);
-}
-
-/* FEATURES */
-.med_feature_grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-}
-
-.med_feature_card {
-    background: white;
-    border: 1px solid var(--med-line);
-    border-radius: 24px;
-    padding: 28px;
-    box-shadow: 0 10px 30px rgba(20, 35, 61, 0.04);
-}
-
-.med_feature_card.featured {
-    border-color: #d7e0ef !important;
-    box-shadow: 0 12px 34px rgba(28, 41, 66, 0.10) !important;
-}
-
-.med_feature_icon {
-    width: 68px;
-    height: 68px;
-    border-radius: 999px;
-    background: #f4f7fc !important;
-    color: var(--med-main-2) !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    margin-bottom: 22px;
-}
-
-.med_feature_card h3 {
-    margin: 0 0 12px;
-    font-size: 28px;
-    line-height: 1.15;
-    font-weight: 800;
-}
-
-.med_feature_card p {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.75;
-    color: var(--med-muted);
-}
-
-/* TESTIMONIALS */
-.med_testimonial_grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-}
-
-.med_testimonial_card {
-    position: relative;
-    background: white;
-    border: 1px solid var(--med-line);
-    border-radius: 24px;
-    padding: 32px 26px 28px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(20, 35, 61, 0.05);
-}
-
-.med_avatar {
-    width: 76px;
-    height: 76px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--med-main) 0%, var(--med-main-2) 100%);
-    color: white;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -58px auto 14px;
-    border: 5px solid white;
-    box-shadow: 0 10px 26px rgba(20, 35, 61, 0.18);
-}
-
-.med_badge {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #eef3fb !important;
-    color: var(--med-main-2) !important;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 16px;
-}
-
-.med_testimonial_card p {
-    margin: 0 0 18px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--med-muted);
-    min-height: 138px;
-}
-
-.med_testimonial_card h4 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 800;
-}
-
-.med_testimonial_card span {
-    display: block;
-    margin-top: 6px;
-    color: #96a2b5;
-    font-size: 15px;
-}
-
-.med_testimonial_card a {
-    display: inline-block;
-    margin-top: 16px;
-    color: var(--med-main-2) !important;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* CONTACT */
-.med_contact_wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 34px;
-    align-items: stretch;
-}
-
-.med_contact_quote,
-.med_contact_form {
-    background: white;
-    border: 1px solid var(--med-line);
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 12px 34px rgba(20, 35, 61, 0.06);
-}
-
-.med_contact_quote h2 {
-    margin: 0 0 16px;
-    font-size: 38px;
-    line-height: 1.1;
-    font-weight: 800;
-}
-
-.med_contact_quote p {
-    margin: 0 0 20px;
-    font-size: 17px;
-    line-height: 1.8;
-    color: var(--med-muted);
-}
-
-.med_contact_quote blockquote {
-    margin: 22px 0 0;
-    padding: 18px 20px;
-    border-radius: 18px;
-    background: #f5f8fc;
-    color: #59677d;
-    font-size: 17px;
-    line-height: 1.7;
-    border-left: 4px solid var(--med-main-2);
-}
-
-.med_form_row {
-    margin-bottom: 18px;
-}
-
-.med_contact_form input,
-.med_contact_form textarea {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1.5px solid #dde5f1;
-    background: #fbfcfe;
-    border-radius: 16px;
-    padding: 16px 18px;
-    font-size: 15px;
-    outline: none;
-}
-
-.med_contact_form button {
-    width: 100%;
-    height: 54px;
-    border: none;
-    border-radius: 16px;
-    background: linear-gradient(135deg, var(--med-main) 0%, var(--med-main-2) 100%) !important;
-    color: white;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* FOOTER */
-.med_footer {
-    background: linear-gradient(90deg, #16233a 0%, #2c4163 100%) !important;
-    color: white;
-    padding: 56px 28px 24px;
-}
-
-.med_footer_grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1.3fr;
-    gap: 34px;
-}
-
-.med_footer h4 {
-    margin: 0 0 18px;
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.med_footer p,
-.med_footer li {
-    color: rgba(255, 255, 255, 0.90);
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.med_footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.med_footer_logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.med_footer_logo span {
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.18);
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-}
-
-.med_footer_logo strong {
-    font-size: 24px;
-}
-
-.med_socials {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 18px;
-}
-
-.med_socials span {
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.med_newsletter p {
-    margin: 0 0 12px;
-}
-
-.med_newsletter_box {
-    display: flex;
-    overflow: hidden;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.med_newsletter_box input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 14px 16px;
-    font-size: 14px;
-    background: white;
-}
-
-.med_newsletter_box button {
-    border: none;
-    background: #f4f7fb;
-    color: var(--med-main) !important;
-    font-weight: 700;
-    padding: 0 18px;
-    cursor: pointer;
-}
-
-.med_footer_bottom {
-    max-width: 1200px;
-    margin: 34px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.20);
-    text-align: center;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 14px;
-}
-
-/* =========================
-   LOGIN PAGE
-   ========================= */
+/* LOGIN */
 .med_login_wrap {
     display: flex;
     min-height: 100vh;
@@ -608,6 +34,8 @@ footer#bottom,
     position: fixed;
     inset: 0;
     z-index: 9999;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .med_login_left {
@@ -620,13 +48,12 @@ footer#bottom,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 .med_login_overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(16, 28, 54, 0.70) 0%, rgba(36, 57, 91, 0.24) 100%);
+    background: linear-gradient(135deg, rgba(16, 28, 54, 0.70), rgba(36, 57, 91, 0.24));
 }
 
 .med_top_badge {
@@ -639,18 +66,19 @@ footer#bottom,
     z-index: 2;
 }
 
-.med_badge_icon {
+.med_badge_icon,
+.med_panel_logo_icon {
     width: 42px;
     height: 42px;
     background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.32);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.med_badge_icon img {
+.med_badge_icon img,
+.med_panel_logo_icon img {
     width: 26px;
     height: 26px;
     object-fit: contain;
@@ -681,12 +109,11 @@ footer#bottom,
     font-weight: 800;
     margin: 0 0 12px;
     line-height: 1.15;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .med_hero p {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255,255,255,.88);
     margin: 0;
     line-height: 1.6;
 }
@@ -711,19 +138,10 @@ footer#bottom,
 }
 
 .med_panel_logo_icon {
-    width: 40px;
-    height: 40px;
     background: var(--med-main);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .med_panel_logo_icon img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
     filter: brightness(10);
 }
 
@@ -737,13 +155,13 @@ footer#bottom,
     font-size: 24px;
     font-weight: 800;
     color: #0f172a;
-    margin: 0 0 4px;
+    margin-bottom: 4px;
 }
 
 .med_login_subtitle {
     font-size: 13px;
     color: var(--med-muted);
-    margin: 0 0 28px;
+    margin-bottom: 28px;
 }
 
 .med_field {
@@ -771,16 +189,10 @@ footer#bottom,
     background: #f8fafc;
 }
 
-.med_field input:focus {
-    border-color: var(--med-main);
-    background: white;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(36, 57, 91, 0.16);
-}
-
-.med_btn {
+.med_btn,
+.med_auth_submit_btn {
     width: 100%;
-    background: linear-gradient(135deg, var(--med-main) 0%, var(--med-main-2) 100%) !important;
+    background: linear-gradient(135deg, var(--med-main), var(--med-main-2)) !important;
     border: none;
     border-radius: 10px;
     padding: 13px;
@@ -812,16 +224,14 @@ footer#bottom,
     text-decoration: none;
 }
 
-/* =========================
-   SIGNUP PAGE
-   ========================= */
-body,
+/* SIGNUP */
 .med_auth_page {
     margin: 0;
     padding: 0;
     background: #f3f5fb;
     font-family: "Segoe UI", Tahoma, sans-serif;
     color: #1f2937;
+    min-height: 100vh;
 }
 
 .med_auth_page * {
@@ -834,7 +244,6 @@ body,
     height: 56px;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .med_auth_topbar_inner {
@@ -845,28 +254,16 @@ body,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
 }
 
 .med_auth_brand {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: #ffffff;
-    text-decoration: none;
+    color: #ffffff !important;
+    text-decoration: none !important;
     font-size: 24px;
     font-weight: 700;
-}
-
-.med_auth_brand_icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
 }
 
 .med_auth_nav {
@@ -878,16 +275,10 @@ body,
 }
 
 .med_auth_nav a {
-    color: #ffffff;
-    text-decoration: none;
+    color: #ffffff !important;
+    text-decoration: none !important;
     font-size: 13px;
     font-weight: 500;
-    opacity: 0.95;
-}
-
-.med_auth_nav a:hover {
-    opacity: 1;
-    text-decoration: underline;
 }
 
 .med_auth_nav_actions {
@@ -900,32 +291,19 @@ body,
 .med_auth_signup_btn {
     padding: 8px 18px;
     border-radius: 999px;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 13px;
     font-weight: 600;
-    transition: all 0.2s ease;
 }
 
 .med_auth_login_btn {
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    background: transparent;
-}
-
-.med_auth_login_btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,.55);
 }
 
 .med_auth_signup_btn {
     background: var(--med-accent);
-    color: #fff;
-    border: 1px solid var(--med-accent);
-}
-
-.med_auth_signup_btn:hover,
-.med_auth_signup_btn.active {
-    background: var(--med-accent);
-    color: #fff;
+    color: #ffffff !important;
 }
 
 .med_auth_center {
@@ -943,7 +321,7 @@ body,
     min-height: 720px;
     background: #ffffff;
     border-radius: 14px;
-    box-shadow: 0 12px 35px rgba(17, 24, 39, 0.10);
+    box-shadow: 0 12px 35px rgba(17,24,39,.10);
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -958,23 +336,8 @@ body,
     color: #fff;
     padding: 10px 18px;
     border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
     z-index: 5;
-    box-shadow: 0 8px 20px rgba(36, 57, 91, 0.25);
     font-weight: 700;
-}
-
-.med_auth_floating_logo_icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    border: 2px solid rgba(255, 255, 255, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
 }
 
 .med_auth_left_panel {
@@ -1001,7 +364,6 @@ body,
     margin: 0 0 28px;
     font-size: 17px;
     line-height: 1.6;
-    opacity: 0.97;
 }
 
 .med_auth_outline_btn {
@@ -1010,25 +372,18 @@ body,
     justify-content: center;
     min-width: 160px;
     height: 48px;
-    border: 2px solid rgba(255, 255, 255, 0.75);
+    border: 2px solid rgba(255,255,255,.75);
     border-radius: 999px;
-    color: #ffffff;
-    text-decoration: none;
+    color: #ffffff !important;
+    text-decoration: none !important;
     font-size: 18px;
     font-weight: 700;
-    transition: all 0.2s ease;
-}
-
-.med_auth_outline_btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
 }
 
 .med_auth_right_panel {
     background: #ffffff;
     padding: 70px 36px 28px;
     display: flex;
-    align-items: stretch;
     justify-content: center;
 }
 
@@ -1038,15 +393,6 @@ body,
     max-height: 620px;
     overflow-y: auto;
     padding-right: 10px;
-}
-
-.med_auth_form_scroll::-webkit-scrollbar {
-    width: 7px;
-}
-
-.med_auth_form_scroll::-webkit-scrollbar-thumb {
-    background: #cfd8e3;
-    border-radius: 999px;
 }
 
 .med_auth_form_header {
@@ -1065,10 +411,6 @@ body,
     margin: 0;
     font-size: 15px;
     color: #6b7280;
-}
-
-.med_auth_form {
-    width: 100%;
 }
 
 .med_auth_grid.two {
@@ -1093,18 +435,6 @@ body,
     font-size: 15px;
     color: #374151;
     outline: none;
-    transition: all 0.2s ease;
-}
-
-.med_auth_field input:focus,
-.med_auth_field select:focus {
-    border-color: var(--med-main-2);
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(36, 57, 91, 0.10);
-}
-
-.med_auth_field input::placeholder {
-    color: #9ca3af;
 }
 
 .med_auth_upload {
@@ -1123,64 +453,11 @@ body,
     margin-bottom: 10px;
 }
 
-.med_auth_upload input[type="file"] {
-    width: 100%;
-    height: auto;
-    border: none;
-    background: transparent;
-    padding: 0;
-    box-shadow: none;
-}
-
 .med_auth_upload small {
     display: block;
     margin-top: 10px;
     color: #8b95a7;
     font-size: 13px;
-}
-
-.med_auth_submit_btn {
-    width: 100%;
-    height: 54px;
-    border: none;
-    border-radius: 999px;
-    background: var(--med-main);
-    color: #ffffff;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: all 0.2s ease;
-}
-
-.med_auth_submit_btn:hover {
-    background: var(--med-main-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 10px 20px rgba(36, 57, 91, 0.18);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-    .med_video_content {
-        padding: 110px 40px 190px 70px;
-        max-width: 500px;
-    }
-
-    .med_video_content h1 {
-        font-size: 46px !important;
-    }
-
-    .med_video_stats {
-        width: calc(100% - 90px);
-        bottom: 30px;
-    }
-
-    .med_feature_grid,
-    .med_testimonial_grid,
-    .med_contact_wrap,
-    .med_footer_grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 1100px) {
@@ -1192,64 +469,9 @@ body,
         min-height: 280px;
         padding-top: 90px;
     }
-
-    .med_auth_right_panel {
-        padding-top: 30px;
-    }
-
-    .med_auth_floating_logo {
-        top: 14px;
-    }
 }
 
 @media (max-width: 800px) {
-    .med_video_nav {
-        height: auto;
-        padding: 14px 18px;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .med_video_menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .med_video_content {
-        padding: 145px 24px 250px;
-        max-width: 100%;
-    }
-
-    .med_video_content h1 {
-        font-size: 36px !important;
-        line-height: 1.05;
-    }
-
-    .med_video_content p {
-        font-size: 14px;
-    }
-
-    .med_video_actions {
-        flex-wrap: wrap;
-    }
-
-    .med_video_stats {
-        width: calc(100% - 24px);
-        bottom: 16px;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .med_section_intro h2,
-    .med_contact_quote h2 {
-        font-size: 30px;
-    }
-
-    .med_feature_card h3 {
-        font-size: 24px;
-    }
-
     .med_login_wrap {
         flex-direction: column;
         position: relative;
@@ -1258,39 +480,447 @@ body,
     .med_login_right {
         width: 100%;
     }
-}
 
-@media (max-width: 768px) {
     .med_auth_nav {
         display: none;
-    }
-
-    .med_auth_topbar_inner {
-        flex-wrap: wrap;
-    }
-
-    .med_auth_card {
-        min-height: auto;
-    }
-
-    .med_auth_left_panel,
-    .med_auth_right_panel {
-        padding-left: 22px;
-        padding-right: 22px;
-    }
-
-    .med_auth_form_scroll {
-        max-width: 100%;
-        max-height: none;
-        overflow: visible;
-        padding-right: 0;
     }
 
     .med_auth_grid.two {
         grid-template-columns: 1fr;
     }
+}
 
-    .med_auth_brand span {
-        font-size: 20px;
+/* =========================================================
+   FORCE FIX LANDING PAGE /mediot
+   ========================================================= */
+
+html,
+body {
+    overflow-x: hidden !important;
+}
+
+.med_video_page {
+    width: 100% !important;
+    min-height: 100vh !important;
+    background: #ffffff !important;
+    color: #16233a !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.med_video_hero {
+    position: relative !important;
+    min-height: 760px !important;
+    overflow: hidden !important;
+    padding-bottom: 150px !important;
+}
+
+.med_video_bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+}
+
+.med_video_overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+        90deg,
+        rgba(24, 28, 33, 0.62) 0%,
+        rgba(24, 28, 33, 0.25) 100%
+    ) !important;
+    z-index: 1 !important;
+}
+
+.med_video_nav {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 20 !important;
+    height: 70px !important;
+    padding: 0 34px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: linear-gradient(90deg, #24395B 0%, #31466e 100%) !important;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12) !important;
+}
+
+.med_video_brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    color: white !important;
+}
+
+.med_video_brand_icon {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.med_video_brand_icon img {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain !important;
+    filter: brightness(10) !important;
+}
+
+.med_video_brand_text {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: white !important;
+}
+
+.med_video_menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 22px !important;
+}
+
+.med_video_menu a {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.med_video_btn {
+    min-width: 96px !important;
+    height: 38px !important;
+    padding: 0 18px !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
+
+.med_video_btn.ghost {
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.med_video_btn.solid {
+    color: white !important;
+    background: #f28b58 !important;
+    border: 1px solid #f28b58 !important;
+}
+
+.med_video_content {
+    position: relative !important;
+    z-index: 5 !important;
+    max-width: 570px !important;
+    padding: 150px 0 120px 120px !important;
+    color: white !important;
+}
+
+.med_video_content h1 {
+    margin: 0 !important;
+    max-width: 540px !important;
+    font-size: 54px !important;
+    line-height: 1.02 !important;
+    font-weight: 900 !important;
+    letter-spacing: -1.2px !important;
+    color: white !important;
+}
+
+.med_orange {
+    color: #f28b58 !important;
+}
+
+.med_video_content p {
+    margin-top: 20px !important;
+    max-width: 500px !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    color: rgba(255, 255, 255, 0.90) !important;
+}
+
+.med_video_actions {
+    display: flex !important;
+    gap: 14px !important;
+    margin-top: 28px !important;
+}
+
+.med_video_cta {
+    min-width: 150px !important;
+    height: 46px !important;
+    border-radius: 13px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+.med_video_cta.primary {
+    background: #f28b58 !important;
+    color: white !important;
+}
+
+.med_video_cta.secondary {
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.30) !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+}
+
+.med_video_stats {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 55px !important;
+    z-index: 8 !important;
+    width: min(920px, calc(100% - 180px)) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-radius: 22px !important;
+    padding: 20px 18px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    box-shadow: 0 18px 50px rgba(18, 30, 56, 0.18) !important;
+}
+
+.med_video_stat {
+    text-align: center !important;
+}
+
+.med_video_stat_num {
+    font-size: 42px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    color: #31466e !important;
+}
+
+.med_video_stat_label {
+    margin-top: 7px !important;
+    font-size: 14px !important;
+    color: #6d7788 !important;
+}
+
+.med_section {
+    padding: 90px 24px !important;
+}
+
+.med_section_light {
+    background: white !important;
+}
+
+.med_section_alt {
+    background: #f6f9fc !important;
+}
+
+.med_section_intro {
+    max-width: 860px !important;
+    margin: 0 auto 50px !important;
+    text-align: center !important;
+}
+
+.med_tag {
+    display: inline-block !important;
+    padding: 8px 16px !important;
+    border-radius: 999px !important;
+    background: #eef3fb !important;
+    color: #31466e !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    margin-bottom: 18px !important;
+}
+
+.med_section_intro h2 {
+    margin: 0 0 14px !important;
+    font-size: 40px !important;
+    line-height: 1.1 !important;
+    font-weight: 900 !important;
+    color: #16233a !important;
+}
+
+.med_section_intro p {
+    margin: 0 auto !important;
+    max-width: 720px !important;
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+    color: #6c7890 !important;
+}
+
+.med_feature_grid,
+.med_testimonial_grid {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+}
+
+.med_feature_card,
+.med_testimonial_card {
+    background: white !important;
+    border: 1px solid #e7edf6 !important;
+    border-radius: 24px !important;
+    padding: 28px !important;
+    box-shadow: 0 10px 30px rgba(20, 35, 61, 0.06) !important;
+}
+
+.med_feature_icon {
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 999px !important;
+    background: #f4f7fc !important;
+    color: #31466e !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 28px !important;
+    margin-bottom: 22px !important;
+}
+
+.med_feature_card h3 {
+    margin: 0 0 12px !important;
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    font-weight: 900 !important;
+    color: #16233a !important;
+}
+
+.med_feature_card p,
+.med_testimonial_card p {
+    margin: 0 !important;
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    color: #6c7890 !important;
+}
+
+.med_footer {
+    background: linear-gradient(90deg, #16233a 0%, #2c4163 100%) !important;
+    color: white !important;
+    padding: 56px 28px 24px !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_content {
+        padding: 130px 24px 240px !important;
+        max-width: 100% !important;
     }
+
+    .med_video_content h1 {
+        font-size: 36px !important;
+    }
+
+    .med_video_stats {
+        width: calc(100% - 28px) !important;
+        grid-template-columns: 1fr !important;
+        bottom: 20px !important;
+    }
+
+    .med_feature_grid,
+    .med_testimonial_grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .med_video_nav {
+        height: auto !important;
+        padding: 14px 18px !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .med_video_menu {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
+/* =========================================================
+   FORCE LOGIN BUTTON VISIBLE
+   ========================================================= */
+
+.med_login_right form {
+    width: 100% !important;
+    display: block !important;
+}
+
+.med_login_right .med_btn,
+.med_login_right button.med_btn,
+button.med_btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 56px !important;
+    margin-top: 22px !important;
+    margin-bottom: 18px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #24395B 0%, #31466e 100%) !important;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 12px 24px rgba(36, 57, 91, 0.22) !important;
+    text-align: center !important;
+}
+
+.med_login_right .med_btn:hover,
+.med_login_right button.med_btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 16px 30px rgba(36, 57, 91, 0.28) !important;
+}
+
+.med_login_right .med_links {
+    margin-top: 20px !important;
+}
+
+/* =========================================================
+   FORCE LOGIN BUTTON VISIBLE
+   ========================================================= */
+
+.med_login_right form {
+    width: 100% !important;
+    display: block !important;
+}
+
+.med_login_right .med_btn,
+.med_login_right button.med_btn,
+button.med_btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 56px !important;
+    margin-top: 22px !important;
+    margin-bottom: 18px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #24395B 0%, #31466e 100%) !important;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 12px 24px rgba(36, 57, 91, 0.22) !important;
+    text-align: center !important;
+}
+
+.med_login_right .med_btn:hover,
+.med_login_right button.med_btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 16px 30px rgba(36, 57, 91, 0.28) !important;
+}
+
+.med_login_right .med_links {
+    margin-top: 20px !important;
 }

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from odoo import http
 from odoo.http import request
 
@@ -13,7 +14,7 @@ class MedIoTAuthController(http.Controller):
         values = {
             "error": kwargs.get("error"),
             "login": kwargs.get("login", ""),
-            "redirect": "/mediot/post_login",
+            "redirect": kwargs.get("redirect") or "/mediot/post_login",
         }
         return request.render('med_iot_command_center.med_login_page', values)
 
@@ -21,12 +22,7 @@ class MedIoTAuthController(http.Controller):
     def mediot_post_login(self, **kwargs):
         user = request.env.user
 
-        if user.has_group('med_iot_command_center.group_med_senior_doctor'):
-            action = request.env.ref('med_iot_command_center.action_med_dashboard').sudo()
-            menu = request.env.ref('med_iot_command_center.menu_med_dashboard').sudo()
-            return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
-
-        if user.has_group('med_iot_command_center.group_med_admin'):
+        if user.has_group('med_iot_command_center.group_med_senior_doctor') or user.has_group('med_iot_command_center.group_med_admin'):
             action = request.env.ref('med_iot_command_center.action_med_dashboard').sudo()
             menu = request.env.ref('med_iot_command_center.menu_med_dashboard').sudo()
             return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
@@ -42,15 +38,7 @@ class MedIoTAuthController(http.Controller):
         }
         return request.render('med_iot_command_center.med_signup_page', values)
 
-    @http.route(
-        ['/mediot/signup/submit'],
-        type='http',
-        auth='public',
-        website=True,
-        methods=['POST'],
-        csrf=True,
-        sitemap=False
-    )
+    @http.route(['/mediot/signup/submit'], type='http', auth='public', website=True, methods=['POST'], csrf=True, sitemap=False)
     def mediot_signup_submit(self, **post):
         Users = request.env['res.users'].sudo()
 

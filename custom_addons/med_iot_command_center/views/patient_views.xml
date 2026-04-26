@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
 <!-- KANBAN VIEW -->
@@ -130,7 +130,7 @@
 
                             <!-- Action Buttons -->
                             <div style="margin-top:12px;padding-top:12px;border-top:1px solid #f1f5f9;display:flex;gap:6px;">
-                                <button type="object" name="action_download_report" class="btn btn-sm btn-info" title="Download Report" style="flex:1;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;padding:6px 8px;font-size:.75rem;font-weight:600;cursor:pointer;text-align:center;">
+                                <button type="button" class="btn btn-sm btn-info" title="Download Report" style="flex:1;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;padding:6px 8px;font-size:.75rem;font-weight:600;cursor:pointer;text-align:center;">
                                     <i class="fa fa-download"/> Download
                                 </button>
                             </div>
@@ -164,7 +164,7 @@
             <field name="latest_ecg_bpm"/>
             <field name="assigned_doctor_id"/>
             <field name="pending_alert_count"/>
-            <button name="action_download_report" type="object" icon="fa-download" title="Download Medical Report"/>
+            <button name="action_print_medical_report" type="object" icon="fa-download" title="Download Medical Report"/>
         </list>
     </field>
 </record>
@@ -177,7 +177,7 @@
     <field name="arch" type="xml">
         <form>
             <header>
-                <button name="action_download_report" type="object" string="Download Report" icon="fa-download" class="btn-info"/>
+                <button name="action_print_medical_report" type="object" string="Download Report" icon="fa-download" class="btn-info"/>
             </header>
             <sheet>
                 <!-- TOP STATUS BAR -->
@@ -206,7 +206,7 @@
                     <!-- LEFT PANEL -->
                     <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px 18px;text-align:center;">
                         <div style="margin-bottom:16px;display:flex;justify-content:center;">
-                            <field name="image_1920" widget="image" class="oe_avatar"
+                            <field name="image_128" widget="image" class="oe_avatar"
                                    options="{'size':[96,96],'preview_image':'image_128'}"
                                    style="width:96px;height:96px;border-radius:16px;object-fit:cover;border:2px solid #e2e8f0;"/>
                         </div>
@@ -386,3 +386,5 @@
 </record>
 
 </odoo>
+
+

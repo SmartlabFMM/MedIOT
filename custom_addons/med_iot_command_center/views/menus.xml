@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="action_med_alerts" model="ir.actions.act_window">
+        <field name="name">Real-time Alerts</field>
+        <field name="res_model">med.alert</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
     <menuitem id="menu_med_root" name="MedIoT" sequence="10"/>
 
     <record id="action_med_dashboard" model="ir.actions.client">

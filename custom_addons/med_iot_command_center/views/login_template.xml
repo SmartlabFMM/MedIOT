@@ -1,81 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="med_login_assets" inherit_id="web.login" name="MedIoT Login Style">
-        <xpath expr="//t[@t-call='web.login_layout']" position="replace">
-            <t t-call="web.login_layout">
-                <div class="med_login_wrap">
-                    <div class="med_login_left">
-                        <img src="/med_iot_command_center/static/description/hero_new.jpg?v=2" alt="Hospital"/>
-                        <div class="med_login_overlay"/>
-                        <div class="med_top_badge">
-                            <div class="med_badge_icon">
-                                <img src="/med_iot_command_center/static/description/INJ.png" alt="logo"/>
-                            </div>
-                            <div>
-                                <div class="med_badge_name">MedIoT</div>
-                                <div class="med_badge_sub">Command Center</div>
-                            </div>
+    <template id="med_login_page" name="MedIoT Custom Login Page">
+        <t t-call="website.layout">
+            <div class="med_login_wrap">
+
+                <div class="med_login_left">
+                    <img src="/med_iot_command_center/static/description/hero_new.jpg?v=2" alt="Hospital"/>
+                    <div class="med_login_overlay"></div>
+
+                    <div class="med_top_badge">
+                        <div class="med_badge_icon">
+                            <img src="/med_iot_command_center/static/description/INJ.png" alt="MedIoT"/>
                         </div>
-                        <div class="med_hero">
-                            <h1>Real-Time Patient<br/>Monitoring Platform</h1>
-                            <p>AI-powered vital signs monitoring with instant alerts and centralized patient management.</p>
+                        <div>
+                            <div class="med_badge_name">MedIoT</div>
+                            <div class="med_badge_sub">Command Center</div>
                         </div>
                     </div>
 
-                    <div class="med_login_right">
-                        <div class="med_panel_logo">
-                            <div class="med_panel_logo_icon">
-                                <img src="/med_iot_command_center/static/description/INJ.png" alt="logo"/>
-                            </div>
-                            <div class="med_panel_logo_name">MedIoT</div>
-                        </div>
-
-                        <div class="med_login_title">Welcome back</div>
-                        <div class="med_login_subtitle">Sign in to your MedIoT account</div>
-
-                        <t t-if="error">
-                            <div class="med_err"><t t-esc="error"/></div>
-                        </t>
-
-                        <form class="oe_login_form" role="form" t-attf-action="/web/login" method="post">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <input type="hidden" name="redirect" t-att-value="redirect"/>
-
-                            <div class="med_field">
-                                <label for="login">Email</label>
-                                <input type="text"
-                                       name="login"
-                                       id="login"
-                                       t-att-value="login"
-                                       placeholder="your@email.com"
-                                       required="required"
-                                       autofocus="autofocus"
-                                       autocomplete="username"/>
-                            </div>
-
-                            <div class="med_field">
-                                <label for="password">Password</label>
-                                <input type="password"
-                                       name="password"
-                                       id="password"
-                                       placeholder="••••••••"
-                                       required="required"
-                                       autocomplete="current-password"/>
-                            </div>
-
-                            <button type="submit" class="med_btn">Sign In</button>
-                        </form>
-
-                        <div class="med_links">
-                            <a href="/mediot/reset">Forgot password?</a>
-                            &#160;·&#160;
-                            <a href="/mediot">Back to home</a>
-                            &#160;·&#160;
-                            <a href="/web/database/selector">Manage Databases</a>
-                        </div>
+                    <div class="med_hero">
+                        <h1>Real-Time Patient<br/>Monitoring Platform</h1>
+                        <p>AI-powered vital signs monitoring with instant alerts and centralized patient management.</p>
                     </div>
                 </div>
-            </t>
-        </xpath>
+
+                <div class="med_login_right">
+                    <div class="med_panel_logo">
+                        <div class="med_panel_logo_icon">
+                            <img src="/med_iot_command_center/static/description/INJ.png" alt="MedIoT"/>
+                        </div>
+                        <div class="med_panel_logo_name">MedIoT</div>
+                    </div>
+
+                    <div class="med_login_title">Welcome back</div>
+                    <div class="med_login_subtitle">Sign in to your MedIoT account</div>
+
+                    <t t-if="error">
+                        <div class="med_err">
+                            <t t-esc="error"/>
+                        </div>
+                    </t>
+
+                    <form action="/web/login" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+
+                        <div class="med_field">
+                            <label>Email</label>
+                            <input type="text"
+                                   name="login"
+                                   placeholder="your@email.com"
+                                   t-att-value="login"
+                                   required="required"
+                                   autofocus="autofocus"/>
+                        </div>
+
+                        <div class="med_field">
+                            <label>Password</label>
+                            <input type="password"
+                                   name="password"
+                                   placeholder="••••••••"
+                                   required="required"/>
+                        </div>
+
+                        <button type="submit" class="med_btn">Sign In</button>
+                    </form>
+
+                    <div class="med_links">
+                        <a href="/mediot/reset">Forgot password?</a>
+                        &#160;·&#160;
+                        <a href="/mediot/signup">Create account</a>
+                        &#160;·&#160;
+                        <a href="/mediot">Back to home</a>
+                    </div>
+                </div>
+
+            </div>
+        </t>
     </template>
 </odoo>
