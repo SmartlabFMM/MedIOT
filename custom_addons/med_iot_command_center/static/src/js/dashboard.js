@@ -1,4 +1,4 @@
-/** @odoo-module **/
+﻿/** @odoo-module **/
 
 import { registry }   from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
@@ -40,6 +40,7 @@ function todayLabel() {
     return new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
 }
 
+// Build smooth SVG path using Catmull-Rom → Cubic Bezier conversion
 function buildSmoothPath(points, w, h, minV, maxV) {
     if (points.length < 2) return "";
     const range = maxV - minV || 1;
@@ -63,6 +64,7 @@ function buildSmoothPath(points, w, h, minV, maxV) {
     return d;
 }
 
+// Build area fill path (smooth curve closed to the bottom)
 function buildSmoothAreaPath(points, w, h, minV, maxV) {
     const line = buildSmoothPath(points, w, h, minV, maxV);
     if (!line) return "";
@@ -78,173 +80,80 @@ class MedDashboard extends Component {
 
         const now = new Date();
         this.state = useState({
-            loading: true,
+            loading:     true,
             lastRefresh: "",
-            todayDate: todayLabel(),
+            todayDate:   todayLabel(),
             deviceCount: 0,
-            searchQuery: "",
-            statusFilter: "all",
-            kpis: {
-                total: 0,
-                critical: 0,
-                warning: 0,
-                stable: 0,
-                pending_alerts: 0,
-            },
-            donut: {
-                stableOffset: CIRC,
-                warningOffset: CIRC,
-                warningRotate: -90,
-                criticalOffset: CIRC,
-                criticalRotate: -90,
-            },
-            live: [],
-            cal: buildCalendar(now.getFullYear(), now.getMonth()),
-            chart: {
-                spo2: [],
-                ecg: [],
-                temp: [],
-                labels: [],
-                spo2Path: "",
-                ecgPath: "",
-                tempPath: "",
-                spo2AreaPath: "",
-                ecgAreaPath: "",
-                tempAreaPath: "",
-                spo2Last: null,
-                ecgLast: null,
-                tempLast: null,
-            },
+            kpis:  { total: 0, critical: 0, warning: 0, stable: 0, pending_alerts: 0 },
+            donut: { stableOffset: CIRC, warningOffset: CIRC, warningRotate: -90, criticalOffset: CIRC, criticalRotate: -90 },
+            live:  [],
+            cal:   buildCalendar(now.getFullYear(), now.getMonth()),
+            chart: { spo2: [], ecg: [], temp: [], labels: [],
+                     spo2Path: "", ecgPath: "", tempPath: "",
+                     spo2Last: null, ecgLast: null, tempLast: null },
         });
 
-        onMounted(() => {
-            this._load();
-            this._timer = setInterval(() => this._load(), 15000);
-        });
-
+        onMounted(() => { this._load(); this._timer = setInterval(() => this._load(), 15000); });
         onWillUnmount(() => clearInterval(this._timer));
-    }
-
-    get filteredLive() {
-        let rows = this.state.live || [];
-        const q = (this.state.searchQuery || "").trim().toLowerCase();
-        const status = this.state.statusFilter || "all";
-
-        if (q) {
-            rows = rows.filter((p) => {
-                const name = (p.name || "").toLowerCase();
-                const ref = (p.ref || "").toLowerCase();
-                const room = (p.room || "").toLowerCase();
-                return name.includes(q) || ref.includes(q) || room.includes(q);
-            });
-        }
-
-        if (status !== "all") {
-            rows = rows.filter((p) => (p.status || "").toLowerCase() === status);
-        }
-
-        return rows;
-    }
-
-    onSearchInput(ev) {
-        this.state.searchQuery = ev.target.value || "";
-    }
-
-    onStatusChange(ev) {
-        this.state.statusFilter = ev.target.value || "all";
     }
 
     async _load() {
         try {
             const patients = await this.orm.searchRead(
-                "med.patient",
-                [["active", "=", true]],
-                [
-                    "name",
-                    "ref",
-                    "age",
-                    "room",
-                    "status",
-                    "latest_spo2",
-                    "latest_ecg_bpm",
-                    "latest_reading_at",
-                    "pending_alert_count",
-                    "image_128",
-                ],
+                "med.patient", [],
+                ["name", "ref", "age", "room", "status",
+                 "latest_spo2", "latest_ecg_bpm", "latest_reading_at", "pending_alert_count", "image_128"],
                 { order: "status desc, latest_reading_at desc" }
             );
-
-            const alerts = await this.orm.searchCount("med.alert", [["state", "=", "new"]]);
+            const alerts  = await this.orm.searchCount("med.alert", [["state", "=", "new"]]);
             const devices = await this.orm.searchCount("med.device", [["status", "=", "online"]]);
 
+            // Fetch last 20 vital readings for the line chart (with fallback)
             let readings = [];
             try {
                 readings = await this.orm.searchRead(
-                    "med.vital.reading",
-                    [],
+                    "med.vital.reading", [],
                     ["reading_at", "spo2", "ecg_bpm", "temp_c"],
                     { order: "reading_at asc", limit: 20 }
                 );
-            } catch (e) {
-                readings = [];
-            }
+            } catch(e) { readings = []; }
 
-            const total = patients.length;
-            const critical = patients.filter((p) => p.status === "critical").length;
-            const warning = patients.filter((p) => p.status === "warning").length;
-            const stable = patients.filter((p) => p.status === "stable").length;
+            const total    = patients.length;
+            const critical = patients.filter(p => p.status === "critical").length;
+            const warning  = patients.filter(p => p.status === "warning").length;
+            const stable   = patients.filter(p => p.status === "stable").length;
 
-            const W = 560;
-            const H = 100;
+            // Build chart data
+            const W = 560, H = 100;
+            const spo2Vals  = readings.map(r => r.spo2    || 0).filter(v => v > 0);
+            const ecgVals   = readings.map(r => r.ecg_bpm || 0).filter(v => v > 0);
+            const tempVals  = readings.map(r => r.temp_c || 0).filter(v => v > 0);
+            const labels    = readings.map(r => r.reading_at ? r.reading_at.substring(11,16) : "");
 
-            const spo2Vals = readings.map((r) => r.spo2 || 0).filter((v) => v > 0);
-            const ecgVals = readings.map((r) => r.ecg_bpm || 0).filter((v) => v > 0);
-            const tempVals = readings.map((r) => r.temp_c || 0).filter((v) => v > 0);
-            const labels = readings.map((r) => (r.reading_at ? r.reading_at.substring(11, 16) : ""));
+            const spo2Min = Math.min(...spo2Vals) - 2, spo2Max = Math.max(...spo2Vals) + 2;
+            const ecgMin  = Math.min(...ecgVals)  - 5, ecgMax  = Math.max(...ecgVals)  + 5;
+            const tempMin = Math.min(...tempVals) - 1, tempMax = Math.max(...tempVals) + 1;
 
-            const spo2Min = spo2Vals.length ? Math.min(...spo2Vals) - 2 : 0;
-            const spo2Max = spo2Vals.length ? Math.max(...spo2Vals) + 2 : 100;
-            const ecgMin = ecgVals.length ? Math.min(...ecgVals) - 5 : 0;
-            const ecgMax = ecgVals.length ? Math.max(...ecgVals) + 5 : 100;
-            const tempMin = tempVals.length ? Math.min(...tempVals) - 1 : 0;
-            const tempMax = tempVals.length ? Math.max(...tempVals) + 1 : 100;
-
-            const spo2Path = spo2Vals.length > 1 ? buildSmoothPath(spo2Vals, W, H, spo2Min, spo2Max) : "";
-            const ecgPath = ecgVals.length > 1 ? buildSmoothPath(ecgVals, W, H, ecgMin, ecgMax) : "";
-            const tempPath = tempVals.length > 1 ? buildSmoothPath(tempVals, W, H, tempMin, tempMax) : "";
-
+            const spo2Path     = spo2Vals.length > 1 ? buildSmoothPath(spo2Vals, W, H, spo2Min, spo2Max) : "";
+            const ecgPath      = ecgVals.length  > 1 ? buildSmoothPath(ecgVals,  W, H, ecgMin,  ecgMax)  : "";
+            const tempPath     = tempVals.length > 1 ? buildSmoothPath(tempVals, W, H, tempMin, tempMax) : "";
             const spo2AreaPath = spo2Vals.length > 1 ? buildSmoothAreaPath(spo2Vals, W, H, spo2Min, spo2Max) : "";
-            const ecgAreaPath = ecgVals.length > 1 ? buildSmoothAreaPath(ecgVals, W, H, ecgMin, ecgMax) : "";
+            const ecgAreaPath  = ecgVals.length  > 1 ? buildSmoothAreaPath(ecgVals,  W, H, ecgMin,  ecgMax)  : "";
             const tempAreaPath = tempVals.length > 1 ? buildSmoothAreaPath(tempVals, W, H, tempMin, tempMax) : "";
 
-            this.state.kpis = {
-                total,
-                critical,
-                warning,
-                stable,
-                pending_alerts: alerts,
-            };
-
-            this.state.donut = donutSegments(stable, warning, critical);
+            this.state.kpis        = { total, critical, warning, stable, pending_alerts: alerts };
+            this.state.donut       = donutSegments(stable, warning, critical);
             this.state.deviceCount = devices;
-            this.state.live = patients;
+            this.state.live        = patients;
             this.state.lastRefresh = new Date().toLocaleTimeString();
-            this.state.loading = false;
-
-            this.state.chart = {
-                spo2: spo2Vals,
-                ecg: ecgVals,
-                temp: tempVals,
-                labels,
-                spo2Path,
-                ecgPath,
-                tempPath,
-                spo2AreaPath,
-                ecgAreaPath,
-                tempAreaPath,
-                spo2Last: spo2Vals.length ? spo2Vals[spo2Vals.length - 1] : null,
-                ecgLast: ecgVals.length ? ecgVals[ecgVals.length - 1] : null,
-                tempLast: tempVals.length ? tempVals[tempVals.length - 1] : null,
+            this.state.loading     = false;
+            this.state.chart       = {
+                spo2: spo2Vals, ecg: ecgVals, temp: tempVals, labels,
+                spo2Path, ecgPath, tempPath,
+                spo2AreaPath, ecgAreaPath, tempAreaPath,
+                spo2Last:  spo2Vals.length ? spo2Vals[spo2Vals.length - 1] : null,
+                ecgLast:   ecgVals.length  ? ecgVals[ecgVals.length - 1]   : null,
+                tempLast:  tempVals.length ? tempVals[tempVals.length - 1] : null,
             };
         } catch (e) {
             console.error("MedIoT dashboard error:", e);
@@ -254,88 +163,43 @@ class MedDashboard extends Component {
 
     calPrev() {
         let { year, month } = this.state.cal;
-        month--;
-        if (month < 0) {
-            month = 11;
-            year--;
-        }
+        month--; if (month < 0) { month = 11; year--; }
         this.state.cal = buildCalendar(year, month);
     }
-
     calNext() {
         let { year, month } = this.state.cal;
-        month++;
-        if (month > 11) {
-            month = 0;
-            year++;
-        }
+        month++; if (month > 11) { month = 0; year++; }
         this.state.cal = buildCalendar(year, month);
     }
 
-    openPatients() {
-        this.actionService.doAction("med_iot_command_center.action_med_patient");
-    }
-
-    openAlerts() {
-        this.actionService.doAction("med_iot_command_center.action_med_alerts");
-    }
-
-    openDevices() {
-        this.actionService.doAction("med_iot_command_center.action_med_devices");
-    }
-
+    openPatients()  { this.actionService.doAction("med_iot_command_center.action_med_patient"); }
+    openAlerts()    { this.actionService.doAction("med_iot_command_center.action_med_alerts"); }
+    openDevices()   { this.actionService.doAction("med_iot_command_center.action_med_devices"); }
     openCriticalPatients() {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "med.patient",
-            views: [[false, "list"], [false, "form"]],
-            domain: [["status", "=", "critical"]],
-            name: "Critical Patients",
-        });
+        this.actionService.doAction({ type: "ir.actions.act_window", res_model: "med.patient",
+            views: [[false,"list"],[false,"form"]], domain: [["status","=","critical"]], name: "Critical Patients" });
     }
-
     openWarningPatients() {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "med.patient",
-            views: [[false, "list"], [false, "form"]],
-            domain: [["status", "=", "warning"]],
-            name: "Warning Patients",
-        });
+        this.actionService.doAction({ type: "ir.actions.act_window", res_model: "med.patient",
+            views: [[false,"list"],[false,"form"]], domain: [["status","=","warning"]], name: "Warning Patients" });
     }
-
     openPatient(id) {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "med.patient",
-            res_id: id,
-            views: [[false, "form"]],
-            target: "current",
-        });
+        this.actionService.doAction({ type: "ir.actions.act_window", res_model: "med.patient",
+            res_id: id, views: [[false,"form"]], target: "current" });
     }
-
     openPatientAlerts(id) {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "med.alert",
-            views: [[false, "list"], [false, "form"]],
-            domain: [["patient_id", "=", id], ["state", "=", "new"]],
-            name: "Patient Alerts",
-        });
+        this.actionService.doAction({ type: "ir.actions.act_window", res_model: "med.alert",
+            views: [[false,"list"],[false,"form"]], domain: [["patient_id","=",id],["state","=","new"]], name: "Patient Alerts" });
     }
 
     async downloadPatientReport(patientId) {
-        const patient = await this.orm.read(
-            "med.patient",
-            [patientId],
-            ["name", "ref", "age", "gender", "latest_spo2", "latest_ecg_bpm", "latest_temp"]
-        );
-
+        const ctx = this.env.services.orm;
+        const patient = await ctx.read("med.patient", [patientId], ["name", "ref", "age", "gender", "latest_spo2", "latest_ecg_bpm", "latest_temp"]);
         if (patient && patient[0]) {
             const p = patient[0];
-            const filename = `Patient_Report_${p.ref}_${new Date().toISOString().split("T")[0]}.pdf`;
+            const filename = `Patient_Report_${p.ref}_${new Date().toISOString().split('T')[0]}.pdf`;
             const url = `/report/pdf/med_iot_command_center.patient_medical_report/${patientId}`;
-            const link = document.createElement("a");
+            const link = document.createElement('a');
             link.href = url;
             link.download = filename;
             document.body.appendChild(link);

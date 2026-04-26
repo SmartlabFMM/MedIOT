@@ -1,3 +1,8 @@
+﻿/* =========================================================
+   MedIoT Dashboard - Final Fixed CSS
+   Header + Cards + Search/Status fixed
+   ========================================================= */
+
 .o_action_manager,
 .o_action,
 .o_view_controller,
@@ -11,547 +16,655 @@
     height: 100% !important;
 }
 
-.med_dashboard {
-    padding: 0;
-    background: #eef0fb;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #334155;
-    min-height: 100%;
+.med_dashboard,
+.med_dashboard_root {
+    padding: 0 !important;
+    background: #eef0fb !important;
+    min-height: 100% !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    color: #334155 !important;
 }
 
-/* HERO */
+/* =========================================================
+   PURPLE HEADER / HERO
+   ========================================================= */
+
 .med_banner {
-    background: linear-gradient(135deg, #5f6fcb 0%, #7482d6 50%, #9b74d6 100%);
-    padding: 14px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
+    background: linear-gradient(135deg, #6073cf 0%, #7583d5 45%, #9c79de 100%) !important;
+    min-height: 118px !important;
+    height: 118px !important;
+    padding: 12px 34px !important;
+    margin-bottom: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+    box-sizing: border-box !important;
 }
 
 .med_banner_left {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
 }
 
 .med_banner_greeting {
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1.1;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 6px 0 !important;
 }
 
 .med_banner_sub {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    margin: 0 0 9px 0 !important;
 }
 
 .med_banner_date {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    width: fit-content;
-    background: rgba(255, 255, 255, 0.20);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-top: 4px;
+    height: 32px !important;
+    min-height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    width: fit-content !important;
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.med_banner_date i {
+    font-size: 13px !important;
 }
 
 .med_banner_right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
-    margin-left: auto;
+    margin-left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    gap: 10px !important;
 }
 
 .med_banner_refresh {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px !important;
+    line-height: 1 !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
 }
 
 .med_banner_actions {
-    display: flex;
-    gap: 12px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
 }
 
 .med_btn_alert,
 .med_btn_add {
-    height: 48px;
-    padding: 0 24px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: all .2s ease;
+    height: 44px !important;
+    min-height: 44px !important;
+    min-width: 118px !important;
+    padding: 0 20px !important;
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
 }
 
 .med_btn_alert {
-    background: rgba(255, 255, 255, 0.10);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.14) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    color: #ffffff !important;
 }
 
 .med_btn_alert:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.24) !important;
 }
 
 .med_btn_add {
-    background: #fff;
-    color: #5867d8;
-    border: none;
+    background: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    color: #5f6fd1 !important;
 }
 
 .med_btn_add:hover {
-    background: #f7f7ff;
+    background: #f8f8ff !important;
 }
 
-.med_alert_badge {
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 999px;
-    background: #ef4444;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.med_btn_alert i,
+.med_btn_add i {
+    font-size: 15px !important;
 }
 
-/* KPI CARDS */
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
 .med_kpi_row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    margin: 0 34px 26px;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 24px !important;
+}
+
+.med_kpi_stack {
+    width: 100% !important;
+    max-width: 1020px !important;
+    margin: 16px auto 26px auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(250px, 1fr)) !important;
+    gap: 22px !important;
 }
 
 .med_kpi_card {
-    background: #fff;
-    border-radius: 18px;
-    border: 1px solid #dcdff3;
-    padding: 18px 28px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    min-height: 120px;
-    width: 280px;
-    cursor: pointer;
-    transition: all .2s ease;
+    background: #ffffff !important;
+    border: 1px solid #dfe5f3 !important;
+    border-radius: 18px !important;
+    height: 128px !important;
+    min-height: 128px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 18px 24px !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.18s ease !important;
+    box-sizing: border-box !important;
 }
 
 .med_kpi_card:hover {
-    box-shadow: 0 10px 22px rgba(92, 107, 192, 0.08);
-    transform: translateY(-1px);
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 24px rgba(99, 114, 201, 0.12) !important;
 }
 
-.med_kpi_icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+.med_kpi_inner {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
 }
 
-.blue_bg {
-    background: #5b69d6;
-    color: #fff;
-    font-size: 22px;
+.med_kpi_icon,
+.med_kpi_icon_box,
+.med_kpi_iconbox {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.med_kpi_icon_img {
+/* Total Patients icon */
+.med_kpi_icon.blue_bg,
+.med_kpi_icon_box,
+.med_kpi_iconbox.total {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    min-height: 62px !important;
+    border-radius: 16px !important;
+    background: #5b67d6 !important;
+    color: #ffffff !important;
+    overflow: hidden !important;
+}
+
+.med_kpi_icon.blue_bg i,
+.med_kpi_icon_box i,
+.med_kpi_iconbox.total i {
+    font-size: 28px !important;
+    color: #ffffff !important;
+}
+
+.med_kpi_icon.blue_bg img,
+.med_kpi_icon_box img,
+.med_kpi_iconbox.total img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* Critical / Warning icons */
+.med_kpi_icon_img,
+.med_kpi_iconbox.plain {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    min-height: 62px !important;
     background: transparent !important;
-    width: 54px;
-    height: 54px;
+    border-radius: 0 !important;
 }
 
-.med_kpi_img {
-    width: 46px;
-    height: 46px;
-    object-fit: contain;
-    display: block;
+.med_kpi_icon_img img,
+.med_kpi_iconbox.plain img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain !important;
+    display: block !important;
 }
 
-.med_kpi_body {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+.med_kpi_body,
+.med_kpi_text {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 6px !important;
 }
 
-.med_kpi_label {
-    font-size: 13px;
-    font-weight: 600;
+.med_kpi_label,
+.med_kpi_title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
 }
 
 .med_kpi_value {
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1;
+    font-size: 29px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
 }
 
-.med_kpi_trend {
-    font-size: 11px;
-    color: #94a3b8;
+.med_kpi_trend,
+.med_kpi_sub {
+    font-size: 13px !important;
+    color: #9aa9c2 !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
 }
 
 .med_kpi_card.blue .med_kpi_label,
-.med_kpi_card.blue .med_kpi_value {
-    color: #5b69d6;
+.med_kpi_card.blue .med_kpi_value,
+.total_text,
+.total_value {
+    color: #5968d8 !important;
 }
 
 .med_kpi_card.red .med_kpi_label,
-.med_kpi_card.red .med_kpi_value {
-    color: #ff4b4b;
+.med_kpi_card.red .med_kpi_value,
+.critical_text,
+.critical_value {
+    color: #ff3d39 !important;
 }
 
 .med_kpi_card.orange .med_kpi_label,
-.med_kpi_card.orange .med_kpi_value {
-    color: #f59e0b;
+.med_kpi_card.orange .med_kpi_value,
+.warning_text,
+.warning_value {
+    color: #ff9300 !important;
 }
 
-/* LIVE PATIENT MONITORS */
-.lpm_wrap {
-    background: #fff;
-    border-radius: 18px;
-    border: 1px solid #dcdff3;
-    overflow: hidden;
-    margin: 0 34px 28px;
-}
+/* =========================================================
+   SEARCH + ALL STATUS
+   ========================================================= */
 
-.lpm_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 22px;
-    border-bottom: 1px solid #eceff9;
-}
-
-.lpm_title {
-    font-size: 15px;
-    font-weight: 800;
-    color: #0f172a;
-}
-
-.lpm_viewall {
-    text-decoration: none;
-    color: #6a6ff0;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.lpm_viewall:hover {
-    text-decoration: underline;
-}
-
-/* TOOLBAR ABOVE TABLE */
 .lpm_toolbar {
-    margin: 0 34px 12px;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 14px !important;
+    padding: 18px 28px !important;
+    border-bottom: 1px solid #edf1f8 !important;
 }
 
-.lpm_toolbar_right {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 12px;
+.lpm_toolbar_spacer {
+    flex: 1 !important;
 }
 
 .lpm_search_box {
-    position: relative;
-    width: 220px;
+    width: 210px !important;
+    height: 42px !important;
+    border: 1px solid #d9e1ef !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
 }
 
 .lpm_search_input {
-    width: 100%;
-    height: 36px;
-    border: 1px solid #dfe5f2;
-    border-radius: 10px;
-    background: #fff;
-    padding: 0 36px 0 14px;
-    font-size: 13px;
-    color: #334155;
-    outline: none;
-    transition: all .2s ease;
+    flex: 1 !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 12px !important;
+    font-size: 14px !important;
+    color: #475569 !important;
+    background: transparent !important;
 }
 
 .lpm_search_input::placeholder {
-    color: #94a3b8;
+    color: #98a7c0 !important;
 }
 
-.lpm_search_input:focus {
-    border-color: #c7d2fe;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+.lpm_search_btn {
+    width: 38px !important;
+    height: 42px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #8fa0be !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.lpm_search_icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #94a3b8;
-    font-size: 13px;
-    pointer-events: none;
+.lpm_status_select,
+.lpm_status_filter {
+    width: 230px !important;
+    height: 42px !important;
+    border: 1px solid #d9e1ef !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    padding: 0 14px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+    outline: none !important;
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
 }
 
-.lpm_status_select {
-    height: 36px;
-    min-width: 130px;
-    border: 1px solid #dfe5f2;
-    border-radius: 10px;
-    background: #fff;
-    padding: 0 12px;
-    font-size: 13px;
-    color: #334155;
-    outline: none;
-    cursor: pointer;
-    transition: all .2s ease;
+/* =========================================================
+   LIVE PATIENT MONITORS PANEL
+   ========================================================= */
+
+.lpm_wrap {
+    margin: 20px 30px 36px !important;
+    background: #ffffff !important;
+    border: 1px solid #dfe5f3 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
 }
 
-.lpm_status_select:focus {
-    border-color: #c7d2fe;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+.lpm_header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 20px 26px !important;
+    border-bottom: 1px solid #edf1f8 !important;
+}
+
+.lpm_title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+}
+
+.lpm_viewall,
+.lpm_view_all {
+    color: #6574dc !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.lpm_viewall:hover,
+.lpm_view_all:hover {
+    text-decoration: underline !important;
 }
 
 .lpm_empty {
-    text-align: center;
-    color: #a1acc8;
-    font-size: 15px;
-    padding: 46px 20px;
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 48px 20px !important;
+    text-align: center !important;
+    color: #98a7c0 !important;
+    font-size: 16px !important;
 }
 
+/* =========================================================
+   TABLE
+   ========================================================= */
+
 .lpm_table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 16px;
+    width: 100% !important;
+    border-collapse: collapse !important;
 }
 
 .lpm_table thead tr {
-    background: #f7f8fd;
+    background: #f5f7fc !important;
 }
 
 .lpm_table thead th {
-    padding: 10px 14px;
-    font-size: 11px;
-    color: #64748b;
-    font-weight: 700;
-    text-align: left;
-    border-bottom: 1px solid #eceff9;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    padding: 14px 18px !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: #5f708b !important;
+    letter-spacing: 0.04em !important;
+    border-bottom: 1px solid #edf1f8 !important;
+    white-space: nowrap !important;
 }
 
 .lpm_row {
-    border-bottom: 1px solid #f1f5f9;
-    cursor: pointer;
+    border-bottom: 1px solid #edf1f8 !important;
 }
 
-.lpm_row:hover {
-    background: #fafbff;
+.lpm_row:last-child {
+    border-bottom: none !important;
 }
 
-.lpm_row td {
-    padding: 10px 14px;
-    font-size: 13px;
-    vertical-align: middle;
+.lpm_row td,
+.lpm_table tbody td {
+    padding: 14px 18px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+    vertical-align: middle !important;
 }
 
-.lpm_namecell {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.lpm_namecell,
+.patient_identity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
 }
 
-.lpm_avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+.lpm_avatar,
+.patient_avatar,
+.patient_avatar_fallback {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #19c37d !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 800 !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    object-fit: cover !important;
 }
 
-.lpm_av_stable {
-    background: #10b981;
+.lpm_avatar_letter {
+    font-size: 16px !important;
+    font-weight: 800 !important;
 }
 
-.lpm_av_warning {
-    background: #f59e0b;
-}
-
-.lpm_av_critical {
-    background: #ef4444;
-}
-
-.lpm_name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #0f172a;
+.lpm_name,
+.patient_name {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
 }
 
 .lpm_id,
 .lpm_age,
 .lpm_condition {
-    color: #64748b;
-    font-size: 13px;
+    color: #64748b !important;
+    font-size: 14px !important;
 }
 
-.lpm_badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 700;
+.lpm_badge,
+.status_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 74px !important;
+    height: 30px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
 }
 
-.lpm_badge_stable {
-    background: #d1fae5;
-    color: #047857;
+.lpm_badge_stable,
+.status_badge.stable {
+    background: #ccf5df !important;
+    color: #0f8b56 !important;
 }
 
-.lpm_badge_warning {
-    background: #fef3c7;
-    color: #b45309;
+.lpm_badge_warning,
+.status_badge.warning {
+    background: #fff1c7 !important;
+    color: #c88300 !important;
 }
 
-.lpm_badge_critical {
-    background: #fee2e2;
-    color: #b91c1c;
+.lpm_badge_critical,
+.status_badge.critical {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
 }
 
-.lpm_actions {
-    display: flex;
-    gap: 6px;
+.lpm_actions,
+.action_btns {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
 }
 
-.lpm_btn {
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    border: 1px solid #e2e8f0;
-    background: #fff;
-    color: #64748b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all .15s ease;
-    font-size: 12px;
+.lpm_btn,
+.mini_action_btn {
+    width: 32px !important;
+    height: 32px !important;
+    border: 1px solid #dbe4f0 !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    color: #7586a4 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
 }
 
-.lpm_btn_view:hover {
-    background: #eff6ff;
-    color: #2563eb;
-    border-color: #bfdbfe;
+.lpm_btn:hover,
+.mini_action_btn:hover {
+    background: #f6f8fd !important;
+    color: #5367d2 !important;
+    border-color: #cad5ec !important;
 }
 
-.lpm_btn_edit:hover {
-    background: #f0fdf4;
-    color: #16a34a;
-    border-color: #bbf7d0;
+/* =========================================================
+   ODOO FORM/LIST IMPROVEMENTS
+   ========================================================= */
+
+.o_form_view .o_form_sheet_bg {
+    background: #eef0fb !important;
+    padding: 0 !important;
 }
 
-.lpm_btn_alert:hover {
-    background: #fff7ed;
-    color: #ea580c;
-    border-color: #fed7aa;
+.o_form_view .o_form_sheet {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
 }
 
-.lpm_btn_download:hover {
-    background: #f5f3ff;
-    color: #7c3aed;
-    border-color: #ddd6fe;
+.o_form_view {
+    --o-chatter-width: 0px !important;
 }
 
-/* LOADING */
-.med_loading {
-    text-align: center;
-    padding: 60px;
-    color: #94a3b8;
+.o_FormRenderer_chatterContainer {
+    display: none !important;
 }
 
-.med_spinner {
-    width: 28px;
-    height: 28px;
-    border: 3px solid #e2e8f0;
-    border-top-color: #5c6bc0;
-    border-radius: 50%;
-    animation: medSpin 1s linear infinite;
-    margin: 0 auto 12px;
-}
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
-@keyframes medSpin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* RESPONSIVE */
 @media (max-width: 1200px) {
-    .med_kpi_row {
-        grid-template-columns: 1fr;
+    .med_kpi_stack {
+        grid-template-columns: 1fr !important;
+    }
+
+    .lpm_toolbar {
+        flex-wrap: wrap !important;
+    }
+
+    .lpm_toolbar_spacer {
+        display: none !important;
     }
 }
 
 @media (max-width: 768px) {
     .med_banner {
-        padding: 16px 20px;
+        padding: 16px !important;
+        height: auto !important;
+        min-height: auto !important;
     }
 
     .med_banner_right {
-        align-items: stretch;
-        width: 100%;
+        width: 100% !important;
+        align-items: flex-start !important;
     }
 
-    .med_banner_actions {
-        flex-wrap: wrap;
+    .med_btn_alert,
+    .med_btn_add {
+        min-width: auto !important;
     }
 
-    .med_kpi_row,
-    .lpm_wrap {
-        margin-left: 18px;
-        margin-right: 18px;
+    .lpm_search_box,
+    .lpm_status_select,
+    .lpm_status_filter {
+        width: 100% !important;
     }
+}
 
-    .lpm_header {
-        padding: 18px;
-    }
+/* =========================================================
+   SHOW MORE LIVE PATIENT ROWS ON DASHBOARD
+   ========================================================= */
 
-    .lpm_toolbar {
-        padding: 14px 18px 0 18px;
-        justify-content: stretch;
-    }
+.lpm_wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 40px !important;
+}
 
-    .lpm_toolbar_right {
-        width: 100%;
-    }
+.lpm_table {
+    display: table !important;
+}
 
-    .lpm_search_box {
-        width: 100%;
-    }
+.lpm_table tbody {
+    display: table-row-group !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.lpm_table tbody tr,
+.lpm_row {
+    display: table-row !important;
+}
+
+.lpm_table tbody tr:nth-child(n+1) {
+    display: table-row !important;
+}
+
+.lpm_empty {
+    display: none;
 }

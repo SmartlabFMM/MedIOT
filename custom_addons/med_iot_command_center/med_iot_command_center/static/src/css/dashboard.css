@@ -1,0 +1,373 @@
+.med_dashboard {
+    background: #eef1fb;
+    min-height: 100vh;
+    font-family: Inter, Arial, sans-serif;
+    color: #0f172a;
+}
+
+/* Top banner */
+.med_banner {
+    min-height: 130px;
+    padding: 24px 36px;
+    background: linear-gradient(120deg, #5f7bd5 0%, #8b63d3 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #fff;
+}
+
+.med_banner_greeting {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.med_banner_sub {
+    font-size: 15px;
+    opacity: 0.95;
+    margin-bottom: 14px;
+}
+
+.med_banner_date {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 700;
+}
+
+.med_banner_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.med_banner_refresh {
+    font-size: 14px;
+    opacity: 0.95;
+}
+
+.med_banner_actions {
+    display: flex;
+    gap: 14px;
+}
+
+.med_btn_alert,
+.med_btn_add {
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.med_btn_alert {
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+}
+
+.med_btn_add {
+    background: white;
+    color: #6753c8;
+    border-color: white;
+}
+
+.med_alert_badge {
+    margin-left: 8px;
+    background: #ef4444;
+    color: white;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+/* KPI cards */
+.med_kpi_stack {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 26px;
+    padding: 22px 34px 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.med_kpi_card {
+    background: white;
+    border: 1px solid #dfe4f7;
+    border-radius: 16px;
+    min-height: 116px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.med_kpi_card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.med_kpi_icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.med_kpi_icon.blue_bg {
+    background: #5866c8;
+    color: #fff;
+}
+
+.med_kpi_icon_img {
+    background: transparent;
+}
+
+.med_kpi_label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #6366d6;
+    margin-bottom: 4px;
+}
+
+.med_kpi_card.red .med_kpi_label {
+    color: #ef4444;
+}
+
+.med_kpi_card.orange .med_kpi_label {
+    color: #f59e0b;
+}
+
+.med_kpi_value {
+    font-size: 34px;
+    line-height: 34px;
+    font-weight: 900;
+    color: #5866c8;
+}
+
+.med_kpi_card.red .med_kpi_value {
+    color: #ef4444;
+}
+
+.med_kpi_card.orange .med_kpi_value {
+    color: #f97316;
+}
+
+.med_kpi_trend {
+    margin-top: 6px;
+    color: #8b96b5;
+    font-size: 14px;
+}
+
+/* Loading */
+.med_loading {
+    padding: 80px;
+    text-align: center;
+    color: #7b85a4;
+}
+
+.med_spinner {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 12px;
+    border: 3px solid #dbe1f5;
+    border-top-color: #6b5dd3;
+    border-radius: 50%;
+    animation: med_spin 0.9s linear infinite;
+}
+
+@keyframes med_spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Patient monitor table */
+.lpm_wrap {
+    margin: 0 34px 44px;
+    background: #fff;
+    border: 1px solid #dfe4f7;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.lpm_header {
+    min-height: 70px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef2fb;
+}
+
+.lpm_title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #020617;
+}
+
+.lpm_viewall {
+    color: #5b52c7;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.lpm_empty {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.lpm_table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.lpm_table thead {
+    background: #f5f7fc;
+}
+
+.lpm_table th {
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #52627c;
+    letter-spacing: 0.02em;
+    text-align: left;
+    padding: 18px 22px;
+    font-weight: 900;
+}
+
+.lpm_table td {
+    padding: 16px 22px;
+    border-top: 1px solid #eef2fb;
+    vertical-align: middle;
+}
+
+.lpm_row {
+    cursor: pointer;
+}
+
+.lpm_row:hover {
+    background: #fafbff;
+}
+
+.lpm_namecell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lpm_avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    background: #10b981;
+}
+
+.lpm_av_warning {
+    background: #f59e0b;
+}
+
+.lpm_av_critical {
+    background: #ef4444;
+}
+
+.lpm_name {
+    font-weight: 850;
+    color: #020617;
+}
+
+.lpm_id,
+.lpm_age,
+.lpm_condition {
+    color: #526582;
+    font-weight: 500;
+}
+
+.lpm_badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    height: 30px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.lpm_badge_stable {
+    color: #047857;
+    background: #d1fae5;
+}
+
+.lpm_badge_warning {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+.lpm_badge_critical {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.lpm_actions {
+    display: flex;
+    gap: 8px;
+}
+
+.lpm_btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #dfe7f5;
+    background: white;
+    color: #516681;
+    cursor: pointer;
+}
+
+.lpm_btn:hover {
+    background: #f4f6ff;
+    color: #5b52c7;
+}
+
+@media (max-width: 900px) {
+    .med_banner {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .med_banner_right {
+        align-items: flex-start;
+    }
+
+    .med_kpi_stack {
+        grid-template-columns: 1fr;
+    }
+
+    .lpm_table {
+        min-width: 900px;
+    }
+
+    .lpm_wrap {
+        overflow-x: auto;
+    }
+}

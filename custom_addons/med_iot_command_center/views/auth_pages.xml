@@ -26,11 +26,13 @@
                     </header>
 
                     <div class="med_video_content">
-                        <h1 class="med_fixed_title">
-                            <span class="med_line">Transform Mental</span>
-                            <span class="med_line">Health Care with <span class="med_orange_inline">AI</span></span>
-                            <span class="med_line med_orange_line">&amp; IoT Solutions</span>
-                        </h1>
+<h1 style="margin:0; font-size:52px; line-height:1.02; font-weight:800; letter-spacing:-1px;">
+    <span style="display:block; white-space:nowrap; color:#ffffff;">Transform Mental</span>
+    <span style="display:block; white-space:nowrap; color:#ffffff;">
+        Health Care with <span style="color:#f28b58;">AI</span>
+    </span>
+    <span style="display:block; white-space:nowrap; color:#f28b58;">&amp; IoT Solutions</span>
+</h1>
 
                         <p>
                             Personalized therapeutic progress tracking at your fingertips.<br/>
@@ -45,26 +47,15 @@
 
                     <div class="med_video_stats">
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="200"
-                                 data-suffix="+"
-                                 data-duration="2000">0+</div>
+                            <div class="med_video_stat_num">200+</div>
                             <div class="med_video_stat_label">Patients Monitored</div>
                         </div>
-
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="15"
-                                 data-suffix="+"
-                                 data-duration="1400">0+</div>
+                            <div class="med_video_stat_num">15+</div>
                             <div class="med_video_stat_label">Doctors Onboarded</div>
                         </div>
-
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="500"
-                                 data-suffix="+"
-                                 data-duration="2200">0+</div>
+                            <div class="med_video_stat_num">500+</div>
                             <div class="med_video_stat_label">Active Patients</div>
                         </div>
                     </div>

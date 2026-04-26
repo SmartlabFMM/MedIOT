@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="med_signup_page" name="MedIoT Signup Page">
+        <t t-call="website.layout">
+            <div class="med_auth_page med_auth_signup_page">
+
+                <header class="med_auth_topbar">
+                    <div class="med_auth_topbar_inner">
+                        <a href="/mediot" class="med_auth_brand">
+                            <div class="med_auth_brand_icon">
+                                <i class="fa fa-plus-circle"/>
+                            </div>
+                            <span>MedIoT</span>
+                        </a>
+
+                        <nav class="med_auth_nav">
+                            <a href="#">Why?</a>
+                            <a href="#">Services</a>
+                            <a href="#">Contact Us</a>
+                        </nav>
+
+                        <div class="med_auth_nav_actions">
+                            <a href="/mediot/login" class="med_auth_login_btn">Login</a>
+                            <a href="/mediot/signup" class="med_auth_signup_btn active">Sign Up</a>
+                        </div>
+                    </div>
+                </header>
+
+                <section class="med_auth_center">
+                    <div class="med_auth_card">
+
+                        <div class="med_auth_floating_logo">
+                            <div class="med_auth_floating_logo_icon">
+                                <i class="fa fa-plus-circle"/>
+                            </div>
+                            <span>MedIoT</span>
+                        </div>
+
+                        <div class="med_auth_left_panel">
+                            <div class="med_auth_left_content">
+                                <h2>Welcome Back!</h2>
+                                <p>
+                                    To keep connected with MedIoT, login with your
+                                    personal information.
+                                </p>
+                                <a href="/mediot/login" class="med_auth_outline_btn">Sign In</a>
+                            </div>
+                        </div>
+
+                        <div class="med_auth_right_panel">
+                            <div class="med_auth_form_scroll">
+
+                                <div class="med_auth_form_header">
+                                    <h3>Create Account</h3>
+                                    <p>or use your email for registration</p>
+                                </div>
+
+                                <t t-if="error">
+                                    <div class="alert alert-danger" style="margin-bottom: 15px;">
+                                        <t t-esc="error"/>
+                                    </div>
+                                </t>
+
+                                <t t-if="success">
+                                    <div class="alert alert-success" style="margin-bottom: 15px;">
+                                        <t t-esc="success"/>
+                                    </div>
+                                </t>
+
+                                <form action="/mediot/signup/submit" method="post" enctype="multipart/form-data" class="med_auth_form">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                    <div class="med_auth_grid two">
+                                        <div class="med_auth_field">
+                                            <input type="text" name="first_name" placeholder="First Name"
+                                                   t-att-value="form_data.get('first_name', '') if form_data else ''"
+                                                   required="required"/>
+                                        </div>
+                                        <div class="med_auth_field">
+                                            <input type="text" name="last_name" placeholder="Last Name"
+                                                   t-att-value="form_data.get('last_name', '') if form_data else ''"
+                                                   required="required"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="med_auth_grid two">
+                                        <div class="med_auth_field">
+                                            <input type="email" name="email" placeholder="Email address"
+                                                   t-att-value="form_data.get('email', '') if form_data else ''"
+                                                   required="required"/>
+                                        </div>
+                                        <div class="med_auth_field">
+                                            <input type="text" name="phone" placeholder="Phone number"
+                                                   t-att-value="form_data.get('phone', '') if form_data else ''"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="med_auth_grid two">
+                                        <div class="med_auth_field">
+                                            <input type="text" name="city" placeholder="City"
+                                                   t-att-value="form_data.get('city', '') if form_data else ''"/>
+                                        </div>
+                                        <div class="med_auth_field">
+                                            <input type="password" name="password" placeholder="Password" required="required"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="med_auth_grid two">
+                                        <div class="med_auth_field">
+                                            <select name="role" required="required">
+                                                <option value="">Select role</option>
+                                                <option value="doctor" t-att-selected="form_data.get('role') == 'doctor' if form_data else False">Doctor</option>
+                                                <option value="nurse" t-att-selected="form_data.get('role') == 'nurse' if form_data else False">Nurse</option>
+                                                <option value="admin" t-att-selected="form_data.get('role') == 'admin' if form_data else False">Admin</option>
+                                                <option value="technician" t-att-selected="form_data.get('role') == 'technician' if form_data else False">Technician</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="med_auth_field">
+                                            <select name="specialty" required="required">
+                                                <option value="">Select specialty</option>
+                                                <option value="cardiology" t-att-selected="form_data.get('specialty') == 'cardiology' if form_data else False">Cardiology</option>
+                                                <option value="general_medicine" t-att-selected="form_data.get('specialty') == 'general_medicine' if form_data else False">General Medicine</option>
+                                                <option value="neurology" t-att-selected="form_data.get('specialty') == 'neurology' if form_data else False">Neurology</option>
+                                                <option value="pediatrics" t-att-selected="form_data.get('specialty') == 'pediatrics' if form_data else False">Pediatrics</option>
+                                                <option value="intensive_care" t-att-selected="form_data.get('specialty') == 'intensive_care' if form_data else False">Intensive Care</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="med_auth_upload">
+                                        <label>Verification Document</label>
+                                        <input type="file" name="verification_file" accept=".pdf,.doc,.docx"/>
+                                        <small>Accepted formats: PDF, DOC, DOCX</small>
+                                    </div>
+
+                                    <button type="submit" class="med_auth_submit_btn">
+                                        Sign Up
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+</odoo>

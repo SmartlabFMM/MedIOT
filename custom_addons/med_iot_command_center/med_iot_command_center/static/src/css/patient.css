@@ -1,0 +1,327 @@
+/* ================================================
+   MedIoT – Patient Card Styles
+   Path: static/src/css/patient.css
+   ================================================ */
+
+/* ── Form: outer card wrapper ── */
+.med-patient-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    overflow: hidden;
+    margin: -16px;   /* cancel Odoo sheet padding */
+}
+
+/* ── Header banner ── */
+.med-patient-header {
+    background: linear-gradient(135deg, #1a3c6e 0%, #2563eb 100%);
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+}
+.med-patient-header .o_field_image img,
+.med-patient-header .o_field_image .o_image_placeholder {
+    width: 88px !important;
+    height: 88px !important;
+    border-radius: 50% !important;
+    border: 3px solid rgba(255,255,255,.4) !important;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.med-header-info {
+    flex: 1;
+    min-width: 0;
+}
+.med-header-name .o_field_widget input,
+.med-header-name .o_field_char {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+.med-header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+.med-header-meta span {
+    background: rgba(255,255,255,.18);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: .82rem;
+    color: rgba(255,255,255,.9);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.med-header-meta .o_field_widget {
+    display: inline !important;
+}
+.med-header-meta .o_field_widget input,
+.med-header-meta .o_field_widget .o_field_char,
+.med-header-meta .o_field_widget select,
+.med-header-meta .o_field_widget .o_field_selection {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255,255,255,.9) !important;
+    padding: 0 !important;
+    font-size: .82rem !important;
+}
+.med-header-status {
+    align-self: flex-start;
+    margin-left: auto;
+}
+.med-header-status .badge {
+    font-size: .85rem;
+    padding: 6px 16px;
+    border-radius: 24px;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+/* ── Body ── */
+.med-patient-body {
+    padding: 24px 28px;
+}
+.med-section-title {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: #94a3b8;
+    margin-bottom: 14px;
+    margin-top: 20px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.med-section-title:first-child {
+    margin-top: 0;
+}
+
+/* ── Vitals strip ── */
+.med-vitals-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.med-vital-card {
+    background: #f8faff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+}
+.vital-icon { font-size: 1.4rem; margin-bottom: 6px; }
+.vital-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #1e293b;
+}
+.vital-value .o_field_widget,
+.vital-value input {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    background: transparent !important;
+    border: none !important;
+    text-align: center !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+.vital-unit  { font-size: .72rem; color: #94a3b8; margin-top: 2px; }
+.vital-label { font-size: .7rem; color: #64748b; text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+.vital-temp .vital-value { color: #f97316; }
+.vital-spo2 .vital-value { color: #3b82f6; }
+.vital-bpm  .vital-value { color: #ef4444; }
+
+.med-reading-time {
+    font-size: .75rem;
+    color: #94a3b8;
+    text-align: right;
+    margin-bottom: 4px;
+}
+.med-reading-time .o_field_widget {
+    display: inline !important;
+    font-size: inherit !important;
+    color: inherit !important;
+}
+
+/* ── Risk pills ── */
+.med-risk-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.med-risk-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8faff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 8px 18px;
+    font-size: .87rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+}
+.med-risk-pill:hover { border-color: #2563eb; background: #eff6ff; }
+.med-risk-info {
+    font-size: .75rem;
+    color: #64748b;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 4px;
+}
+
+/* ── Alerts count badge ── */
+.med-alerts-count {
+    display: inline-flex;
+    align-items: center;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: .75rem;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+.med-alerts-count .o_field_widget { display: inline !important; color: inherit !important; }
+
+/* ════════════════════════════════════════
+   KANBAN CARDS
+════════════════════════════════════════ */
+.med-kanban-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    border-left: 4px solid #e2e8f0;
+    transition: box-shadow .2s, transform .15s;
+    cursor: pointer;
+}
+.med-kanban-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+    transform: translateY(-2px);
+}
+.med-kanban-stable   { border-left-color: #10b981; }
+.med-kanban-warning  { border-left-color: #f59e0b; background: #fffbf0; }
+.med-kanban-critical { border-left-color: #ef4444; background: #fff8f8; }
+
+.med-kanban-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.med-kanban-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+    flex-shrink: 0;
+}
+.med-kanban-initials {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3c6e, #2563eb);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.med-kanban-name-block { flex: 1; min-width: 0; }
+.med-kanban-name-block strong {
+    display: block;
+    font-size: .9rem;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.med-kanban-name-block small { font-size: .72rem; color: #94a3b8; }
+.med-kanban-alert-badge {
+    background: #ef4444;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    font-size: .72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse-red 1.5s infinite;
+}
+@keyframes pulse-red {
+    0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,.5); }
+    50%      { box-shadow: 0 0 0 5px rgba(239,68,68,0); }
+}
+.med-kanban-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: .74rem;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+.med-kanban-vitals {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 6px;
+}
+.kv-item {
+    background: #f8faff;
+    border-radius: 8px;
+    padding: 6px 4px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+.kv-val { display: block; font-size: .9rem; font-weight: 700; color: #1e293b; }
+.kv-lbl { display: block; font-size: .6rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; margin-top: 1px; }
+.kv-temp .kv-val { color: #f97316; }
+.kv-spo2 .kv-val { color: #3b82f6; }
+.kv-bpm  .kv-val { color: #ef4444; }
+
+/* ── Force avatar circle in form header ── */
+.o_form_view .oe_avatar,
+.o_form_view .oe_avatar img,
+.o_form_view .oe_avatar .o_field_image,
+.o_form_view .oe_avatar .o_field_image img {
+    width: 88px !important;
+    height: 88px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    overflow: hidden !important;
+}
+
+/* ── Kanban card photo fix ── */
+.med_pk_photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 8px;
+}
+.med_pk_img {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 3px solid #e2e8f0;
+    display: block;
+}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- LIST VIEW -->
+<record id="view_med_alert_tree" model="ir.ui.view">
+    <field name="name">med.alert.tree</field>
+    <field name="model">med.alert</field>
+    <field name="arch" type="xml">
+        <list decoration-danger="severity=='critical'"
+              decoration-warning="severity=='warning'"
+              default_order="create_date desc">
+            <field name="create_date" string="Time"/>
+            <field name="patient_id" string="Patient"/>
+            <field name="severity" widget="badge"
+                   decoration-warning="severity=='warning'"
+                   decoration-danger="severity=='critical'"/>
+            <field name="alert_type" string="Type"/>
+            <field name="message" string="Details"/>
+            <field name="state" widget="badge"
+                   decoration-warning="state=='new'"
+                   decoration-info="state=='ack'"
+                   decoration-success="state=='resolved'"/>
+            <button name="action_acknowledge" type="object" string="Acknowledge"
+                    icon="fa-check" invisible="state != 'new'" class="btn-sm"/>
+            <button name="action_resolve" type="object" string="Resolve"
+                    icon="fa-check-circle" invisible="state == 'resolved'" class="btn-sm"/>
+        </list>
+    </field>
+</record>
+
+<!-- KANBAN VIEW -->
+<record id="view_med_alert_kanban" model="ir.ui.view">
+    <field name="name">med.alert.kanban</field>
+    <field name="model">med.alert</field>
+    <field name="arch" type="xml">
+        <kanban default_order="create_date desc" class="o_kanban_small_column">
+            <field name="patient_id"/>
+            <field name="severity"/>
+            <field name="alert_type"/>
+            <field name="message"/>
+            <field name="state"/>
+            <field name="create_date"/>
+            <templates>
+                <t t-name="card">
+                    <div t-attf-style="border-left:4px solid #{record.severity.raw_value == 'critical' ? '#ef4444' : record.severity.raw_value == 'warning' ? '#f59e0b' : '#10b981'};border-radius:10px;padding:14px 16px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+
+                        <!-- TOP ROW: severity + time -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                            <div t-attf-style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:#{record.severity.raw_value == 'critical' ? '#fef2f2' : '#fffbeb'};color:#{record.severity.raw_value == 'critical' ? '#ef4444' : '#f59e0b'};">
+                                <span t-if="record.severity.raw_value == 'critical'">&#9888; CRITICAL</span>
+                                <span t-if="record.severity.raw_value == 'warning'">&#9888; WARNING</span>
+                            </div>
+                            <span style="font-size:.65rem;color:#94a3b8;">
+                                <field name="create_date" widget="datetime"/>
+                            </span>
+                        </div>
+
+                        <!-- PATIENT -->
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                            <div style="width:28px;height:28px;border-radius:50%;background:#1e2d3d;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;font-weight:700;flex-shrink:0;">
+                                <t t-esc="record.patient_id.value ? record.patient_id.value[0].toUpperCase() : '?'"/>
+                            </div>
+                            <div style="font-size:.88rem;font-weight:700;color:#1e293b;">
+                                <field name="patient_id"/>
+                            </div>
+                        </div>
+
+                        <!-- ALERT TYPE + MESSAGE -->
+                        <div style="background:#f8fafc;border-radius:7px;padding:8px 10px;margin-bottom:10px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;font-weight:600;margin-bottom:3px;">
+                                <field name="alert_type"/>
+                            </div>
+                            <div style="font-size:.82rem;color:#334155;font-weight:500;">
+                                <field name="message"/>
+                            </div>
+                        </div>
+
+                        <!-- BOTTOM: state + actions -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;">
+                            <div t-attf-style="font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:20px;background:#{record.state.raw_value == 'new' ? '#fef9c3' : record.state.raw_value == 'ack' ? '#dbeafe' : '#dcfce7'};color:#{record.state.raw_value == 'new' ? '#a16207' : record.state.raw_value == 'ack' ? '#1d4ed8' : '#15803d'};">
+                                <t t-if="record.state.raw_value == 'new'">&#128308; New</t>
+                                <t t-if="record.state.raw_value == 'ack'">&#128992; Acknowledged</t>
+                                <t t-if="record.state.raw_value == 'resolved'">&#128994; Resolved</t>
+                            </div>
+                            <div style="display:flex;gap:6px;">
+                                <button t-if="record.state.raw_value == 'new'" name="action_acknowledge" type="object" style="font-size:.65rem;padding:3px 10px;border-radius:6px;background:#1e2d3d;color:#fff;border:none;cursor:pointer;font-weight:600;">Acknowledge</button>
+                                <button t-if="record.state.raw_value != 'resolved'" name="action_resolve" type="object" style="font-size:.65rem;padding:3px 10px;border-radius:6px;background:#10b981;color:#fff;border:none;cursor:pointer;font-weight:600;">Resolve</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+
+<!-- FORM VIEW -->
+<record id="view_med_alert_form" model="ir.ui.view">
+    <field name="name">med.alert.form</field>
+    <field name="model">med.alert</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="action_acknowledge" type="object" string="Acknowledge"
+                        class="btn-primary" invisible="state != 'new'"/>
+                <button name="action_resolve" type="object" string="Resolve"
+                        class="btn-secondary" invisible="state == 'resolved'"/>
+                <field name="state" widget="statusbar" statusbar_visible="new,ack,resolved"/>
+            </header>
+            <sheet>
+                <div style="background:#1e2d3d;border-radius:12px;padding:20px 24px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;">
+                    <div style="display:flex;align-items:center;gap:14px;">
+                        <div style="width:46px;height:46px;border-radius:12px;background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">&#9888;&#65039;</div>
+                        <div>
+                            <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.4);margin-bottom:3px;">Medical Alert</div>
+                            <field name="alert_type" nolabel="1" style="font-size:1.1rem;font-weight:700;color:#fff;background:transparent;border:none;padding:0;"/>
+                        </div>
+                    </div>
+                    <field name="severity" widget="badge" nolabel="1"
+                           decoration-warning="severity=='warning'"
+                           decoration-danger="severity=='critical'"/>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;">
+                        <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #f1f5f9;">Alert Details</div>
+                        <div style="margin-bottom:14px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Patient</div>
+                            <field name="patient_id" nolabel="1" style="width:100%;"/>
+                        </div>
+                        <div style="margin-bottom:14px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Alert Type</div>
+                            <field name="alert_type" nolabel="1" style="font-size:.9rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:8px 10px;width:100%;"/>
+                        </div>
+                        <div>
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Message</div>
+                            <field name="message" nolabel="1" style="font-size:.9rem;background:#fff3cd;border:1.5px solid #ffc107;border-radius:7px;padding:8px 10px;width:100%;font-weight:600;"/>
+                        </div>
+                    </div>
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;">
+                        <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #f1f5f9;">Response Tracking</div>
+                        <div style="margin-bottom:14px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Acknowledged By</div>
+                            <field name="acknowledged_by" nolabel="1" readonly="1" style="font-size:.88rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:8px 10px;width:100%;"/>
+                        </div>
+                        <div style="margin-bottom:14px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Acknowledged On</div>
+                            <field name="acknowledged_on" nolabel="1" readonly="1" style="font-size:.88rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:8px 10px;width:100%;"/>
+                        </div>
+                        <div style="margin-bottom:14px;">
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Resolved By</div>
+                            <field name="resolved_by" nolabel="1" readonly="1" style="font-size:.88rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:8px 10px;width:100%;"/>
+                        </div>
+                        <div>
+                            <div style="font-size:.6rem;text-transform:uppercase;color:#94a3b8;margin-bottom:5px;font-weight:600;">Resolved On</div>
+                            <field name="resolved_on" nolabel="1" readonly="1" style="font-size:.88rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:7px;padding:8px 10px;width:100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<!-- ACTION -->
+<record id="action_med_alerts" model="ir.actions.act_window">
+    <field name="name">Real-time Alerts</field>
+    <field name="res_model">med.alert</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="domain">[('state','!=','resolved')]</field>
+</record>
+
+</odoo>
