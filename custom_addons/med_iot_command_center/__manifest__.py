@@ -24,6 +24,7 @@
         "views/device_views.xml",
         "views/settings_views.xml",
         "views/auth_pages.xml",
+        "views/role_select_template.xml",
         "views/login_template.xml",
         "views/signup_template.xml",
         "views/menus.xml",
@@ -31,6 +32,7 @@
     ],
     "assets": {
         "web.assets_backend": [
+            "med_iot_command_center/static/src/js/personal_greeting.js",
             "med_iot_command_center/static/src/js/dashboard.js",
             "med_iot_command_center/static/src/xml/dashboard.xml",
             "med_iot_command_center/static/src/scss/dashboard.scss",
@@ -38,6 +40,9 @@
             "med_iot_command_center/static/src/css/patient.css",
         ],
         "web.assets_frontend": [
+            'med_iot_command_center/static/src/js/why_mediot_polish.js',
+            'med_iot_command_center/static/src/css/why_mediot_polish.css',
+            "med_iot_command_center/static/src/js/auth_portal.js",
             "med_iot_command_center/static/src/css/auth_portal.css",
             "med_iot_command_center/static/src/js/landing_counters.js",
         ],
