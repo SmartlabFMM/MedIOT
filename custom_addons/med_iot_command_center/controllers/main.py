@@ -27,7 +27,7 @@ class MedIoTAuthController(http.Controller):
         values = {
             "error": kwargs.get("error"),
             "login": kwargs.get("login", ""),
-            "redirect": kwargs.get("redirect") or "/mediot/post_login",
+            "redirect": kwargs.get("redirect") or ("/mediot/admin" if role == "admin" else "/mediot/post_login"),
             "role": role,
             "role_title": role_title,
             "role_desc": role_desc,
@@ -40,13 +40,16 @@ class MedIoTAuthController(http.Controller):
     def mediot_post_login(self, **kwargs):
         user = request.env.user
 
-        if user.has_group('med_iot_command_center.group_med_senior_doctor') or user.has_group('med_iot_command_center.group_med_admin'):
+        if user.has_group('med_iot_command_center.group_med_admin'):
+            return request.redirect('/mediot/admin')
+
+        if user.has_group('med_iot_command_center.group_med_senior_doctor') or user.has_group('med_iot_command_center.group_med_junior_staff'):
+            # Doctor dashboard is the MedIoT Dashboard client action.
             action = request.env.ref('med_iot_command_center.action_med_dashboard').sudo()
             menu = request.env.ref('med_iot_command_center.menu_med_dashboard').sudo()
             return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
 
-        return request.redirect('/web')
-
+        return request.redirect('/odoo')
     @http.route(['/mediot/signup', '/mediot/signup/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_signup_page(self, **kwargs):
         values = {
@@ -98,6 +101,10 @@ class MedIoTAuthController(http.Controller):
             'group_ids': [(6, 0, [internal_user_group.id, doctor_group.id])],
         })
 
+        # Force password write after create so signup users can log in immediately.
+        new_user.with_context(no_reset_password=True).sudo().write({
+            'password': password,
+        })
         if new_user.partner_id:
             new_user.partner_id.sudo().write({
                 'phone': post.get('phone', ''),
@@ -118,6 +125,16 @@ class MedIoTAuthController(http.Controller):
     def mediot_logout(self, **kwargs):
         request.session.logout(keep_db=False)
         return request.redirect('/mediot/login')
+
+    @http.route(['/mediot/switch/admin'], type='http', auth='public', website=True, sitemap=False)
+    def mediot_switch_admin(self, **kwargs):
+        request.session.logout(keep_db=True)
+        return request.redirect('/mediot/login?role=admin')
+
+    @http.route(['/mediot/switch/doctor'], type='http', auth='public', website=True, sitemap=False)
+    def mediot_switch_doctor(self, **kwargs):
+        request.session.logout(keep_db=True)
+        return request.redirect('/mediot/login?role=doctor')
     @http.route(['/mediot/role', '/mediot/role/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_role_select(self, **kwargs):
         return request.render('med_iot_command_center.med_role_select_page', {})

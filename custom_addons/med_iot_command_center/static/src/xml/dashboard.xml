@@ -6,7 +6,10 @@
 
             <div class="med_banner">
                 <div class="med_banner_left">
-                    <div class="med_banner_greeting">Hi!</div>
+                    <div class="med_banner_greeting">
+                        <t t-if="state.userName">Welcome, Dr <t t-esc="state.userName"/></t>
+                        <t t-else="">Welcome, Doctor</t>
+                    </div>
                     <div class="med_banner_sub">Welcome to MedIoT Command Center</div>
                     <div class="med_banner_date">
                         <i class="fa fa-calendar"/>
@@ -84,17 +87,18 @@
 
                 <div style="display:flex; justify-content:flex-end; gap:14px; margin: 0 28px 16px;">
                     <div style="position:relative;">
-                        <input t-on-input="onSearchInput"
-                               t-att-value="state.searchQuery"
+                        <input type="text"
                                placeholder="Search patient..."
-                               style="width:210px; height:42px; border:1px solid #dde0f5; border-radius:10px; padding:0 38px 0 16px; background:white;"/>
+                               style="width:210px; height:42px; border:1px solid #dde0f5; border-radius:10px; padding:0 38px 0 16px; background:white;"
+                               t-att-value="state.searchQuery"
+                               t-on-input="(ev) => this.onSearchPatient(ev)"/>
                         <i class="fa fa-search" style="position:absolute; right:14px; top:13px; color:#94a3b8;"/>
                     </div>
 
-                    <select t-on-change="onStatusChange"
+                    <select t-on-change="(ev) => this.onStatusFilter(ev)"
                             t-att-value="state.statusFilter"
                             style="width:210px; height:42px; border:1px solid #dde0f5; border-radius:10px; padding:0 14px; background:white;">
-                        <option value="">All Status</option>
+                        <option value="all">All Status</option>
                         <option value="stable">Stable</option>
                         <option value="warning">Warning</option>
                         <option value="critical">Critical</option>
@@ -107,7 +111,7 @@
                         <a href="#" class="lpm_viewall" t-on-click.prevent="() => this.openPatients()">View all →</a>
                     </div>
 
-                    <t t-if="state.live.length == 0">
+                    <t t-if="this.filteredLive.length == 0">
                         <div class="lpm_empty">No patients currently monitored</div>
                     </t>
 
@@ -125,7 +129,7 @@
                             </thead>
 
                             <tbody>
-                                <t t-foreach="state.live" t-as="p" t-key="p.id">
+                                <t t-foreach="this.filteredLive" t-as="p" t-key="p.id">
                                     <tr class="lpm_row" t-on-click="() => this.openPatient(p.id)">
                                         <td>
                                             <div class="lpm_namecell">
@@ -199,3 +203,4 @@
     </t>
 
 </templates>
+

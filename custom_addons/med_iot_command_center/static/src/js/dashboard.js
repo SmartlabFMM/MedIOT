@@ -3,6 +3,7 @@
 import { registry }   from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { Component, useState, onMounted, onWillUnmount } from "@odoo/owl";
+import { session } from "@web/session";
 
 const CIRC = 282.74;
 function donutSegments(stable, warning, critical) {
@@ -81,12 +82,15 @@ class MedDashboard extends Component {
         const now = new Date();
         this.state = useState({
             loading:     true,
+            userName:    session.name || "",
             lastRefresh: "",
             todayDate:   todayLabel(),
             deviceCount: 0,
             kpis:  { total: 0, critical: 0, warning: 0, stable: 0, pending_alerts: 0 },
             donut: { stableOffset: CIRC, warningOffset: CIRC, warningRotate: -90, criticalOffset: CIRC, criticalRotate: -90 },
             live:  [],
+            searchQuery: "",
+            statusFilter: "all",
             cal:   buildCalendar(now.getFullYear(), now.getMonth()),
             chart: { spo2: [], ecg: [], temp: [], labels: [],
                      spo2Path: "", ecgPath: "", tempPath: "",
@@ -99,6 +103,34 @@ class MedDashboard extends Component {
 
     async _load() {
         try {
+
+            // REAL LOGGED USER NAME PATCH
+            try {
+                const response = await fetch("/web/session/get_session_info", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        jsonrpc: "2.0",
+                        method: "call",
+                        params: {}
+                    })
+                });
+                const sessionData = await response.json();
+                const userName = sessionData?.result?.name || sessionData?.result?.username || "";
+                if (userName) {
+                    this.state.userName = userName;
+                }
+            } catch (e) {}
+
+            // WELCOME USER NAME PATCH
+            if (!this.state.userName && session.uid) {
+                try {
+                    const users = await this.orm.read("res.users", [session.uid], ["name"]);
+                    if (users && users[0] && users[0].name) {
+                        this.state.userName = users[0].name;
+                    }
+                } catch (e) {}
+            }
             const patients = await this.orm.searchRead(
                 "med.patient", [],
                 ["name", "ref", "age", "room", "status",
@@ -172,6 +204,45 @@ class MedDashboard extends Component {
         this.state.cal = buildCalendar(year, month);
     }
 
+
+    // DASHBOARD SEARCH + STATUS FILTER PATCH
+    get filteredLive() {
+        const q = (this.state.searchQuery || "").toLowerCase().trim();
+        const selectedStatus = (this.state.statusFilter || "all").toLowerCase();
+
+        return (this.state.live || []).filter((p) => {
+            const status = (p.status || "stable").toLowerCase();
+
+            const matchesStatus =
+                selectedStatus === "all" ||
+                selectedStatus === "" ||
+                status === selectedStatus;
+
+            const searchable = [
+                p.name,
+                p.ref,
+                p.age,
+                p.room,
+                p.status,
+                p.latest_spo2,
+                p.latest_ecg_bpm,
+                p.latest_temp
+            ].join(" ").toLowerCase();
+
+            const matchesSearch = !q || searchable.includes(q);
+
+            return matchesStatus && matchesSearch;
+        });
+    }
+
+    onSearchPatient(ev) {
+        this.state.searchQuery = ev.target.value || "";
+    }
+
+    onStatusFilter(ev) {
+        this.state.statusFilter = ev.target.value || "all";
+    }
+
     openPatients()  { this.actionService.doAction("med_iot_command_center.action_med_patient"); }
     openAlerts()    { this.actionService.doAction("med_iot_command_center.action_med_alerts"); }
     openDevices()   { this.actionService.doAction("med_iot_command_center.action_med_devices"); }
@@ -198,7 +269,7 @@ class MedDashboard extends Component {
         if (patient && patient[0]) {
             const p = patient[0];
             const filename = `Patient_Report_${p.ref}_${new Date().toISOString().split('T')[0]}.pdf`;
-            const url = `/report/pdf/med_iot_command_center.patient_medical_report/${patientId}`;
+            const url = `/report/pdf/med_iot_command_center.report_patient_medical_document/${patientId}?download=true`;
             const link = document.createElement('a');
             link.href = url;
             link.download = filename;

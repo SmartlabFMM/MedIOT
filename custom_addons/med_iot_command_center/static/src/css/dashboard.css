@@ -668,3 +668,94 @@
 .lpm_empty {
     display: none;
 }
+
+
+/* SHOW ALL PATIENTS TABLE FIX */
+.lpm_wrap,
+.lpm_table,
+.lpm_table tbody {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* FINAL DASHBOARD SHOW ALL PATIENTS FIX */
+html,
+body,
+.o_action_manager,
+.o_content,
+.med_dashboard_page,
+.med_dashboard_wrap,
+.med_dashboard_content {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+.lpm_wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 40px !important;
+}
+
+.lpm_table,
+.lpm_table table {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.lpm_table tbody,
+.lpm_table tr {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.med_dashboard_main,
+.med_dashboard_body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+}
+
+/* FINAL DASHBOARD SHOW ALL PATIENTS FIX */
+html,
+body,
+.o_action_manager,
+.o_content,
+.med_dashboard_page,
+.med_dashboard_wrap,
+.med_dashboard_content {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+.lpm_wrap {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 40px !important;
+}
+
+.lpm_table,
+.lpm_table table {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.lpm_table tbody,
+.lpm_table tr {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.med_dashboard_main,
+.med_dashboard_body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+}

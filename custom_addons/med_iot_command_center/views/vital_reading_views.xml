@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
     <!-- ── LIST VIEW ── -->
@@ -6,10 +6,7 @@
         <field name="name">med.vital.reading.tree</field>
         <field name="model">med.vital.reading</field>
         <field name="arch" type="xml">
-            <list string="Data History"
-                decoration-danger="spo2 &lt; 90 or ecg_bpm &gt; 120"
-                decoration-warning="(spo2 &gt;= 90 and spo2 &lt; 94) or temp_c &gt; 38.5"
-                decoration-success="spo2 &gt;= 94 and ecg_bpm &lt;= 100 and temp_c &lt;= 37.5">
+            <list string="Data History" decoration-danger="spo2 &lt; 90 or ecg_bpm &gt; 120" decoration-warning="(spo2 &gt;= 90 and spo2 &lt; 94) or temp_c &gt; 38.5" decoration-success="spo2 &gt;= 94 and ecg_bpm &lt;= 100 and temp_c &lt;= 37.5" class="o_med_history_list">
                 <field name="reading_at" string="Reading At"/>
                 <field name="patient_id" string="Patient"/>
                 <field name="spo2" string="SpO2 (%)"/>

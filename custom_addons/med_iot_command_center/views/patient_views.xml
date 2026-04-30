@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
 <!-- KANBAN VIEW -->
@@ -6,131 +6,85 @@
     <field name="name">med.patient.kanban</field>
     <field name="model">med.patient</field>
     <field name="arch" type="xml">
-        <kanban records_draggable="0">
+        <kanban records_draggable="0" class="mediot_patient_kanban_force">
             <field name="id"/>
             <field name="name"/>
             <field name="ref"/>
             <field name="room"/>
-            <field name="department"/>
             <field name="status"/>
             <field name="latest_spo2"/>
             <field name="latest_ecg_bpm"/>
             <field name="latest_temp"/>
-            <field name="assigned_doctor_id"/>
             <field name="image_128"/>
             <field name="pending_alert_count"/>
             <field name="age"/>
             <field name="gender"/>
             <field name="smoker"/>
             <field name="sporty"/>
+
             <templates>
                 <t t-name="card">
-                    <div style="display:flex;gap:14px;padding:16px;min-height:0;">
+                    <div class="mediot_patient_card_force">
+                        <div class="mediot_patient_avatar_box_force">
+                            <field name="image_128"
+                                   widget="image"
+                                   class="mediot_patient_avatar_force"/>
 
-                        <!-- PHOTO -->
-                        <div style="position:relative;flex-shrink:0;">
-                            <t t-if="record.image_128.raw_value">
-                                <img t-att-src="'/web/image/med.patient/' + record.id.value + '/image_128'"
-                                     alt="photo"
-                                     style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0;"/>
-                            </t>
-                            <t t-else="">
-                                <div style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:#fff;background:#1e2d3d;">
-                                    <t t-esc="record.name.value[0].toUpperCase()"/>
-                                </div>
-                            </t>
-                            <!-- status dot -->
-                            <div t-att-style="'position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-radius:50%;border:2px solid #fff;background:' + (record.status.raw_value === 'critical' ? '#ef4444' : record.status.raw_value === 'warning' ? '#f59e0b' : '#10b981')"/>
-                            <!-- alert badge -->
-                            <t t-if="record.pending_alert_count.raw_value > 0">
-                                <div style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:.6rem;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid #fff;">
+                            <t t-if="record.pending_alert_count.raw_value &gt; 0">
+                                <div class="mediot_patient_alert_force">
                                     <t t-esc="record.pending_alert_count.raw_value"/>
                                 </div>
                             </t>
                         </div>
 
-                        <!-- INFO -->
-                        <div style="flex:1;min-width:0;">
-                            <!-- Name + status -->
-                            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:3px;">
-                                <div style="font-size:.95rem;font-weight:700;color:#1e293b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                                    <t t-esc="record.name.value"/>
+                        <div class="mediot_patient_body_force">
+                            <div class="mediot_patient_top_force">
+                                <div>
+                                    <div class="mediot_patient_name_force">
+                                        <t t-esc="record.name.value"/>
+                                    </div>
+                                    <div class="mediot_patient_meta_force">
+                                        <t t-esc="record.gender.value"/> · Age <t t-esc="record.age.raw_value or '—'"/>
+                                    </div>
                                 </div>
-                                <span t-att-style="'font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:20px;white-space:nowrap;margin-left:6px;' + (record.status.raw_value === 'critical' ? 'background:#fef2f2;color:#ef4444;' : record.status.raw_value === 'warning' ? 'background:#fffbeb;color:#f59e0b;' : 'background:#f0fdf4;color:#10b981;')">
+
+                                <span t-att-class="'mediot_patient_status_force ' + (record.status.raw_value or 'stable')">
                                     <t t-esc="record.status.value"/>
                                 </span>
                             </div>
 
-                            <!-- Gender + Age -->
-                            <div style="font-size:.78rem;color:#64748b;margin-bottom:8px;">
-                                <t t-esc="record.gender.value"/> · Age <t t-esc="record.age.raw_value or '—'"/>
-                            </div>
-
-                            <!-- ID -->
-                            <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;color:#64748b;margin-bottom:4px;">
-                                <i class="fa fa-id-badge" style="color:#94a3b8;width:13px;"/>
+                            <div class="mediot_patient_line_force">
+                                <i class="fa fa-id-card-o"/>
                                 <t t-esc="record.ref.value"/>
                             </div>
 
-                            <!-- Room -->
-                            <t t-if="record.room.value">
-                                <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;color:#64748b;margin-bottom:4px;">
-                                    <i class="fa fa-bed" style="color:#94a3b8;width:13px;"/>
-                                    <t t-esc="record.room.value"/>
-                                </div>
-                            </t>
+                            <div class="mediot_patient_line_force">
+                                <i class="fa fa-bed"/>
+                                <t t-esc="record.room.value or '—'"/>
+                            </div>
 
-                            <!-- Doctor -->
-                            <t t-if="record.assigned_doctor_id.value">
-                                <div style="display:flex;align-items:center;gap:5px;font-size:.75rem;color:#64748b;margin-bottom:8px;">
-                                    <i class="fa fa-user-md" style="color:#94a3b8;width:13px;"/>
-                                    <t t-esc="record.assigned_doctor_id.value"/>
-                                </div>
-                            </t>
+                            <div class="mediot_patient_divider_force"/>
 
-                            <!-- Divider -->
-                            <div style="border-top:1px solid #f1f5f9;margin-bottom:8px;"/>
-
-                            <!-- Vitals -->
-                            <div style="display:flex;gap:10px;">
-                                <div style="flex:1;text-align:center;background:#f8fafc;border-radius:6px;padding:5px 4px;">
-                                    <div style="font-size:.85rem;font-weight:700;color:#1e293b;">
-                                        <t t-esc="record.latest_spo2.raw_value or '—'"/>
-                                        <t t-if="record.latest_spo2.raw_value"><span style="font-size:.65rem;color:#94a3b8;">%</span></t>
-                                    </div>
-                                    <div style="font-size:.62rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;">SpO2</div>
+                            <div class="mediot_patient_vitals_force">
+                                <div>
+                                    <strong><t t-esc="record.latest_spo2.raw_value or '—'"/><t t-if="record.latest_spo2.raw_value">%</t></strong>
+                                    <span>SpO2</span>
                                 </div>
-                                <div style="flex:1;text-align:center;background:#f8fafc;border-radius:6px;padding:5px 4px;">
-                                    <div style="font-size:.85rem;font-weight:700;color:#1e293b;">
-                                        <t t-esc="record.latest_ecg_bpm.raw_value or '—'"/>
-                                        <t t-if="record.latest_ecg_bpm.raw_value"><span style="font-size:.65rem;color:#94a3b8;">bpm</span></t>
-                                    </div>
-                                    <div style="font-size:.62rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;">HR</div>
+                                <div>
+                                    <strong><t t-esc="record.latest_ecg_bpm.raw_value or '—'"/><t t-if="record.latest_ecg_bpm.raw_value"><small>bpm</small></t></strong>
+                                    <span>HR</span>
                                 </div>
-                                <div style="flex:1;text-align:center;background:#f8fafc;border-radius:6px;padding:5px 4px;">
-                                    <div style="font-size:.85rem;font-weight:700;color:#1e293b;">
-                                        <t t-esc="record.latest_temp.raw_value or '—'"/>
-                                        <t t-if="record.latest_temp.raw_value"><span style="font-size:.65rem;color:#94a3b8;">°C</span></t>
-                                    </div>
-                                    <div style="font-size:.62rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;">Temp</div>
+                                <div>
+                                    <strong><t t-esc="record.latest_temp.raw_value or '—'"/><t t-if="record.latest_temp.raw_value">°C</t></strong>
+                                    <span>Temp</span>
                                 </div>
                             </div>
 
-                            <!-- Tags -->
-                            <t t-if="record.smoker.raw_value or record.sporty.raw_value">
-                                <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap;">
-                                    <t t-if="record.smoker.raw_value">
-                                        <span style="font-size:.62rem;padding:2px 7px;border-radius:20px;background:#fff7ed;color:#ea580c;font-weight:600;">Smoker</span>
-                                    </t>
-                                    <t t-if="record.sporty.raw_value">
-                                        <span style="font-size:.62rem;padding:2px 7px;border-radius:20px;background:#f0fdf4;color:#16a34a;font-weight:600;">Active</span>
-                                    </t>
-                                </div>
-                            </t>
-
-                            <!-- Action Buttons -->
-                            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #f1f5f9;display:flex;gap:6px;">
-                                <button type="button" class="btn btn-sm btn-info" title="Download Report" style="flex:1;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:6px;padding:6px 8px;font-size:.75rem;font-weight:600;cursor:pointer;text-align:center;">
+                            <div class="mediot_patient_bottom_force">
+                                <span class="mediot_patient_green_dot_force"></span>
+                                <button name="action_print_medical_report"
+                                        type="object"
+                                        class="btn btn-primary mediot_patient_download_force">
                                     <i class="fa fa-download"/> Download
                                 </button>
                             </div>
@@ -175,7 +129,7 @@
     <field name="name">med.patient.form</field>
     <field name="model">med.patient</field>
     <field name="arch" type="xml">
-        <form>
+        <form class="mediot-patient-fullscreen">
             <header>
                 <button name="action_print_medical_report" type="object" string="Download Report" icon="fa-download" class="btn-info"/>
             </header>
@@ -262,6 +216,7 @@
                                            style="font-size:1.9rem;font-weight:700;color:#1e293b;background:transparent;border:none;padding:0;line-height:1;"/>
                                     <span style="font-size:.9rem;color:#94a3b8;">%</span>
                                 </div>
+                                <field name="spo2_chart_html" widget="html" nolabel="1" readonly="1" class="mediot_chart_field"/>
                             </div>
                             <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;">
                                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
@@ -273,6 +228,7 @@
                                            style="font-size:1.9rem;font-weight:700;color:#1e293b;background:transparent;border:none;padding:0;line-height:1;"/>
                                     <span style="font-size:.9rem;color:#94a3b8;">bpm</span>
                                 </div>
+                                <field name="hr_chart_html" widget="html" nolabel="1" readonly="1" class="mediot_chart_field"/>
                             </div>
                             <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;">
                                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
@@ -284,6 +240,7 @@
                                            style="font-size:1.9rem;font-weight:700;color:#1e293b;background:transparent;border:none;padding:0;line-height:1;"/>
                                     <span style="font-size:.9rem;color:#94a3b8;">°C</span>
                                 </div>
+                                <field name="temp_chart_html" widget="html" nolabel="1" readonly="1" class="mediot_chart_field"/>
                             </div>
                         </div>
 
@@ -386,5 +343,6 @@
 </record>
 
 </odoo>
+
 
 

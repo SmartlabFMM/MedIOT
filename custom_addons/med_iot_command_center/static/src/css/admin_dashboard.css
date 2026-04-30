@@ -1,0 +1,21 @@
+/* Admin Dashboard: remove default Odoo white control panel row */
+.o_action_manager:has(.mediot_admin_dashboard_page) .o_control_panel {
+    display: none !important;
+}
+
+.o_action_manager:has(.mediot_admin_dashboard_page) .o_content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.o_form_view:has(.mediot_admin_dashboard_page) .o_form_sheet_bg,
+.o_form_view:has(.mediot_admin_dashboard_page) .o_form_renderer {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    background: #eef2ff !important;
+}
+
+.o_form_view:has(.mediot_admin_dashboard_page) .o_form_sheet {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
