@@ -1,162 +1,223 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <record id="med_admin_dashboard_singleton" model="med.admin.dashboard">
         <field name="name">Admin Dashboard</field>
     </record>
-
     <record id="view_med_admin_dashboard_form" model="ir.ui.view">
         <field name="name">med.admin.dashboard.form</field>
         <field name="model">med.admin.dashboard</field>
         <field name="arch" type="xml">
-            <form string="Admin Dashboard" create="0" edit="0" delete="0">
-                <sheet class="mediot_admin_dashboard_page" style="max-width:100%;padding:0;margin:0;background:#eef2ff;border:0;">
-
-                    <div style="background:linear-gradient(135deg,#667eea 0%,#9f7aea 100%);padding:20px 24px;color:white;border-radius:0 0 18px 18px;margin:-16px -16px 14px -16px;">
-                        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;">
-                            <div>
-                                <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.85;">MedIoT Administration</div>
-                                <h1 style="font-size:26px;font-weight:900;margin:4px 0 4px;color:white;">Admin Command Center</h1>
-                                <p style="font-size:14px;margin:0;opacity:.9;">Manage users, patients, alerts, devices, and system operations.</p>
-                            </div>
-                            <div style="display:flex;gap:12px;align-items:center;">
-                                <button name="action_open_doctors" type="object" string="Manage Users" class="btn btn-light" icon="fa-users"/>
-                                <button name="action_open_devices" type="object" string="Devices" class="btn btn-light" icon="fa-microchip"/>
-                            </div>
+            <form string="Admin Dashboard" create="0" edit="0" delete="0" class="mediot-admin-dashboard-form">
+                <sheet class="mediot_admin_page">
+                    <div class="med_admin_hero">
+                        <div>
+                            <div class="med_admin_eyebrow">MedIoT Administration</div>
+                            <h1>Admin Command Center</h1>
+                            <p>Manage clinical teams, patients, alerts, devices, and system operations from one place.</p>
+                        </div>
+                        <div class="med_admin_hero_actions">
+                            <button name="action_open_doctors" type="object" class="med_admin_btn primary">
+                                <i class="fa fa-users" title="Users" />
+                                Manage Users
+                            </button>
+                            <button name="action_open_devices" type="object" class="med_admin_btn">
+                                <i class="fa fa-microchip" title="Devices" />
+                                Devices
+                            </button>
                         </div>
                     </div>
-
-                    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 18px 18px;">
-                        <button name="action_open_doctors" type="object" style="text-align:left;background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.08);">
-                            <div style="display:flex;align-items:center;gap:16px;">
-                                <div style="width:58px;height:58px;border-radius:18px;background:#eef2ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:26px;">
-                                    <i class="fa fa-users"/>
+                    <div class="med_admin_kpi_grid">
+                        <button name="action_open_doctors" type="object" class="med_admin_kpi_card purple">
+                            <div class="med_admin_kpi_icon">
+                                <i class="fa fa-user-md" title="Doctors" />
+                            </div>
+                            <div>
+                                <div class="med_admin_kpi_label">Doctors / Staff</div>
+                                <div class="med_admin_kpi_value">
+                                    <field name="doctor_count" nolabel="1" />
                                 </div>
-                                <div>
-                                    <div style="font-size:13px;font-weight:800;color:#64748b;text-transform:uppercase;">Users / Staff</div>
-                                    <div style="font-size:34px;font-weight:900;color:#1e293b;line-height:1;">
-                                        <field name="doctor_count" nolabel="1"/>
-                                    </div>
-                                </div>
+                                <div class="med_admin_kpi_hint">Clinical users</div>
                             </div>
                         </button>
-
-                        <button name="action_open_patients" type="object" style="text-align:left;background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.08);">
-                            <div style="display:flex;align-items:center;gap:16px;">
-                                <div style="width:58px;height:58px;border-radius:18px;background:#ecfeff;color:#0891b2;display:flex;align-items:center;justify-content:center;font-size:26px;">
-                                    <i class="fa fa-users"/>
+                        <button name="action_open_patients" type="object" class="med_admin_kpi_card cyan">
+                            <div class="med_admin_kpi_icon">
+                                <i class="fa fa-address-card-o" title="Patients" />
+                            </div>
+                            <div>
+                                <div class="med_admin_kpi_label">Patients</div>
+                                <div class="med_admin_kpi_value">
+                                    <field name="patient_count" nolabel="1" />
                                 </div>
-                                <div>
-                                    <div style="font-size:13px;font-weight:800;color:#64748b;text-transform:uppercase;">Total Patients</div>
-                                    <div style="font-size:34px;font-weight:900;color:#1e293b;line-height:1;">
-                                        <field name="patient_count" nolabel="1"/>
-                                    </div>
-                                </div>
+                                <div class="med_admin_kpi_hint">Active monitored records</div>
                             </div>
                         </button>
-
-                        <button name="action_open_alerts" type="object" style="text-align:left;background:white;border:1px solid #fee2e2;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(239,68,68,.10);">
-                            <div style="display:flex;align-items:center;gap:16px;">
-                                <div style="width:58px;height:58px;border-radius:18px;background:#fee2e2;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:26px;">
-                                    <i class="fa fa-exclamation-triangle"/>
+                        <button name="action_open_alerts" type="object" class="med_admin_kpi_card red">
+                            <div class="med_admin_kpi_icon">
+                                <i class="fa fa-bell-o" title="Alerts" />
+                            </div>
+                            <div>
+                                <div class="med_admin_kpi_label">Alerts</div>
+                                <div class="med_admin_kpi_value">
+                                    <field name="pending_alert_count" nolabel="1" />
                                 </div>
-                                <div>
-                                    <div style="font-size:13px;font-weight:800;color:#ef4444;text-transform:uppercase;">Pending Alerts</div>
-                                    <div style="font-size:34px;font-weight:900;color:#ef4444;line-height:1;">
-                                        <field name="pending_alert_count" nolabel="1"/>
-                                    </div>
-                                </div>
+                                <div class="med_admin_kpi_hint">Recent clinical alerts</div>
                             </div>
                         </button>
-
-                        <button name="action_open_devices" type="object" style="text-align:left;background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.08);">
-                            <div style="display:flex;align-items:center;gap:16px;">
-                                <div style="width:58px;height:58px;border-radius:18px;background:#f0fdf4;color:#16a34a;display:flex;align-items:center;justify-content:center;font-size:26px;">
-                                    <i class="fa fa-microchip"/>
+                        <button name="action_open_devices" type="object" class="med_admin_kpi_card green">
+                            <div class="med_admin_kpi_icon">
+                                <i class="fa fa-wifi" title="Devices" />
+                            </div>
+                            <div>
+                                <div class="med_admin_kpi_label">Online Devices</div>
+                                <div class="med_admin_kpi_value">
+                                    <field name="online_device_count" nolabel="1" />
                                 </div>
-                                <div>
-                                    <div style="font-size:13px;font-weight:800;color:#64748b;text-transform:uppercase;">Online Devices</div>
-                                    <div style="font-size:34px;font-weight:900;color:#1e293b;line-height:1;">
-                                        <field name="online_device_count" nolabel="1"/>
-                                    </div>
-                                </div>
+                                <div class="med_admin_kpi_hint">Connected IoT units</div>
                             </div>
                         </button>
                     </div>
-
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:0 18px 24px;">
-                        <div style="background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.06);">
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                    <div class="med_admin_main_grid">
+                        <div class="med_admin_panel med_admin_panel_users">
+                            <div class="med_admin_panel_head">
                                 <div>
-                                    <h2 style="font-size:20px;font-weight:900;margin:0;color:#0f172a;">Critical Patients</h2>
-                                    <p style="font-size:13px;color:#94a3b8;margin:4px 0 0;">Patients needing immediate attention</p>
+                                    <h2>User Management</h2>
+                                    <p>Admins, doctors, and clinical staff</p>
                                 </div>
-                                <span style="background:#fee2e2;color:#dc2626;border-radius:999px;padding:6px 12px;font-weight:800;font-size:12px;">
-                                    <field name="critical_patient_count" nolabel="1"/> Critical
+                                <div class="med_admin_panel_head_actions">
+                                    <button name="action_open_add_doctor_popup" type="object" class="med_admin_small_btn primary">
+                                        <i class="fa fa-user-plus" title="Add Doctor" />
+                                        Add Doctor
+                                    </button>
+                                </div>
+                            </div>
+                            <field name="doctor_ids" nolabel="1" readonly="1" class="med_admin_table med_admin_users_table">
+                                <list create="0" edit="0" delete="0">
+                                    <field name="mediot_initial_label" string=" " widget="badge" />
+                                    <field name="name" />
+                                    <field name="mediot_role_label" string="Role" />
+                                    <field name="login" />
+                                    <field name="email" />
+                                    <button name="action_mediot_open_user" type="object" icon="fa-sliders" string="" title="Manage Doctor" class="oe_link med_admin_action_icon" />
+                                    <button name="action_mediot_delete_user" type="object" icon="fa-trash" string="" title="Archive Doctor" class="oe_link text-danger med_admin_action_icon" confirm="This doctor/user may be linked to employee records. Archive this user instead?" />
+                                </list>
+                            </field>
+                        </div>
+                        <div class="med_admin_panel med_admin_panel_critical">
+                            <div class="med_admin_panel_head">
+                                <div>
+                                    <h2>Critical Patients</h2>
+                                    <p>Patients requiring immediate attention</p>
+                                </div>
+                                <span class="med_admin_badge red">
+                                    <field name="critical_patient_count" nolabel="1" /> Critical
                                 </span>
                             </div>
-                            <field name="critical_patient_ids" nolabel="1" readonly="1">
+                            <field name="critical_patient_ids" nolabel="1" readonly="1" class="med_admin_table med_admin_critical_table">
                                 <list create="0" edit="0" delete="0">
-                                    <field name="ref" string="ID"/>
-                                    <field name="name"/>
-                                    <field name="room"/>
-                                    <field name="latest_spo2" string="SpO2"/>
-                                    <field name="latest_ecg_bpm" string="HR"/>
-                                    <field name="latest_temp" string="Temp"/>
-                                    <field name="status"/>
+                                    <field name="ref" string="ID" />
+                                    <field name="name" />
+                                    <field name="room" />
+                                    <field name="latest_spo2" string="SpO2" />
+                                    <field name="latest_ecg_bpm" string="HR" />
+                                    <field name="latest_temp" string="Temp" />
+                                    <field name="status" widget="badge" />
                                 </list>
                             </field>
                         </div>
-
-                        <div style="background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.06);">
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                        <div class="med_admin_panel med_admin_panel_alerts">
+                            <div class="med_admin_panel_head">
                                 <div>
-                                    <h2 style="font-size:20px;font-weight:900;margin:0;color:#0f172a;">User Management</h2>
-                                    <p style="font-size:13px;color:#94a3b8;margin:4px 0 0;">Admins, doctors, and clinical staff roles</p>
+                                    <h2>Recent Alerts</h2>
+                                    <p>Latest safety events</p>
                                 </div>
-                                <button name="action_open_doctors" type="object" string="Manage Users" class="btn btn-primary" icon="fa-users"/>
+                                <button name="action_open_alerts" type="object" class="med_admin_small_btn">
+                                    Open
+                                </button>
                             </div>
-                            <field name="doctor_ids" nolabel="1" readonly="1">
+                            <field name="recent_alert_ids" nolabel="1" readonly="1" class="med_admin_table med_admin_alerts_table">
                                 <list create="0" edit="0" delete="0">
-                                    <field name="name"/>
-                                    <field name="mediot_role_label" string="Role"/>
-                                    <field name="login"/>
-                                    <field name="email"/>
+                                    <field name="create_date" string="Created On" />
+                                    <field name="patient_id" string="Patient" />
+                                    <field name="alert_type" string="Alert Type" />
+                                    <field name="severity" widget="badge" />
+                                    <field name="state" widget="badge" optional="hide" />
+                                    <field name="message" optional="hide" />
                                 </list>
                             </field>
                         </div>
                     </div>
-
-                    <div style="margin:0 18px 28px;background:white;border:1px solid #e2e8f0;border-radius:22px;padding:22px;box-shadow:0 14px 35px rgba(15,23,42,.06);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-                            <div>
-                                <h2 style="font-size:20px;font-weight:900;margin:0;color:#0f172a;">Recent Alerts</h2>
-                                <p style="font-size:13px;color:#94a3b8;margin:4px 0 0;">Latest clinical and device alerts</p>
-                            </div>
-                            <button name="action_open_alerts" type="object" string="Open Alerts" class="btn btn-secondary" icon="fa-bell"/>
-                        </div>
-                        <field name="recent_alert_ids" nolabel="1" readonly="1">
-                            <list create="0" edit="0" delete="0">
-                                <field name="create_date"/>
-                                <field name="patient_id"/>
-                                <field name="alert_type"/>
-                                <field name="severity"/>
-                                <field name="state"/>
-                                <field name="message"/>
-                            </list>
-                        </field>
-                    </div>
-
                 </sheet>
             </form>
         </field>
     </record>
-
+    <record id="view_med_admin_users_list_clean" model="ir.ui.view">
+        <field name="name">med.admin.users.list.clean</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <list string="Manage Users" create="1" edit="1" delete="1">
+                <field name="name" />
+                <field name="mediot_role_label" string="Role" />
+                <field name="login" />
+                <field name="email" />
+                <field name="active" optional="show" />
+            </list>
+        </field>
+    </record>
+    <record id="view_med_admin_quick_doctor_wizard_form" model="ir.ui.view">
+        <field name="name">med.admin.quick.doctor.wizard.form</field>
+        <field name="model">med.admin.quick.doctor.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Doctor">
+                <sheet>
+                    <div class="med_admin_wizard_intro">
+                        <h2>Add Doctor</h2>
+                        <p>Create a doctor account quickly and assign the correct MedIoT role.</p>
+                    </div>
+                    <group>
+                        <field name="name" placeholder="Full name" />
+                        <field name="email" placeholder="doctor@email.com" />
+                        <field name="password" password="True" placeholder="Temporary password" />
+                        <field name="role" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_create_doctor" type="object" string="Create Doctor" class="btn-primary" />
+                    <button string="Cancel" special="cancel" class="btn-secondary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="view_med_user_role_management_list" model="ir.ui.view">
+        <field name="name">med.user.role.management.list</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <list string="Users &amp; Roles" create="1" edit="1" delete="0" class="med_user_role_page_list">
+                <field name="mediot_initial_badge" string=" " widget="badge" />
+                <field name="name" />
+                <field name="mediot_role_badge" string="Role" widget="badge" />
+                <field name="login" />
+                <field name="email" />
+                <field name="active" widget="boolean_toggle" />
+                <button name="action_mediot_open_user" type="object" icon="fa-sliders" string="" title="Open User" class="oe_link med_admin_action_icon" />
+                <button name="action_mediot_archive_user" type="object" icon="fa-trash" string="" title="Archive User" class="oe_link text-danger med_admin_action_icon" confirm="Archive this user? They will disappear from the active users list and will not be able to log in." />
+            </list>
+        </field>
+    </record>
+    <record id="action_med_user_role_management" model="ir.actions.act_window">
+        <field name="name">Users &amp; Roles</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_med_user_role_management_list" />
+        <field name="domain">[('share', '=', False), ('active', '=', True)]</field>
+        <field name="context">{'create': True, 'edit': True, 'delete': False}</field>
+        <field name="target">current</field>
+    </record>
     <record id="action_med_admin_dashboard" model="ir.actions.act_window">
         <field name="name">Admin Dashboard</field>
         <field name="res_model">med.admin.dashboard</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="view_med_admin_dashboard_form"/>
-        <field name="res_id" ref="med_admin_dashboard_singleton"/>
+        <field name="view_id" ref="view_med_admin_dashboard_form" />
+        <field name="res_id" ref="med_admin_dashboard_singleton" />
         <field name="target">current</field>
     </record>
 </odoo>

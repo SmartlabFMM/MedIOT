@@ -21,7 +21,16 @@
               sequence="15"
               groups="med_iot_command_center.group_med_admin"/>
 
-    <menuitem id="menu_med_alerts"
+    
+    <!-- USER_ROLE_MENU_START -->
+    <menuitem id="menu_med_user_roles"
+              name="Users &amp; Roles"
+              parent="menu_med_root"
+              action="action_med_user_role_management"
+              sequence="16"
+              groups="med_iot_command_center.group_med_admin"/>
+    <!-- USER_ROLE_MENU_END -->
+<menuitem id="menu_med_alerts"
               name="Real-time Alerts"
               parent="menu_med_root"
               action="action_med_alert"
@@ -48,13 +57,7 @@
               sequence="60"
               action="action_med_settings"
               groups="med_iot_command_center.group_med_admin,med_iot_command_center.group_med_senior_doctor,med_iot_command_center.group_med_junior_staff"/>
-
-    <menuitem id="menu_med_devices"
-              name="Device"
-              parent="menu_med_settings"
-              sequence="10"
-              action="action_med_devices"
-              groups="med_iot_command_center.group_med_admin"/>
+    <!-- Device management is embedded inside Settings Control Center. Separate Device menu hidden. -->
 
     <!-- FORCE_PATIENT_MENU_ADMIN_ONLY_START -->
     <record id="menu_med_patients" model="ir.ui.menu">

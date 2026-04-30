@@ -23,7 +23,7 @@
         'views/menus.xml',
           'reports/patient_medical_report.xml'],
  'assets': {'web.assets_backend': [
-            'med_iot_command_center/static/src/css/patient_match_pic2.css','med_iot_command_center/static/src/js/personal_greeting.js',
+            'med_iot_command_center/static/src/css/settings_admin_control.css',            'med_iot_command_center/static/src/css/patient_match_pic2.css','med_iot_command_center/static/src/js/personal_greeting.js',
                                    'med_iot_command_center/static/src/js/dashboard.js',
                                    'med_iot_command_center/static/src/js/alert_group_toggle.js',
                                    'med_iot_command_center/static/src/xml/dashboard.xml',
@@ -31,8 +31,6 @@
                                    'med_iot_command_center/static/src/css/dashboard.css',
                                    'med_iot_command_center/static/src/css/patient.css',
             'med_iot_command_center/static/src/css/admin_dashboard.css',
-                                   'med_iot_command_center/static/src/css/settings_sliders.css',
-                                   'med_iot_command_center/static/src/js/settings_sliders.js',
                                    'med_iot_command_center/static/src/js/logout_redirect_home_safe.js'],
             'web.assets_frontend': ['med_iot_command_center/static/src/js/why_mediot_polish.js',
                                     'med_iot_command_center/static/src/css/why_mediot_polish.css',

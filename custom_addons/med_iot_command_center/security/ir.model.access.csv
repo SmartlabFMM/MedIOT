@@ -1,4 +1,4 @@
-﻿id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_med_patient_admin,med.patient admin,model_med_patient,med_iot_command_center.group_med_admin,1,1,1,1
 access_med_patient_senior,med.patient senior,model_med_patient,med_iot_command_center.group_med_senior_doctor,1,1,1,0
 access_med_patient_junior,med.patient junior,model_med_patient,med_iot_command_center.group_med_junior_staff,1,0,0,0
@@ -20,3 +20,4 @@ access_med_settings_senior,med.settings senior,model_med_settings,med_iot_comman
 access_med_settings_junior,med.settings junior,model_med_settings,med_iot_command_center.group_med_junior_staff,1,0,0,0
 access_med_admin_dashboard_admin,med.admin.dashboard admin,model_med_admin_dashboard,med_iot_command_center.group_med_admin,1,1,1,1
 
+access_med_admin_quick_doctor_wizard,med.admin.quick.doctor.wizard,model_med_admin_quick_doctor_wizard,med_iot_command_center.group_med_admin,1,1,1,1
