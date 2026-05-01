@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
 <!-- LIST VIEW -->
@@ -169,7 +169,7 @@
     <field name="name">Real-time Alerts</field>
     <field name="res_model">med.alert</field>
     <field name="view_mode">kanban,list,form</field>
-    <field name="domain">[('state','!=','resolved')]</field>
+    <field name="domain">[('state','!=','resolved'),('patient_id','!=',False)]</field>
 </record>
 
 </odoo>

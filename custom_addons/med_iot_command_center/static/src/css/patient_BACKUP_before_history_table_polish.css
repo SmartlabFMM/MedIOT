@@ -1,0 +1,1495 @@
+﻿/* =========================================================
+   CLEAN PATIENT LIST KANBAN - FINAL
+   ========================================================= */
+
+/* let Odoo content scroll */
+.o_action_manager,
+.o_action_manager .o_action,
+.o_view_controller,
+.o_content {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* patient page background */
+.o_med_patient_kanban,
+.o_med_patient_kanban .o_kanban_renderer {
+    background: #f7f9fc !important;
+}
+
+/* search panel like screenshot */
+.o_search_panel {
+    width: 250px !important;
+    min-width: 250px !important;
+    background: #fff !important;
+    border-right: 1px solid #e5eaf2 !important;
+    padding-top: 14px !important;
+}
+
+.o_search_panel .o_search_panel_section_header {
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    color: #14213d !important;
+    text-transform: uppercase !important;
+    padding: 12px 16px 8px !important;
+}
+
+.o_search_panel .list-group-item {
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 8px !important;
+    padding: 8px 18px !important;
+    font-size: 15px !important;
+    color: #111827 !important;
+    background: transparent !important;
+}
+
+.o_search_panel .list-group-item.active {
+    background: #d8eefb !important;
+    color: #111827 !important;
+}
+
+/* kanban layout */
+.o_med_patient_kanban .o_kanban_renderer {
+    padding: 14px 16px 40px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)) !important;
+    gap: 12px 16px !important;
+    align-items: start !important;
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* each Odoo record shell */
+.o_med_patient_kanban .o_kanban_record {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: 1px solid #dde5ef !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* actual card */
+.o_med_patient_card {
+    position: relative !important;
+    background: #ffffff !important;
+    border: none !important;
+    min-height: 250px !important;
+    padding: 18px 22px 18px !important;
+    box-shadow: none !important;
+}
+
+/* status */
+.med_status_top {
+    position: absolute !important;
+    right: 22px !important;
+    top: 18px !important;
+}
+
+.med_status_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 55px !important;
+    height: 22px !important;
+    padding: 0 10px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+.med_status_badge.is-stable {
+    background: #eafcf1 !important;
+    color: #15b866 !important;
+}
+
+.med_status_badge.is-critical {
+    background: #ffe8e8 !important;
+    color: #e93c3c !important;
+}
+
+/* header */
+.med_card_head {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+}
+
+.med_avatar_wrap {
+    position: relative !important;
+    width: 62px !important;
+    min-width: 62px !important;
+}
+
+.med_avatar,
+.med_avatar_placeholder {
+    width: 62px !important;
+    height: 62px !important;
+    border-radius: 50% !important;
+    border: 2px solid #dfe8f2 !important;
+}
+
+.med_avatar_placeholder {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    background: #7867ad !important;
+    font-size: 24px !important;
+    font-weight: 900 !important;
+}
+
+.med_alert_dot {
+    position: absolute !important;
+    top: -5px !important;
+    right: -5px !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: #f04444 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.med_identity {
+    flex: 1 !important;
+    min-width: 0 !important;
+    padding-top: 3px !important;
+}
+
+.med_name {
+    color: #07142d !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+    padding-right: 75px !important;
+}
+
+.med_meta {
+    color: #60708d !important;
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+}
+
+.med_submeta {
+    color: #667792 !important;
+    font-size: 13px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+}
+
+.med_subline {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.med_subline i {
+    color: #8c9ab2 !important;
+    width: 14px !important;
+}
+
+/* vitals */
+.med_vitals_row {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    margin-left: 76px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid #edf1f7 !important;
+}
+
+.med_vital_box {
+    flex: 1 !important;
+    background: #f7f9fd !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    padding: 8px 5px 7px !important;
+    min-height: 48px !important;
+}
+
+.med_vital_value {
+    color: #07142d !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+}
+
+.med_vital_value small {
+    color: #8c9ab2 !important;
+    font-size: 9px !important;
+    margin-left: 1px !important;
+}
+
+.med_vital_label {
+    color: #8b9ab4 !important;
+    font-size: 10px !important;
+    letter-spacing: .08em !important;
+    margin-top: 4px !important;
+}
+
+/* tags */
+.med_tags {
+    min-height: 20px !important;
+    margin-left: 76px !important;
+    margin-top: 7px !important;
+}
+
+.med_chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 3px 9px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    margin-right: 5px !important;
+}
+
+.med_chip_smoker {
+    background: #fff1e8 !important;
+    color: #ff7a22 !important;
+}
+
+.med_chip_sporty {
+    background: #e8f7ff !important;
+    color: #188fd0 !important;
+}
+
+/* footer */
+.med_card_footer {
+    border-top: 1px solid #edf1f7 !important;
+    margin-left: 76px !important;
+    margin-top: 8px !important;
+    padding-top: 11px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+}
+
+.med_live_dot {
+    width: 11px !important;
+    height: 11px !important;
+    border-radius: 50% !important;
+    background: #16bf79 !important;
+    display: inline-block !important;
+}
+
+.med_download_btn {
+    background: #16a6bf !important;
+    border: 1px solid #129bb4 !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    padding: 7px 12px !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+/* responsive */
+@media (max-width: 1400px) {
+    .o_med_patient_kanban .o_kanban_renderer {
+        grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .o_med_patient_kanban .o_kanban_renderer {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* =========================================================
+   REAL-TIME ALERTS - RESTORED PRETTY COMPACT DESIGN
+   ========================================================= */
+
+.o_med_alert_kanban {
+    background: #f8fafc !important;
+}
+
+.o_med_alert_kanban .o_kanban_renderer {
+    padding: 12px 16px !important;
+    background: #f8fafc !important;
+    display: flex !important;
+    gap: 18px !important;
+    align-items: flex-start !important;
+}
+
+.o_med_alert_kanban .o_kanban_group {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-width: 430px !important;
+    max-width: 430px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.o_med_alert_kanban .o_kanban_group_header,
+.o_med_alert_kanban .o_kanban_header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 0 10px 0 !important;
+    margin: 0 !important;
+}
+
+.o_med_alert_kanban .o_kanban_group_title,
+.o_med_alert_kanban .o_column_title,
+.o_med_alert_kanban .o_kanban_header_title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+}
+
+.o_med_alert_kanban .o_kanban_record {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.o_med_alert_card {
+    width: 410px !important;
+    min-height: 178px !important;
+    background: #ffffff !important;
+    border: 1px solid #e5eaf3 !important;
+    border-left: 4px solid #f59e0b !important;
+    border-radius: 13px !important;
+    padding: 12px 14px !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 9px !important;
+}
+
+.o_med_alert_card.is-critical {
+    border-left-color: #ef4444 !important;
+}
+
+.o_med_alert_top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+}
+
+.o_med_alert_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    height: 22px !important;
+    padding: 0 10px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+}
+
+.o_med_alert_badge i {
+    font-size: 10px !important;
+}
+
+.o_med_alert_badge.badge-warning {
+    background: #fff7d6 !important;
+    color: #f59e0b !important;
+}
+
+.o_med_alert_badge.badge-critical {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+}
+
+.o_med_alert_date {
+    font-size: 11px !important;
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+}
+
+.o_med_alert_patient_row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+}
+
+.o_med_alert_avatar {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    border-radius: 50% !important;
+    background: #172b4d !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
+
+.o_med_alert_patient_name {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+}
+
+.o_med_alert_body {
+    background: #f8fafc !important;
+    border-radius: 8px !important;
+    padding: 8px 10px !important;
+    min-height: 50px !important;
+}
+
+.o_med_alert_type {
+    font-size: 10px !important;
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    text-transform: uppercase !important;
+}
+
+.o_med_alert_message {
+    font-size: 13px !important;
+    color: #0f172a !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+}
+
+.o_med_alert_footer {
+    margin-top: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+}
+
+.o_med_alert_state {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    height: 21px !important;
+    padding: 0 9px !important;
+    border-radius: 999px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.o_med_alert_dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+}
+
+.o_med_alert_state.state-new {
+    background: #fff7d6 !important;
+    color: #d97706 !important;
+}
+
+.o_med_alert_state.state-new .o_med_alert_dot {
+    background: #ef476f !important;
+}
+
+.o_med_alert_state.state-ack {
+    background: #dbeafe !important;
+    color: #2563eb !important;
+}
+
+.o_med_alert_state.state-resolved {
+    background: #dcfce7 !important;
+    color: #15803d !important;
+}
+
+.o_med_alert_actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    margin-left: auto !important;
+}
+
+.o_med_alert_btn {
+    border: none !important;
+    background: transparent !important;
+    color: #111827 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+.o_med_alert_btn:hover {
+    color: #6d5bd0 !important;
+    background: transparent !important;
+}
+
+/* =========================================================
+   DATA HISTORY - EXACT LOOK LIKE SCREENSHOT 2
+   ========================================================= */
+
+.o_med_history_list {
+    background: #f8fafc !important;
+}
+
+.o_med_history_list .o_list_renderer {
+    background: #f8fafc !important;
+}
+
+.o_med_history_list .o_list_table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+}
+
+.o_med_history_list .o_list_table thead th {
+    background: #f4f5fb !important;
+    color: #5868c4 !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: .04em !important;
+    border-bottom: 1px solid #dfe3ef !important;
+    padding: 14px 16px !important;
+    height: 48px !important;
+}
+
+.o_med_history_list .o_list_table tbody tr td {
+    padding: 18px 18px !important;
+    height: 64px !important;
+    font-size: 16px !important;
+    border-top: 1px solid #dfe3ef !important;
+    border-bottom: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Stable rows */
+.o_med_history_list .o_list_table tbody tr.text-success td,
+.o_med_history_list .o_list_table tbody tr.table-success td {
+    background: #edf8ef !important;
+    color: #169c28 !important;
+}
+
+/* Critical rows */
+.o_med_history_list .o_list_table tbody tr.text-danger td,
+.o_med_history_list .o_list_table tbody tr.table-danger td {
+    background: #f7f2df !important;
+    color: #ef4444 !important;
+}
+
+/* keep checkboxes neutral */
+.o_med_history_list .o_list_table tbody tr td.o_list_record_selector,
+.o_med_history_list .o_list_table thead th.o_list_record_selector {
+    background: inherit !important;
+}
+
+/* numbers on right side */
+.o_med_history_list .o_list_table thead th:nth-last-child(-n+3),
+.o_med_history_list .o_list_table tbody td:nth-last-child(-n+3) {
+    text-align: center !important;
+}
+
+/* pager */
+.o_control_panel .o_cp_pager {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+/* search bar like screenshot */
+.o_control_panel .o_searchview {
+    min-width: 520px !important;
+    max-width: 520px !important;
+}
+
+/* title row */
+.o_control_panel .o_control_panel_main .o_breadcrumb,
+.o_control_panel .breadcrumb {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+
+/* make the list area clean and flat */
+.o_content .o_view_controller,
+.o_action_manager .o_view_controller {
+    background: #f8fafc !important;
+}
+
+/* horizontal scroll visible if needed */
+.o_med_history_list .table-responsive,
+.o_list_renderer .table-responsive {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+}
+
+/* slightly smaller row text on small screens */
+@media (max-width: 1400px) {
+    .o_med_history_list .o_list_table tbody tr td {
+        font-size: 15px !important;
+        padding: 16px 14px !important;
+        height: 58px !important;
+    }
+}
+
+/* =========================================================
+   DEVICE PROFESSIONAL FORM
+   ========================================================= */
+
+.o_med_device_form .o_form_sheet_bg,
+.o_med_device_form .o_form_sheet {
+    background: #f8fafc !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    max-width: 100% !important;
+}
+
+.o_med_device_sheet {
+    padding: 0 !important;
+    background: #f8fafc !important;
+}
+
+.med_device_hero {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: linear-gradient(135deg, #6677cf 0%, #8b6fd8 100%) !important;
+    border-radius: 0 !important;
+    min-height: 118px !important;
+    padding: 26px 28px !important;
+    color: #fff !important;
+    margin-bottom: 28px !important;
+}
+
+.med_device_hero_left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+}
+
+.med_device_hero_icon {
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 16px !important;
+    background: rgba(255,255,255,.14) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 34px !important;
+    color: #ecf4ff !important;
+}
+
+.med_device_eyebrow {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: .06em !important;
+    text-transform: uppercase !important;
+    opacity: .88 !important;
+    margin-bottom: 8px !important;
+}
+
+.med_device_title .o_field_widget,
+.med_device_title span,
+.med_device_title div {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+}
+
+.med_device_hero_right {
+    text-align: right !important;
+}
+
+.med_device_status_wrap .badge,
+.med_device_status_wrap .o_badge {
+    background: #ef4444 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    padding: 6px 14px !important;
+    border: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+.med_device_last_seen_label {
+    font-size: 14px !important;
+    color: rgba(255,255,255,.75) !important;
+    margin-bottom: 4px !important;
+}
+
+.med_device_last_seen_value .o_field_widget,
+.med_device_last_seen_value span,
+.med_device_last_seen_value div {
+    font-size: 15px !important;
+    color: #fff !important;
+}
+
+.med_device_main_grid {
+    display: grid !important;
+    grid-template-columns: 260px 1fr !important;
+    gap: 20px !important;
+    margin-bottom: 22px !important;
+}
+
+.med_device_profile_card,
+.med_device_config_card,
+.med_sensor_section {
+    background: #ffffff !important;
+    border: 1px solid #d8def0 !important;
+    border-radius: 22px !important;
+    padding: 26px 28px !important;
+}
+
+.med_device_profile_card {
+    text-align: center !important;
+}
+
+.med_profile_icon_circle {
+    width: 92px !important;
+    height: 92px !important;
+    border-radius: 50% !important;
+    margin: 0 auto 16px auto !important;
+    background: #eef1ff !important;
+    border: 5px solid #dfe5fb !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 46px !important;
+    color: #344ea3 !important;
+}
+
+.med_profile_title {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #5166cc !important;
+    margin-bottom: 4px !important;
+}
+
+.med_profile_subtitle {
+    font-size: 14px !important;
+    color: #7e8db3 !important;
+    margin-bottom: 18px !important;
+}
+
+.med_profile_divider,
+.med_section_divider {
+    height: 1px !important;
+    background: #e6eaf5 !important;
+    margin: 14px 0 18px 0 !important;
+}
+
+.med_profile_label,
+.med_config_label,
+.med_section_title {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
+    color: #6c7ad6 !important;
+}
+
+.med_profile_value .o_field_widget,
+.med_profile_value span,
+.med_profile_value div {
+    margin-top: 10px !important;
+    font-size: 18px !important;
+    color: #111827 !important;
+}
+
+.med_config_grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px 18px !important;
+}
+
+.med_config_item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.med_config_value {
+    min-height: 58px !important;
+    border: 1px solid #dfe5f4 !important;
+    background: #f7f9ff !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.med_config_value .o_field_widget,
+.med_config_value span,
+.med_config_value div {
+    font-size: 16px !important;
+    color: #111827 !important;
+}
+
+.med_sensor_grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 18px !important;
+    margin-top: 18px !important;
+}
+
+.med_sensor_card {
+    min-height: 250px !important;
+    border-radius: 18px !important;
+    padding: 24px 18px !important;
+    text-align: center !important;
+    border: 1px solid transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.med_sensor_blue {
+    background: #edf5ff !important;
+    border-color: #cfe0ff !important;
+}
+
+.med_sensor_green {
+    background: #eefcf3 !important;
+    border-color: #bdeccf !important;
+}
+
+.med_sensor_orange {
+    background: #fff6ea !important;
+    border-color: #ffd7a5 !important;
+}
+
+.med_sensor_purple {
+    background: #f3f1ff !important;
+    border-color: #d9d2ff !important;
+}
+
+.med_sensor_icon_wrap {
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 18px !important;
+    background: rgba(255,255,255,.65) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 18px !important;
+}
+
+.med_sensor_img {
+    max-width: 42px !important;
+    max-height: 42px !important;
+    object-fit: contain !important;
+}
+
+.med_sensor_name {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    color: #20314d !important;
+    margin-bottom: 8px !important;
+}
+
+.med_sensor_desc {
+    font-size: 14px !important;
+    color: #5f7298 !important;
+    margin-bottom: 18px !important;
+}
+
+.med_sensor_chip {
+    background: #16a34a !important;
+    color: #fff !important;
+    padding: 7px 14px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+}
+
+.med_empty_value {
+    color: #9aa6c2 !important;
+}
+
+@media (max-width: 1200px) {
+    .med_sensor_grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .med_device_main_grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .med_sensor_grid,
+    .med_config_grid {
+        grid-template-columns: 1fr !important;
+    }
+    .med_device_hero {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 18px !important;
+    }
+    .med_device_hero_right {
+        text-align: left !important;
+    }
+}
+
+
+/* ALERT KANBAN SAME DESIGN + COMPACT/TALL FIX */
+.o_med_alert_kanban,
+.o_med_alert_kanban .o_content,
+.o_med_alert_kanban .o_kanban_renderer {
+    background: #f8fafc !important;
+}
+
+/* main kanban area */
+.o_med_alert_kanban .o_kanban_renderer {
+    padding: 18px 16px 60px !important;
+    align-items: flex-start !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+}
+
+/* columns like screenshot 2 */
+.o_med_alert_kanban .o_kanban_group {
+    width: 480px !important;
+    min-width: 480px !important;
+    max-width: 480px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 10px 18px !important;
+    margin-right: 18px !important;
+}
+
+/* column header */
+.o_med_alert_kanban .o_kanban_group_header,
+.o_med_alert_kanban .o_kanban_header {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 12px !important;
+    margin-bottom: 4px !important;
+}
+
+.o_med_alert_kanban .o_kanban_group_title,
+.o_med_alert_kanban .o_column_title,
+.o_med_alert_kanban .o_kanban_header_title {
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #071327 !important;
+    letter-spacing: -0.3px !important;
+}
+
+/* record wrapper */
+.o_med_alert_kanban .o_kanban_record {
+    width: 100% !important;
+    margin: 0 0 12px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* card same as screenshot 2 */
+.o_med_alert_card {
+    width: 100% !important;
+    min-height: 220px !important;
+    background: #ffffff !important;
+    border: 1px solid #edf1f7 !important;
+    border-left: 4px solid #f59e0b !important;
+    border-radius: 14px !important;
+    padding: 18px 22px !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.o_med_alert_card.is-critical {
+    border-left-color: #ef4444 !important;
+}
+
+/* top warning/date row */
+.o_med_alert_top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 2px !important;
+}
+
+.o_med_alert_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 5px 14px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+}
+
+.o_med_alert_badge.badge-warning {
+    background: #fff7d6 !important;
+    color: #f59e0b !important;
+}
+
+.o_med_alert_badge.badge-critical {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+}
+
+.o_med_alert_date {
+    color: #8ea0bf !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* patient row */
+.o_med_alert_patient_row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.o_med_alert_avatar {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: #14294d !important;
+    color: white !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    flex-shrink: 0 !important;
+}
+
+.o_med_alert_patient_name {
+    color: #071327 !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+}
+
+/* message block */
+.o_med_alert_body {
+    background: #f8fafc !important;
+    border-radius: 9px !important;
+    padding: 13px 14px !important;
+    margin-top: 2px !important;
+}
+
+.o_med_alert_type {
+    color: #8ea0bf !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 6px !important;
+}
+
+.o_med_alert_message {
+    color: #071327 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+}
+
+/* footer */
+.o_med_alert_footer {
+    margin-top: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+}
+
+.o_med_alert_state {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 5px 12px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+.o_med_alert_state.state-new {
+    background: #fff7d6 !important;
+    color: #d97706 !important;
+}
+
+.o_med_alert_dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #ef476f !important;
+    display: inline-block !important;
+}
+
+.o_med_alert_actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 26px !important;
+}
+
+.o_med_alert_btn {
+    border: none !important;
+    background: transparent !important;
+    color: #0f172a !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 0 !important;
+}
+
+.o_med_alert_btn:hover {
+    color: #6d5bd0 !important;
+}
+
+/* COMPACT MODE - if you want the long list smaller */
+.o_med_alert_kanban.alert-compact .o_med_alert_card,
+.o_med_alert_kanban.compact .o_med_alert_card {
+    min-height: 150px !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+}
+
+.o_med_alert_kanban.alert-compact .o_med_alert_body,
+.o_med_alert_kanban.compact .o_med_alert_body {
+    padding: 9px 12px !important;
+}
+
+.o_med_alert_kanban.alert-compact .o_med_alert_patient_name,
+.o_med_alert_kanban.compact .o_med_alert_patient_name {
+    font-size: 15px !important;
+}
+
+.o_med_alert_kanban.alert-compact .o_med_alert_message,
+.o_med_alert_kanban.compact .o_med_alert_message {
+    font-size: 13px !important;
+}
+
+/* TALL MODE - if you want more detail / more breathing space */
+.o_med_alert_kanban.alert-tall .o_med_alert_card,
+.o_med_alert_kanban.tall .o_med_alert_card {
+    min-height: 245px !important;
+    padding: 22px 24px !important;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+    .o_med_alert_kanban .o_kanban_group {
+        width: 460px !important;
+        min-width: 460px !important;
+        max-width: 460px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .o_med_alert_kanban .o_kanban_group {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+/* ALERT KANBAN TINY FINAL OVERRIDE */
+.o_med_alert_kanban .o_kanban_renderer {
+    padding: 8px 12px 35px !important;
+    gap: 8px !important;
+}
+
+/* Make each patient column smaller */
+.o_med_alert_kanban .o_kanban_group {
+    width: 350px !important;
+    min-width: 350px !important;
+    max-width: 350px !important;
+    flex: 0 0 350px !important;
+    margin-right: 12px !important;
+    padding: 0 6px 12px !important;
+}
+
+/* Smaller column title */
+.o_med_alert_kanban .o_kanban_group_title,
+.o_med_alert_kanban .o_column_title,
+.o_med_alert_kanban .o_kanban_header_title {
+    font-size: 18px !important;
+    line-height: 1.1 !important;
+    margin: 0 0 8px !important;
+}
+
+/* Remove Odoo extra record spacing */
+.o_med_alert_kanban .o_kanban_record {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 9px !important;
+    padding: 0 !important;
+}
+
+/* REAL smaller card */
+.o_med_alert_kanban .o_kanban_record .o_med_alert_card,
+.o_med_alert_kanban .o_med_alert_card {
+    width: 100% !important;
+    min-height: 118px !important;
+    max-height: none !important;
+    padding: 10px 12px !important;
+    gap: 6px !important;
+    border-radius: 12px !important;
+    border-left-width: 3px !important;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Top line */
+.o_med_alert_kanban .o_med_alert_top {
+    margin: 0 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_badge {
+    padding: 3px 9px !important;
+    font-size: 10px !important;
+    gap: 4px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_badge i {
+    font-size: 9px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_date {
+    font-size: 10px !important;
+}
+
+/* Patient row */
+.o_med_alert_kanban .o_med_alert_patient_row {
+    gap: 8px !important;
+    margin: 0 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_avatar {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 11px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_patient_name {
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+}
+
+/* Message */
+.o_med_alert_kanban .o_med_alert_body {
+    padding: 7px 9px !important;
+    border-radius: 7px !important;
+    margin: 0 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_type {
+    font-size: 9px !important;
+    margin-bottom: 3px !important;
+    line-height: 1 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_message {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+}
+
+/* Footer */
+.o_med_alert_kanban .o_med_alert_footer {
+    margin-top: 2px !important;
+    gap: 8px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_state {
+    padding: 3px 8px !important;
+    font-size: 10px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_dot {
+    width: 7px !important;
+    height: 7px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_actions {
+    gap: 14px !important;
+}
+
+.o_med_alert_kanban .o_med_alert_btn {
+    font-size: 12px !important;
+    line-height: 1 !important;
+}
+
+/* Even smaller on normal laptop screens */
+@media (max-width: 1500px) {
+    .o_med_alert_kanban .o_kanban_group {
+        width: 330px !important;
+        min-width: 330px !important;
+        max-width: 330px !important;
+        flex-basis: 330px !important;
+    }
+
+    .o_med_alert_kanban .o_med_alert_card {
+        min-height: 112px !important;
+        padding: 9px 11px !important;
+    }
+}
+
+
+/* ALERT PILLS + GROUP TOGGLE FINAL */
+
+/* warning badge = yellow pill */
+.o_med_alert_kanban .o_med_alert_badge,
+.o_med_alert_kanban .o_med_alert_badge.badge-warning,
+.o_med_alert_kanban .med_force_warning_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+    background: #fff4c7 !important;
+    color: #d48a00 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+}
+
+/* critical badge */
+.o_med_alert_kanban .o_med_alert_badge.badge-critical,
+.o_med_alert_kanban .med_force_critical_badge {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+}
+
+/* "New" state = yellow pill */
+.o_med_alert_kanban .o_med_alert_state,
+.o_med_alert_kanban .o_med_alert_state.state-new,
+.o_med_alert_kanban .med_force_state_new {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+    background: #fff4c7 !important;
+    color: #d48a00 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+}
+
+/* little red dot inside New */
+.o_med_alert_kanban .o_med_alert_state .o_med_alert_dot,
+.o_med_alert_kanban .med_force_state_new .o_med_alert_dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #ef476f !important;
+    display: inline-block !important;
+}
+
+/* group header row with + button */
+.o_med_alert_kanban .o_kanban_group_header,
+.o_med_alert_kanban .o_kanban_header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* plus / minus toggle button */
+.med_alert_group_toggle {
+    border: none !important;
+    background: transparent !important;
+    color: #4b5563 !important;
+    font-size: 28px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    padding: 0 6px !important;
+    margin-left: 10px !important;
+}
+
+.med_alert_group_toggle:hover {
+    color: #111827 !important;
+}
+
+/* hidden extra cards when collapsed */
+.o_med_alert_kanban .med_alert_extra_hidden {
+    display: none !important;
+}
+
+
+/* ALERT BODY BOX FINAL ONLY */
+/* only change the middle ECG/SPO2 content box */
+.o_med_alert_kanban .o_med_alert_body {
+    display: block !important;
+    width: 100% !important;
+    background: #f4f6fb !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+    box-shadow: none !important;
+}
+
+.o_med_alert_kanban .o_med_alert_type {
+    display: block !important;
+    color: #97a6bf !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin: 0 0 7px 0 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_message {
+    display: block !important;
+    color: #0f172a !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+}
+
+
+/* ALERT MESSAGE BOX REAL CLASS FINAL */
+/* Real XML class is .o_med_alert_message_box */
+.o_med_alert_kanban .o_med_alert_message_box {
+    display: block !important;
+    width: 100% !important;
+    background: #f4f6fb !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+    box-shadow: none !important;
+}
+
+.o_med_alert_kanban .o_med_alert_message_box .o_med_alert_type {
+    display: block !important;
+    color: #97a6bf !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin: 0 0 7px 0 !important;
+}
+
+.o_med_alert_kanban .o_med_alert_message_box .o_med_alert_message {
+    display: block !important;
+    color: #0f172a !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+}

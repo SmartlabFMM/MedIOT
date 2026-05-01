@@ -182,7 +182,9 @@
         <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="view_med_alert_kanban"/>
         <field name="search_view_id" ref="view_med_alert_search"/>
+        <field name="domain">[('state','!=','resolved'),('patient_id','!=',False)]</field>
         <field name="context">{'search_default_group_by_patient': 1}</field>
     </record>
 
 </odoo>
+

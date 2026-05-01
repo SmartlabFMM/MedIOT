@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="med_role_select_page" name="MedIoT Role Selection Page">
+        <t t-call="website.layout">
+            <div class="med_role_page">
+
+                <a href="/home-mediot" class="med_role_home">
+                    <i class="fa fa-arrow-left" title="Back"></i>
+                    <span>Home</span>
+                </a>
+
+                <section class="med_role_center">
+                    <div class="med_role_head">
+                        <h1>Select Your Role</h1>
+                        <p>Choose your role to continue to the portal</p>
+                    </div>
+
+                    <div class="med_role_cards">
+
+                        <a href="/mediot/login?role=admin&amp;redirect=/mediot/switch/admin" class="med_role_card admin">
+                            <div class="med_role_icon">
+                                <i class="fa fa-user-secret" title="Admin"></i>
+                            </div>
+                            <h2>Admin</h2>
+                            <p>Manage users, settings, patients, and system access</p>
+                        </a>
+
+                        <a href="/mediot/login?role=doctor&amp;redirect=/mediot/switch/doctor" class="med_role_card doctor">
+                            <div class="med_role_icon">
+                                <i class="fa fa-user-md" title="Doctor"></i>
+                            </div>
+                            <h2>Doctor</h2>
+                            <p>Monitor patients, alerts, vitals, and medical follow-up</p>
+                        </a>
+
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+</odoo>
+
+

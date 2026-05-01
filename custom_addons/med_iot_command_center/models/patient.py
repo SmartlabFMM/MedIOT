@@ -1,6 +1,12 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+
+# CVD_AI_IMPORTS_START
+import json
+import urllib.request
+import urllib.error
+# CVD_AI_IMPORTS_END
 
 
 class MedPatient(models.Model):
@@ -15,6 +21,37 @@ class MedPatient(models.Model):
     sporty = fields.Boolean(string="Sporty", default=False)
     elderly = fields.Boolean(string="Elderly", default=False)
     prior_cardiac_event = fields.Boolean(string="Prior Cardiac Event", default=False)
+
+    # CVD_AI_FIELDS_START
+    cvd_height = fields.Integer(string="Height (cm)", default=170)
+    cvd_weight = fields.Float(string="Weight (kg)", default=70.0)
+    cvd_ap_hi = fields.Integer(string="Systolic BP", default=120)
+    cvd_ap_lo = fields.Integer(string="Diastolic BP", default=80)
+    cvd_cholesterol = fields.Selection(
+        [("1", "Normal"), ("2", "Above Normal"), ("3", "High")],
+        string="Cholesterol",
+        default="1",
+    )
+    cvd_gluc = fields.Selection(
+        [("1", "Normal"), ("2", "Above Normal"), ("3", "High")],
+        string="Glucose",
+        default="1",
+    )
+    cvd_alco = fields.Boolean(string="Alcohol Intake", default=False)
+    cvd_active = fields.Boolean(string="Physically Active", default=True)
+
+    cvd_risk = fields.Selection(
+        [("unknown", "Unknown"), ("low", "Low"), ("medium", "Medium"), ("high", "High"), ("critical", "Critical")],
+        string="CVD Risk",
+        default="unknown",
+        readonly=True,
+        tracking=True,
+    )
+    cvd_probability = fields.Float(string="CVD Probability (%)", readonly=True)
+    cvd_alert = fields.Boolean(string="CVD Alert", readonly=True)
+    cvd_message = fields.Char(string="CVD AI Message", readonly=True)
+    cvd_last_checked = fields.Datetime(string="CVD Last Checked", readonly=True)
+    # CVD_AI_FIELDS_END
     image_128 = fields.Image(string="Photo", max_width=128, max_height=128)
 
     name = fields.Char(required=True, tracking=True)
@@ -62,15 +99,109 @@ class MedPatient(models.Model):
             dup = self.search_count([("id", "!=", rec.id), ("room", "=", rec.room), ("active", "=", True)])
             if dup:
                 raise ValidationError(_("There is already an active patient assigned to room/bed: %s") % rec.room)
+    # CVD_AI_METHODS_START
+    def _get_cvd_payload(self):
+        self.ensure_one()
 
+        gender_value = 2 if self.gender == "male" else 1
 
+        return {
+            "patient_ref": self.ref or self.name or ("P-%s" % self.id),
+            "age": int(self.age or 0),
+            "gender": gender_value,
+            "height": int(self.cvd_height or 170),
+            "weight": float(self.cvd_weight or 70.0),
+            "ap_hi": int(self.cvd_ap_hi or 120),
+            "ap_lo": int(self.cvd_ap_lo or 80),
+            "cholesterol": int(self.cvd_cholesterol or 1),
+            "gluc": int(self.cvd_gluc or 1),
+            "smoke": 1 if self.smoker else 0,
+            "alco": 1 if self.cvd_alco else 0,
+            "active": 1 if (self.cvd_active or self.sporty) else 0,
+        }
 
+    def action_compute_cvd_risk(self):
+        Alert = self.env["med.alert"]
 
+        for rec in self:
+            payload = rec._get_cvd_payload()
+            url = "http://localhost:8000/predict/cvd_risk"
 
+            try:
+                request = urllib.request.Request(
+                    url,
+                    data=json.dumps(payload).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    },
+                    method="POST",
+                )
 
+                with urllib.request.urlopen(request, timeout=8) as response:
+                    result = json.loads(response.read().decode("utf-8"))
 
+            except Exception as exc:
+                raise ValidationError(_("CVD AI service is not reachable. Start FastAPI on port 8000 first. Error: %s") % exc)
 
+            risk = (result.get("cvd_risk") or "unknown").lower()
+            if risk not in ["unknown", "low", "medium", "high", "critical"]:
+                risk = "unknown"
 
+            probability = float(result.get("probability") or 0.0)
+            alert = bool(result.get("alert"))
+            message = result.get("message") or _("CVD risk computed.")
+
+            vals = {
+                "cvd_risk": risk,
+                "cvd_probability": probability,
+                "cvd_alert": alert,
+                "cvd_message": message,
+                "cvd_last_checked": fields.Datetime.now(),
+            }
+
+            if alert and risk in ("high", "critical"):
+                vals["status"] = "critical"
+            elif risk == "medium" and rec.status != "critical":
+                vals["status"] = "warning"
+
+            rec.write(vals)
+
+            if alert:
+                severity = "critical" if risk in ("high", "critical") else "warning"
+                alert_message = "%s Probability: %.1f%%" % (message, probability)
+
+                existing = Alert.search([
+                    ("patient_id", "=", rec.id),
+                    ("alert_type", "=", "cvd"),
+                    ("state", "!=", "resolved"),
+                ], limit=1)
+
+                if existing:
+                    existing.write({
+                        "severity": severity,
+                        "message": alert_message,
+                    })
+                else:
+                    Alert.create({
+                        "patient_id": rec.id,
+                        "alert_type": "cvd",
+                        "severity": severity,
+                        "message": alert_message,
+                        "state": "new",
+                    })
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("CVD AI Risk Computed"),
+                "message": _("Cardiovascular risk was computed and saved."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+    # CVD_AI_METHODS_END
     def action_print_medical_report(self):
         self.ensure_one()
 
@@ -92,3 +223,8 @@ class MedPatient(models.Model):
                 "sticky": False,
             },
         }
+
+
+
+
+

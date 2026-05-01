@@ -1,4 +1,4 @@
-/* Admin dashboard only */
+﻿/* Admin dashboard only */
 
 .o_form_view.mediot-admin-dashboard-form .o_form_sheet_bg {
     background: #f5f7fb !important;
@@ -1061,4 +1061,979 @@
 
 /* === SETTINGS_STEP4_END === */
 
+
+/* === MEDIOT_ROLE_BADGE_BLUE_PALETTE_START === */
+
+/* Users & Roles palette:
+   Admin      #00002A
+   Doctor     #446A9C
+   Technician #44A4CC
+*/
+
+.med_user_role_page_list tbody td:nth-child(3) .badge,
+.med_admin_users_table tbody td:nth-child(3) .badge {
+    border-radius: 999px !important;
+    padding: 5px 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.01em !important;
+    border: 0 !important;
+}
+
+/* Admin */
+.med_user_role_page_list .badge.text-bg-primary,
+.med_user_role_page_list .badge.bg-primary,
+.med_user_role_page_list .text-bg-primary,
+.med_admin_users_table .badge.text-bg-primary,
+.med_admin_users_table .badge.bg-primary,
+.med_admin_users_table .text-bg-primary {
+    background: #00002A !important;
+    color: #ffffff !important;
+}
+
+/* Doctor */
+.med_user_role_page_list .badge.text-bg-info,
+.med_user_role_page_list .badge.bg-info,
+.med_user_role_page_list .text-bg-info,
+.med_admin_users_table .badge.text-bg-info,
+.med_admin_users_table .badge.bg-info,
+.med_admin_users_table .text-bg-info {
+    background: #446A9C !important;
+    color: #ffffff !important;
+}
+
+/* Technician */
+.med_user_role_page_list .badge.text-bg-muted,
+.med_user_role_page_list .badge.bg-muted,
+.med_user_role_page_list .text-bg-muted,
+.med_admin_users_table .badge.text-bg-muted,
+.med_admin_users_table .badge.bg-muted,
+.med_admin_users_table .text-bg-muted,
+.med_user_role_page_list .badge.text-bg-secondary,
+.med_user_role_page_list .badge.bg-secondary,
+.med_admin_users_table .badge.text-bg-secondary,
+.med_admin_users_table .badge.bg-secondary {
+    background: #44A4CC !important;
+    color: #00002A !important;
+}
+
+/* === MEDIOT_ROLE_BADGE_BLUE_PALETTE_END === */
+
+
+/* === MEDIOT_USER_ROLE_MODAL_START === */
+
+.modal-dialog:has(.med_user_modal_form) {
+    max-width: 760px !important;
+}
+
+.modal-content:has(.med_user_modal_form) {
+    border: 0 !important;
+    border-radius: 26px !important;
+    overflow: hidden !important;
+    box-shadow: 0 28px 80px rgba(0, 0, 42, 0.24) !important;
+}
+
+.o_form_view.med_user_modal_form .o_form_sheet_bg {
+    background: linear-gradient(135deg, #f7fbff 0%, #eef5fb 100%) !important;
+    padding: 0 !important;
+}
+
+.o_form_view.med_user_modal_form .o_form_sheet {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.med_user_modal_shell {
+    padding: 24px !important;
+}
+
+.med_user_modal_hero {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 22px !important;
+    border-radius: 24px !important;
+    background: linear-gradient(135deg, #00002A 0%, #1A3F75 100%) !important;
+    color: #ffffff !important;
+    margin-bottom: 18px !important;
+}
+
+.med_user_modal_avatar {
+    width: 86px !important;
+    height: 86px !important;
+    border-radius: 28px !important;
+    background: #44A4CC !important;
+    color: #00002A !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 42px !important;
+    font-weight: 900 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.28) !important;
+}
+
+.med_user_modal_avatar .o_field_widget,
+.med_user_modal_avatar span,
+.med_user_modal_avatar .badge {
+    font-size: 42px !important;
+    font-weight: 900 !important;
+    background: transparent !important;
+    color: #00002A !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.med_user_modal_kicker {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: .18em !important;
+    color: #BFE9F7 !important;
+    margin-bottom: 6px !important;
+}
+
+.med_user_modal_identity h2 {
+    margin: 0 0 8px !important;
+}
+
+.med_user_modal_identity input {
+    background: transparent !important;
+    border: 0 !important;
+    color: #ffffff !important;
+    font-size: 28px !important;
+    font-weight: 900 !important;
+    padding: 0 !important;
+}
+
+.med_user_modal_identity input::placeholder {
+    color: rgba(255,255,255,.7) !important;
+}
+
+.med_user_modal_role .badge,
+.med_user_modal_role_big .badge {
+    border-radius: 999px !important;
+    padding: 6px 13px !important;
+    font-weight: 900 !important;
+}
+
+.med_user_modal_grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr) !important;
+    gap: 16px !important;
+}
+
+.med_user_modal_card {
+    border: 1px solid #d8e6f3 !important;
+    border-radius: 22px !important;
+    background: #ffffff !important;
+    padding: 18px !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 42, 0.06) !important;
+}
+
+.med_user_modal_card_blue {
+    background: linear-gradient(180deg, #eef8fc 0%, #ffffff 100%) !important;
+}
+
+.med_user_modal_card_title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    color: #00002A !important;
+    font-weight: 900 !important;
+    font-size: 15px !important;
+    margin-bottom: 14px !important;
+}
+
+.med_user_modal_card_title i {
+    color: #1A3F75 !important;
+}
+
+.o_form_view.med_user_modal_form .o_group {
+    margin: 0 !important;
+}
+
+.o_form_view.med_user_modal_form .o_wrap_field {
+    margin-bottom: 12px !important;
+}
+
+.o_form_view.med_user_modal_form .o_form_label {
+    color: #1A3F75 !important;
+    font-weight: 900 !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: .04em !important;
+}
+
+.o_form_view.med_user_modal_form input {
+    border: 1px solid #d8e6f3 !important;
+    border-radius: 14px !important;
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+    background: #f8fbff !important;
+}
+
+.med_user_modal_card p {
+    color: #58708f !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+    margin: 12px 0 0 !important;
+}
+
+.o_form_view.med_user_modal_form + footer,
+.modal-content:has(.med_user_modal_form) .modal-footer {
+    border-top: 1px solid #d8e6f3 !important;
+    background: #ffffff !important;
+    padding: 14px 20px !important;
+}
+
+.modal-content:has(.med_user_modal_form) .btn-primary {
+    background: #1A3F75 !important;
+    border-color: #1A3F75 !important;
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 9px 16px !important;
+}
+
+.modal-content:has(.med_user_modal_form) .btn-secondary {
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    padding: 9px 16px !important;
+}
+
+@media (max-width: 820px) {
+    .med_user_modal_grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* === MEDIOT_USER_ROLE_MODAL_END === */
+
+/* === MEDIOT_MODAL_COLOR_FIX_START === */
+
+/* Modal colors aligned with requested blue palette */
+.modal-content:has(.med_user_modal_form) {
+    background: #F4FAFD !important;
+}
+
+.modal-content:has(.med_user_modal_form) .modal-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #D8E6F3 !important;
+}
+
+.modal-content:has(.med_user_modal_form) .modal-title {
+    color: #00002A !important;
+    font-weight: 900 !important;
+}
+
+/* Hero: deep medical navy, cleaner */
+.med_user_modal_hero {
+    background: linear-gradient(135deg, #00002A 0%, #1A3F75 100%) !important;
+}
+
+/* Avatar: less turquoise, more palette-clean */
+.med_user_modal_avatar {
+    background: #DCECF7 !important;
+    color: #00002A !important;
+    box-shadow: inset 0 0 0 1px rgba(26, 63, 117, 0.12), 0 14px 28px rgba(0, 0, 42, 0.16) !important;
+}
+
+.med_user_modal_avatar .o_field_widget,
+.med_user_modal_avatar span,
+.med_user_modal_avatar .badge {
+    color: #00002A !important;
+    background: transparent !important;
+}
+
+/* Fix hero name field: no white text on white box */
+.med_user_modal_identity h2,
+.med_user_modal_identity .o_field_widget,
+.med_user_modal_identity .o_field_char {
+    width: 100% !important;
+}
+
+.med_user_modal_identity input,
+.med_user_modal_identity .o_input {
+    background: #ffffff !important;
+    color: #00002A !important;
+    border: 1px solid rgba(220, 236, 247, 0.9) !important;
+    border-radius: 16px !important;
+    min-height: 54px !important;
+    padding: 8px 16px !important;
+    font-size: 28px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 42, 0.10) !important;
+}
+
+.med_user_modal_identity input::placeholder,
+.med_user_modal_identity .o_input::placeholder {
+    color: #6A86A9 !important;
+}
+
+/* Force modal role badges to palette, not Odoo purple */
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge {
+    border: 0 !important;
+    box-shadow: none !important;
+    font-weight: 900 !important;
+}
+
+/* Admin */
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.text-bg-primary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.bg-primary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.text-bg-primary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-primary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .text-bg-primary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .text-bg-primary {
+    background: #00002A !important;
+    color: #ffffff !important;
+}
+
+/* Doctor */
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.text-bg-info,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.bg-info,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.text-bg-info,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-info,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .text-bg-info,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .text-bg-info {
+    background: #446A9C !important;
+    color: #ffffff !important;
+}
+
+/* Technician */
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.text-bg-muted,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.bg-muted,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.text-bg-secondary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .badge.bg-secondary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.text-bg-muted,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-muted,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.text-bg-secondary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-secondary,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role .text-bg-muted,
+.modal-content:has(.med_user_modal_form) .med_user_modal_role_big .text-bg-muted {
+    background: #DCECF7 !important;
+    color: #00002A !important;
+}
+
+/* Cards softer, less random blue */
+.med_user_modal_card {
+    background: #ffffff !important;
+    border-color: #D8E6F3 !important;
+}
+
+.med_user_modal_card_blue {
+    background: linear-gradient(180deg, #EFF7FC 0%, #ffffff 100%) !important;
+}
+
+/* Buttons matching palette */
+.modal-content:has(.med_user_modal_form) .btn-primary {
+    background: #1A3F75 !important;
+    border-color: #1A3F75 !important;
+    color: #ffffff !important;
+}
+
+.modal-content:has(.med_user_modal_form) .btn-primary:hover {
+    background: #00002A !important;
+    border-color: #00002A !important;
+}
+
+.modal-content:has(.med_user_modal_form) .btn-secondary {
+    background: #E8F0F7 !important;
+    border-color: #D8E6F3 !important;
+    color: #00002A !important;
+}
+
+/* === MEDIOT_MODAL_COLOR_FIX_END === */
+
+
+/* === MEDIOT_ROLE_DESCRIPTION_MODAL_START === */
+
+.med_user_role_description {
+    margin-top: 14px !important;
+    padding: 14px 15px !important;
+    border-radius: 18px !important;
+    background: #ffffff !important;
+    border: 1px solid #D8E6F3 !important;
+    color: #1A3F75 !important;
+    font-weight: 800 !important;
+    line-height: 1.5 !important;
+}
+
+.med_user_role_description .o_field_widget,
+.med_user_role_description .o_field_text,
+.med_user_role_description textarea {
+    color: #1A3F75 !important;
+    font-weight: 800 !important;
+    line-height: 1.5 !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    resize: none !important;
+}
+
+/* === MEDIOT_ROLE_DESCRIPTION_MODAL_END === */
+
+/* === MEDIOT_REMOVE_MODAL_AVATAR_START === */
+
+/* User requested: remove the initial/avatar square from Manage User modal */
+.med_user_modal_hero {
+    gap: 0 !important;
+}
+
+.med_user_modal_identity {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+}
+
+.med_user_modal_identity h2,
+.med_user_modal_identity .o_field_widget,
+.med_user_modal_identity .o_field_char {
+    max-width: 560px !important;
+}
+
+/* === MEDIOT_REMOVE_MODAL_AVATAR_END === */
+
+/* === ADMIN_KPI_COMPACT_CENTERED_START === */
+
+/* Top admin KPI cards: smaller, centered, cleaner like reference */
+.med_admin_kpi_grid {
+    max-width: 1320px !important;
+    margin: 0 auto 18px !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(220px, 1fr)) !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+}
+
+.med_admin_kpi_card {
+    min-height: 122px !important;
+    padding: 14px 20px !important;
+    border-radius: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    text-align: left !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.045) !important;
+}
+
+.med_admin_kpi_card > div:last-child {
+    min-width: 132px !important;
+}
+
+.med_admin_kpi_icon {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    border-radius: 15px !important;
+    font-size: 23px !important;
+}
+
+.med_admin_kpi_label {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    color: #566783 !important;
+    margin-bottom: 5px !important;
+}
+
+.med_admin_kpi_value {
+    font-size: 30px !important;
+    line-height: 0.95 !important;
+    font-weight: 950 !important;
+    color: #00002A !important;
+    margin-bottom: 7px !important;
+}
+
+.med_admin_kpi_hint {
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    color: #8A99B4 !important;
+}
+
+/* Softer icon blocks */
+.med_admin_kpi_card.purple .med_admin_kpi_icon {
+    background: #EEF2FF !important;
+    color: #4F46E5 !important;
+}
+
+.med_admin_kpi_card.cyan .med_admin_kpi_icon {
+    background: #E8FAFC !important;
+    color: #078CA4 !important;
+}
+
+.med_admin_kpi_card.red .med_admin_kpi_icon {
+    background: #FFE3E6 !important;
+    color: #E11D48 !important;
+}
+
+.med_admin_kpi_card.green .med_admin_kpi_icon {
+    background: #EAF8EF !important;
+    color: #159947 !important;
+}
+
+@media (max-width: 1200px) {
+    .med_admin_kpi_grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr)) !important;
+        max-width: 760px !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .med_admin_kpi_grid {
+        grid-template-columns: 1fr !important;
+        max-width: 420px !important;
+    }
+}
+
+/* === ADMIN_KPI_COMPACT_CENTERED_END === */
+
+/* === ADMIN_LOWER_PANELS_PRO_START === */
+
+/* Critical Patients + Recent Alerts: cleaner, softer, professional */
+.med_admin_panel_critical,
+.med_admin_panel_alerts {
+    min-height: 300px !important;
+    padding: 22px !important;
+    border-radius: 24px !important;
+    border: 1px solid #DDE7F2 !important;
+    background: linear-gradient(180deg, #ffffff 0%, #FAFCFF 100%) !important;
+    box-shadow: 0 12px 34px rgba(0, 0, 42, 0.055) !important;
+    overflow: hidden !important;
+}
+
+.med_admin_panel_critical .med_admin_panel_head,
+.med_admin_panel_alerts .med_admin_panel_head {
+    padding-bottom: 13px !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid #EDF3F8 !important;
+    align-items: center !important;
+}
+
+.med_admin_panel_critical .med_admin_panel_head h2,
+.med_admin_panel_alerts .med_admin_panel_head h2 {
+    color: #00002A !important;
+    font-size: 22px !important;
+    font-weight: 950 !important;
+    letter-spacing: -0.035em !important;
+    margin: 0 0 6px !important;
+}
+
+.med_admin_panel_critical .med_admin_panel_head p,
+.med_admin_panel_alerts .med_admin_panel_head p {
+    color: #8A99B4 !important;
+    font-size: 14px !important;
+    font-weight: 750 !important;
+    margin: 0 !important;
+}
+
+/* Header critical badge */
+.med_admin_panel_critical .med_admin_badge.red {
+    background: #FFF1F2 !important;
+    color: #B42318 !important;
+    border: 1px solid #FFD6DA !important;
+    border-radius: 999px !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    font-weight: 950 !important;
+}
+
+/* Recent Alerts open button */
+.med_admin_panel_alerts .med_admin_small_btn {
+    background: #EFF6FF !important;
+    color: #1A3F75 !important;
+    border: 1px solid #D8E6F3 !important;
+    border-radius: 16px !important;
+    padding: 10px 18px !important;
+    font-weight: 950 !important;
+    box-shadow: 0 8px 20px rgba(26, 63, 117, 0.08) !important;
+}
+
+.med_admin_panel_alerts .med_admin_small_btn:hover {
+    background: #1A3F75 !important;
+    border-color: #1A3F75 !important;
+    color: #ffffff !important;
+}
+
+/* Table shell */
+.med_admin_panel_critical .med_admin_table,
+.med_admin_panel_alerts .med_admin_table {
+    display: block !important;
+    border-radius: 20px !important;
+    border: 1px solid #E4ECF5 !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8) !important;
+}
+
+/* Kill ugly horizontal scrollbar feeling */
+.med_admin_panel_alerts .o_field_x2many_list,
+.med_admin_panel_critical .o_field_x2many_list,
+.med_admin_alerts_table .o_field_x2many_list,
+.med_admin_critical_table .o_field_x2many_list {
+    overflow-x: hidden !important;
+}
+
+.med_admin_panel_critical .o_list_table,
+.med_admin_panel_alerts .o_list_table,
+.med_admin_panel_critical table,
+.med_admin_panel_alerts table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+/* Header row: softer, more refined */
+.med_admin_panel_critical table thead th,
+.med_admin_panel_alerts table thead th,
+.med_admin_panel_critical .o_list_table thead th,
+.med_admin_panel_alerts .o_list_table thead th {
+    background: #F6F9FC !important;
+    color: #4D5D78 !important;
+    font-size: 11px !important;
+    font-weight: 950 !important;
+    letter-spacing: .09em !important;
+    text-transform: uppercase !important;
+    padding: 14px 16px !important;
+    border-bottom: 1px solid #DDE7F2 !important;
+    white-space: nowrap !important;
+}
+
+/* Rows */
+.med_admin_panel_critical table tbody td,
+.med_admin_panel_alerts table tbody td,
+.med_admin_panel_critical .o_list_table tbody td,
+.med_admin_panel_alerts .o_list_table tbody td {
+    padding: 15px 16px !important;
+    font-size: 14px !important;
+    font-weight: 650 !important;
+    color: #0B1220 !important;
+    border-bottom: 1px solid #F0F4F8 !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.med_admin_panel_critical table tbody tr,
+.med_admin_panel_alerts table tbody tr,
+.med_admin_panel_critical .o_list_table tbody tr,
+.med_admin_panel_alerts .o_list_table tbody tr {
+    background: #ffffff !important;
+}
+
+.med_admin_panel_critical table tbody tr:nth-child(even),
+.med_admin_panel_alerts table tbody tr:nth-child(even),
+.med_admin_panel_critical .o_list_table tbody tr:nth-child(even),
+.med_admin_panel_alerts .o_list_table tbody tr:nth-child(even) {
+    background: #FCFDFF !important;
+}
+
+.med_admin_panel_critical table tbody tr:hover,
+.med_admin_panel_alerts table tbody tr:hover,
+.med_admin_panel_critical .o_list_table tbody tr:hover,
+.med_admin_panel_alerts .o_list_table tbody tr:hover {
+    background: #F5FAFF !important;
+}
+
+/* Compact column balance */
+.med_admin_critical_table table th:nth-child(1),
+.med_admin_critical_table table td:nth-child(1) {
+    width: 13% !important;
+}
+
+.med_admin_critical_table table th:nth-child(2),
+.med_admin_critical_table table td:nth-child(2) {
+    width: 22% !important;
+}
+
+.med_admin_critical_table table th:nth-child(3),
+.med_admin_critical_table table td:nth-child(3) {
+    width: 17% !important;
+}
+
+.med_admin_critical_table table th:nth-child(4),
+.med_admin_critical_table table td:nth-child(4),
+.med_admin_critical_table table th:nth-child(5),
+.med_admin_critical_table table td:nth-child(5),
+.med_admin_critical_table table th:nth-child(6),
+.med_admin_critical_table table td:nth-child(6) {
+    width: 12% !important;
+}
+
+.med_admin_critical_table table th:nth-child(7),
+.med_admin_critical_table table td:nth-child(7) {
+    width: 14% !important;
+}
+
+.med_admin_alerts_table table th:nth-child(1),
+.med_admin_alerts_table table td:nth-child(1) {
+    width: 28% !important;
+}
+
+.med_admin_alerts_table table th:nth-child(2),
+.med_admin_alerts_table table td:nth-child(2) {
+    width: 24% !important;
+}
+
+.med_admin_alerts_table table th:nth-child(3),
+.med_admin_alerts_table table td:nth-child(3) {
+    width: 22% !important;
+}
+
+.med_admin_alerts_table table th:nth-child(4),
+.med_admin_alerts_table table td:nth-child(4) {
+    width: 26% !important;
+}
+
+/* Professional severity/status badges */
+.med_admin_panel_critical .badge,
+.med_admin_panel_alerts .badge {
+    border-radius: 999px !important;
+    padding: 6px 13px !important;
+    font-size: 12px !important;
+    font-weight: 950 !important;
+    border: 1px solid transparent !important;
+    background: #EEF3F8 !important;
+    color: #1A3F75 !important;
+}
+
+/* Odoo danger/critical variants */
+.med_admin_panel_critical .badge.text-bg-danger,
+.med_admin_panel_critical .badge.bg-danger,
+.med_admin_panel_alerts .badge.text-bg-danger,
+.med_admin_panel_alerts .badge.bg-danger,
+.med_admin_panel_critical .text-bg-danger,
+.med_admin_panel_alerts .text-bg-danger {
+    background: #FFF1F2 !important;
+    color: #B42318 !important;
+    border-color: #FFD6DA !important;
+}
+
+/* Warning variants */
+.med_admin_panel_critical .badge.text-bg-warning,
+.med_admin_panel_critical .badge.bg-warning,
+.med_admin_panel_alerts .badge.text-bg-warning,
+.med_admin_panel_alerts .badge.bg-warning,
+.med_admin_panel_critical .text-bg-warning,
+.med_admin_panel_alerts .text-bg-warning {
+    background: #FFF7E6 !important;
+    color: #B76E00 !important;
+    border-color: #FFE5B3 !important;
+}
+
+/* Empty space should look intentional */
+.med_admin_panel_critical .o_list_table tbody tr:empty,
+.med_admin_panel_alerts .o_list_table tbody tr:empty {
+    display: none !important;
+}
+
+/* === ADMIN_LOWER_PANELS_PRO_END === */
+
+/* === ADMIN_HERO_MATCH_DOCTOR_BANNER_START === */
+
+/* Admin hero only: same size/color/stuck-to-menu feeling as doctor banner */
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero {
+    background: linear-gradient(135deg, #6073cf 0%, #7583d5 45%, #9c79de 100%) !important;
+    min-height: 118px !important;
+    height: 118px !important;
+    padding: 12px 34px !important;
+    margin: 0 0 18px 0 !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    box-shadow: none !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero h1 {
+    font-size: 30px !important;
+    line-height: 1 !important;
+    margin: 0 0 8px 0 !important;
+    color: #ffffff !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero p {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    margin: 0 !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_eyebrow {
+    color: rgba(255, 255, 255, 0.92) !important;
+    letter-spacing: .16em !important;
+    font-weight: 900 !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero_actions {
+    margin-left: auto !important;
+    align-items: center !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero .med_admin_btn {
+    height: 56px !important;
+    border-radius: 14px !important;
+    padding: 0 22px !important;
+    font-weight: 900 !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero .med_admin_btn.primary {
+    background: #ffffff !important;
+    color: #6657d6 !important;
+    border-color: #ffffff !important;
+}
+
+.o_form_view.mediot-admin-dashboard-form .med_admin_hero .med_admin_btn:not(.primary) {
+    background: rgba(255, 255, 255, 0.14) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.38) !important;
+}
+
+/* === ADMIN_HERO_MATCH_DOCTOR_BANNER_END === */
+
+/* === ADMIN_HERO_STICK_TO_MENU_START === */
+
+/* Admin hero only: remove grey top gap so banner is las9a fil menu */
+.o_action_manager:has(.mediot-admin-dashboard-form) .o_content,
+.o_action_manager:has(.mediot-admin-dashboard-form) .o_form_view,
+.o_action_manager:has(.mediot-admin-dashboard-form) .o_form_renderer,
+.o_action_manager:has(.mediot-admin-dashboard-form) .o_form_sheet_bg,
+.o_action_manager:has(.mediot-admin-dashboard-form) .o_form_sheet,
+.o_action_manager:has(.mediot-admin-dashboard-form) .mediot_admin_page {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero {
+    margin-top: 0 !important;
+}
+
+/* === ADMIN_HERO_STICK_TO_MENU_END === */
+
+/* === ADMIN_HERO_FULLWIDTH_SHORTER_START === */
+
+/* Full row, not cut, slightly shorter */
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero {
+    width: calc(100% + 40px) !important;
+    max-width: none !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    min-height: 104px !important;
+    height: 104px !important;
+    padding: 10px 34px !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero h1 {
+    margin-bottom: 6px !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero .med_admin_btn {
+    height: 52px !important;
+}
+
+/* === ADMIN_HERO_FULLWIDTH_SHORTER_END === */
+
+/* === ADMIN_HERO_DARKER_SMALLER_TEXT_START === */
+
+/* User requested: darker admin hero theme + smaller text only */
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero {
+    background: linear-gradient(135deg, #243a8f 0%, #344fa8 45%, #5f48a8 100%) !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_eyebrow {
+    font-size: 11px !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero h1 {
+    font-size: 22px !important;
+    line-height: 1.05 !important;
+    margin: 0 0 6px 0 !important;
+}
+
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero p {
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+}
+
+/* keep buttons readable on darker theme */
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero .med_admin_btn.primary {
+    color: #344fa8 !important;
+}
+
+/* === ADMIN_HERO_DARKER_SMALLER_TEXT_END === */
+
+/* === ADMIN_ROLE_BADGES_THEME_ONLY_START === */
+
+/* Role badges only. Do NOT affect Critical / Warning / Severity badges. */
+
+/* Admin role */
+.med_admin_users_table .badge.text-bg-primary,
+.med_user_role_page_list .badge.text-bg-primary,
+.med_user_modal_role .badge.text-bg-primary,
+.med_user_modal_role_big .badge.text-bg-primary,
+.med_admin_users_table .badge.bg-primary,
+.med_user_role_page_list .badge.bg-primary,
+.med_user_modal_role .badge.bg-primary,
+.med_user_modal_role_big .badge.bg-primary {
+    background: #243A8F !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+}
+
+/* Doctor role */
+.med_admin_users_table .badge.text-bg-info,
+.med_user_role_page_list .badge.text-bg-info,
+.med_user_modal_role .badge.text-bg-info,
+.med_user_modal_role_big .badge.text-bg-info,
+.med_admin_users_table .badge.bg-info,
+.med_user_role_page_list .badge.bg-info,
+.med_user_modal_role .badge.bg-info,
+.med_user_modal_role_big .badge.bg-info {
+    background: #446A9C !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(68,106,156,0.25) !important;
+}
+
+/* Technician role */
+.med_admin_users_table .badge.text-bg-muted,
+.med_user_role_page_list .badge.text-bg-muted,
+.med_user_modal_role .badge.text-bg-muted,
+.med_user_modal_role_big .badge.text-bg-muted,
+.med_admin_users_table .badge.bg-muted,
+.med_user_role_page_list .badge.bg-muted,
+.med_user_modal_role .badge.bg-muted,
+.med_user_modal_role_big .badge.bg-muted,
+.med_admin_users_table .badge.text-bg-secondary,
+.med_user_role_page_list .badge.text-bg-secondary,
+.med_user_modal_role .badge.text-bg-secondary,
+.med_user_modal_role_big .badge.text-bg-secondary,
+.med_admin_users_table .badge.bg-secondary,
+.med_user_role_page_list .badge.bg-secondary,
+.med_user_modal_role .badge.bg-secondary,
+.med_user_modal_role_big .badge.bg-secondary {
+    background: #DCECF7 !important;
+    color: #243A8F !important;
+    border: 1px solid #C9DDF0 !important;
+}
+
+/* === ADMIN_ROLE_BADGES_THEME_ONLY_END === */
+
+/* === ADMIN_HERO_SAME_AS_DOCTOR_START === */
+
+/* Admin banner: same gradient feeling as doctor banner */
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero {
+    background: linear-gradient(90deg, #6F84D9 0%, #7E8DDA 45%, #9B7DE1 100%) !important;
+}
+
+/* keep button text readable */
+.o_action_manager:has(.mediot-admin-dashboard-form) .med_admin_hero .med_admin_btn.primary {
+    color: #5E6FD1 !important;
+}
+
+/* === ADMIN_HERO_SAME_AS_DOCTOR_END === */
 

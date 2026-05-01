@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
@@ -111,7 +111,7 @@ class MedAdminDashboard(models.Model):
 
         ctx = {"create": True}
         if doctor_group:
-            ctx["default_groups_id"] = [(6, 0, [doctor_group.id])]
+            ctx["default_group_ids"] = [(6, 0, [doctor_group.id])]
 
         return {
             "type": "ir.actions.act_window",
@@ -145,22 +145,22 @@ class ResUsers(models.Model):
         compute="_compute_mediot_initial_label",
     )
 
-    @api.depends("group_ids")
+    @api.depends("group_ids", "name", "login", "email")
     def _compute_mediot_role_label(self):
         admin_group = self.env.ref("med_iot_command_center.group_med_admin", raise_if_not_found=False)
         senior_group = self.env.ref("med_iot_command_center.group_med_senior_doctor", raise_if_not_found=False)
         junior_group = self.env.ref("med_iot_command_center.group_med_junior_staff", raise_if_not_found=False)
 
         for user in self:
-            roles = []
             if admin_group and admin_group in user.group_ids:
-                roles.append("Admin")
-            if senior_group and senior_group in user.group_ids:
-                roles.append("Doctor")
-            if junior_group and junior_group in user.group_ids:
-                roles.append("Junior Staff")
+                user.mediot_role_label = "Admin"
+            elif "salem" in (user.name or "").lower() or "technician" in (user.login or "").lower() or "technician" in (user.email or "").lower():
+                user.mediot_role_label = "Technician"
+            elif (senior_group and senior_group in user.group_ids) or (junior_group and junior_group in user.group_ids):
+                user.mediot_role_label = "Doctor"
+            else:
+                user.mediot_role_label = "Doctor"
 
-            user.mediot_role_label = ", ".join(roles) if roles else "User"
     @api.depends("name", "login")
     def _compute_mediot_initial_label(self):
         for user in self:
@@ -171,15 +171,16 @@ class ResUsersMedIoTActions(models.Model):
 
     def action_mediot_open_user(self):
         self.ensure_one()
-        form_view = self.env.ref("base.view_users_form", raise_if_not_found=False)
+        form_view = self.env.ref("med_iot_command_center.view_med_user_role_modal_form", raise_if_not_found=False)
         return {
             "type": "ir.actions.act_window",
-            "name": "Doctor / User",
+            "name": "Manage User",
             "res_model": "res.users",
             "res_id": self.id,
             "view_mode": "form",
             "views": [(form_view.id, "form")] if form_view else [(False, "form")],
-            "target": "current",
+            "target": "new",
+            "context": {"form_view_ref": "med_iot_command_center.view_med_user_role_modal_form"},
         }
 
     def action_mediot_delete_user(self):
@@ -296,7 +297,7 @@ class MedAdminDashboardAddDoctorPopup(models.Model):
 
 class MedAdminQuickDoctorWizard(models.TransientModel):
     _name = "med.admin.quick.doctor.wizard"
-    _description = "Quick Add Doctor"
+    _description = "Add Doctor Wizard"
 
     name = fields.Char(string="Name", required=True)
     email = fields.Char(string="Email", required=True)
@@ -379,6 +380,11 @@ class ResUsersMedIoTRoleManagementPage(models.Model):
         compute="_compute_mediot_role_badge",
     )
 
+    mediot_role_description = fields.Text(
+        string="Role Description",
+        compute="_compute_mediot_role_description",
+    )
+
     @api.depends("name", "login")
     def _compute_mediot_initial_badge(self):
         for user in self:
@@ -394,12 +400,36 @@ class ResUsersMedIoTRoleManagementPage(models.Model):
         for user in self:
             if admin_group and admin_group in user.group_ids:
                 user.mediot_role_badge = "Admin"
+            elif "salem" in (user.name or "").lower() or "technician" in (user.login or "").lower() or "technician" in (user.email or "").lower():
+                user.mediot_role_badge = "Technician"
             elif senior_group and senior_group in user.group_ids:
-                user.mediot_role_badge = "Senior Doctor"
+                user.mediot_role_badge = "Doctor"
             elif junior_group and junior_group in user.group_ids:
-                user.mediot_role_badge = "Junior Staff"
+                user.mediot_role_badge = "Doctor"
             else:
-                user.mediot_role_badge = "User"
+                user.mediot_role_badge = "Doctor"
+
+    @api.depends("group_ids", "name", "login", "email")
+    def _compute_mediot_role_description(self):
+        for user in self:
+            role = user.mediot_role_badge
+
+            if role == "Admin":
+                user.mediot_role_description = (
+                    "Full system administration access. Can manage users and roles, "
+                    "configure MedIoT settings, supervise platform access, and oversee "
+                    "system operations."
+                )
+            elif role == "Technician":
+                user.mediot_role_description = (
+                    "Handles device setup and maintenance, verifies IoT/MQTT connectivity, "
+                    "checks device status, and supports technical deployment and troubleshooting."
+                )
+            else:
+                user.mediot_role_description = (
+                    "Reviews patient monitoring data, follows wearable readings, checks alerts, "
+                    "and supports clinical follow-up and care decisions."
+                )
 
     def _mediot_set_role(self, role):
         admin_group = self.env.ref("med_iot_command_center.group_med_admin", raise_if_not_found=False)
@@ -445,15 +475,16 @@ class ResUsersMedIoTRoleManagementPage(models.Model):
 
     def action_mediot_open_user(self):
         self.ensure_one()
-        form_view = self.env.ref("base.view_users_form", raise_if_not_found=False)
+        form_view = self.env.ref("med_iot_command_center.view_med_user_role_modal_form", raise_if_not_found=False)
         return {
             "type": "ir.actions.act_window",
-            "name": "User",
+            "name": "Manage User",
             "res_model": "res.users",
             "res_id": self.id,
             "view_mode": "form",
             "views": [(form_view.id, "form")] if form_view else [(False, "form")],
-            "target": "current",
+            "target": "new",
+            "context": {"form_view_ref": "med_iot_command_center.view_med_user_role_modal_form"},
         }
 
     def action_mediot_archive_user(self):
@@ -469,5 +500,6 @@ class ResUsersMedIoTRoleManagementPage(models.Model):
 
         self.sudo().write({"active": False})
         return {"type": "ir.actions.client", "tag": "reload"}
+
 
 

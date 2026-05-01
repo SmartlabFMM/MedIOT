@@ -1,4 +1,4 @@
-/* Premium Settings / Device Management page only */
+﻿/* Premium Settings / Device Management page only */
 
 .o_form_view.mediot-settings-premium-form .o_form_sheet_bg {
     background: #f5f7fb !important;
@@ -910,3 +910,171 @@
 }
 
 /* === SETTINGS_SIMPLE_LINES_END === */
+
+/* === MEDIOT SETTINGS COMPACT POLISH START === */
+
+/* Scope: Settings page only, detected by existing device image */
+.o_action_manager:has(.device_identity_img) .o_control_panel {
+    display: none !important;
+}
+
+.o_action_manager:has(.device_identity_img) .o_form_view,
+.o_action_manager:has(.device_identity_img) .o_form_sheet_bg {
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 28%),
+        linear-gradient(135deg, #f8fafc 0%, #eef4ff 42%, #f8fafc 100%) !important;
+}
+
+.o_action_manager:has(.device_identity_img) .o_form_sheet {
+    max-width: 1180px !important;
+    margin: 22px auto 34px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 28px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.o_action_manager:has(.device_identity_img) h1 {
+    margin: 0 0 8px !important;
+    font-size: 28px !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.04em !important;
+}
+
+.o_action_manager:has(.device_identity_img) h2 {
+    margin: 0 0 14px !important;
+    font-size: 17px !important;
+    letter-spacing: -0.02em !important;
+}
+
+.o_action_manager:has(.device_identity_img) p {
+    margin-bottom: 0 !important;
+}
+
+.o_action_manager:has(.device_identity_img) .device_identity_img {
+    width: 86px !important;
+    height: 86px !important;
+    object-fit: contain !important;
+    border-radius: 22px !important;
+    padding: 12px !important;
+    background: #ffffff !important;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10) !important;
+}
+
+.o_action_manager:has(.device_identity_img) img[src*="s.png"] {
+    max-width: 92px !important;
+    max-height: 92px !important;
+    object-fit: contain !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    background: #ffffff !important;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10) !important;
+}
+
+/* Compact Pinterest-like cards */
+.o_action_manager:has(.device_identity_img) .settings_card,
+.o_action_manager:has(.device_identity_img) .settings_panel,
+.o_action_manager:has(.device_identity_img) .device_card,
+.o_action_manager:has(.device_identity_img) .threshold_card,
+.o_action_manager:has(.device_identity_img) .admin_settings_card,
+.o_action_manager:has(.device_identity_img) section,
+.o_action_manager:has(.device_identity_img) .o_group {
+    border-radius: 24px !important;
+}
+
+/* Simple line inputs, no slider feeling */
+.o_action_manager:has(.device_identity_img) input[type="range"],
+.o_action_manager:has(.device_identity_img) .o_field_widget input[type="range"],
+.o_action_manager:has(.device_identity_img) .threshold_slider,
+.o_action_manager:has(.device_identity_img) .slider,
+.o_action_manager:has(.device_identity_img) .range,
+.o_action_manager:has(.device_identity_img) .progress {
+    display: none !important;
+}
+
+.o_action_manager:has(.device_identity_img) .o_field_widget[name*="critical"],
+.o_action_manager:has(.device_identity_img) .o_field_widget[name*="warning"],
+.o_action_manager:has(.device_identity_img) .o_field_widget[name="check_interval_seconds"] {
+    max-width: 96px !important;
+}
+
+.o_action_manager:has(.device_identity_img) .o_field_widget[name*="critical"] input,
+.o_action_manager:has(.device_identity_img) .o_field_widget[name*="warning"] input,
+.o_action_manager:has(.device_identity_img) .o_field_widget[name="check_interval_seconds"] input {
+    min-height: 34px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    background: #ffffff !important;
+}
+
+/* More breathing room, but still compact */
+.o_action_manager:has(.device_identity_img) .o_inner_group {
+    gap: 8px 18px !important;
+}
+
+.o_action_manager:has(.device_identity_img) .o_wrap_field {
+    margin-bottom: 7px !important;
+}
+
+/* Remove old heavy top KPI/toggle leftovers if still present */
+.o_action_manager:has(.device_identity_img) .settings_kpi,
+.o_action_manager:has(.device_identity_img) .settings_kpis,
+.o_action_manager:has(.device_identity_img) .hero_toggle,
+.o_action_manager:has(.device_identity_img) .settings_toggle,
+.o_action_manager:has(.device_identity_img) .top_toggle {
+    display: none !important;
+}
+
+/* === MEDIOT SETTINGS COMPACT POLISH END === */
+
+/* === DEVICE LOGO REQUEST PATCH START === */
+
+/* Bigger device logo, less empty white space */
+.o_action_manager:has(.device_identity_img) .device_identity_card {
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.o_action_manager:has(.device_identity_img) .device_identity_icon_wrap {
+    width: 148px !important;
+    height: 148px !important;
+    padding: 6px !important;
+    border-radius: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.o_action_manager:has(.device_identity_img) .device_identity_img {
+    width: 132px !important;
+    height: 132px !important;
+    max-width: 132px !important;
+    max-height: 132px !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    border-radius: 28px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove the device name input area completely */
+.o_action_manager:has(.device_identity_img) .device_identity_name_box {
+    display: none !important;
+}
+
+/* Keep the title below the logo clean */
+.o_action_manager:has(.device_identity_img) .device_identity_title {
+    margin-top: 4px !important;
+    text-align: center !important;
+}
+
+/* Better readable explanation for Last Seen */
+.o_action_manager:has(.device_identity_img) .settings_input_card.readonly .input_hint {
+    line-height: 1.45 !important;
+    max-width: 260px !important;
+}
+
+/* === DEVICE LOGO REQUEST PATCH END === */
+

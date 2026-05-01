@@ -969,7 +969,7 @@ button.med_btn {
 
 .med_role_head {
     text-align: center !important;
-    margin-bottom: 34px !important;
+    margin-bottom: 120px !important;
 }
 
 .med_role_head h1 {
@@ -1341,7 +1341,7 @@ button.med_btn {
     color: white !important;
     font-size: 90px !important;
     box-shadow: 0 25px 55px rgba(34, 88, 170, 0.35) !important;
-    margin-bottom: 34px !important;
+    margin-bottom: 120px !important;
 }
 
 .med_login_role_left h1 {
@@ -3643,7 +3643,7 @@ footer.mediot-footer-compact,
     grid-template-columns: 1.15fr .9fr 1fr 1.25fr !important;
     gap: 54px !important;
     align-items: start !important;
-    margin-bottom: 34px !important;
+    margin-bottom: 120px !important;
 }
 
 /* headings smaller */
@@ -4708,3 +4708,326 @@ body {
 .med_video_page {
     background: #0b203d !important;
 }
+
+
+
+
+
+
+
+
+
+
+/* === LANDING_FINAL_LAYOUT_FIX_START === */
+
+/* hero longer + no white cut */
+.med_video_page .med_video_hero {
+    position: relative !important;
+    min-height: 860px !important;
+    height: 860px !important;
+    overflow: hidden !important;
+    padding-bottom: 170px !important;
+    display: block !important;
+}
+
+/* video fills all hero */
+.med_video_page .mediot_forced_hero_video,
+.med_video_page .mediot_hero_video_clean,
+.med_video_page .med_video_hero video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    z-index: 1 !important;
+}
+
+/* overlay */
+.med_video_page .med_video_overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(12, 28, 52, 0.38) !important;
+    z-index: 2 !important;
+}
+
+/* keep nav above */
+.med_video_page .med_video_nav {
+    position: relative !important;
+    z-index: 6 !important;
+}
+
+/* text smaller + higher like reference */
+.med_video_page .med_video_content {
+    position: relative !important;
+    z-index: 6 !important;
+    max-width: 640px !important;
+    padding-left: 110px !important;
+    padding-top: 105px !important;
+    margin-top: 0 !important;
+}
+
+.med_video_page .med_video_content h1 {
+    font-size: 58px !important;
+    line-height: 1.03 !important;
+    letter-spacing: -1px !important;
+    margin: 0 0 22px 0 !important;
+    max-width: 620px !important;
+}
+
+.med_video_page .med_video_content p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    margin: 0 0 26px 0 !important;
+    max-width: 590px !important;
+}
+
+/* buttons */
+.med_video_page .med_video_actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 6 !important;
+}
+
+.med_video_page .med_video_cta,
+.med_video_page .med_video_btn,
+.med_video_page .med_video_actions a {
+    min-height: 56px !important;
+    padding: 0 34px !important;
+    border-radius: 18px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* stats centered + smaller */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 120px !important;
+    transform: translateX(-50%) !important;
+    width: min(1040px, calc(100% - 260px)) !important;
+    max-width: 1040px !important;
+    margin: 0 !important;
+    z-index: 7 !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+}
+
+.med_video_page .med_video_stats .stat,
+.med_video_page .med_video_stats_card .stat,
+.med_video_page .med_video_stats_wrap .stat {
+    padding: 26px 22px !important;
+}
+
+.med_video_page .med_video_stats h3,
+.med_video_page .med_video_stats_card h3,
+.med_video_page .med_video_stats_wrap h3 {
+    font-size: 52px !important;
+    line-height: 1 !important;
+    margin-bottom: 8px !important;
+}
+
+.med_video_page .med_video_stats p,
+.med_video_page .med_video_stats_card p,
+.med_video_page .med_video_stats_wrap p {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+}
+
+/* === LANDING_FINAL_LAYOUT_FIX_END === */
+
+
+/* === LANDING_FINAL_CLEAN_LAYOUT_START === */
+
+/* FINAL landing layout: keep video/menu, fix text/buttons/stats only */
+.med_video_page .med_video_hero {
+    position: relative !important;
+    height: 820px !important;
+    min-height: 820px !important;
+    overflow: hidden !important;
+    background: #061b34 !important;
+}
+
+/* video stays full background */
+.med_video_page .mediot_hero_video_clean,
+.med_video_page .mediot_forced_hero_video,
+.med_video_page .med_video_hero video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    z-index: 1 !important;
+}
+
+/* readable but not too dark */
+.med_video_page .med_video_overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    opacity: 1 !important;
+    background: rgba(8, 22, 42, 0.38) !important;
+    z-index: 2 !important;
+}
+
+/* menu unchanged but top buttons smaller */
+.med_video_page .med_video_nav {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.med_video_page .med_video_menu {
+    gap: 16px !important;
+    align-items: center !important;
+}
+
+.med_video_page .med_video_menu > a:not(.med_video_btn) {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.med_video_page .med_video_menu .med_video_btn {
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 24px !important;
+    border-radius: 14px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+/* text like reference: smaller, higher, clean left position */
+.med_video_page .med_video_content {
+    position: relative !important;
+    z-index: 6 !important;
+    max-width: 600px !important;
+    padding-left: 145px !important;
+    padding-top: 88px !important;
+    margin: 0 !important;
+}
+
+.med_video_page .med_video_content h1 {
+    font-size: 54px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -1px !important;
+    font-weight: 850 !important;
+    margin: 0 0 24px 0 !important;
+    max-width: 600px !important;
+}
+
+.med_video_page .med_video_content p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    max-width: 590px !important;
+    margin: 0 0 28px 0 !important;
+}
+
+/* hero buttons smaller */
+.med_video_page .med_video_actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 7 !important;
+}
+
+.med_video_page .med_video_actions a,
+.med_video_page .med_video_cta {
+    height: 48px !important;
+    min-height: 48px !important;
+    min-width: 150px !important;
+    padding: 0 26px !important;
+    border-radius: 14px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* stats card centered, smaller, fully inside video */
+.med_video_page .med_video_stats {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 150px !important;
+    transform: translateX(-50%) !important;
+    width: min(960px, 72%) !important;
+    max-width: 960px !important;
+    min-height: 116px !important;
+    padding: 24px 34px !important;
+    margin: 0 !important;
+    border-radius: 24px !important;
+    background: #ffffff !important;
+    box-shadow: 0 20px 44px rgba(10, 24, 45, 0.16) !important;
+    z-index: 8 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+}
+
+.med_video_page .med_video_stats > * {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.med_video_page .med_video_stats h2,
+.med_video_page .med_video_stats h3,
+.med_video_page .med_video_stats strong,
+.med_video_page .med_video_stats .stat-number {
+    font-size: 34px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    margin: 0 0 8px 0 !important;
+    color: #334e8d !important;
+}
+
+.med_video_page .med_video_stats p,
+.med_video_page .med_video_stats span,
+.med_video_page .med_video_stats .stat-label {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    color: #6f7f9d !important;
+}
+
+/* medium screens */
+@media (max-width: 1200px) {
+    .med_video_page .med_video_hero {
+        height: 760px !important;
+        min-height: 760px !important;
+    }
+
+    .med_video_page .med_video_content {
+        padding-left: 82px !important;
+        padding-top: 76px !important;
+        max-width: 540px !important;
+    }
+
+    .med_video_page .med_video_content h1 {
+        font-size: 48px !important;
+    }
+
+    .med_video_page .med_video_stats {
+        width: min(850px, 82%) !important;
+        bottom: 120px !important;
+    }
+}
+
+/* === LANDING_FINAL_CLEAN_LAYOUT_END === */
+
+

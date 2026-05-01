@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from odoo import fields, models
 
 
@@ -12,7 +12,7 @@ class MedAlert(models.Model):
     reading_id = fields.Many2one("med.vital.reading", index=True)
 
     alert_type = fields.Selection(
-        [("temp", "Temperature"), ("spo2", "SpO2"), ("ecg", "ECG")],
+        [("temp", "Temperature"), ("spo2", "SpO2"), ("ecg", "ECG"), ("cvd", "CVD Risk")],
         required=True,
         index=True,
     )
@@ -44,3 +44,4 @@ class MedAlert(models.Model):
                 "resolved_by": self.env.user.id,
                 "resolved_on": now,
             })
+

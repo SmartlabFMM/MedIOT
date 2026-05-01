@@ -1,9 +1,16 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from odoo import http
 from odoo.http import request
+from urllib.parse import quote_plus
 
 
 class MedIoTAuthController(http.Controller):
+    # MEDIOT_ROLE_ROUTE_START
+    @http.route(['/mediot/role', '/mediot/role/'], type='http', auth='public', website=True, sitemap=False)
+    def med_role_select(self, **kw):
+        return request.render('med_iot_command_center.med_role_select_page')
+    # MEDIOT_ROLE_ROUTE_END
+
 
     @http.route(['/mediot', '/mediot/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_landing(self, **kwargs):
@@ -11,54 +18,95 @@ class MedIoTAuthController(http.Controller):
 
     @http.route(['/mediot/login', '/mediot/login/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_login_page(self, **kwargs):
-        role = (kwargs.get("role") or "doctor").lower()
+        role = kwargs.get("role", "")
+        redirect = kwargs.get("redirect") or "/mediot/post_login"
 
-        if role == "admin":
-            role_title = "Admin"
-            role_desc = "Manage users, settings, patients, and system access"
-            role_icon = "fa-user-secret"
-            role_class = "admin"
-        else:
-            role_title = "Doctor"
-            role_desc = "Monitor patients, alerts, vitals, and medical follow-up"
-            role_icon = "fa-user-md"
-            role_class = "doctor"
+        role_data = {
+            "admin": {
+                "role_class": "admin",
+                "role_icon": "fa-user-secret",
+                "role_title": "Admin",
+                "role_desc": "Manage users, settings, patients, and system access",
+            },
+            "doctor": {
+                "role_class": "doctor",
+                "role_icon": "fa-user-md",
+                "role_title": "Doctor",
+                "role_desc": "Monitor patients, alerts, vitals, and medical follow-up",
+            },
+        }.get(role, {
+            "role_class": "default",
+            "role_icon": "fa-heart-o",
+            "role_title": "MedIoT",
+            "role_desc": "Sign in to access your dashboard",
+        })
 
         values = {
             "error": kwargs.get("error"),
             "login": kwargs.get("login", ""),
-            "redirect": kwargs.get("redirect") or ("/mediot/admin" if role == "admin" else "/mediot/post_login"),
+            "redirect": redirect,
             "role": role,
-            "role_title": role_title,
-            "role_desc": role_desc,
-            "role_icon": role_icon,
-            "role_class": role_class,
+            **role_data,
         }
         return request.render('med_iot_command_center.med_login_page', values)
+
+    @http.route(['/mediot/login/submit'], type='http', auth='public', website=True, methods=['POST'], csrf=True, sitemap=False)
+    def mediot_login_submit(self, **post):
+        login = post.get("login", "")
+        password = post.get("password", "")
+        role = post.get("role", "")
+        redirect = post.get("redirect") or "/mediot/post_login"
+
+        try:
+            try:
+                uid = request.session.authenticate(request.db, login, password)
+            except TypeError:
+                uid = request.session.authenticate(request.db, {
+                    "login": login,
+                    "password": password,
+                    "type": "password",
+                })
+
+            if not uid:
+                raise Exception("Invalid credentials")
+
+            return request.redirect(redirect)
+
+        except Exception:
+            return request.redirect(
+                "/mediot/login?role=%s&redirect=%s&login=%s&error=%s"
+                % (
+                    quote_plus(role),
+                    quote_plus(redirect),
+                    quote_plus(login),
+                    quote_plus("Invalid email or password"),
+                )
+            )
 
     @http.route(['/mediot/post_login'], type='http', auth='user', website=False, sitemap=False)
     def mediot_post_login(self, **kwargs):
         user = request.env.user
 
         if user.has_group('med_iot_command_center.group_med_admin'):
-            return request.redirect('/mediot/admin')
+            action = request.env.ref('med_iot_command_center.action_med_admin_dashboard').sudo()
+            menu = request.env.ref('med_iot_command_center.menu_med_admin_dashboard').sudo()
+            return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
 
-        if user.has_group('med_iot_command_center.group_med_senior_doctor') or user.has_group('med_iot_command_center.group_med_junior_staff'):
-            # Doctor dashboard is the MedIoT Dashboard client action.
+        if user.has_group('med_iot_command_center.group_med_senior_doctor'):
             action = request.env.ref('med_iot_command_center.action_med_dashboard').sudo()
             menu = request.env.ref('med_iot_command_center.menu_med_dashboard').sudo()
             return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
 
-        return request.redirect('/odoo')
+        return request.redirect('/mediot/role')
+
     @http.route(['/mediot/signup', '/mediot/signup/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_signup_page(self, **kwargs):
         values = {
             "error": kwargs.get("error"),
             "success": kwargs.get("success"),
             "form_data": kwargs,
-            "website": getattr(request, "website", False),
         }
-        return request.render("med_iot_command_center.med_signup_page", values)
+        return request.render('med_iot_command_center.med_signup_page', values)
 
     @http.route(['/mediot/signup/submit'], type='http', auth='public', website=True, methods=['POST'], csrf=True, sitemap=False)
     def mediot_signup_submit(self, **post):
@@ -73,21 +121,18 @@ class MedIoTAuthController(http.Controller):
             return request.render('med_iot_command_center.med_signup_page', {
                 "error": "Email is required.",
                 "form_data": post,
-                "website": getattr(request, "website", False),
             })
 
         if not password:
             return request.render('med_iot_command_center.med_signup_page', {
                 "error": "Password is required.",
                 "form_data": post,
-                "website": getattr(request, "website", False),
             })
 
         if Users.search_count([('login', '=', email)]) > 0:
             return request.render('med_iot_command_center.med_signup_page', {
                 "error": "An account with this email already exists.",
                 "form_data": post,
-                "website": getattr(request, "website", False),
             })
 
         doctor_group = request.env.ref('med_iot_command_center.group_med_senior_doctor').sudo()
@@ -101,10 +146,6 @@ class MedIoTAuthController(http.Controller):
             'group_ids': [(6, 0, [internal_user_group.id, doctor_group.id])],
         })
 
-        # Force password write after create so signup users can log in immediately.
-        new_user.with_context(no_reset_password=True).sudo().write({
-            'password': password,
-        })
         if new_user.partner_id:
             new_user.partner_id.sudo().write({
                 'phone': post.get('phone', ''),
@@ -114,7 +155,6 @@ class MedIoTAuthController(http.Controller):
         return request.render('med_iot_command_center.med_signup_page', {
             "success": "Your account has been created successfully. You can sign in now.",
             "form_data": {},
-            "website": getattr(request, "website", False),
         })
 
     @http.route(['/mediot/reset', '/mediot/reset/'], type='http', auth='public', website=True, sitemap=False)
@@ -125,40 +165,51 @@ class MedIoTAuthController(http.Controller):
     def mediot_logout(self, **kwargs):
         request.session.logout(keep_db=False)
         return request.redirect('/mediot/login')
-
-    @http.route(['/mediot/switch/admin'], type='http', auth='public', website=True, sitemap=False)
-    def mediot_switch_admin(self, **kwargs):
-        request.session.logout(keep_db=True)
-        return request.redirect('/mediot/login?role=admin')
-
-    @http.route(['/mediot/switch/doctor'], type='http', auth='public', website=True, sitemap=False)
-    def mediot_switch_doctor(self, **kwargs):
-        request.session.logout(keep_db=True)
-        return request.redirect('/mediot/login?role=doctor')
-    @http.route(['/mediot/role', '/mediot/role/'], type='http', auth='public', website=True, sitemap=False)
-    def mediot_role_select(self, **kwargs):
-        return request.render('med_iot_command_center.med_role_select_page', {})
-
-    @http.route(['/mediot/current_user_greeting'], type='json', auth='user', website=False, sitemap=False)
-    def mediot_current_user_greeting(self, **kwargs):
-        user = request.env.user.sudo()
-        full_name = user.name or "User"
-        first_name = full_name.split()[0] if full_name else "User"
-
-        is_admin = user.has_group('med_iot_command_center.group_med_admin')
-        is_doctor = user.has_group('med_iot_command_center.group_med_senior_doctor')
-
-        if is_admin:
-            greeting = f"Welcome back Admin {first_name}"
-            subtitle = "Manage MedIoT operations, users, patients, and system settings."
-        elif is_doctor:
-            greeting = f"Welcome back Dr. {first_name}"
-            subtitle = "Your patient monitoring dashboard is ready."
-        else:
-            greeting = f"Welcome back {first_name}"
-            subtitle = "Welcome to MedIoT Command Center."
-
-        return {
-            "greeting": greeting,
-            "subtitle": subtitle,
+    @http.route(['/mediot-test'], type='http', auth='public', website=True, sitemap=False)
+    def mediot_test(self, **kwargs):
+        return "MEDIOT CONTROLLER IS LOADED"
+    @http.route('/login-mediot', type='http', auth='public', website=True, sitemap=False)
+    def login_mediot_direct(self, **kwargs):
+        values = {
+            "error": kwargs.get("error"),
+            "login": kwargs.get("login", ""),
+            "redirect": "/mediot/post_login",
         }
+        return request.render('med_iot_command_center.med_login_page', values)
+
+    @http.route('/signup-mediot', type='http', auth='public', website=True, sitemap=False)
+    def signup_mediot_direct(self, **kwargs):
+        values = {
+            "error": kwargs.get("error"),
+            "success": kwargs.get("success"),
+            "form_data": kwargs,
+        }
+        return request.render('med_iot_command_center.med_signup_page', values)
+
+    @http.route('/home-mediot', type='http', auth='public', website=True, sitemap=False)
+    def home_mediot_direct(self, **kwargs):
+        return request.render('med_iot_command_center.med_landing_page', {})
+
+    # MEDIOT_SWITCH_DOCTOR_START
+    @http.route('/mediot/switch/doctor', type='http', auth='public', website=True, sitemap=False)
+    def mediot_switch_doctor(self, **kw):
+        if request.env.user._is_public():
+            return request.redirect('/mediot/login?role=doctor&redirect=/mediot/switch/doctor')
+        action = request.env.ref('med_iot_command_center.action_med_dashboard').sudo()
+        menu = request.env.ref('med_iot_command_center.menu_med_dashboard').sudo()
+        return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
+    # MEDIOT_SWITCH_DOCTOR_END
+
+    # MEDIOT_SWITCH_ADMIN_START
+    @http.route('/mediot/switch/admin', type='http', auth='public', website=True, sitemap=False)
+    def mediot_switch_admin(self, **kw):
+        if request.env.user._is_public():
+            return request.redirect('/mediot/login?role=admin&redirect=/mediot/switch/admin')
+        action = request.env.ref('med_iot_command_center.action_med_admin_dashboard').sudo()
+        menu = request.env.ref('med_iot_command_center.menu_med_admin_dashboard').sudo()
+        return request.redirect(f'/web#action={action.id}&menu_id={menu.id}')
+    # MEDIOT_SWITCH_ADMIN_END
+
+
+
+

@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record id="view_med_settings_form" model="ir.ui.view">
+        <field name="name">med.settings.form</field>
+        <field name="model">med.settings</field>
+        <field name="arch" type="xml">
+            <form string="Settings">
+                <sheet>
+                    <!-- Banner -->
+                    <div style="background:linear-gradient(135deg,#5c6bc0 0%,#7986cb 50%,#9575cd 100%);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;margin:-16px -16px 24px -16px;">
+                        <div style="display:flex;align-items:center;gap:16px;">
+                            <div style="width:52px;height:52px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">⚙️</div>
+                            <div>
+                                <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;letter-spacing:.08em;">MedIoT Command Center</div>
+                                <div style="font-size:1.2rem;font-weight:700;color:#fff;">Alert Threshold Settings</div>
+                            </div>
+                        </div>
+                        <div style="font-size:.75rem;color:rgba(255,255,255,.7);">Configure vital sign alert limits</div>
+                    </div>
+
+                    <!-- Heart Rate Card -->
+                    <div style="background:#fff;border:1px solid #fee2e2;border-radius:16px;padding:18px;margin-bottom:14px;">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #fee2e2;">
+                            <div style="width:36px;height:36px;border-radius:8px;background:#fee2e2;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_ecg.png" style="width:26px;height:26px;object-fit:contain;"/></div>
+                            <div>
+                                <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;color:#ef4444;letter-spacing:.07em;">Heart Rate (ECG)</div>
+                                <div style="font-size:.7rem;color:#94a3b8;margin-top:2px;">Normal range: 60 – 100 bpm</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:6px;">🔴 Critical Min (bpm)</div>
+                                <field name="hr_critical_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#ef4444;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = immediate alert</div>
+                            </div>
+                            <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:6px;">🔴 Critical Max (bpm)</div>
+                                <field name="hr_critical_max" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#ef4444;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Above this = immediate alert</div>
+                            </div>
+                            <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#f59e0b;font-weight:700;margin-bottom:6px;">🟡 Warning Min (bpm)</div>
+                                <field name="hr_warning_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#f59e0b;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = warning alert</div>
+                            </div>
+                            <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#f59e0b;font-weight:700;margin-bottom:6px;">🟡 Warning Max (bpm)</div>
+                                <field name="hr_warning_max" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#f59e0b;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Above this = warning alert</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SpO2 Card -->
+                    <div style="background:#fff;border:1px solid #dbeafe;border-radius:16px;padding:18px;margin-bottom:14px;">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #dbeafe;">
+                            <div style="width:36px;height:36px;border-radius:8px;background:#dbeafe;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_spo2.png" style="width:26px;height:26px;object-fit:contain;"/></div>
+                            <div>
+                                <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;color:#2563eb;letter-spacing:.07em;">Blood Oxygen (SpO2)</div>
+                                <div style="font-size:.7rem;color:#94a3b8;margin-top:2px;">Normal range: 95 – 100%</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:6px;">🔴 Critical Min (%)</div>
+                                <field name="spo2_critical_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#ef4444;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = hypoxia alert</div>
+                            </div>
+                            <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#f59e0b;font-weight:700;margin-bottom:6px;">🟡 Warning Min (%)</div>
+                                <field name="spo2_warning_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#f59e0b;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = low SpO2 warning</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Temperature Card -->
+                    <div style="background:#fff;border:1px solid #ffedd5;border-radius:16px;padding:18px;margin-bottom:14px;">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #ffedd5;">
+                            <div style="width:36px;height:36px;border-radius:8px;background:#ffedd5;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="/med_iot_command_center/static/description/sensor_temp.png" style="width:26px;height:26px;object-fit:contain;"/></div>
+                            <div>
+                                <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;color:#f97316;letter-spacing:.07em;">Body Temperature</div>
+                                <div style="font-size:.7rem;color:#94a3b8;margin-top:2px;">Normal range: 36.1 – 37.2°C</div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:6px;">🔴 Critical Min (°C)</div>
+                                <field name="temp_critical_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#ef4444;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = hypothermia alert</div>
+                            </div>
+                            <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:6px;">🔴 Critical Max (°C)</div>
+                                <field name="temp_critical_max" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#ef4444;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Above this = high fever alert</div>
+                            </div>
+                            <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#f59e0b;font-weight:700;margin-bottom:6px;">🟡 Warning Min (°C)</div>
+                                <field name="temp_warning_min" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#f59e0b;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Below this = low temp warning</div>
+                            </div>
+                            <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:10px 14px;">
+                                <div style="font-size:.58rem;text-transform:uppercase;color:#f59e0b;font-weight:700;margin-bottom:6px;">🟡 Warning Max (°C)</div>
+                                <field name="temp_warning_max" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#f59e0b;background:transparent;border:none;"/>
+                                <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Above this = fever warning</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Polling Card -->
+                    <div style="background:#fff;border:1px solid #dde0f5;border-radius:16px;padding:18px;">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #eef0fb;">
+                            <div style="width:40px;height:40px;border-radius:10px;background:#eef0fb;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🔄</div>
+                            <div>
+                                <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;color:#5c6bc0;letter-spacing:.07em;">System Polling</div>
+                                <div style="font-size:.7rem;color:#94a3b8;margin-top:2px;">Dashboard auto-refresh interval</div>
+                            </div>
+                        </div>
+                        <div style="background:#f5f6fd;border:1.5px solid #dde0f5;border-radius:10px;padding:10px 14px;max-width:300px;">
+                            <div style="font-size:.58rem;text-transform:uppercase;color:#5c6bc0;font-weight:700;margin-bottom:6px;">⏱️ Check Interval (seconds)</div>
+                            <field name="check_interval_seconds" nolabel="1" style="width:100%;font-size:1rem;font-weight:700;color:#5c6bc0;background:transparent;border:none;"/>
+                            <div style="font-size:.62rem;color:#94a3b8;margin-top:4px;">Recommended: 15 seconds</div>
+                        </div>
+                    </div>
+
+                <div data-mediot-device-section="1" style="margin-top:26px;background:#fff;border:1px solid #dde0f5;border-radius:16px;overflow:hidden;">
+    <div style="padding:22px 26px;background:#f8fafc;">
+        <div style="display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:stretch;">
+            <div style="background:#fff;border:1px solid #dde0f5;border-radius:14px;padding:22px;text-align:center;">
+                <div style="width:82px;height:82px;border-radius:50%;background:#eef0fb;border:5px solid #dde3ff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;">??</div>
+                <div style="font-size:1rem;font-weight:800;color:#5c6bc0;margin-bottom:6px;">Device</div>
+                <div style="font-size:.72rem;color:#7d8db3;margin-bottom:18px;">Connection status</div>
+                <div style="border-top:1px solid #eef0fb;padding-top:16px;">
+                    <div style="font-size:.62rem;font-weight:800;text-transform:uppercase;color:#6d75d8;letter-spacing:.08em;margin-bottom:7px;">Status</div>
+                    <field name="device_status" nolabel="1" style="width:100%;text-align:center;"/>
+                </div>
+            </div>
+
+            <div style="background:#fff;border:1px solid #dde0f5;border-radius:14px;padding:22px 24px;">
+                <div style="font-size:.68rem;font-weight:900;text-transform:uppercase;color:#6d75d8;letter-spacing:.08em;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eef0fb;">Device Configuration</div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div>
+                        <div style="font-size:.62rem;text-transform:uppercase;color:#6d75d8;font-weight:900;letter-spacing:.07em;margin-bottom:7px;">MQTT Topic</div>
+                        <field name="device_uid" nolabel="1" placeholder="esp32/vitals" style="font-size:.9rem;background:#f5f6fd;border:1.5px solid #dde0f5;border-radius:10px;padding:10px 12px;width:100%;font-family:monospace;"/>
+                    </div>
+
+                    <div>
+                        <div style="font-size:.62rem;text-transform:uppercase;color:#6d75d8;font-weight:900;letter-spacing:.07em;margin-bottom:7px;">Room / Bed</div>
+                        <field name="device_room" nolabel="1" placeholder="e.g. Room-01" style="font-size:.9rem;background:#f5f6fd;border:1.5px solid #dde0f5;border-radius:10px;padding:10px 12px;width:100%;"/>
+                    </div>
+
+                    <div>
+                        <div style="font-size:.62rem;text-transform:uppercase;color:#6d75d8;font-weight:900;letter-spacing:.07em;margin-bottom:7px;">Monitoring Patient</div>
+                        <field name="device_patient_id" nolabel="1" options="{'no_create':True}" style="width:100%;"/>
+                    </div>
+
+                    <div>
+                        <div style="font-size:.62rem;text-transform:uppercase;color:#6d75d8;font-weight:900;letter-spacing:.07em;margin-bottom:7px;">Last Seen</div>
+                        <field name="device_last_seen" nolabel="1" readonly="1" style="font-size:.9rem;background:#f5f6fd;border:1.5px solid #dde0f5;border-radius:10px;padding:10px 12px;width:100%;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #dde0f5;border-radius:14px;padding:18px 22px;margin-top:20px;">
+            <div style="font-size:.68rem;font-weight:900;text-transform:uppercase;color:#6d75d8;letter-spacing:.08em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #eef0fb;">Onboard Sensors</div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+                <div style="border:1px solid #fecaca;border-radius:12px;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#fff5f5,#fee2e2);">
+                    <div style="font-size:1.7rem;margin-bottom:8px;">??</div>
+                    <div style="font-size:.78rem;font-weight:800;color:#991b1b;">AD8232</div>
+                    <div style="font-size:.65rem;color:#ef4444;margin-top:3px;">ECG Monitor</div>
+                    <div style="margin-top:10px;display:inline-block;background:#991b1b;color:#fff;font-size:.58rem;font-weight:800;padding:4px 10px;border-radius:20px;">ACTIVE</div>
+                </div>
+
+                <div style="border:1px solid #a7f3d0;border-radius:12px;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#f0fff8,#dcfce7);">
+                    <div style="font-size:1.7rem;margin-bottom:8px;">??</div>
+                    <div style="font-size:.78rem;font-weight:800;color:#166534;">MAX30102</div>
+                    <div style="font-size:.65rem;color:#16a34a;margin-top:3px;">SpO2 + Heart Rate</div>
+                    <div style="margin-top:10px;display:inline-block;background:#166534;color:#fff;font-size:.58rem;font-weight:800;padding:4px 10px;border-radius:20px;">ACTIVE</div>
+                </div>
+
+                <div style="border:1px solid #fed7aa;border-radius:12px;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#fffaf0,#ffedd5);">
+                    <div style="font-size:1.7rem;margin-bottom:8px;">???</div>
+                    <div style="font-size:.78rem;font-weight:800;color:#9a3412;">DS18B20</div>
+                    <div style="font-size:.65rem;color:#ea580c;margin-top:3px;">Body Temperature</div>
+                    <div style="margin-top:10px;display:inline-block;background:#9a3412;color:#fff;font-size:.58rem;font-weight:800;padding:4px 10px;border-radius:20px;">ACTIVE</div>
+                </div>
+
+                <div style="border:1px solid #c5cae9;border-radius:12px;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#f5f6fd,#eef0fb);">
+                    <div style="font-size:1.7rem;margin-bottom:8px;">??</div>
+                    <div style="font-size:.78rem;font-weight:800;color:#3949ab;">LCD 1602</div>
+                    <div style="font-size:.65rem;color:#5c6bc0;margin-top:3px;">Patient Display</div>
+                    <div style="margin-top:10px;display:inline-block;background:#3949ab;color:#fff;font-size:.58rem;font-weight:800;padding:4px 10px;border-radius:20px;">ACTIVE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_med_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">med.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'search_default_singleton': 1}</field>
+    </record>
+</odoo>

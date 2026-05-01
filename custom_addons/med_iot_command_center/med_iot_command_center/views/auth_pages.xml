@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="med_landing_page" name="MedIoT Landing Page">
         <t t-call="website.layout">
             <div class="med_video_page">
 
                 <section class="med_video_hero">
-                    <img class="med_video_bg" src="/med_iot_command_center/static/description/hero_new.jpg?v=2" alt="Medical background"/>
-                    <div class="med_video_overlay"></div>
+                <video class="mediot_hero_video_clean"
+       autoplay="autoplay"
+       muted="muted"
+       loop="loop"
+       playsinline="playsinline"
+       preload="auto">
+    <source src="/med_iot_command_center/static/description/hero.mp4?v=clean1" type="video/mp4"/>
+</video>
+                <div class="med_video_overlay"></div>
 
                     <header class="med_video_nav">
                         <div class="med_video_brand">
@@ -27,14 +34,12 @@
 
                     <div class="med_video_content">
                         <h1 class="med_fixed_title">
-                            <span class="med_line">Transform Mental</span>
-                            <span class="med_line">Health Care with <span class="med_orange_inline">AI</span></span>
-                            <span class="med_line med_orange_line">&amp; IoT Solutions</span>
+                            <span class="med_line">Medical Belt with <span class="med_orange_inline">AI</span></span>
+                            <span class="med_line med_orange_line">for Rapid Intervention</span>
                         </h1>
 
                         <p>
-                            Personalized therapeutic progress tracking at your fingertips.<br/>
-                            Empowering patients and healthcare providers with innovative tools.
+                            Real-time monitoring of SpO2, temperature and ECG inside hospitals.<br/>Affordable AI-powered alerts for faster medical intervention.
                         </p>
 
                         <div class="med_video_actions">
@@ -43,29 +48,20 @@
                         </div>
                     </div>
 
-                    <div class="med_video_stats">
+                    <div class="med_video_stats" style="width:48% !important; max-width:680px !important; padding:12px 22px !important; margin:22px 0 0 0 !important; border-radius:18px !important; display:flex !important; justify-content:space-around !important;">
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="200"
-                                 data-suffix="+"
-                                 data-duration="2000">0+</div>
-                            <div class="med_video_stat_label">Patients Monitored</div>
+                            <div class="med_video_stat_num" style="font-size:30px !important; line-height:1 !important;">0+</div>
+                            <div class="med_video_stat_label" style="font-size:12px !important; margin-top:5px !important;">Patients Monitored</div>
                         </div>
 
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="15"
-                                 data-suffix="+"
-                                 data-duration="1400">0+</div>
-                            <div class="med_video_stat_label">Doctors Onboarded</div>
+                            <div class="med_video_stat_num" style="font-size:30px !important; line-height:1 !important;">0+</div>
+                            <div class="med_video_stat_label" style="font-size:12px !important; margin-top:5px !important;">Doctors Onboarded</div>
                         </div>
 
                         <div class="med_video_stat">
-                            <div class="med_video_stat_num"
-                                 data-target="500"
-                                 data-suffix="+"
-                                 data-duration="2200">0+</div>
-                            <div class="med_video_stat_label">Active Patients</div>
+                            <div class="med_video_stat_num" style="font-size:30px !important; line-height:1 !important;">0+</div>
+                            <div class="med_video_stat_label" style="font-size:12px !important; margin-top:5px !important;">Active Patients</div>
                         </div>
                     </div>
                 </section>
@@ -243,5 +239,21 @@
 
             </div>
         </t>
-    </template>
+        <script type="text/javascript" src="/med_iot_command_center/static/src/js/force_play_hero_video.js?v=play4"></script>
+</template>
 </odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

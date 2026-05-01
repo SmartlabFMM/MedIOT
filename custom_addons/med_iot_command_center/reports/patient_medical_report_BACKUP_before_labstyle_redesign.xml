@@ -1,0 +1,343 @@
+<odoo>
+    <record id="action_report_patient_medical" model="ir.actions.report">
+        <field name="name">Patient Medical Report</field>
+        <field name="model">med.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">med_iot_command_center.report_patient_medical_document</field>
+        <field name="report_file">med_iot_command_center.report_patient_medical_document</field>
+        <field name="binding_model_id" ref="model_med_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_patient_medical_document">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <style>
+                    .mediot-report {
+                        font-family: Arial, sans-serif;
+                        color: #26364f;
+                        font-size: 13px;
+                    }
+
+                    .mediot-header {
+                        background: #2F456D;
+                        color: #ffffff;
+                        padding: 22px 26px;
+                        border-radius: 14px 14px 0 0;
+                    }
+
+                    .brand-row {
+                        width: 100%;
+                    }
+
+                    .brand-name {
+                        font-size: 26px;
+                        font-weight: 800;
+                        letter-spacing: .4px;
+                    }
+
+                    .brand-subtitle {
+                        margin-top: 4px;
+                        font-size: 12px;
+                        opacity: .9;
+                    }
+
+                    .document-badge {
+                        text-align: right;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        font-weight: 700;
+                    }
+
+                    .report-title {
+                        background: #f5f7fb;
+                        padding: 22px 26px;
+                        border-left: 1px solid #e4e9f2;
+                        border-right: 1px solid #e4e9f2;
+                    }
+
+                    .report-title h1 {
+                        margin: 0;
+                        font-size: 26px;
+                        color: #203553;
+                    }
+
+                    .report-title p {
+                        margin: 6px 0 0;
+                        color: #687792;
+                        font-size: 13px;
+                    }
+
+                    .section {
+                        border: 1px solid #e4e9f2;
+                        border-radius: 12px;
+                        margin-top: 18px;
+                        overflow: hidden;
+                    }
+
+                    .section-title {
+                        background: #f8fafd;
+                        color: #2F456D;
+                        font-weight: 800;
+                        padding: 12px 16px;
+                        border-bottom: 1px solid #e4e9f2;
+                        font-size: 15px;
+                    }
+
+                    .section-body {
+                        padding: 14px 16px;
+                    }
+
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+
+                    .info-table td {
+                        padding: 9px 8px;
+                        border-bottom: 1px solid #eef2f7;
+                        vertical-align: top;
+                    }
+
+                    .info-table tr:last-child td {
+                        border-bottom: none;
+                    }
+
+                    .label {
+                        color: #6c7a91;
+                        font-size: 12px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: .4px;
+                        width: 25%;
+                    }
+
+                    .value {
+                        color: #203553;
+                        font-weight: 700;
+                    }
+
+                    .status-badge {
+                        display: inline-block;
+                        padding: 6px 12px;
+                        border-radius: 999px;
+                        font-size: 12px;
+                        font-weight: 800;
+                        text-transform: uppercase;
+                    }
+
+                    .status-critical {
+                        background: #ffe8e8;
+                        color: #b42318;
+                    }
+
+                    .status-warning {
+                        background: #fff4d8;
+                        color: #a15c00;
+                    }
+
+                    .status-stable {
+                        background: #e8f7ef;
+                        color: #137547;
+                    }
+
+                    .vitals-table {
+                        width: 100%;
+                        border-collapse: separate;
+                        border-spacing: 10px;
+                        margin: -10px;
+                    }
+
+                    .vital-card {
+                        background: #f8fafd;
+                        border: 1px solid #e4e9f2;
+                        border-radius: 12px;
+                        padding: 16px;
+                        text-align: center;
+                    }
+
+                    .vital-label {
+                        color: #6c7a91;
+                        font-size: 12px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: .4px;
+                    }
+
+                    .vital-value {
+                        margin-top: 8px;
+                        color: #2F456D;
+                        font-size: 24px;
+                        font-weight: 900;
+                    }
+
+                    .clinical-note {
+                        background: #fbfcff;
+                        border: 1px solid #e4e9f2;
+                        border-radius: 12px;
+                        padding: 14px 16px;
+                        margin-top: 18px;
+                        color: #5f6f89;
+                        line-height: 1.55;
+                    }
+
+                    .signature-table {
+                        width: 100%;
+                        margin-top: 28px;
+                        border-collapse: collapse;
+                    }
+
+                    .signature-box {
+                        width: 48%;
+                        border-top: 1px solid #aab5c6;
+                        padding-top: 8px;
+                        color: #6c7a91;
+                        font-size: 12px;
+                    }
+
+                    .footer {
+                        margin-top: 24px;
+                        padding-top: 12px;
+                        border-top: 1px solid #e4e9f2;
+                        color: #7b8799;
+                        font-size: 11px;
+                        text-align: center;
+                    }
+                </style>
+
+                <div class="mediot-report">
+                    <div class="mediot-header">
+                        <table class="brand-row">
+                            <tr>
+                                <td>
+                                    <div class="brand-name">MedIoT</div>
+                                    <div class="brand-subtitle">Smart care ? Real-time monitoring ? Connected clinical support</div>
+                                </td>
+                                <td class="document-badge">
+                                    Medical Report
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="report-title">
+                        <h1>Patient Medical Monitoring Report</h1>
+                        <p>Prepared for clinical review and follow-up decision support.</p>
+                    </div>
+
+                    <t t-set="status_class" t-value="'status-critical' if o.status == 'critical' else ('status-warning' if o.status == 'warning' else 'status-stable')"/>
+
+                    <div class="section">
+                        <div class="section-title">Patient Information</div>
+                        <div class="section-body">
+                            <table class="info-table">
+                                <tr>
+                                    <td class="label">Patient ID</td>
+                                    <td class="value">
+                                        <span t-esc="o.ref or 'N/A'"/>
+                                    </td>
+                                    <td class="label">Status</td>
+                                    <td class="value">
+                                        <span t-attf-class="status-badge {{ status_class }}">
+                                            <span t-esc="o.status or 'N/A'"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Full Name</td>
+                                    <td class="value">
+                                        <span t-esc="o.name or 'N/A'"/>
+                                    </td>
+                                    <td class="label">Age</td>
+                                    <td class="value">
+                                        <span t-esc="o.age or 'N/A'"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Gender</td>
+                                    <td class="value">
+                                        <span t-esc="o.gender or 'N/A'"/>
+                                    </td>
+                                    <td class="label">Room</td>
+                                    <td class="value">
+                                        <span t-esc="o.room or 'N/A'"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Generated</td>
+                                    <td class="value">
+                                        <span t-field="o.write_date"/>
+                                    </td>
+                                    <td class="label">Last Reading</td>
+                                    <td class="value">
+                                        <t t-if="o.latest_reading_at">
+                                            <span t-field="o.latest_reading_at"/>
+                                        </t>
+                                        <t t-else="">N/A</t>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Latest Vital Signs</div>
+                        <div class="section-body">
+                            <table class="vitals-table">
+                                <tr>
+                                    <td class="vital-card">
+                                        <div class="vital-label">SpO2</div>
+                                        <div class="vital-value">
+                                            <t t-if="o.latest_spo2">
+                                                <span t-esc="o.latest_spo2"/>%
+                                            </t>
+                                            <t t-else="">N/A</t>
+                                        </div>
+                                    </td>
+                                    <td class="vital-card">
+                                        <div class="vital-label">Heart Rate</div>
+                                        <div class="vital-value">
+                                            <t t-if="o.latest_ecg_bpm">
+                                                <span t-esc="o.latest_ecg_bpm"/> bpm
+                                            </t>
+                                            <t t-else="">N/A</t>
+                                        </div>
+                                    </td>
+                                    <td class="vital-card">
+                                        <div class="vital-label">Temperature</div>
+                                        <div class="vital-value">
+                                            <t t-if="o.latest_temp">
+                                                <span t-esc="o.latest_temp"/> ?C
+                                            </t>
+                                            <t t-else="">N/A</t>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="clinical-note">
+                        <strong>Clinical note:</strong>
+                        This document summarizes the latest available monitoring data from the MedIoT platform.
+                        It should support, not replace, medical judgment by the responsible healthcare professional.
+                    </div>
+
+                    <table class="signature-table">
+                        <tr>
+                            <td class="signature-box">Doctor signature</td>
+                            <td style="width:4%;"/>
+                            <td class="signature-box">Clinical service stamp</td>
+                        </tr>
+                    </table>
+
+                    <div class="footer">
+                        MedIoT confidential report ? Generated from the connected patient monitoring dashboard
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+</template></odoo>

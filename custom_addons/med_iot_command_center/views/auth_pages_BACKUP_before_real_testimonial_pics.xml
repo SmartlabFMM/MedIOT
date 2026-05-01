@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="med_landing_page" name="MedIoT Landing Page">
+        <t t-call="website.layout">
+            <div class="med_video_page">
+
+                <section class="med_video_hero">
+                    <img class="med_video_bg" src="/med_iot_command_center/static/description/hero_new.jpg?v=2" alt="Medical background"/>
+                    <div class="med_video_overlay"></div>
+
+                    <header class="med_video_nav">
+                        <div class="med_video_brand">
+                            <div class="med_video_brand_icon med_video_heart_logo"><span>♡</span></div>
+                            <div class="med_video_brand_text">MedIoT</div>
+                        </div>
+
+                        <nav class="med_video_menu">
+                            <a href="#why">Why?</a>
+                            <a href="#services">Services</a>
+                            <a href="#contact">Contact Us</a>
+                            <a href="/mediot/role" class="med_video_btn ghost">Login</a>
+                            <a href="/mediot/signup" class="med_video_btn solid">Sign Up</a>
+                        </nav>
+                    </header>
+
+                    <div class="med_video_content">
+<h1 style="margin:0; font-size:52px; line-height:1.02; font-weight:800; letter-spacing:-1px;">
+    <span style="display:block; white-space:nowrap; color:#ffffff;">Transform Mental</span>
+    <span style="display:block; white-space:nowrap; color:#ffffff;">
+        Health Care with <span style="color:#f28b58;">AI</span>
+    </span>
+    <span style="display:block; white-space:nowrap; color:#f28b58;">&amp; IoT Solutions</span>
+</h1>
+
+                        <p>
+                            Personalized therapeutic progress tracking at your fingertips.<br/>
+                            Empowering patients and healthcare providers with innovative tools.
+                        </p>
+
+                        <div class="med_video_actions">
+                            <a href="/mediot/role" class="med_video_cta primary">Get Started</a>
+                            <a href="#services" class="med_video_cta secondary">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="med_video_stats">
+                        <div class="med_video_stat">
+                            <div class="med_video_stat_num">200+</div>
+                            <div class="med_video_stat_label">Patients Monitored</div>
+                        </div>
+                        <div class="med_video_stat">
+                            <div class="med_video_stat_num">15+</div>
+                            <div class="med_video_stat_label">Doctors Onboarded</div>
+                        </div>
+                        <div class="med_video_stat">
+                            <div class="med_video_stat_num">500+</div>
+                            <div class="med_video_stat_label">Active Patients</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="why" class="med_section med_section_light">
+                    <div class="med_section_intro">
+                        <span class="med_tag">Why MedIoT</span>
+                        <h2>Healthcare intelligence designed for real-time monitoring</h2>
+                        <p>
+                            MedIoT combines AI, patient dashboards, and IoT integration to give doctors
+                            a clear and connected view of every patient.
+                        </p>
+                    </div>
+
+                    <div class="med_feature_grid">
+                        <div class="med_feature_card">
+                            <div class="med_feature_icon">♡</div>
+                            <h3>Real-Time Patient Progress</h3>
+                            <p>
+                                Track patient condition, therapy effectiveness, and vital changes with
+                                continuous monitoring and personalized insights.
+                            </p>
+                        </div>
+
+                        <div class="med_feature_card featured">
+                            <div class="med_feature_icon">🧠</div>
+                            <h3>AI-Powered Personalization</h3>
+                            <p>
+                                Our advanced AI algorithms analyze patient data to create tailored follow-up
+                                recommendations and smarter care decisions.
+                            </p>
+                        </div>
+
+                        <div class="med_feature_card">
+                            <div class="med_feature_icon">⌚</div>
+                            <h3>IoT Integration</h3>
+                            <p>
+                                Seamlessly connect wearable and bedside devices to monitor critical health
+                                metrics in one centralized platform.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="services" class="med_section med_section_alt">
+                    <div class="med_section_intro">
+                        <span class="med_tag">Services</span>
+                        <h2>What MedIoT helps you do</h2>
+                        <p>
+                            From patient tracking to alert management, the platform is built to support daily
+                            medical workflows with a cleaner, modern interface.
+                        </p>
+                    </div>
+
+                    <div class="med_testimonial_grid">
+                        <div class="med_testimonial_card">
+                            <div class="med_avatar">SJ</div>
+                            <div class="med_badge">40% faster response</div>
+                            <p>
+                                "MedIoT helped us react to patient changes much faster. The centralized insights
+                                made a real difference in clinical follow-up."
+                            </p>
+                            <h4>Sarah Johnson</h4>
+                            <span>Patient Coordinator</span>
+                            <a href="#">See Detail</a>
+                        </div>
+
+                        <div class="med_testimonial_card">
+                            <div class="med_avatar">MC</div>
+                            <div class="med_badge">62% better adherence</div>
+                            <p>
+                                "My patients show better treatment adherence when using MedIoT's real-time
+                                monitoring and feedback system."
+                            </p>
+                            <h4>Dr. Michael Chen</h4>
+                            <span>Physician</span>
+                            <a href="#">See Detail</a>
+                        </div>
+
+                        <div class="med_testimonial_card">
+                            <div class="med_avatar">TW</div>
+                            <div class="med_badge">51% well-being improvement</div>
+                            <p>
+                                "The IoT integration gave us continuous visibility into patient trends and helped
+                                identify risk patterns earlier."
+                            </p>
+                            <h4>Thomas Wright</h4>
+                            <span>Patient</span>
+                            <a href="#">See Detail</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="med_section med_section_light">
+                    <div class="med_contact_wrap">
+                        <div class="med_contact_quote">
+                            <span class="med_tag">Contact Us</span>
+                            <h2>Smart care starts with connected support</h2>
+                            <p>
+                                Whether you are a doctor, administrator, or project supervisor, MedIoT helps
+                                you manage patient data and medical monitoring more effectively.
+                            </p>
+                            <blockquote>
+                                “Technology should simplify healthcare work, not complicate it.”
+                            </blockquote>
+                        </div>
+
+                        <div class="med_contact_form">
+                            <div class="med_form_row">
+                                <input type="text" placeholder="Your name"/>
+                            </div>
+                            <div class="med_form_row">
+                                <input type="email" placeholder="Your email"/>
+                            </div>
+                            <div class="med_form_row">
+                                <textarea rows="5" placeholder="Write your message..."></textarea>
+                            </div>
+                            <button type="button">Send Message</button>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="med_footer">
+                    <div class="med_footer_grid">
+                        <div class="med_footer_brand">
+                            <div class="med_footer_logo">
+                                <span>M</span>
+                                <strong>MedIoT</strong>
+                            </div>
+                            <p>Smart care. Real-time monitoring. Connected clinical support.</p>
+                        </div>
+
+                        <div>
+                            <h4>Services</h4>
+                            <ul>
+                                <li>Vital Monitoring</li>
+                                <li>Medical Dashboards</li>
+                                <li>Doctor Follow-up</li>
+                                <li>Case Management</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4>Contact</h4>
+                            <ul>
+                                <li>+216 00 000 000</li>
+                                <li>contact@mediot.health</li>
+                                <li>Tunis, Tunisia</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4>Follow Us</h4>
+                            <div class="med_socials">
+                                <span>IG</span>
+                                <span>FB</span>
+                                <span>TW</span>
+                                <span>IN</span>
+                            </div>
+
+                            <div class="med_newsletter">
+                                <p>Subscribe for platform updates and wellness insights.</p>
+                                <div class="med_newsletter_box">
+                                    <input type="email" placeholder="Your email"/>
+                                    <button type="button">Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="med_footer_bottom">
+                        © 2026 MedIoT. All rights reserved.
+                    </div>
+                </footer>
+
+            </div>
+        </t>
+    </template>
+        <script src="/med_iot_command_center/static/src/js/landing_feature_cards.js"></script>
+</odoo>

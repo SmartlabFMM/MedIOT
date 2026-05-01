@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <record id="med_settings_singleton" model="med.settings">
         <field name="name">Alert Threshold Settings</field>
@@ -31,10 +31,7 @@
                             <div class="mediot_device_showcase">
                                 <div class="device_visual device_identity_card">
                                     <div class="device_identity_icon_wrap">
-                                        <img src="/med_iot_command_center/static/description/critical-v2.png" alt="Device" class="device_identity_img" />
-                                    </div>
-                                    <div class="device_identity_name_box">
-                                        <field name="device_name" nolabel="1" placeholder="Device name" />
+                                        <img src="/med_iot_command_center/static/description/critical-v2-cropped.png" alt="Device" class="device_identity_img" />
                                     </div>
                                     <div class="device_identity_title">ESP32 Wearable Unit</div>
                                     <div class="device_status_line">
@@ -60,7 +57,7 @@
                                     <div class="settings_input_card readonly">
                                         <div class="input_label">Last Seen</div>
                                         <field name="device_last_seen" nolabel="1" readonly="1" />
-                                        <div class="input_hint">Last device ping received by the system.</div>
+                                        <div class="input_hint">Shows the latest ping received from the ESP32 wearable unit. If empty, the device has not sent data yet.</div>
                                     </div>
                                 </div>
                             </div>
@@ -205,3 +202,4 @@
         <field name="target">current</field>
     </record>
 </odoo>
+

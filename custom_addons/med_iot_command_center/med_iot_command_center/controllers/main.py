@@ -1,8 +1,14 @@
-from odoo import http
+﻿from odoo import http
 from odoo.http import request
 
 
 class MedIoTAuthController(http.Controller):
+    # MEDIOT_ROLE_ROUTE_START
+    @http.route(['/mediot/role', '/mediot/role/'], type='http', auth='public', website=True, sitemap=False)
+    def med_role_select(self, **kw):
+        return request.render('med_iot_command_center.med_role_select_page')
+    # MEDIOT_ROLE_ROUTE_END
+
 
     @http.route(['/mediot', '/mediot/'], type='http', auth='public', website=True, sitemap=False)
     def mediot_landing(self, **kwargs):

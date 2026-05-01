@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
 <template id="med_landing_page" name="MedIoT Landing Page">
@@ -6,8 +6,15 @@
             <div class="med_video_page">
 
                 <section class="med_video_hero">
-                    <img class="med_video_bg" src="/med_iot_command_center/static/description/hero_new.jpg?v=2" alt="Medical background"/>
-                    <div class="med_video_overlay"></div>
+                <video class="mediot_hero_video_clean" poster="/med_iot_command_center/static/description/hero_new.jpg"
+       autoplay="autoplay"
+       muted="muted"
+       loop="loop"
+       playsinline="playsinline"
+       preload="auto">
+    <source src="/med_iot_command_center/static/description/hero.mp4?v=clean1" type="video/mp4"/>
+</video>
+                <div class="med_video_overlay"></div>
 
                     <header class="med_video_nav">
                         <div class="med_video_brand">
@@ -26,16 +33,14 @@
 
                     <div class="med_video_content">
 <h1 style="margin:0; font-size:52px; line-height:1.02; font-weight:800; letter-spacing:-1px;">
-    <span style="display:block; white-space:nowrap; color:#ffffff;">Transform Mental</span>
     <span style="display:block; white-space:nowrap; color:#ffffff;">
-        Health Care with <span style="color:#f28b58;">AI</span>
+        Medical Belt with <span style="color:#f28b58;">AI</span>
     </span>
-    <span style="display:block; white-space:nowrap; color:#f28b58;">&amp; IoT Solutions</span>
+    <span style="display:block; white-space:nowrap; color:#f28b58;">for Rapid Intervention</span>
 </h1>
 
                         <p>
-                            Personalized therapeutic progress tracking at your fingertips.<br/>
-                            Empowering patients and healthcare providers with innovative tools.
+                            Real-time monitoring of SpO2, temperature and ECG inside hospitals.<br/>Affordable AI-powered alerts for faster medical intervention.
                         </p>
 
                         <div class="med_video_actions">
@@ -238,6 +243,39 @@
             </div>
         </t>
         <script type="text/javascript" src="/med_iot_command_center/static/src/js/landing_stats_counter.js"></script>
+        <script type="text/javascript" src="/med_iot_command_center/static/src/js/force_play_hero_video.js?v=play4"></script>
 </template>
     </data>
 </odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

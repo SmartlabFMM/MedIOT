@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="med_admin_dashboard_singleton" model="med.admin.dashboard">
+        <field name="name">Admin Dashboard</field>
+    </record>
+
+    <record id="view_med_admin_dashboard_form" model="ir.ui.view">
+        <field name="name">med.admin.dashboard.form</field>
+        <field name="model">med.admin.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Admin Dashboard" create="0" edit="0" delete="0">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Admin Dashboard</h1>
+                        <p style="color:#64748b;font-size:15px;">
+                            Manage doctors, patients, alerts, and connected IoT devices.
+                        </p>
+                    </div>
+
+                    <div class="row" style="margin-top:18px;">
+                        <div class="col-12 col-md-3">
+                            <button name="action_open_doctors" type="object" class="oe_stat_button" icon="fa-user-md">
+                                <field name="doctor_count" widget="statinfo" string="Doctors"/>
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button name="action_open_patients" type="object" class="oe_stat_button" icon="fa-users">
+                                <field name="patient_count" widget="statinfo" string="Patients"/>
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button name="action_open_alerts" type="object" class="oe_stat_button" icon="fa-exclamation-triangle">
+                                <field name="pending_alert_count" widget="statinfo" string="Pending Alerts"/>
+                            </button>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button name="action_open_devices" type="object" class="oe_stat_button" icon="fa-microchip">
+                                <field name="online_device_count" widget="statinfo" string="Online Devices"/>
+                            </button>
+                        </div>
+                    </div>
+
+                    <group string="High Priority">
+                        <group string="Critical Patients">
+                            <field name="critical_patient_ids" nolabel="1" readonly="1">
+                                <list create="0" edit="0" delete="0">
+                                    <field name="ref"/>
+                                    <field name="name"/>
+                                    <field name="room"/>
+                                    <field name="latest_spo2"/>
+                                    <field name="latest_ecg_bpm"/>
+                                    <field name="latest_temp"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </group>
+
+                        <group string="Recent Alerts">
+                            <field name="recent_alert_ids" nolabel="1" readonly="1">
+                                <list create="0" edit="0" delete="0">
+                                    <field name="create_date"/>
+                                    <field name="patient_id"/>
+                                    <field name="alert_type"/>
+                                    <field name="severity"/>
+                                    <field name="state"/>
+                                    <field name="message"/>
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+
+                    <group string="Doctor Management">
+                        <field name="doctor_ids" nolabel="1" readonly="1">
+                            <list create="0" edit="0" delete="0">
+                                <field name="name"/>
+                                <field name="login"/>
+                                <field name="email"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_med_admin_dashboard" model="ir.actions.act_window">
+        <field name="name">Admin Dashboard</field>
+        <field name="res_model">med.admin.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_med_admin_dashboard_form"/>
+        <field name="res_id" ref="med_admin_dashboard_singleton"/>
+        <field name="target">current</field>
+    </record>
+</odoo>
