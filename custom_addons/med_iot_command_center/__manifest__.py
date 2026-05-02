@@ -23,6 +23,7 @@
         'views/menus.xml',
           'reports/patient_medical_report.xml'],
  'assets': {'web.assets_backend': [
+            'med_iot_command_center/static/src/css/ai_cvd_style.css',
             'med_iot_command_center/static/src/css/backend_grey_fix.css',
             'med_iot_command_center/static/src/css/settings_admin_control.css',            'med_iot_command_center/static/src/css/patient_match_pic2.css','med_iot_command_center/static/src/js/personal_greeting.js',
                                    'med_iot_command_center/static/src/js/dashboard.js',
@@ -44,5 +45,7 @@
  'application': True,
  'images': ['static/description/icon.png'],
  'license': 'LGPL-3'}
+
+
 
 

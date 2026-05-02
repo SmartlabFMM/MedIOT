@@ -134,7 +134,8 @@ class MedDashboard extends Component {
             const patients = await this.orm.searchRead(
                 "med.patient", [],
                 ["name", "ref", "age", "room", "status",
-                 "latest_spo2", "latest_ecg_bpm", "latest_reading_at", "pending_alert_count", "image_128"],
+                 "latest_spo2", "latest_ecg_bpm", "latest_temp", "latest_reading_at", "pending_alert_count", "image_128",
+                 "arrhythmia_risk", "arrhythmia_ecg_class", "arrhythmia_confidence", "arrhythmia_alert"],
                 { order: "status desc, latest_reading_at desc" }
             );
             const alerts  = await this.orm.searchCount("med.alert", [["state", "=", "new"]]);
@@ -226,7 +227,10 @@ class MedDashboard extends Component {
                 p.status,
                 p.latest_spo2,
                 p.latest_ecg_bpm,
-                p.latest_temp
+                p.latest_temp,
+                p.arrhythmia_risk,
+                p.arrhythmia_ecg_class,
+                p.arrhythmia_confidence
             ].join(" ").toLowerCase();
 
             const matchesSearch = !q || searchable.includes(q);

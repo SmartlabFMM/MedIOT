@@ -759,3 +759,51 @@ body,
     min-height: 100vh !important;
     overflow: visible !important;
 }
+
+
+/* ARRHYTHMIA_DASHBOARD_BADGE_START */
+.lpm_ai_badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 118px !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    border: 1px solid #e2e8f0 !important;
+    background: #f8fafc !important;
+    color: #64748b !important;
+}
+
+.lpm_ai_low {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+    border-color: #bbf7d0 !important;
+}
+
+.lpm_ai_medium {
+    background: #fef3c7 !important;
+    color: #92400e !important;
+    border-color: #fde68a !important;
+}
+
+.lpm_ai_high {
+    background: #ffedd5 !important;
+    color: #9a3412 !important;
+    border-color: #fed7aa !important;
+}
+
+.lpm_ai_critical {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    border-color: #fecaca !important;
+}
+
+.lpm_ai_unknown {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+    border-color: #e2e8f0 !important;
+}
+/* ARRHYTHMIA_DASHBOARD_BADGE_END */

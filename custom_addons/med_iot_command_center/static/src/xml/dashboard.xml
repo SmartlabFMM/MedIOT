@@ -123,6 +123,7 @@
                                     <th>Patient ID</th>
                                     <th>Age</th>
                                     <th>Condition</th>
+                                    <th>ECG AI</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -166,6 +167,17 @@
                                                     <t t-esc="p.latest_ecg_bpm"/> BPM
                                                 </t>
                                                 <t t-else="">Monitoring</t>
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span t-att-class="'lpm_ai_badge lpm_ai_' + (p.arrhythmia_risk || 'unknown')">
+                                                <t t-if="p.arrhythmia_risk &amp;&amp; p.arrhythmia_risk !== 'unknown'">
+                                                    <t t-esc="p.arrhythmia_ecg_class || 'ECG'"/> ·
+                                                    <t t-esc="p.arrhythmia_risk.charAt(0).toUpperCase() + p.arrhythmia_risk.slice(1)"/>
+                                                    <t t-if="p.arrhythmia_confidence"> · <t t-esc="p.arrhythmia_confidence"/>%</t>
+                                                </t>
+                                                <t t-else="">Not computed</t>
                                             </span>
                                         </td>
 

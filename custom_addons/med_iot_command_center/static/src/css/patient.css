@@ -2581,3 +2581,70 @@
     display: block !important;
     background: #f8fafc !important;
 }
+
+ /* FORCE REAL PATIENT PHOTOS IN KANBAN */
+.mediot_patient_avatar_box_force::before,
+.mediot_patient_avatar_box_force::after,
+.mediot_patient_avatar_fallback_force {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.mediot_patient_avatar_box_force {
+    position: relative !important;
+    overflow: hidden !important;
+    background: transparent !important;
+}
+
+.mediot_patient_avatar_box_force > img.mediot_patient_avatar_force {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 20 !important;
+    width: 76px !important;
+    height: 76px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* === FORCE_REAL_PATIENT_KANBAN_PHOTOS_START === */
+.mediot_patient_avatar_box_force {
+    position: relative !important;
+    width: 76px !important;
+    height: 76px !important;
+    min-width: 76px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    background: transparent !important;
+}
+
+.mediot_patient_avatar_box_force::before,
+.mediot_patient_avatar_box_force::after,
+.mediot_patient_avatar_fallback_force,
+.mediot-patient-avatar-fallback {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.mediot_patient_avatar_box_force > img.mediot_patient_avatar_force {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 99 !important;
+    width: 76px !important;
+    height: 76px !important;
+    min-width: 76px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 3px solid #ffffff !important;
+    box-shadow: 0 6px 16px rgba(15,23,42,.14) !important;
+}
+/* === FORCE_REAL_PATIENT_KANBAN_PHOTOS_END === */
+

@@ -1097,7 +1097,7 @@
 .med_admin_users_table .badge.text-bg-info,
 .med_admin_users_table .badge.bg-info,
 .med_admin_users_table .text-bg-info {
-    background: #446A9C !important;
+    background: #8CACD3 !important;
     color: #ffffff !important;
 }
 
@@ -1334,7 +1334,7 @@
 
 /* Avatar: less turquoise, more palette-clean */
 .med_user_modal_avatar {
-    background: #DCECF7 !important;
+    background: #B6D8F2 !important;
     color: #00002A !important;
     box-shadow: inset 0 0 0 1px rgba(26, 63, 117, 0.12), 0 14px 28px rgba(0, 0, 42, 0.16) !important;
 }
@@ -1397,7 +1397,7 @@
 .modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-info,
 .modal-content:has(.med_user_modal_form) .med_user_modal_role .text-bg-info,
 .modal-content:has(.med_user_modal_form) .med_user_modal_role_big .text-bg-info {
-    background: #446A9C !important;
+    background: #8CACD3 !important;
     color: #ffffff !important;
 }
 
@@ -1412,7 +1412,7 @@
 .modal-content:has(.med_user_modal_form) .med_user_modal_role_big .badge.bg-secondary,
 .modal-content:has(.med_user_modal_form) .med_user_modal_role .text-bg-muted,
 .modal-content:has(.med_user_modal_form) .med_user_modal_role_big .text-bg-muted {
-    background: #DCECF7 !important;
+    background: #B6D8F2 !important;
     color: #00002A !important;
 }
 
@@ -1980,9 +1980,9 @@
 .med_user_role_page_list .badge.bg-primary,
 .med_user_modal_role .badge.bg-primary,
 .med_user_modal_role_big .badge.bg-primary {
-    background: #243A8F !important;
+    background: #5784BA !important;
     color: #ffffff !important;
-    border: 1px solid rgba(255,255,255,0.18) !important;
+    border: 1px solid rgba(87,132,186,0.35) !important;
 }
 
 /* Doctor role */
@@ -1994,9 +1994,9 @@
 .med_user_role_page_list .badge.bg-info,
 .med_user_modal_role .badge.bg-info,
 .med_user_modal_role_big .badge.bg-info {
-    background: #446A9C !important;
+    background: #8CACD3 !important;
     color: #ffffff !important;
-    border: 1px solid rgba(68,106,156,0.25) !important;
+    border: 1px solid rgba(140,172,211,0.35) !important;
 }
 
 /* Technician role */
@@ -2016,9 +2016,9 @@
 .med_user_role_page_list .badge.bg-secondary,
 .med_user_modal_role .badge.bg-secondary,
 .med_user_modal_role_big .badge.bg-secondary {
-    background: #DCECF7 !important;
-    color: #243A8F !important;
-    border: 1px solid #C9DDF0 !important;
+    background: #B6D8F2 !important;
+    color: #1e3a5f !important;
+    border: 1px solid rgba(182,216,242,0.6) !important;
 }
 
 /* === ADMIN_ROLE_BADGES_THEME_ONLY_END === */
@@ -2036,4 +2036,21 @@
 }
 
 /* === ADMIN_HERO_SAME_AS_DOCTOR_END === */
+
+
+@keyframes hrmove {
+    0% { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes spo2move {
+    0% { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes tempmove {
+    0% { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+
 

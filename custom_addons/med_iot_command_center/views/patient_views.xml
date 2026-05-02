@@ -16,6 +16,7 @@
             <field name="latest_ecg_bpm"/>
             <field name="latest_temp"/>
             <field name="image_128"/>
+            <field name="write_date"/>
             <field name="pending_alert_count"/>
             <field name="age"/>
             <field name="gender"/>
@@ -26,9 +27,9 @@
                 <t t-name="card">
                     <div class="mediot_patient_card_force">
                         <div class="mediot_patient_avatar_box_force">
-                            <field name="image_128"
-                                   widget="image"
-                                   class="mediot_patient_avatar_force"/>
+                            <img t-attf-src="/web/image/med.patient/#{record.id.raw_value}/image_128"
+                                 class="mediot_patient_avatar_force"
+                                 alt="Patient Photo"/>
 
                             <t t-if="record.pending_alert_count.raw_value &gt; 0">
                                 <div class="mediot_patient_alert_force">
@@ -245,38 +246,49 @@
                         </div>
 
                         <!-- CVD AI RESULT -->
-                        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:22px 24px;margin-top:18px;">
-                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-top:18px;box-shadow:0 8px 24px rgba(15,23,42,.04);">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
                                 <div>
-                                    <div style="font-size:1rem;font-weight:800;color:#0f172a;">CVD AI Prediction</div>
-                                    <div style="font-size:.78rem;color:#64748b;margin-top:3px;">FastAPI XGBoost cardiovascular risk analysis</div>
+                                    <div style="font-size:1.08rem;font-weight:900;color:#0f172a;">CVD AI Prediction</div>
+                                    <div style="font-size:.82rem;color:#64748b;margin-top:4px;">FastAPI XGBoost cardiovascular risk analysis</div>
                                 </div>
                                 <button name="action_compute_cvd_risk" type="object" string="Compute Risk" icon="fa-heartbeat" class="btn-primary"/>
                             </div>
 
-                            <group>
-                                <group string="Clinical Input Data">
-    <field name="cvd_height"/>
-    <field name="cvd_weight"/>
-    <field name="cvd_ap_hi"/>
-    <field name="cvd_ap_lo"/>
-    <field name="cvd_cholesterol"/>
-    <field name="cvd_gluc"/>
-    <field name="cvd_alco"/>
-    <field name="cvd_active"/>
-</group>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+                                <div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#f8fafc;">
+                                    <div style="background:#f1f5f9;color:#0f172a;font-weight:800;font-size:.82rem;padding:12px 16px;border-bottom:1px solid #e5e7eb;">
+                                        Clinical Input Data
+                                    </div>
+                                    <group style="padding:12px 16px;margin:0;">
+                                        <field name="cvd_height"/>
+                                        <field name="cvd_weight"/>
+                                        <field name="cvd_ap_hi"/>
+                                        <field name="cvd_ap_lo"/>
+                                        <field name="cvd_cholesterol"/>
+                                        <field name="cvd_gluc"/>
+                                        <field name="cvd_alco"/>
+                                        <field name="cvd_active"/>
+                                    </group>
+                                </div>
 
-<group string="Prediction Result">
-                                    <field name="cvd_risk" readonly="1"/>
-                                    <field name="cvd_probability" readonly="1"/>
-                                    <field name="cvd_alert" readonly="1"/>
-                                    <field name="cvd_message" readonly="1"/>
-                                    <field name="cvd_last_checked" readonly="1"/>
-                                </group>
-                            </group>
+                                <div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#f8fafc;">
+                                    <div style="background:#f1f5f9;color:#0f172a;font-weight:800;font-size:.82rem;padding:12px 16px;border-bottom:1px solid #e5e7eb;">
+                                        Prediction Result
+                                    </div>
+                                    <group style="padding:12px 16px;margin:0;">
+                                        <field name="cvd_risk" readonly="1" widget="badge"
+                                               decoration-success="cvd_risk == 'low'"
+                                               decoration-warning="cvd_risk == 'medium'"
+                                               decoration-danger="cvd_risk in ('high', 'critical')"/>
+                                        <field name="cvd_probability" readonly="1"/>
+                                        <field name="cvd_alert" readonly="1" widget="boolean_toggle"/>
+                                        <field name="cvd_message" readonly="1"/>
+                                        <field name="cvd_last_checked" readonly="1"/>
+                                    </group>
+                                </div>
+                            </div>
                         </div>
-
-
 
                         <!-- ALERTS -->
                         <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:22px 24px;">
@@ -339,6 +351,12 @@
 </record>
 
 </odoo>
+
+
+
+
+
+
 
 
 

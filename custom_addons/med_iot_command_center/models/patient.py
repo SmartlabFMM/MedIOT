@@ -52,6 +52,33 @@ class MedPatient(models.Model):
     cvd_message = fields.Char(string="CVD AI Message", readonly=True)
     cvd_last_checked = fields.Datetime(string="CVD Last Checked", readonly=True)
     # CVD_AI_FIELDS_END
+
+    # ARRHYTHMIA_AI_FIELDS_START
+    arrhythmia_ecg_input = fields.Selection(
+        [
+            ("N", "Normal"),
+            ("S", "Supraventricular"),
+            ("V", "Ventricular"),
+            ("F", "Fusion"),
+            ("Q", "Unknown"),
+        ],
+        string="ECG Class Input",
+        default="N",
+    )
+    arrhythmia_ecg_level = fields.Float(string="ECG Level", default=0.0)
+    arrhythmia_risk = fields.Selection(
+        [("unknown", "Unknown"), ("low", "Low"), ("medium", "Medium"), ("high", "High"), ("critical", "Critical")],
+        string="Arrhythmia Risk",
+        default="unknown",
+        readonly=True,
+        tracking=True,
+    )
+    arrhythmia_ecg_class = fields.Char(string="ECG AI Class", readonly=True)
+    arrhythmia_confidence = fields.Float(string="Arrhythmia Confidence (%)", readonly=True)
+    arrhythmia_alert = fields.Boolean(string="Arrhythmia Alert", readonly=True)
+    arrhythmia_message = fields.Char(string="Arrhythmia AI Message", readonly=True)
+    arrhythmia_last_checked = fields.Datetime(string="Arrhythmia Last Checked", readonly=True)
+    # ARRHYTHMIA_AI_FIELDS_END
     image_128 = fields.Image(string="Photo", max_width=128, max_height=128)
 
     name = fields.Char(required=True, tracking=True)
@@ -102,9 +129,7 @@ class MedPatient(models.Model):
     # CVD_AI_METHODS_START
     def _get_cvd_payload(self):
         self.ensure_one()
-
         gender_value = 2 if self.gender == "male" else 1
-
         return {
             "patient_ref": self.ref or self.name or ("P-%s" % self.id),
             "age": int(self.age or 0),
@@ -128,29 +153,27 @@ class MedPatient(models.Model):
             url = "http://localhost:8000/predict/cvd_risk"
 
             try:
-                request = urllib.request.Request(
+                req = urllib.request.Request(
                     url,
                     data=json.dumps(payload).encode("utf-8"),
-                    headers={
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                    },
+                    headers={"Content-Type": "application/json"},
                     method="POST",
                 )
-
-                with urllib.request.urlopen(request, timeout=8) as response:
+                with urllib.request.urlopen(req, timeout=10) as response:
                     result = json.loads(response.read().decode("utf-8"))
-
             except Exception as exc:
                 raise ValidationError(_("CVD AI service is not reachable. Start FastAPI on port 8000 first. Error: %s") % exc)
 
-            risk = (result.get("cvd_risk") or "unknown").lower()
-            if risk not in ["unknown", "low", "medium", "high", "critical"]:
-                risk = "unknown"
-
             probability = float(result.get("probability") or 0.0)
-            alert = bool(result.get("alert"))
-            message = result.get("message") or _("CVD risk computed.")
+
+            if probability <= 1:
+                probability = probability * 100
+
+            risk = result.get("cvd_risk") or "unknown"
+            risk = str(risk).lower()
+
+            alert = bool(result.get("alert") or probability > 70 or risk in ("high", "critical"))
+            message = result.get("message") or "Risk computed successfully"
 
             vals = {
                 "cvd_risk": risk,
@@ -202,6 +225,113 @@ class MedPatient(models.Model):
             },
         }
     # CVD_AI_METHODS_END
+
+    # ARRHYTHMIA_AI_METHODS_START
+    def _get_arrhythmia_payload(self):
+        self.ensure_one()
+        gender_value = 1 if self.gender == "male" else 0
+
+        return {
+            "patient_id": self.ref or self.name or ("P-%s" % self.id),
+            "spo2": float(self.latest_spo2 or 96.0),
+            "temperature": float(self.latest_temp or 37.0),
+            "heart_rate": int(self.latest_ecg_bpm or 80),
+            "age": int(self.age or 0),
+            "gender": gender_value,
+            "smoker": bool(self.smoker),
+            "sporty": bool(self.sporty),
+            "ecg_class": self.arrhythmia_ecg_input or "N",
+            "ecg_level": float(self.arrhythmia_ecg_level or 0.0),
+        }
+
+    def action_compute_arrhythmia_risk(self):
+        Alert = self.env["med.alert"]
+
+        for rec in self:
+            payload = rec._get_arrhythmia_payload()
+            url = "http://localhost:8000/predict/simple"
+
+            try:
+                req = urllib.request.Request(
+                    url,
+                    data=json.dumps(payload).encode("utf-8"),
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+                with urllib.request.urlopen(req, timeout=15) as response:
+                    result = json.loads(response.read().decode("utf-8"))
+            except Exception as exc:
+                raise ValidationError(_("Arrhythmia AI service is not reachable. Start FastAPI on port 8000 first. Error: %s") % exc)
+
+            ecg = result.get("ecg") or {}
+            assessment = result.get("assessment") or {}
+
+            risk = str(assessment.get("final_risk") or assessment.get("base_risk") or "unknown").lower()
+            if risk not in ("unknown", "low", "medium", "high", "critical"):
+                risk = "unknown"
+
+            confidence = float(ecg.get("confidence") or 0.0)
+            ecg_class = str(ecg.get("class_name") or "Unknown")
+            alert = bool(assessment.get("alert") or risk in ("high", "critical"))
+
+            issues = assessment.get("issues") or []
+            if isinstance(issues, list) and issues:
+                message = "; ".join(str(x) for x in issues)
+            else:
+                message = "%s ECG pattern. Risk: %s." % (ecg_class, risk.title())
+
+            vals = {
+                "arrhythmia_risk": risk,
+                "arrhythmia_ecg_class": ecg_class,
+                "arrhythmia_confidence": confidence,
+                "arrhythmia_alert": alert,
+                "arrhythmia_message": message,
+                "arrhythmia_last_checked": fields.Datetime.now(),
+            }
+
+            if alert and risk == "critical":
+                vals["status"] = "critical"
+            elif alert and risk in ("medium", "high"):
+                vals["status"] = "warning"
+
+            rec.write(vals)
+
+            if alert:
+                severity = "critical" if risk == "critical" else "warning"
+                alert_message = "Arrhythmia AI: %s Confidence: %.1f%%" % (message, confidence)
+
+                existing = Alert.search([
+                    ("patient_id", "=", rec.id),
+                    ("alert_type", "=", "ecg"),
+                    ("state", "!=", "resolved"),
+                ], limit=1)
+
+                if existing:
+                    existing.write({
+                        "severity": severity,
+                        "message": alert_message,
+                        "state": "new",
+                    })
+                else:
+                    Alert.create({
+                        "patient_id": rec.id,
+                        "alert_type": "ecg",
+                        "severity": severity,
+                        "message": alert_message,
+                        "state": "new",
+                    })
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Arrhythmia AI Computed"),
+                "message": _("Arrhythmia risk was computed and saved."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+    # ARRHYTHMIA_AI_METHODS_END
     def action_print_medical_report(self):
         self.ensure_one()
 
@@ -223,6 +353,10 @@ class MedPatient(models.Model):
                 "sticky": False,
             },
         }
+
+
+
+
 
 
 

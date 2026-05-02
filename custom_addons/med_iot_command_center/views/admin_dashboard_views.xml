@@ -9,11 +9,11 @@
         <field name="arch" type="xml">
             <form string="Admin Dashboard" create="0" edit="0" delete="0" class="mediot-admin-dashboard-form">
                 <sheet class="mediot_admin_page">
-                    <div class="med_admin_hero">
+                    <div class="med_admin_hero" style="background:linear-gradient(135deg,#4f46e5 0%,#6366f1 40%,#7c3aed 100%);padding:28px 32px;border-radius:20px;margin-bottom:22px;color:#fff;box-shadow:0 20px 50px rgba(79,70,229,.25);">
                         <div>
-                            <div class="med_admin_eyebrow">MedIoT Administration</div>
-                            <h1>Admin Command Center</h1>
-                            <p>Manage clinical teams, patients, alerts, devices, and system operations from one place.</p>
+                            
+                            <h1 style="font-size:1.6rem;font-weight:900;margin-bottom:6px;color:#fff;">Admin Command Center</h1>
+                            <p style="color:rgba(255,255,255,.85);font-size:.9rem;">Manage clinical teams, patients, alerts, devices, and system operations from one place.</p>
                         </div>
                         <div class="med_admin_hero_actions">
                             <button name="action_open_doctors" type="object" class="med_admin_btn primary">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="med_admin_kpi_grid">
-                        <button name="action_open_doctors" type="object" class="med_admin_kpi_card purple">
+                        <button name="action_open_doctors" type="object" class="med_admin_kpi_card purple" style="border-radius:18px;box-shadow:0 10px 25px rgba(139,92,246,.15);">
                             <div class="med_admin_kpi_icon">
                                 <i class="fa fa-user-md" title="Doctors" />
                             </div>
@@ -39,7 +39,7 @@
                                 <div class="med_admin_kpi_hint">Clinical users</div>
                             </div>
                         </button>
-                        <button name="action_open_patients" type="object" class="med_admin_kpi_card cyan">
+                        <button name="action_open_patients" type="object" class="med_admin_kpi_card cyan" style="border-radius:18px;box-shadow:0 10px 25px rgba(6,182,212,.15);">
                             <div class="med_admin_kpi_icon">
                                 <i class="fa fa-address-card-o" title="Patients" />
                             </div>
@@ -51,7 +51,7 @@
                                 <div class="med_admin_kpi_hint">Active monitored records</div>
                             </div>
                         </button>
-                        <button name="action_open_alerts" type="object" class="med_admin_kpi_card red">
+                        <button name="action_open_alerts" type="object" class="med_admin_kpi_card red" style="border-radius:18px;box-shadow:0 10px 30px rgba(239,68,68,.15);transform:translateY(0);transition:all .2s ease;">
                             <div class="med_admin_kpi_icon">
                                 <i class="fa fa-bell-o" title="Alerts" />
                             </div>
@@ -63,7 +63,7 @@
                                 <div class="med_admin_kpi_hint">Recent clinical alerts</div>
                             </div>
                         </button>
-                        <button name="action_open_devices" type="object" class="med_admin_kpi_card green">
+                        <button name="action_open_devices" type="object" class="med_admin_kpi_card green" style="border-radius:18px;box-shadow:0 10px 30px rgba(34,197,94,.15);">
                             <div class="med_admin_kpi_icon">
                                 <i class="fa fa-wifi" title="Devices" />
                             </div>
@@ -76,12 +76,119 @@
                             </div>
                         </button>
                     </div>
+                    <div class="med_admin_chart_panel" style="background:#fff;border:1px solid #dbeafe;border-radius:20px;padding:20px 22px;margin:22px 0;box-shadow:0 14px 36px rgba(79,70,229,.08);">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                            <div style="display:flex;align-items:center;gap:12px;">
+                                <div style="width:42px;height:42px;border-radius:12px;background:#eef2ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                                    <i class="fa fa-line-chart" title="Trends"/>
+                                </div>
+                                <div>
+                                    <h2 style="font-size:1.05rem;font-weight:900;color:#0f172a;margin:0;">Patient Monitoring Trends</h2>
+                                    <p style="color:#64748b;font-size:.8rem;margin:4px 0 0;">Real-time overview of vital signs</p>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:10px;align-items:center;">
+                                <span style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:9px 14px;color:#334155;font-size:.8rem;font-weight:700;">
+                                    <i class="fa fa-calendar-o" title="Time"/> Last 24 Hours
+                                </span>
+                                <span style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:9px 12px;color:#334155;">
+                                    <i class="fa fa-refresh" title="Refresh"/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+                            <div style="border:1px solid #e5e7eb;border-radius:16px;padding:16px;background:#ffffff;">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                                    <strong style="color:#334155;font-size:.86rem;"><i class="fa fa-heart" style="color:#ef4444;"></i> Heart Rate (BPM)</strong>
+                                    <span style="color:#ef4444;font-weight:900;font-size:1.1rem;">76</span>
+                                </div>
+                                <div style="height:115px;border-radius:12px;background:linear-gradient(180deg,#fee2e2,#fff);border:1px dashed #fecaca;display:flex;align-items:center;justify-content:center;color:#ef4444;font-weight:800;">
+                                    <svg viewBox="0 0 360 140" style="width:100%;height:100%;">
+    <line x1="34" y1="18" x2="340" y2="18" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="52" x2="340" y2="52" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="86" x2="340" y2="86" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="120" x2="340" y2="120" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="4" y="22" font-size="10" fill="#64748b">160</text>
+    <text x="4" y="56" font-size="10" fill="#64748b">120</text>
+    <text x="10" y="90" font-size="10" fill="#64748b">80</text>
+    <text x="10" y="124" font-size="10" fill="#64748b">0</text>
+    <polygon points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80 340,120 34,120" fill="rgba(239,68,68,.13)"/>
+    <polyline points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ef4444">
+        <circle cx="34" cy="62" r="3"/><circle cx="58" cy="54" r="3"/><circle cx="82" cy="68" r="3"/><circle cx="106" cy="50" r="3"/><circle cx="130" cy="78" r="3"/><circle cx="154" cy="66" r="3"/><circle cx="178" cy="70" r="3"/><circle cx="202" cy="48" r="3"/><circle cx="226" cy="62" r="3"/><circle cx="250" cy="56" r="3"/><circle cx="274" cy="82" r="3"/><circle cx="298" cy="70" r="3"/><circle cx="322" cy="88" r="3"/><circle cx="340" cy="80" r="3"/>
+    </g>
+    <text x="34" y="136" font-size="10" fill="#64748b">00:00</text>
+    <text x="126" y="136" font-size="10" fill="#64748b">08:00</text>
+    <text x="218" y="136" font-size="10" fill="#64748b">16:00</text>
+    <text x="310" y="136" font-size="10" fill="#64748b">20:00</text>
+</svg>
+                                </div>
+                            </div>
+
+                            <div style="border:1px solid #e5e7eb;border-radius:16px;padding:16px;background:#ffffff;">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                                    <strong style="color:#334155;font-size:.86rem;"><i class="fa fa-tint" style="color:#2563eb;"></i> SpO2 (%)</strong>
+                                    <span style="color:#2563eb;font-weight:900;font-size:1.1rem;">96%</span>
+                                </div>
+                                <div style="height:115px;border-radius:12px;background:linear-gradient(180deg,#dbeafe,#fff);border:1px dashed #bfdbfe;display:flex;align-items:center;justify-content:center;color:#2563eb;font-weight:800;">
+                                    <svg viewBox="0 0 360 140" style="width:100%;height:100%;">
+    <line x1="34" y1="18" x2="340" y2="18" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="52" x2="340" y2="52" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="86" x2="340" y2="86" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="120" x2="340" y2="120" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="4" y="22" font-size="10" fill="#64748b">160</text>
+    <text x="4" y="56" font-size="10" fill="#64748b">120</text>
+    <text x="10" y="90" font-size="10" fill="#64748b">80</text>
+    <text x="10" y="124" font-size="10" fill="#64748b">0</text>
+    <polygon points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80 340,120 34,120" fill="rgba(37,99,235,.13)"/>
+    <polyline points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#2563eb">
+        <circle cx="34" cy="62" r="3"/><circle cx="58" cy="54" r="3"/><circle cx="82" cy="68" r="3"/><circle cx="106" cy="50" r="3"/><circle cx="130" cy="78" r="3"/><circle cx="154" cy="66" r="3"/><circle cx="178" cy="70" r="3"/><circle cx="202" cy="48" r="3"/><circle cx="226" cy="62" r="3"/><circle cx="250" cy="56" r="3"/><circle cx="274" cy="82" r="3"/><circle cx="298" cy="70" r="3"/><circle cx="322" cy="88" r="3"/><circle cx="340" cy="80" r="3"/>
+    </g>
+    <text x="34" y="136" font-size="10" fill="#64748b">00:00</text>
+    <text x="126" y="136" font-size="10" fill="#64748b">08:00</text>
+    <text x="218" y="136" font-size="10" fill="#64748b">16:00</text>
+    <text x="310" y="136" font-size="10" fill="#64748b">20:00</text>
+</svg>
+                                </div>
+                            </div>
+
+                            <div style="border:1px solid #e5e7eb;border-radius:16px;padding:16px;background:#ffffff;">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                                    <strong style="color:#334155;font-size:.86rem;"><i class="fa fa-thermometer-half" style="color:#16a34a;"></i> Temperature (°C)</strong>
+                                    <span style="color:#16a34a;font-weight:900;font-size:1.1rem;">37.2°C</span>
+                                </div>
+                                <div style="height:115px;border-radius:12px;background:linear-gradient(180deg,#dcfce7,#fff);border:1px dashed #bbf7d0;display:flex;align-items:center;justify-content:center;color:#16a34a;font-weight:800;">
+                                    <svg viewBox="0 0 360 140" style="width:100%;height:100%;">
+    <line x1="34" y1="18" x2="340" y2="18" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="52" x2="340" y2="52" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="86" x2="340" y2="86" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="120" x2="340" y2="120" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="4" y="22" font-size="10" fill="#64748b">160</text>
+    <text x="4" y="56" font-size="10" fill="#64748b">120</text>
+    <text x="10" y="90" font-size="10" fill="#64748b">80</text>
+    <text x="10" y="124" font-size="10" fill="#64748b">0</text>
+    <polygon points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80 340,120 34,120" fill="rgba(22,163,74,.13)"/>
+    <polyline points="34,62 58,54 82,68 106,50 130,78 154,66 178,70 202,48 226,62 250,56 274,82 298,70 322,88 340,80" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#16a34a">
+        <circle cx="34" cy="62" r="3"/><circle cx="58" cy="54" r="3"/><circle cx="82" cy="68" r="3"/><circle cx="106" cy="50" r="3"/><circle cx="130" cy="78" r="3"/><circle cx="154" cy="66" r="3"/><circle cx="178" cy="70" r="3"/><circle cx="202" cy="48" r="3"/><circle cx="226" cy="62" r="3"/><circle cx="250" cy="56" r="3"/><circle cx="274" cy="82" r="3"/><circle cx="298" cy="70" r="3"/><circle cx="322" cy="88" r="3"/><circle cx="340" cy="80" r="3"/>
+    </g>
+    <text x="34" y="136" font-size="10" fill="#64748b">00:00</text>
+    <text x="126" y="136" font-size="10" fill="#64748b">08:00</text>
+    <text x="218" y="136" font-size="10" fill="#64748b">16:00</text>
+    <text x="310" y="136" font-size="10" fill="#64748b">20:00</text>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="med_admin_main_grid">
                         <div class="med_admin_panel med_admin_panel_users">
                             <div class="med_admin_panel_head">
                                 <div>
                                     <h2>User Management</h2>
-                                    <p>Admins, doctors, and clinical staff</p>
+                                    <p style="color:rgba(255,255,255,.85);font-size:.9rem;">Admins, doctors, and clinical staff</p>
                                 </div>
                                 <div class="med_admin_panel_head_actions">
                                     <button name="action_open_add_doctor_popup" type="object" class="med_admin_small_btn primary">
@@ -105,50 +212,7 @@
                                 </list>
                             </field>
                         </div>
-                        <div class="med_admin_panel med_admin_panel_critical">
-                            <div class="med_admin_panel_head">
-                                <div>
-                                    <h2>Critical Patients</h2>
-                                    <p>Patients requiring immediate attention</p>
-                                </div>
-                                <span class="med_admin_badge red">
-                                    <field name="critical_patient_count" nolabel="1" /> Critical
-                                </span>
-                            </div>
-                            <field name="critical_patient_ids" nolabel="1" readonly="1" class="med_admin_table med_admin_critical_table">
-                                <list create="0" edit="0" delete="0">
-                                    <field name="ref" string="ID" />
-                                    <field name="name" />
-                                    <field name="room" />
-                                    <field name="latest_spo2" string="SpO2" />
-                                    <field name="latest_ecg_bpm" string="HR" />
-                                    <field name="latest_temp" string="Temp" />
-                                    <field name="status" widget="badge" />
-                                </list>
-                            </field>
-                        </div>
-                        <div class="med_admin_panel med_admin_panel_alerts">
-                            <div class="med_admin_panel_head">
-                                <div>
-                                    <h2>Recent Alerts</h2>
-                                    <p>Latest safety events</p>
-                                </div>
-                                <button name="action_open_alerts" type="object" class="med_admin_small_btn">
-                                    Open
-                                </button>
-                            </div>
-                            <field name="recent_alert_ids" nolabel="1" readonly="1" class="med_admin_table med_admin_alerts_table">
-                                <list create="0" edit="0" delete="0">
-                                    <field name="create_date" string="Created On" />
-                                    <field name="patient_id" string="Patient" />
-                                    <field name="alert_type" string="Alert Type" />
-                                    <field name="severity" widget="badge" />
-                                    <field name="state" widget="badge" optional="hide" />
-                                    <field name="message" optional="hide" />
-                                </list>
-                            </field>
-                        </div>
-                    </div>
+</div>
                 </sheet>
             </form>
         </field>
@@ -177,7 +241,7 @@
                 <sheet>
                     <div class="med_admin_wizard_intro">
                         <h2>Add Doctor</h2>
-                        <p>Create a doctor account quickly and assign the correct MedIoT role.</p>
+                        <p style="color:rgba(255,255,255,.85);font-size:.9rem;">Create a doctor account quickly and assign the correct MedIoT role.</p>
                     </div>
                     <group>
                         <field name="name" placeholder="Full name" />
@@ -293,3 +357,18 @@
         <field name="target">current</field>
     </record>
 </odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
