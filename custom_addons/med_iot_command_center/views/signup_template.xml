@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="med_signup_page" name="MedIoT Signup Page">
         <t t-call="website.layout">
@@ -14,9 +14,7 @@
                     <!-- LEFT PANEL -->
                     <div class="med_auth_left">
                         <div class="med_auth_brand">
-                            <img src="/med_iot_command_center/static/description/logodash.png"
-                                 alt="MedIoT Logo"
-                                 class="med_auth_logo"/>
+                            <div class="med_signup_heart_match"><i class="fa fa-heart-o" title="Welcome"></i></div>
                         </div>
 
                         <h1 class="med_auth_title">WELCOME!</h1>
@@ -154,3 +152,4 @@
         </t>
     </template>
 </odoo>
+

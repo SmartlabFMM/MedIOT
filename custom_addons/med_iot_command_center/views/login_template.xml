@@ -68,6 +68,10 @@
                                 <a href="/mediot/reset" class="med_forgot_link">Forgot Password?</a>
 
                                 <button type="submit" class="med_btn">Sign In</button>
+                                <div class="med_login_signup_hint">
+                                    <span>Don't have an account?</span>
+                                    <a href="/mediot/signup" class="med_login_signup_link">Sign Up</a>
+                                </div>
                             </form>
 
                         </div>
@@ -78,4 +82,5 @@
         </t>
     </template>
 </odoo>
+
 

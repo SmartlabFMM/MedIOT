@@ -6,7 +6,7 @@
             <div class="med_video_page">
 
                 <section class="med_video_hero">
-                <video class="mediot_hero_video_clean" poster="/med_iot_command_center/static/description/hero_new.jpg"
+                <video class="mediot_hero_video_clean"
        autoplay="autoplay"
        muted="muted"
        loop="loop"
@@ -32,15 +32,15 @@
                     </header>
 
                     <div class="med_video_content">
-<h1 style="margin:0; font-size:52px; line-height:1.02; font-weight:800; letter-spacing:-1px;">
-    <span style="display:block; white-space:nowrap; color:#ffffff;">
-        Medical Belt with <span style="color:#f28b58;">AI</span>
-    </span>
-    <span style="display:block; white-space:nowrap; color:#f28b58;">for Rapid Intervention</span>
-</h1>
+                        <h1 class="med_fixed_title">
+                            <span class="med_line">Heart Monitor Case</span>
+                            <span class="med_line">Smart Wearable</span>
+                            <span class="med_line">Health Device</span>
+                        </h1>
 
                         <p>
-                            Real-time monitoring of SpO2, temperature and ECG inside hospitals.<br/>Affordable AI-powered alerts for faster medical intervention.
+                            A compact heart-shaped device for real-time SpO₂,
+                            temperature, and ECG monitoring inside hospitals.
                         </p>
 
                         <div class="med_video_actions">
@@ -52,7 +52,7 @@
                     <div class="med_video_stats">
                         <div class="med_video_stat">
                             <div class="med_video_stat_num">200+</div>
-                            <div class="med_video_stat_label">Patients Monitored</div>
+                            <div class="med_video_stat_label">For hospital teamss Monitored</div>
                         </div>
                         <div class="med_video_stat">
                             <div class="med_video_stat_num">15+</div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="med_video_stat">
                             <div class="med_video_stat_num">500+</div>
-                            <div class="med_video_stat_label">Active Patients</div>
+                            <div class="med_video_stat_label">Active For hospital teamss</div>
                         </div>
                     </div>
                 </section>
@@ -68,35 +68,35 @@
                 <section id="why" class="med_section med_section_light">
                     <div class="med_section_intro mediot-why-polished-intro">
                         <span class="med_tag mediot-why-badge">Why MedIoT</span>
-                        <h2 class="mediot-why-title">Healthcare intelligence designed for real-time monitoring</h2>
+                        <h2 class="mediot-why-title">Smart monitoring built for rapid medical response</h2>
                         <p class="mediot-why-subtitle">
-                            MedIoT combines AI, patient dashboards, and IoT integration to give doctors
-                            a clear and connected view of every patient.
+                            MedIoT combines AI, For hospital teams dashboards, and Connected Hospital Use to give doctors
+                            a clear and connected view of every For hospital teams.
                         </p>
                     </div>
 
                     <div class="med_feature_grid">
                         <div class="med_feature_card mediot-why-card">
                             <div class="med_feature_icon mediot-why-icon-wrap">♡</div>
-                            <h3>Real-Time Patient Progress</h3>
+                            <h3>Real-Time Vital Tracking</h3>
                             <p>
-                                Track patient condition, therapy effectiveness, and vital changes with
+                                Track For hospital teams condition, therapy effectiveness, and vital changes with
                                 continuous monitoring and personalized insights.
                             </p>
                         </div>
 
                         <div class="med_feature_card featured">
                             <div class="med_feature_icon mediot-why-icon-wrap">🧠</div>
-                            <h3>AI-Powered Personalization</h3>
+                            <h3>Smart Alert Support</h3>
                             <p>
-                                Our advanced AI algorithms analyze patient data to create tailored follow-up
+                                Our advanced AI algorithms analyze For hospital teams data to create tailored follow-up
                                 recommendations and smarter care decisions.
                             </p>
                         </div>
 
                         <div class="med_feature_card mediot-why-card">
                             <div class="med_feature_icon mediot-why-icon-wrap">⌚</div>
-                            <h3>IoT Integration</h3>
+                            <h3>Connected Hospital Use</h3>
                             <p>
                                 Seamlessly connect wearable and bedside devices to monitor critical health
                                 metrics in one centralized platform.
@@ -108,47 +108,46 @@
                 <section id="services" class="med_section med_section_alt">
                     <div class="med_section_intro">
                         <span class="med_tag">Services</span>
-                        <h2>What MedIoT helps you do</h2>
+                        <h2>How MedIoT supports hospital monitoring</h2>
                         <p>
-                            From patient tracking to alert management, the platform is built to support daily
+                            From For hospital teams tracking to alert management, the platform is built to support daily
                             medical workflows with a cleaner, modern interface.
                         </p>
                     </div>
 
                     <div class="med_testimonial_grid">
                         <div class="med_testimonial_card">
-                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/cordinateur.jpg" alt="Sarah Johnson"/></div>
-                            <div class="med_badge">40% faster response</div>
+                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/cordinateur.jpg" alt="Rapid Alerts"/></div>
+                            <div class="med_badge">Fast alert response</div>
                             <p>
-                                "MedIoT helped us react to patient changes much faster. The centralized insights
+                                "MedIoT helped us react to For hospital teams changes much faster. The centralized insights
                                 made a real difference in clinical follow-up."
                             </p>
-                            <h4>Sarah Johnson</h4>
-                            <span>Patient Coordinator</span>
+                            <h4>Rapid Alerts</h4>
+                            <span>For medical response</span>
                             <a href="#">See Detail</a>
                         </div>
 
                         <div class="med_testimonial_card">
-                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/michale.jpg" alt="Dr. Michael Chen"/></div>
-                            <div class="med_badge">62% better adherence</div>
+                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/michale.jpg" alt="Vital Monitoring"/></div>
+                            <div class="med_badge">Clear vital tracking</div>
                             <p>
-                                "My patients show better treatment adherence when using MedIoT's real-time
-                                monitoring and feedback system."
+                                The heart-shaped monitoring case keeps For hospital teams data organized and easier to follow during hospital care.
                             </p>
-                            <h4>Dr. Michael Chen</h4>
-                            <span>Physician</span>
+                            <h4>Vital Monitoring</h4>
+                            <span>SpO₂ · Temperature · ECG</span>
                             <a href="#">See Detail</a>
                         </div>
 
                         <div class="med_testimonial_card">
-                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/pationua.jpg" alt="Thomas Wright"/></div>
-                            <div class="med_badge">51% well-being improvement</div>
+                            <div class="med_avatar med_avatar_photo"><img src="/med_iot_command_center/static/description/pationua.jpg" alt="Connected Dashboard"/></div>
+                            <div class="med_badge">Connected care view</div>
                             <p>
-                                "The IoT integration gave us continuous visibility into patient trends and helped
+                                "The Connected Hospital Use gave us continuous visibility into For hospital teams trends and helped
                                 identify risk patterns earlier."
                             </p>
-                            <h4>Thomas Wright</h4>
-                            <span>Patient</span>
+                            <h4>Connected Dashboard</h4>
+                            <span>For hospital teams</span>
                             <a href="#">See Detail</a>
                         </div>
                     </div>
@@ -161,7 +160,7 @@
                             <h2>Smart care starts with connected support</h2>
                             <p>
                                 Whether you are a doctor, administrator, or project supervisor, MedIoT helps
-                                you manage patient data and medical monitoring more effectively.
+                                you manage For hospital teams data and medical monitoring more effectively.
                             </p>
                             <blockquote>
                                 “Technology should simplify healthcare work, not complicate it.”
@@ -247,6 +246,16 @@
 </template>
     </data>
 </odoo>
+
+
+
+
+
+
+
+
+
+
 
 
 

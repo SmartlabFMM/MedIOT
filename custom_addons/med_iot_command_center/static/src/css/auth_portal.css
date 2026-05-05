@@ -5031,3 +5031,4675 @@ body {
 /* === LANDING_FINAL_CLEAN_LAYOUT_END === */
 
 
+
+/* ===== MedIoT Palette Override - Wearable Belt Case ===== */
+:root {
+    --mediot-navy: #131D56;
+    --mediot-red: #8F0000;
+    --mediot-slate: #6E7C89;
+    --mediot-gray: #8D8D8D;
+    --mediot-cream: #E7E7E0;
+    --mediot-black: #1C1C1B;
+    --med-main: #131D56;
+}
+
+/* Main page tone */
+.med_video_page,
+.med_video_page .med_video_hero {
+    background: var(--mediot-black) !important;
+}
+
+/* Top nav */
+.med_video_page .med_video_nav {
+    background: rgba(19, 29, 86, 0.94) !important;
+    border-bottom: 1px solid rgba(231, 231, 224, 0.10) !important;
+}
+
+.med_video_page .med_video_menu > a:not(.med_video_btn),
+.med_video_page .med_video_nav a,
+.med_video_page .med_video_nav .nav-link {
+    color: #ffffff !important;
+}
+
+/* Logo / brand if needed */
+.med_video_page .med_video_brand,
+.med_video_page .med_video_logo_text {
+    color: #ffffff !important;
+}
+
+/* Primary buttons -> RED instead of orange */
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_btn.primary,
+.med_video_page .med_video_menu .med_video_btn.primary,
+.med_video_page .med_video_menu .signup,
+.med_video_page .med_video_menu .sign-up {
+    background: var(--mediot-red) !important;
+    border-color: var(--mediot-red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 26px rgba(143, 0, 0, 0.25) !important;
+}
+
+/* Secondary / outline button */
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_btn.secondary,
+.med_video_page .med_video_menu .med_video_btn:not(.primary) {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(231, 231, 224, 0.30) !important;
+    color: #ffffff !important;
+}
+
+/* Text block */
+.med_video_page .med_video_content h1,
+.med_video_page .med_video_content .med_fixed_title,
+.med_video_page .med_video_content .med_line {
+    color: #ffffff !important;
+}
+
+.med_video_page .med_video_content p {
+    color: rgba(231, 231, 224, 0.95) !important;
+}
+
+/* White frosted stats box adjusted with your palette */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    background: rgba(231, 231, 224, 0.78) !important;
+    border: 1px solid rgba(110, 124, 137, 0.22) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    box-shadow: 0 16px 42px rgba(19, 29, 86, 0.16) !important;
+}
+
+/* Divider lines */
+.med_video_page .med_video_stat:not(:last-child)::after,
+.med_video_page .med_video_stats .stat:not(:last-child)::after {
+    background: rgba(110, 124, 137, 0.25) !important;
+}
+
+/* Stats numbers -> dark navy */
+.med_video_page .med_video_stat_num,
+.med_video_page .med_video_stats h2,
+.med_video_page .med_video_stats h3,
+.med_video_page .med_video_stats strong,
+.med_video_page .med_video_stats .stat-number {
+    color: var(--mediot-navy) !important;
+}
+
+/* Stats labels */
+.med_video_page .med_video_stat_label,
+.med_video_page .med_video_stats p,
+.med_video_page .med_video_stats span,
+.med_video_page .med_video_stats .stat-label {
+    color: var(--mediot-slate) !important;
+}
+
+/* Optional small muted text */
+.med_video_page .text-muted,
+.med_video_page .muted {
+    color: var(--mediot-gray) !important;
+}
+
+/* Hover states */
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_btn.primary:hover {
+    background: #780000 !important;
+    border-color: #780000 !important;
+}
+
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_btn.secondary:hover {
+    border-color: var(--mediot-slate) !important;
+    background: rgba(110,124,137,0.10) !important;
+}
+
+/* ===== Restore Old Header Color, Keep Red Accent ===== */
+.med_video_page .med_video_nav {
+    background: #24395B !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+/* Keep header links white */
+.med_video_page .med_video_nav a,
+.med_video_page .med_video_menu > a:not(.med_video_btn),
+.med_video_page .med_video_nav .nav-link {
+    color: #ffffff !important;
+}
+
+/* Keep Login button old style */
+.med_video_page .med_video_menu .med_video_btn:not(.primary),
+.med_video_page .med_video_btn.secondary {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+}
+
+/* Keep Sign Up / CTA red */
+.med_video_page .med_video_btn.primary,
+.med_video_page .med_video_menu .med_video_btn.primary,
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_actions a.primary {
+    background: #8F0000 !important;
+    border-color: #8F0000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 26px rgba(143, 0, 0, 0.25) !important;
+}
+
+/* ===== Slightly more blur on stats white box ===== */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    background: rgba(231, 231, 224, 0.68) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.38) !important;
+    box-shadow: 0 16px 42px rgba(19, 29, 86, 0.14) !important;
+}
+
+/* ===== FINAL: Hero Video Only, No Opening Image ===== */
+
+/* Remove image backgrounds from the hero */
+.med_video_page .med_video_hero,
+.med_video_page .mediot_hero_video_clean,
+.med_video_page .mediot_forced_hero_video {
+    background-image: none !important;
+    background: #1C1C1B !important;
+}
+
+/* Hide any image/poster layer inside the hero */
+.med_video_page .med_video_hero img,
+.med_video_page .med_video_hero picture,
+.med_video_page .video-poster,
+.med_video_page .poster,
+.med_video_page .med_video_poster,
+.med_video_page .hero-image,
+.med_video_page .hero_img,
+.med_video_page .mediot_hero_image {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Keep video full visible */
+.med_video_page .med_video_hero video,
+.med_video_page video.mediot_hero_video_clean,
+.med_video_page video.mediot_forced_hero_video {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    background-image: none !important;
+    background: #1C1C1B !important;
+}
+
+/* ===== Make Both Hero Buttons Red ===== */
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_actions a.secondary {
+    background: #8F0000 !important;
+    border: 1px solid #8F0000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 26px rgba(143, 0, 0, 0.25) !important;
+}
+
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_actions a.secondary:hover {
+    background: #780000 !important;
+    border-color: #780000 !important;
+    color: #ffffff !important;
+}
+
+/* ===== Restore Old Belt Hero Style With New Device Text ===== */
+.med_video_page .med_video_content {
+    position: relative !important;
+    z-index: 5 !important;
+    max-width: 600px !important;
+    padding: 118px 0 120px 120px !important;
+    color: #fff !important;
+}
+
+.med_video_page .med_video_content h1,
+.med_video_page .med_video_content .med_fixed_title {
+    margin: 0 !important;
+    max-width: 600px !important;
+    font-size: 52px !important;
+    line-height: 1.12 !important;
+    font-weight: 850 !important;
+    letter-spacing: -1.2px !important;
+    color: #fff !important;
+}
+
+.med_video_page .med_video_content .med_line {
+    display: block !important;
+    color: #fff !important;
+    white-space: nowrap !important;
+}
+
+.med_video_page .med_video_content p {
+    margin-top: 24px !important;
+    max-width: 560px !important;
+    font-size: 17px !important;
+    line-height: 1.75 !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.med_video_page .med_video_actions {
+    display: flex !important;
+    gap: 14px !important;
+    margin-top: 34px !important;
+}
+
+.med_video_page .med_video_stats {
+    bottom: 168px !important;
+    width: min(820px, calc(100% - 340px)) !important;
+    padding: 16px 24px !important;
+}
+
+/* ===== STRUCTURE FIX - Match cleaner second screenshot ===== */
+
+/* hero container */
+.med_video_page .med_video_hero {
+    min-height: 760px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* overlay a little cleaner for readability */
+.med_video_page .med_video_overlay {
+    background: linear-gradient(90deg, rgba(22,34,55,0.58) 0%, rgba(22,34,55,0.34) 42%, rgba(22,34,55,0.20) 100%) !important;
+}
+
+/* text block */
+.med_video_page .med_video_content {
+    position: relative !important;
+    z-index: 5 !important;
+    max-width: 560px !important;
+    padding: 118px 0 0 110px !important;
+    color: #fff !important;
+}
+
+/* title exactly structured */
+.med_video_page .med_video_content h1,
+.med_video_page .med_video_content .med_fixed_title {
+    margin: 0 !important;
+    max-width: 560px !important;
+    font-size: 52px !important;
+    line-height: 1.10 !important;
+    font-weight: 850 !important;
+    letter-spacing: -1px !important;
+    color: #ffffff !important;
+}
+
+.med_video_page .med_video_content .med_line {
+    display: block !important;
+    white-space: nowrap !important;
+}
+
+/* paragraph */
+.med_video_page .med_video_content p {
+    margin-top: 24px !important;
+    max-width: 500px !important;
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    font-weight: 500 !important;
+    color: rgba(255,255,255,0.92) !important;
+}
+
+/* hero buttons */
+.med_video_page .med_video_actions {
+    display: flex !important;
+    gap: 16px !important;
+    margin-top: 28px !important;
+    align-items: center !important;
+}
+
+.med_video_page .med_video_actions a,
+.med_video_page .med_video_cta {
+    min-width: 180px !important;
+    height: 58px !important;
+    border-radius: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    font-weight: 750 !important;
+}
+
+/* both hero buttons red */
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_actions a.secondary {
+    background: #8F0000 !important;
+    border: 1px solid #8F0000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(143, 0, 0, 0.22) !important;
+}
+
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_actions a.secondary:hover {
+    background: #780000 !important;
+    border-color: #780000 !important;
+    color: #ffffff !important;
+}
+
+/* stats card cleaner and lower like reference */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 34px !important;
+    transform: translateX(-50%) !important;
+    z-index: 5 !important;
+    width: min(1120px, calc(100% - 360px)) !important;
+    padding: 28px 34px !important;
+    border-radius: 24px !important;
+    background: rgba(231,231,224,0.70) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255,255,255,0.34) !important;
+    box-shadow: 0 18px 45px rgba(20, 28, 46, 0.16) !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0 !important;
+    align-items: center !important;
+}
+
+.med_video_page .med_video_stat {
+    text-align: center !important;
+    position: relative !important;
+}
+
+.med_video_page .med_video_stat:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 12% !important;
+    height: 76% !important;
+    width: 1px !important;
+    background: rgba(36, 57, 91, 0.16) !important;
+}
+
+.med_video_page .med_video_stat_num {
+    font-size: 52px !important;
+    line-height: 1 !important;
+    font-weight: 850 !important;
+    color: #132B75 !important;
+    margin-bottom: 10px !important;
+}
+
+.med_video_page .med_video_stat_label {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #6E7C89 !important;
+}
+
+/* top nav clean */
+.med_video_page .med_video_nav {
+    background: #24395B !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* login + sign up SAME color */
+.med_video_page .med_video_btn.ghost,
+.med_video_page .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn {
+    background: #8F0000 !important;
+    border: 1px solid #8F0000 !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+    min-width: 118px !important;
+    text-align: center !important;
+    box-shadow: none !important;
+}
+
+.med_video_page .med_video_btn.ghost:hover,
+.med_video_page .med_video_btn.solid:hover,
+.med_video_page .med_video_menu .med_video_btn:hover {
+    background: #780000 !important;
+    border-color: #780000 !important;
+    color: #ffffff !important;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+    .med_video_page .med_video_content {
+        padding: 104px 0 0 72px !important;
+    }
+
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        width: calc(100% - 120px) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .med_video_page .med_video_content {
+        max-width: 100% !important;
+        padding: 90px 24px 0 24px !important;
+    }
+
+    .med_video_page .med_video_content h1,
+    .med_video_page .med_video_content .med_fixed_title {
+        font-size: 38px !important;
+        white-space: normal !important;
+    }
+
+    .med_video_page .med_video_content .med_line {
+        white-space: normal !important;
+    }
+
+    .med_video_page .med_video_actions {
+        flex-wrap: wrap !important;
+    }
+
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        width: calc(100% - 32px) !important;
+        bottom: 20px !important;
+        padding: 18px 12px !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .med_video_page .med_video_stat:not(:last-child)::after {
+        display: none !important;
+    }
+}
+
+
+/* ===== FINAL FIX - STATS BOX JUST BELOW BUTTONS ===== */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    top: 575px !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 6 !important;
+    width: min(980px, calc(100% - 440px)) !important;
+    padding: 20px 30px !important;
+}
+
+/* keep numbers visible */
+.med_video_page .med_video_stat_num {
+    font-size: 44px !important;
+}
+
+.med_video_page .med_video_stat_label {
+    font-size: 14px !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        top: auto !important;
+        bottom: 35px !important;
+        width: calc(100% - 32px) !important;
+    }
+}
+
+/* ===== FINAL FIX - STATS BOX JUST BELOW BUTTONS ===== */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    top: 575px !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 6 !important;
+    width: min(980px, calc(100% - 440px)) !important;
+    padding: 20px 30px !important;
+}
+
+/* keep numbers visible */
+.med_video_page .med_video_stat_num {
+    font-size: 44px !important;
+}
+
+.med_video_page .med_video_stat_label {
+    font-size: 14px !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        top: auto !important;
+        bottom: 35px !important;
+        width: calc(100% - 32px) !important;
+    }
+}
+
+/* ===== FINAL NAV BUTTON COLOR - ITALIAN PLUM ===== */
+.med_video_page .med_video_nav .med_video_btn,
+.med_video_page .med_video_nav .med_video_btn.ghost,
+.med_video_page .med_video_nav .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn,
+.med_video_page .med_video_menu a.med_video_btn {
+    background: #533146 !important;
+    border: 1px solid #533146 !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(83, 49, 70, 0.20) !important;
+}
+
+.med_video_page .med_video_nav .med_video_btn:hover,
+.med_video_page .med_video_nav .med_video_btn.ghost:hover,
+.med_video_page .med_video_nav .med_video_btn.solid:hover,
+.med_video_page .med_video_menu .med_video_btn:hover,
+.med_video_page .med_video_menu a.med_video_btn:hover {
+    background: #45283C !important;
+    border-color: #45283C !important;
+    color: #ffffff !important;
+}
+
+/* ===== FINAL CLEAN FIX - TRANSPARENT NAV BUTTONS + NORMAL STATS BOX ===== */
+
+/* Login + Sign Up transparent */
+.med_video_page .med_video_nav .med_video_btn,
+.med_video_page .med_video_nav .med_video_btn.ghost,
+.med_video_page .med_video_nav .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn,
+.med_video_page .med_video_menu a.med_video_btn {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.med_video_page .med_video_nav .med_video_btn:hover,
+.med_video_page .med_video_nav .med_video_btn.ghost:hover,
+.med_video_page .med_video_nav .med_video_btn.solid:hover,
+.med_video_page .med_video_menu .med_video_btn:hover,
+.med_video_page .med_video_menu a.med_video_btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+    color: #ffffff !important;
+}
+
+/* make hero clean and allow the stats box to live inside it normally */
+.med_video_page .med_video_hero {
+    min-height: 820px !important;
+    height: auto !important;
+    padding-bottom: 70px !important;
+    overflow: visible !important;
+}
+
+/* white stats box: not fixed, not sticky, not attached to viewport */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    z-index: 5 !important;
+
+    width: min(900px, calc(100% - 260px)) !important;
+    margin-top: 44px !important;
+    margin-left: 130px !important;
+    margin-right: auto !important;
+    margin-bottom: 0 !important;
+
+    padding: 22px 32px !important;
+    border-radius: 22px !important;
+    background: rgba(231, 231, 224, 0.72) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* stats text balanced */
+.med_video_page .med_video_stat_num {
+    font-size: 42px !important;
+}
+
+.med_video_page .med_video_stat_label {
+    font-size: 14px !important;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .med_video_page .med_video_hero {
+        min-height: auto !important;
+        padding-bottom: 40px !important;
+    }
+
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        width: calc(100% - 32px) !important;
+        margin: 30px 16px 0 16px !important;
+        position: relative !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+    }
+}
+
+/* ===== FINAL FIX - SMALL CENTERED STATS BOX ===== */
+.med_video_page .med_video_stats,
+.med_video_page .med_video_stats_card,
+.med_video_page .med_video_stats_wrap {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+
+    width: min(760px, calc(100% - 120px)) !important;
+    margin: 34px auto 0 auto !important;
+    padding: 18px 22px !important;
+    border-radius: 18px !important;
+    z-index: 5 !important;
+}
+
+/* smaller content inside */
+.med_video_page .med_video_stat_num {
+    font-size: 34px !important;
+    line-height: 1 !important;
+}
+
+.med_video_page .med_video_stat_label {
+    font-size: 13px !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_page .med_video_stats,
+    .med_video_page .med_video_stats_card,
+    .med_video_page .med_video_stats_wrap {
+        width: calc(100% - 24px) !important;
+        margin: 24px auto 0 auto !important;
+        padding: 16px 12px !important;
+    }
+
+    .med_video_page .med_video_stat_num {
+        font-size: 28px !important;
+    }
+
+    .med_video_page .med_video_stat_label {
+        font-size: 12px !important;
+    }
+}
+
+/* ===== FINAL BUTTON COLOR - LAVENDER GREY ===== */
+.med_video_page .med_video_cta,
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_actions a,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_actions a.secondary,
+.med_video_page .med_video_nav .med_video_btn,
+.med_video_page .med_video_nav .med_video_btn.ghost,
+.med_video_page .med_video_nav .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn,
+.med_video_page .med_video_menu a.med_video_btn {
+    background: #B8A9C3 !important;
+    border: 1px solid #B8A9C3 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(184, 169, 195, 0.24) !important;
+}
+
+.med_video_page .med_video_cta:hover,
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_actions a:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_actions a.secondary:hover,
+.med_video_page .med_video_nav .med_video_btn:hover,
+.med_video_page .med_video_nav .med_video_btn.ghost:hover,
+.med_video_page .med_video_nav .med_video_btn.solid:hover,
+.med_video_page .med_video_menu .med_video_btn:hover,
+.med_video_page .med_video_menu a.med_video_btn:hover {
+    background: #A796B6 !important;
+    border-color: #A796B6 !important;
+    color: #ffffff !important;
+}
+
+/* ===== FINAL BUTTON COLORS - RED RIDING HOOD + TRANSPARENT NAV ===== */
+
+/* Hero buttons: Get Started + Learn More */
+.med_video_page .med_video_cta,
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_actions a,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_actions a.secondary {
+    background: #551C25 !important;
+    border: 1px solid #551C25 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(85, 28, 37, 0.25) !important;
+}
+
+.med_video_page .med_video_cta:hover,
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_actions a:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_actions a.secondary:hover {
+    background: #43161D !important;
+    border-color: #43161D !important;
+    color: #ffffff !important;
+}
+
+/* Top nav buttons: Login + Sign Up transparent */
+.med_video_page .med_video_nav .med_video_btn,
+.med_video_page .med_video_nav .med_video_btn.ghost,
+.med_video_page .med_video_nav .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn,
+.med_video_page .med_video_menu a.med_video_btn {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.38) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.med_video_page .med_video_nav .med_video_btn:hover,
+.med_video_page .med_video_nav .med_video_btn.ghost:hover,
+.med_video_page .med_video_nav .med_video_btn.solid:hover,
+.med_video_page .med_video_menu .med_video_btn:hover,
+.med_video_page .med_video_menu a.med_video_btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.60) !important;
+    color: #ffffff !important;
+}
+
+/* ===== FINAL FRIENDLY BUTTON COLOR - MUTED PLUM ===== */
+
+/* Hero buttons only: Get Started + Learn More */
+.med_video_page .med_video_cta,
+.med_video_page .med_video_cta.primary,
+.med_video_page .med_video_cta.secondary,
+.med_video_page .med_video_actions a,
+.med_video_page .med_video_actions a.primary,
+.med_video_page .med_video_actions a.secondary {
+    background: #6B4A60 !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(107, 74, 96, 0.24) !important;
+}
+
+.med_video_page .med_video_cta:hover,
+.med_video_page .med_video_cta.primary:hover,
+.med_video_page .med_video_cta.secondary:hover,
+.med_video_page .med_video_actions a:hover,
+.med_video_page .med_video_actions a.primary:hover,
+.med_video_page .med_video_actions a.secondary:hover {
+    background: #563A4D !important;
+    border-color: #563A4D !important;
+    color: #ffffff !important;
+}
+
+/* Login + Sign Up transparent */
+.med_video_page .med_video_nav .med_video_btn,
+.med_video_page .med_video_nav .med_video_btn.ghost,
+.med_video_page .med_video_nav .med_video_btn.solid,
+.med_video_page .med_video_menu .med_video_btn,
+.med_video_page .med_video_menu a.med_video_btn {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.38) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* ===== NAV ANIMATION - Smooth Hover Effects ===== */
+
+/* nav links */
+.med_video_page .med_video_menu > a:not(.med_video_btn) {
+    position: relative !important;
+    transition: color 0.25s ease, transform 0.25s ease !important;
+}
+
+.med_video_page .med_video_menu > a:not(.med_video_btn)::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    bottom: -8px !important;
+    width: 0 !important;
+    height: 2px !important;
+    background: #B8A9C3 !important;
+    border-radius: 99px !important;
+    transform: translateX(-50%) !important;
+    transition: width 0.25s ease !important;
+}
+
+.med_video_page .med_video_menu > a:not(.med_video_btn):hover {
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+}
+
+.med_video_page .med_video_menu > a:not(.med_video_btn):hover::after {
+    width: 70% !important;
+}
+
+/* Login + Sign Up buttons */
+.med_video_page .med_video_menu .med_video_btn {
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.med_video_page .med_video_menu .med_video_btn:hover {
+    transform: translateY(-3px) !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-color: rgba(184, 169, 195, 0.85) !important;
+    box-shadow: 0 10px 28px rgba(184, 169, 195, 0.20) !important;
+}
+
+/* active click feel */
+.med_video_page .med_video_menu .med_video_btn:active,
+.med_video_page .med_video_menu > a:not(.med_video_btn):active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+/* brand tiny hover */
+.med_video_page .med_video_brand {
+    transition: transform 0.25s ease !important;
+}
+
+.med_video_page .med_video_brand:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* ===== WHY SECTION PERFECTED - MEDIOT TEMPLATE ===== */
+
+/* Main why/services sections */
+.med_video_page #why,
+.med_video_page .med_why,
+.med_video_page .med_why_section,
+.med_video_page .med_services,
+.med_video_page .med_services_section {
+    background:
+        radial-gradient(circle at 18% 20%, rgba(184, 169, 195, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 28%, rgba(110, 124, 137, 0.14), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%) !important;
+    padding: 92px 0 105px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Section badge */
+.med_video_page #why .med_tag,
+.med_video_page .med_why .med_tag,
+.med_video_page .med_services .med_tag,
+.med_video_page #why .section-badge,
+.med_video_page .med_why_section .section-badge {
+    background: rgba(184, 169, 195, 0.18) !important;
+    border: 1px solid rgba(184, 169, 195, 0.35) !important;
+    color: #24395B !important;
+    border-radius: 999px !important;
+    padding: 12px 28px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 14px 35px rgba(36, 57, 91, 0.06) !important;
+}
+
+/* Heading */
+.med_video_page #why h2,
+.med_video_page .med_why h2,
+.med_video_page .med_why_section h2,
+.med_video_page .med_services h2,
+.med_video_page .med_services_section h2 {
+    color: #12213D !important;
+    font-size: clamp(38px, 4vw, 58px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -1.8px !important;
+    font-weight: 900 !important;
+    max-width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Underline */
+.med_video_page #why h2::after,
+.med_video_page .med_why h2::after,
+.med_video_page .med_why_section h2::after,
+.med_video_page .med_services h2::after {
+    content: "" !important;
+    display: block !important;
+    width: 120px !important;
+    height: 5px !important;
+    margin: 28px auto 0 !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, #24395B, #B8A9C3) !important;
+}
+
+/* Section paragraph */
+.med_video_page #why > p,
+.med_video_page .med_why > p,
+.med_video_page .med_why_section > p,
+.med_video_page .med_services > p,
+.med_video_page .med_services_section > p,
+.med_video_page #why .section-subtitle,
+.med_video_page .med_why_section .section-subtitle {
+    color: #6E7C89 !important;
+    font-size: 20px !important;
+    line-height: 1.75 !important;
+    max-width: 860px !important;
+    margin: 28px auto 58px !important;
+}
+
+/* Cards grid */
+.med_video_page #why .row,
+.med_video_page .med_why .row,
+.med_video_page .med_why_section .row,
+.med_video_page .med_services .row,
+.med_video_page .med_services_section .row,
+.med_video_page .med_features_grid,
+.med_video_page .med_service_grid {
+    gap: 28px !important;
+}
+
+/* Cards */
+.med_video_page #why .card,
+.med_video_page .med_why .card,
+.med_video_page .med_why_section .card,
+.med_video_page .med_services .card,
+.med_video_page .med_services_section .card,
+.med_video_page .med_feature_card,
+.med_video_page .med_service_card {
+    position: relative !important;
+    min-height: 330px !important;
+    padding: 38px 34px !important;
+    border-radius: 26px !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    border: 1px solid rgba(36, 57, 91, 0.10) !important;
+    box-shadow: 0 22px 60px rgba(36, 57, 91, 0.08) !important;
+    overflow: hidden !important;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+/* Soft top stripe */
+.med_video_page #why .card::before,
+.med_video_page .med_why .card::before,
+.med_video_page .med_why_section .card::before,
+.med_video_page .med_services .card::before,
+.med_video_page .med_feature_card::before,
+.med_video_page .med_service_card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 5px !important;
+    background: linear-gradient(90deg, #24395B, #B8A9C3, #6B4A60) !important;
+}
+
+/* Card hover */
+.med_video_page #why .card:hover,
+.med_video_page .med_why .card:hover,
+.med_video_page .med_why_section .card:hover,
+.med_video_page .med_services .card:hover,
+.med_video_page .med_feature_card:hover,
+.med_video_page .med_service_card:hover {
+    transform: translateY(-10px) !important;
+    border-color: rgba(184, 169, 195, 0.45) !important;
+    box-shadow: 0 30px 80px rgba(36, 57, 91, 0.14) !important;
+}
+
+/* Icon bubble */
+.med_video_page #why .card .icon,
+.med_video_page .med_why .card .icon,
+.med_video_page .med_services .card .icon,
+.med_video_page .med_feature_card .icon,
+.med_video_page .med_service_card .icon,
+.med_video_page .med_badge {
+    width: 78px !important;
+    height: 78px !important;
+    border-radius: 50% !important;
+    background: rgba(184, 169, 195, 0.20) !important;
+    color: #24395B !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 16px 35px rgba(184, 169, 195, 0.18) !important;
+}
+
+/* Card titles */
+.med_video_page #why .card h3,
+.med_video_page .med_why .card h3,
+.med_video_page .med_why_section .card h3,
+.med_video_page .med_services .card h3,
+.med_video_page .med_feature_card h3,
+.med_video_page .med_service_card h3 {
+    color: #12213D !important;
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.7px !important;
+    margin-top: 28px !important;
+}
+
+/* Card body */
+.med_video_page #why .card p,
+.med_video_page .med_why .card p,
+.med_video_page .med_why_section .card p,
+.med_video_page .med_services .card p,
+.med_video_page .med_feature_card p,
+.med_video_page .med_service_card p {
+    color: #6E7C89 !important;
+    font-size: 17px !important;
+    line-height: 1.75 !important;
+    margin-top: 18px !important;
+}
+
+/* Animation */
+@keyframes mediotCardFloatIn {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.med_video_page #why .card,
+.med_video_page .med_why .card,
+.med_video_page .med_why_section .card,
+.med_video_page .med_services .card,
+.med_video_page .med_feature_card,
+.med_video_page .med_service_card {
+    animation: mediotCardFloatIn 0.7s ease both !important;
+}
+
+.med_video_page #why .card:nth-child(2),
+.med_video_page .med_why .card:nth-child(2),
+.med_video_page .med_services .card:nth-child(2),
+.med_video_page .med_feature_card:nth-child(2),
+.med_video_page .med_service_card:nth-child(2) {
+    animation-delay: 0.08s !important;
+}
+
+.med_video_page #why .card:nth-child(3),
+.med_video_page .med_why .card:nth-child(3),
+.med_video_page .med_services .card:nth-child(3),
+.med_video_page .med_feature_card:nth-child(3),
+.med_video_page .med_service_card:nth-child(3) {
+    animation-delay: 0.16s !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_page #why,
+    .med_video_page .med_why,
+    .med_video_page .med_why_section,
+    .med_video_page .med_services,
+    .med_video_page .med_services_section {
+        padding: 70px 18px !important;
+    }
+
+    .med_video_page #why h2,
+    .med_video_page .med_why h2,
+    .med_video_page .med_why_section h2,
+    .med_video_page .med_services h2 {
+        font-size: 34px !important;
+    }
+
+    .med_video_page #why .card,
+    .med_video_page .med_why .card,
+    .med_video_page .med_why_section .card,
+    .med_video_page .med_services .card,
+    .med_video_page .med_feature_card,
+    .med_video_page .med_service_card {
+        min-height: auto !important;
+        padding: 30px 24px !important;
+    }
+}
+
+/* ===== SERVICES / VALUE CARDS PERFECTED - MEDIOT TEMPLATE ===== */
+
+.med_video_page #services,
+.med_video_page .med_services,
+.med_video_page .med_testimonials,
+.med_video_page .med_testimonials_section {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(184, 169, 195, 0.15), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(36, 57, 91, 0.08), transparent 30%),
+        linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%) !important;
+    padding: 92px 0 110px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* section badge */
+.med_video_page #services .med_tag,
+.med_video_page .med_services .med_tag,
+.med_video_page .med_testimonials .med_tag,
+.med_video_page .med_testimonials_section .med_tag {
+    background: rgba(184, 169, 195, 0.18) !important;
+    border: 1px solid rgba(184, 169, 195, 0.35) !important;
+    color: #24395B !important;
+    border-radius: 999px !important;
+    padding: 12px 30px !important;
+    font-weight: 850 !important;
+    box-shadow: 0 14px 35px rgba(36, 57, 91, 0.06) !important;
+}
+
+/* title */
+.med_video_page #services h2,
+.med_video_page .med_services h2,
+.med_video_page .med_testimonials h2,
+.med_video_page .med_testimonials_section h2 {
+    color: #12213D !important;
+    font-size: clamp(38px, 4vw, 56px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -1.7px !important;
+    font-weight: 900 !important;
+    max-width: 960px !important;
+    margin: 26px auto 0 !important;
+    text-align: center !important;
+}
+
+/* subtitle */
+.med_video_page #services > p,
+.med_video_page .med_services > p,
+.med_video_page .med_testimonials > p,
+.med_video_page .med_testimonials_section > p,
+.med_video_page #services .section-subtitle,
+.med_video_page .med_services .section-subtitle {
+    color: #6E7C89 !important;
+    font-size: 20px !important;
+    line-height: 1.75 !important;
+    max-width: 900px !important;
+    margin: 26px auto 60px !important;
+    text-align: center !important;
+}
+
+/* card grid */
+.med_video_page .med_testimonial_grid,
+.med_video_page .med_services_grid,
+.med_video_page .med_service_grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    max-width: 1460px !important;
+    margin: 0 auto !important;
+    padding: 0 34px !important;
+}
+
+/* cards */
+.med_video_page .med_testimonial_card,
+.med_video_page .med_service_card,
+.med_video_page .med_services_card {
+    position: relative !important;
+    min-height: 470px !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(36, 57, 91, 0.10) !important;
+    box-shadow: 0 22px 60px rgba(36, 57, 91, 0.08) !important;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+/* blue card top */
+.med_video_page .med_testimonial_card::before,
+.med_video_page .med_service_card::before,
+.med_video_page .med_services_card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 126px !important;
+    background:
+        linear-gradient(135deg, rgba(36, 57, 91, 0.94), rgba(110, 124, 137, 0.72)),
+        radial-gradient(circle at 75% 20%, rgba(184, 169, 195, 0.25), transparent 32%) !important;
+    z-index: 0 !important;
+}
+
+/* small top accent */
+.med_video_page .med_testimonial_card::after,
+.med_video_page .med_service_card::after,
+.med_video_page .med_services_card::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 24px !important;
+    right: 24px !important;
+    height: 5px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, #24395B, #B8A9C3, #6B4A60) !important;
+    z-index: 2 !important;
+}
+
+/* card hover */
+.med_video_page .med_testimonial_card:hover,
+.med_video_page .med_service_card:hover,
+.med_video_page .med_services_card:hover {
+    transform: translateY(-10px) !important;
+    border-color: rgba(184, 169, 195, 0.45) !important;
+    box-shadow: 0 32px 86px rgba(36, 57, 91, 0.15) !important;
+}
+
+/* avatar/icon image */
+.med_video_page .med_testimonial_card .med_avatar,
+.med_video_page .med_testimonial_card .med_avatar_photo {
+    position: relative !important;
+    z-index: 3 !important;
+    width: 92px !important;
+    height: 92px !important;
+    margin: 68px auto 0 !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    border: 5px solid #ffffff !important;
+    box-shadow: 0 16px 36px rgba(36, 57, 91, 0.18) !important;
+    overflow: hidden !important;
+}
+
+.med_video_page .med_testimonial_card .med_avatar img,
+.med_video_page .med_testimonial_card .med_avatar_photo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* percentage bubble */
+.med_video_page .med_testimonial_card .med_badge,
+.med_video_page .med_service_card .med_badge,
+.med_video_page .med_services_card .med_badge {
+    position: relative !important;
+    z-index: 3 !important;
+    margin: 38px auto 30px !important;
+    width: 118px !important;
+    height: 118px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(180deg, rgba(184, 169, 195, 0.22), rgba(231, 231, 224, 0.68)) !important;
+    color: #24395B !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-weight: 900 !important;
+    line-height: 1.35 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.52), 0 12px 28px rgba(36,57,91,0.08) !important;
+}
+
+/* body quote/text */
+.med_video_page .med_testimonial_card p,
+.med_video_page .med_service_card p,
+.med_video_page .med_services_card p {
+    position: relative !important;
+    z-index: 3 !important;
+    color: #5F718D !important;
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+    max-width: 82% !important;
+    margin: 0 auto 44px !important;
+    text-align: left !important;
+}
+
+/* bottom title */
+.med_video_page .med_testimonial_card h4,
+.med_video_page .med_service_card h4,
+.med_video_page .med_services_card h4 {
+    position: relative !important;
+    z-index: 3 !important;
+    color: #12213D !important;
+    font-size: 25px !important;
+    line-height: 1.15 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.6px !important;
+    text-align: center !important;
+    margin: 0 0 8px !important;
+}
+
+/* bottom subtitle */
+.med_video_page .med_testimonial_card span,
+.med_video_page .med_service_card span,
+.med_video_page .med_services_card span {
+    position: relative !important;
+    z-index: 3 !important;
+    display: block !important;
+    color: #8794A8 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+}
+
+/* entry animation */
+@keyframes mediotServiceRise {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.med_video_page .med_testimonial_card,
+.med_video_page .med_service_card,
+.med_video_page .med_services_card {
+    animation: mediotServiceRise 0.75s ease both !important;
+}
+
+.med_video_page .med_testimonial_card:nth-child(2),
+.med_video_page .med_service_card:nth-child(2),
+.med_video_page .med_services_card:nth-child(2) {
+    animation-delay: 0.08s !important;
+}
+
+.med_video_page .med_testimonial_card:nth-child(3),
+.med_video_page .med_service_card:nth-child(3),
+.med_video_page .med_services_card:nth-child(3) {
+    animation-delay: 0.16s !important;
+}
+
+@media (max-width: 1100px) {
+    .med_video_page .med_testimonial_grid,
+    .med_video_page .med_services_grid,
+    .med_video_page .med_service_grid {
+        grid-template-columns: 1fr !important;
+        max-width: 620px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .med_video_page #services,
+    .med_video_page .med_services,
+    .med_video_page .med_testimonials,
+    .med_video_page .med_testimonials_section {
+        padding: 70px 0 !important;
+    }
+
+    .med_video_page #services h2,
+    .med_video_page .med_services h2,
+    .med_video_page .med_testimonials h2,
+    .med_video_page .med_testimonials_section h2 {
+        font-size: 34px !important;
+    }
+
+    .med_video_page .med_testimonial_grid,
+    .med_video_page .med_services_grid,
+    .med_video_page .med_service_grid {
+        padding: 0 18px !important;
+    }
+
+    .med_video_page .med_testimonial_card,
+    .med_video_page .med_service_card,
+    .med_video_page .med_services_card {
+        min-height: auto !important;
+        padding-bottom: 34px !important;
+    }
+}
+
+/* ===== FINAL FIX - SERVICES CARDS BACK TO EARLIER SIZE ===== */
+
+/* smaller grid/cards like before */
+.med_video_page .med_testimonial_grid,
+.med_video_page .med_services_grid,
+.med_video_page .med_service_grid {
+    max-width: 1320px !important;
+    gap: 28px !important;
+    padding: 0 36px !important;
+}
+
+.med_video_page .med_testimonial_card,
+.med_video_page .med_service_card,
+.med_video_page .med_services_card {
+    min-height: 360px !important;
+    height: auto !important;
+    border-radius: 22px !important;
+    padding-bottom: 26px !important;
+}
+
+/* smaller blue top area */
+.med_video_page .med_testimonial_card::before,
+.med_video_page .med_service_card::before,
+.med_video_page .med_services_card::before {
+    height: 96px !important;
+}
+
+/* smaller avatar */
+.med_video_page .med_testimonial_card .med_avatar,
+.med_video_page .med_testimonial_card .med_avatar_photo {
+    width: 78px !important;
+    height: 78px !important;
+    margin: 48px auto 0 !important;
+    border-width: 4px !important;
+}
+
+/* smaller circle badge */
+.med_video_page .med_testimonial_card .med_badge,
+.med_video_page .med_service_card .med_badge,
+.med_video_page .med_services_card .med_badge {
+    width: 88px !important;
+    height: 88px !important;
+    margin: 30px auto 22px !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+}
+
+/* tighter text */
+.med_video_page .med_testimonial_card p,
+.med_video_page .med_service_card p,
+.med_video_page .med_services_card p {
+    max-width: 82% !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    margin: 0 auto 28px !important;
+}
+
+/* smaller titles */
+.med_video_page .med_testimonial_card h4,
+.med_video_page .med_service_card h4,
+.med_video_page .med_services_card h4 {
+    font-size: 21px !important;
+    margin-bottom: 6px !important;
+}
+
+.med_video_page .med_testimonial_card span,
+.med_video_page .med_service_card span,
+.med_video_page .med_services_card span {
+    font-size: 13px !important;
+}
+
+/* smaller See Detail */
+.med_video_page .med_testimonial_card a,
+.med_video_page .med_service_card a,
+.med_video_page .med_services_card a {
+    font-size: 13px !important;
+    margin-top: 14px !important;
+}
+
+/* reduce section vertical spacing */
+.med_video_page #services,
+.med_video_page .med_services,
+.med_video_page .med_testimonials,
+.med_video_page .med_testimonials_section {
+    padding: 78px 0 86px !important;
+}
+
+@media (max-width: 1100px) {
+    .med_video_page .med_testimonial_grid,
+    .med_video_page .med_services_grid,
+    .med_video_page .med_service_grid {
+        grid-template-columns: 1fr !important;
+        max-width: 560px !important;
+    }
+}
+
+/* ===== FINAL COMPACT SERVICES CARDS - SHORT HEIGHT ===== */
+
+.med_video_page .med_testimonial_grid,
+.med_video_page .med_services_grid,
+.med_video_page .med_service_grid {
+    max-width: 1180px !important;
+    gap: 22px !important;
+    padding: 0 28px !important;
+}
+
+.med_video_page .med_testimonial_card,
+.med_video_page .med_service_card,
+.med_video_page .med_services_card {
+    min-height: 260px !important;
+    max-height: 310px !important;
+    border-radius: 18px !important;
+    padding-bottom: 14px !important;
+}
+
+/* compact blue header */
+.med_video_page .med_testimonial_card::before,
+.med_video_page .med_service_card::before,
+.med_video_page .med_services_card::before {
+    height: 64px !important;
+}
+
+/* compact avatar */
+.med_video_page .med_testimonial_card .med_avatar,
+.med_video_page .med_testimonial_card .med_avatar_photo {
+    width: 56px !important;
+    height: 56px !important;
+    margin: 24px auto 0 !important;
+    border-width: 3px !important;
+}
+
+/* compact center badge */
+.med_video_page .med_testimonial_card .med_badge,
+.med_video_page .med_service_card .med_badge,
+.med_video_page .med_services_card .med_badge {
+    width: 58px !important;
+    height: 58px !important;
+    margin: 14px auto 12px !important;
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+}
+
+/* compact description */
+.med_video_page .med_testimonial_card p,
+.med_video_page .med_service_card p,
+.med_video_page .med_services_card p {
+    max-width: 78% !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin: 0 auto 14px !important;
+}
+
+/* compact title/footer */
+.med_video_page .med_testimonial_card h4,
+.med_video_page .med_service_card h4,
+.med_video_page .med_services_card h4 {
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+    margin: 0 0 3px !important;
+}
+
+.med_video_page .med_testimonial_card span,
+.med_video_page .med_service_card span,
+.med_video_page .med_services_card span {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+}
+
+/* hide See Detail to reduce height */
+.med_video_page .med_testimonial_card a,
+.med_video_page .med_service_card a,
+.med_video_page .med_services_card a {
+    display: none !important;
+}
+
+/* section spacing */
+.med_video_page #services,
+.med_video_page .med_services,
+.med_video_page .med_testimonials,
+.med_video_page .med_testimonials_section {
+    padding: 58px 0 62px !important;
+}
+
+/* ===== FINAL FIX - RESTORE BOTTOM CONTENT + REMOVE CIRCLE ===== */
+
+/* keep compact cards but allow bottom content */
+.med_video_page .med_testimonial_card,
+.med_video_page .med_service_card,
+.med_video_page .med_services_card {
+    min-height: 360px !important;
+    max-height: none !important;
+    height: auto !important;
+    padding-bottom: 22px !important;
+}
+
+/* remove the middle circle badge */
+.med_video_page .med_testimonial_card .med_badge,
+.med_video_page .med_service_card .med_badge,
+.med_video_page .med_services_card .med_badge {
+    display: none !important;
+}
+
+/* tighten body text so bottom content fits */
+.med_video_page .med_testimonial_card p,
+.med_video_page .med_service_card p,
+.med_video_page .med_services_card p {
+    max-width: 80% !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin: 22px auto 18px !important;
+}
+
+/* restore bottom content */
+.med_video_page .med_testimonial_card h4,
+.med_video_page .med_service_card h4,
+.med_video_page .med_services_card h4 {
+    display: block !important;
+    font-size: 18px !important;
+    margin: 0 0 4px !important;
+}
+
+.med_video_page .med_testimonial_card span,
+.med_video_page .med_service_card span,
+.med_video_page .med_services_card span {
+    display: block !important;
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+}
+
+.med_video_page .med_testimonial_card a,
+.med_video_page .med_service_card a,
+.med_video_page .med_services_card a {
+    display: inline-block !important;
+    font-size: 13px !important;
+    margin-top: 6px !important;
+}
+
+/* avatar spacing a bit cleaner */
+.med_video_page .med_testimonial_card .med_avatar,
+.med_video_page .med_testimonial_card .med_avatar_photo {
+    margin: 24px auto 0 !important;
+}
+
+/* ===== FINAL TEXT POLISH - SERVICES SECTION ===== */
+
+/* section title */
+.med_video_page #services h2,
+.med_video_page .med_services h2,
+.med_video_page .med_testimonials h2,
+.med_video_page .med_testimonials_section h2 {
+    max-width: 980px !important;
+    font-size: clamp(42px, 4vw, 64px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -1.6px !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    margin: 22px auto 0 !important;
+    color: #12213D !important;
+}
+
+/* section subtitle */
+.med_video_page #services > p,
+.med_video_page .med_services > p,
+.med_video_page .med_testimonials > p,
+.med_video_page .med_testimonials_section > p,
+.med_video_page #services .section-subtitle,
+.med_video_page .med_services .section-subtitle {
+    max-width: 900px !important;
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    color: #6A7890 !important;
+    margin: 22px auto 52px !important;
+}
+
+/* card body text */
+.med_video_page .med_testimonial_card p,
+.med_video_page .med_service_card p,
+.med_video_page .med_services_card p {
+    max-width: 78% !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    font-weight: 500 !important;
+    color: #667792 !important;
+    text-align: left !important;
+    margin: 22px auto 24px !important;
+}
+
+/* card main title */
+.med_video_page .med_testimonial_card h4,
+.med_video_page .med_service_card h4,
+.med_video_page .med_services_card h4 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    color: #12213D !important;
+    margin: 0 0 6px !important;
+}
+
+/* card subtitle */
+.med_video_page .med_testimonial_card span,
+.med_video_page .med_service_card span,
+.med_video_page .med_services_card span {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    color: #8A97AA !important;
+    margin-bottom: 14px !important;
+}
+
+/* See Detail */
+.med_video_page .med_testimonial_card a,
+.med_video_page .med_service_card a,
+.med_video_page .med_services_card a {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2px !important;
+    color: #4E6796 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    margin-top: 4px !important;
+    transition: color 0.25s ease, transform 0.25s ease !important;
+}
+
+.med_video_page .med_testimonial_card a:hover,
+.med_video_page .med_service_card a:hover,
+.med_video_page .med_services_card a:hover {
+    color: #6B4A60 !important;
+    transform: translateY(-1px) !important;
+}
+
+@media (max-width: 900px) {
+    .med_video_page #services h2,
+    .med_video_page .med_services h2,
+    .med_video_page .med_testimonials h2,
+    .med_video_page .med_testimonials_section h2 {
+        font-size: 34px !important;
+    }
+
+    .med_video_page #services > p,
+    .med_video_page .med_services > p,
+    .med_video_page .med_testimonials > p,
+    .med_video_page .med_testimonials_section > p {
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+    }
+
+    .med_video_page .med_testimonial_card p,
+    .med_video_page .med_service_card p,
+    .med_video_page .med_services_card p {
+        font-size: 14px !important;
+        max-width: 82% !important;
+    }
+}
+
+/* ===== FINAL POLISH - CONTACT + FOOTER COLORS + BETTER MOTION ===== */
+
+/* CONTACT SECTION */
+.med_video_page #contact,
+.med_video_page .med_contact,
+.med_video_page .med_contact_section {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(184, 169, 195, 0.14), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(36, 57, 91, 0.08), transparent 30%),
+        linear-gradient(180deg, #f8f9fc 0%, #ffffff 100%) !important;
+}
+
+/* contact badge */
+.med_video_page #contact .med_tag,
+.med_video_page .med_contact .med_tag,
+.med_video_page .med_contact_section .med_tag,
+.med_video_page #contact .section-badge,
+.med_video_page .med_contact_section .section-badge {
+    background: rgba(184, 169, 195, 0.18) !important;
+    border: 1px solid rgba(184, 169, 195, 0.35) !important;
+    color: #24395B !important;
+    border-radius: 999px !important;
+    padding: 12px 28px !important;
+    font-weight: 800 !important;
+}
+
+/* left title */
+.med_video_page #contact h2,
+.med_video_page .med_contact h2,
+.med_video_page .med_contact_section h2 {
+    color: #12213D !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.8px !important;
+}
+
+/* contact paragraph */
+.med_video_page #contact p,
+.med_video_page .med_contact p,
+.med_video_page .med_contact_section p {
+    color: #6E7C89 !important;
+    line-height: 1.75 !important;
+}
+
+/* quote block */
+.med_video_page #contact blockquote,
+.med_video_page .med_contact blockquote,
+.med_video_page .med_contact_section blockquote,
+.med_video_page #contact .med_quote,
+.med_video_page .med_contact .med_quote {
+    background: rgba(184, 169, 195, 0.12) !important;
+    border-left: 4px solid #6B4A60 !important;
+    color: #4F607C !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 35px rgba(36, 57, 91, 0.06) !important;
+}
+
+/* form wrapper/card */
+.med_video_page #contact form,
+.med_video_page .med_contact form,
+.med_video_page .med_contact_section form,
+.med_video_page #contact .contact-form,
+.med_video_page .med_contact .contact-form {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(36, 57, 91, 0.08) !important;
+    border-radius: 26px !important;
+    box-shadow: 0 18px 50px rgba(36, 57, 91, 0.08) !important;
+}
+
+/* inputs */
+.med_video_page #contact input,
+.med_video_page #contact textarea,
+.med_video_page .med_contact input,
+.med_video_page .med_contact textarea,
+.med_video_page .med_contact_section input,
+.med_video_page .med_contact_section textarea {
+    border: 1px solid rgba(36, 57, 91, 0.12) !important;
+    border-radius: 18px !important;
+    background: #ffffff !important;
+    color: #24395B !important;
+    transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease !important;
+}
+
+.med_video_page #contact input::placeholder,
+.med_video_page #contact textarea::placeholder,
+.med_video_page .med_contact input::placeholder,
+.med_video_page .med_contact textarea::placeholder,
+.med_video_page .med_contact_section input::placeholder,
+.med_video_page .med_contact_section textarea::placeholder {
+    color: #8A97AA !important;
+}
+
+.med_video_page #contact input:focus,
+.med_video_page #contact textarea:focus,
+.med_video_page .med_contact input:focus,
+.med_video_page .med_contact textarea:focus,
+.med_video_page .med_contact_section input:focus,
+.med_video_page .med_contact_section textarea:focus {
+    outline: none !important;
+    border-color: #6B4A60 !important;
+    box-shadow: 0 0 0 4px rgba(107, 74, 96, 0.12) !important;
+}
+
+/* send button */
+.med_video_page #contact button,
+.med_video_page #contact .btn,
+.med_video_page .med_contact button,
+.med_video_page .med_contact .btn,
+.med_video_page .med_contact_section button,
+.med_video_page .med_contact_section .btn {
+    background: #6B4A60 !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    border-radius: 18px !important;
+    box-shadow: 0 14px 34px rgba(107, 74, 96, 0.20) !important;
+}
+
+/* FOOTER */
+.med_video_page footer,
+.med_video_page .med_footer,
+.med_video_page .footer {
+    background: #24395B !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.med_video_page footer h3,
+.med_video_page footer h4,
+.med_video_page .med_footer h3,
+.med_video_page .med_footer h4,
+.med_video_page .footer h3,
+.med_video_page .footer h4 {
+    color: #ffffff !important;
+}
+
+.med_video_page footer p,
+.med_video_page footer li,
+.med_video_page footer a,
+.med_video_page .med_footer p,
+.med_video_page .med_footer li,
+.med_video_page .med_footer a,
+.med_video_page .footer p,
+.med_video_page .footer li,
+.med_video_page .footer a {
+    color: rgba(255, 255, 255, 0.84) !important;
+    text-decoration: none !important;
+}
+
+/* footer links hover */
+.med_video_page footer a:hover,
+.med_video_page .med_footer a:hover,
+.med_video_page .footer a:hover {
+    color: #B8A9C3 !important;
+}
+
+/* social icons */
+.med_video_page footer .social a,
+.med_video_page footer .med_social a,
+.med_video_page .med_footer .social a,
+.med_video_page .med_footer .med_social a,
+.med_video_page .footer .social a {
+    background: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    color: #ffffff !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+}
+
+.med_video_page footer .social a:hover,
+.med_video_page footer .med_social a:hover,
+.med_video_page .med_footer .social a:hover,
+.med_video_page .med_footer .med_social a:hover,
+.med_video_page .footer .social a:hover {
+    background: #6B4A60 !important;
+    border-color: #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(107, 74, 96, 0.20) !important;
+}
+
+/* subscribe/newsletter box */
+.med_video_page footer input,
+.med_video_page .med_footer input,
+.med_video_page .footer input {
+    background: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+}
+
+.med_video_page footer input::placeholder,
+.med_video_page .med_footer input::placeholder,
+.med_video_page .footer input::placeholder {
+    color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.med_video_page footer button,
+.med_video_page .med_footer button,
+.med_video_page .footer button {
+    background: #6B4A60 !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+}
+
+/* BETTER GLOBAL MOTION */
+.med_video_page a,
+.med_video_page button,
+.med_video_page .btn,
+.med_video_page input,
+.med_video_page textarea,
+.med_video_page .med_service_card,
+.med_video_page .med_testimonial_card,
+.med_video_page .med_feature_card,
+.med_video_page footer .social a,
+.med_video_page .med_footer .social a {
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        opacity 0.25s ease !important;
+}
+
+/* hover lift */
+.med_video_page button:hover,
+.med_video_page .btn:hover,
+.med_video_page #contact button:hover,
+.med_video_page .med_contact button:hover,
+.med_video_page .med_contact_section button:hover,
+.med_video_page footer button:hover,
+.med_video_page .med_footer button:hover {
+    transform: translateY(-2px) !important;
+    background: #563A4D !important;
+    border-color: #563A4D !important;
+    box-shadow: 0 16px 34px rgba(107, 74, 96, 0.24) !important;
+}
+
+/* card hover motion */
+.med_video_page .med_service_card:hover,
+.med_video_page .med_testimonial_card:hover,
+.med_video_page .med_feature_card:hover {
+    transform: translateY(-6px) !important;
+}
+
+/* active/click feel */
+.med_video_page a:active,
+.med_video_page button:active,
+.med_video_page .btn:active,
+.med_video_page footer .social a:active,
+.med_video_page .med_footer .social a:active {
+    transform: scale(0.97) !important;
+}
+
+/* ===== ROLE PAGE V2 - INSPIRED BY CLEAN CARD SELECTOR ===== */
+
+@keyframes mediotRoleFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mediotRoleFloat {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+/* page background */
+.med_role_page,
+.med_role_selection_page,
+.role-selection-page,
+.med_role_screen,
+.med_role_wrapper,
+.med_role_container {
+    background:
+        radial-gradient(circle at 20% 18%, rgba(184, 169, 195, 0.18), transparent 24%),
+        radial-gradient(circle at 78% 20%, rgba(36, 57, 91, 0.12), transparent 26%),
+        linear-gradient(180deg, #f3f5f9 0%, #eef2f7 100%) !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* heading block */
+.med_role_page h1,
+.med_role_page h2,
+.med_role_selection_page h1,
+.med_role_selection_page h2,
+.role-selection-page h1,
+.role-selection-page h2,
+.med_role_screen h1,
+.med_role_screen h2,
+.med_role_wrapper h1,
+.med_role_wrapper h2 {
+    color: #111827 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    margin-bottom: 10px !important;
+    animation: mediotRoleFadeUp 0.55s ease both !important;
+}
+
+.med_role_page p,
+.med_role_selection_page p,
+.role-selection-page p,
+.med_role_screen p,
+.med_role_wrapper p {
+    color: #6B7280 !important;
+    text-align: center !important;
+    animation: mediotRoleFadeUp 0.7s ease both !important;
+}
+
+/* cards layout */
+.med_role_cards,
+.med_role_options,
+.role-selection-grid,
+.role-options,
+.med_role_grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 42px !important;
+    flex-wrap: wrap !important;
+    margin-top: 36px !important;
+    animation: mediotRoleFadeUp 0.85s ease both !important;
+}
+
+/* cards */
+.med_role_card,
+.med_role_option,
+.role-card,
+.role-option,
+.med_portal_role_card,
+.med_role_cards > div,
+.role-selection-grid > div {
+    position: relative !important;
+    width: 230px !important;
+    min-height: 250px !important;
+    padding: 30px 24px 24px !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(17, 24, 39, 0.06) !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease !important;
+    animation: mediotRoleFadeUp 0.9s ease both !important;
+}
+
+/* blue accent line like inspo */
+.med_role_card::after,
+.med_role_option::after,
+.role-card::after,
+.role-option::after,
+.med_portal_role_card::after,
+.med_role_cards > div::after,
+.role-selection-grid > div::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 6px !important;
+    background: #3B82F6 !important;
+    border-radius: 0 0 10px 10px !important;
+    opacity: 0 !important;
+    transform: scaleX(0.65) !important;
+    transform-origin: center !important;
+    transition: opacity 0.22s ease, transform 0.22s ease !important;
+}
+
+.med_role_card:hover,
+.med_role_option:hover,
+.role-card:hover,
+.role-option:hover,
+.med_portal_role_card:hover,
+.med_role_cards > div:hover,
+.role-selection-grid > div:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12) !important;
+    border-color: rgba(59, 130, 246, 0.22) !important;
+}
+
+.med_role_card:hover::after,
+.med_role_option:hover::after,
+.role-card:hover::after,
+.role-option:hover::after,
+.med_portal_role_card:hover::after,
+.med_role_cards > div:hover::after,
+.role-selection-grid > div:hover::after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+/* click motion */
+.med_role_card:active,
+.med_role_option:active,
+.role-card:active,
+.role-option:active,
+.med_portal_role_card:active,
+.med_role_cards > div:active,
+.role-selection-grid > div:active {
+    transform: scale(0.98) !important;
+}
+
+/* icons */
+.med_role_icon,
+.role-icon,
+.icon-circle,
+.med_portal_role_card .icon,
+.med_role_card .icon,
+.med_role_option .icon {
+    width: 92px !important;
+    height: 92px !important;
+    margin: 0 auto 22px !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(59, 130, 246, 0.12) !important;
+    color: #3B82F6 !important;
+    box-shadow: none !important;
+    animation: mediotRoleFloat 3.2s ease-in-out infinite !important;
+}
+
+/* admin/doctor title */
+.med_role_card h3,
+.med_role_option h3,
+.role-card h3,
+.role-option h3,
+.med_portal_role_card h3,
+.med_role_cards > div h3,
+.role-selection-grid > div h3 {
+    color: #111827 !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    margin-bottom: 8px !important;
+}
+
+/* description */
+.med_role_card p,
+.med_role_option p,
+.role-card p,
+.role-option p,
+.med_portal_role_card p,
+.med_role_cards > div p,
+.role-selection-grid > div p {
+    color: #6B7280 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+    max-width: 170px !important;
+    margin: 0 auto !important;
+}
+
+/* home button */
+.med_role_page a[href="/"],
+.med_role_page a[href*="home"],
+.med_role_selection_page a[href="/"],
+.med_role_selection_page a[href*="home"],
+.role-selection-page a[href="/"],
+.role-selection-page a[href*="home"],
+.med_role_screen a[href="/"],
+.med_role_wrapper a[href="/"] {
+    background: linear-gradient(135deg, #60A5FA, #5EEAD4) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.med_role_page a[href="/"]:hover,
+.med_role_page a[href*="home"]:hover,
+.med_role_selection_page a[href="/"]:hover,
+.med_role_selection_page a[href*="home"]:hover,
+.role-selection-page a[href="/"]:hover,
+.role-selection-page a[href*="home"]:hover,
+.med_role_screen a[href="/"]:hover,
+.med_role_wrapper a[href="/"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 30px rgba(59, 130, 246, 0.24) !important;
+}
+
+.med_role_page a[href="/"]:active,
+.med_role_page a[href*="home"]:active,
+.med_role_selection_page a[href="/"]:active,
+.med_role_selection_page a[href*="home"]:active,
+.role-selection-page a[href="/"]:active,
+.role-selection-page a[href*="home"]:active,
+.med_role_screen a[href="/"]:active,
+.med_role_wrapper a[href="/"]:active {
+    transform: scale(0.98) !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_cards,
+    .med_role_options,
+    .role-selection-grid,
+    .role-options,
+    .med_role_grid {
+        gap: 18px !important;
+    }
+
+    .med_role_card,
+    .med_role_option,
+    .role-card,
+    .role-option,
+    .med_portal_role_card,
+    .med_role_cards > div,
+    .role-selection-grid > div {
+        width: min(100%, 280px) !important;
+        min-height: 230px !important;
+    }
+}
+
+/* ===== ROLE SELECT PAGE - CLEAN CARD SELECTOR STYLE ===== */
+
+@keyframes mediotRoleFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mediotRoleIconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.med_role_page {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(184, 169, 195, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 24%, rgba(36, 57, 91, 0.12), transparent 28%),
+        linear-gradient(180deg, #f4f6fa 0%, #eef2f7 100%) !important;
+}
+
+.med_role_page .med_role_home {
+    background: rgba(255,255,255,0.72) !important;
+    color: #24395B !important;
+    border: 1px solid rgba(36,57,91,0.12) !important;
+    box-shadow: 0 12px 26px rgba(36,57,91,0.10) !important;
+    transition: transform .22s ease, box-shadow .22s ease, background .22s ease !important;
+}
+
+.med_role_page .med_role_home:hover {
+    transform: translateY(-2px) !important;
+    background: #ffffff !important;
+    box-shadow: 0 16px 34px rgba(36,57,91,0.14) !important;
+}
+
+.med_role_page .med_role_home:active {
+    transform: scale(.97) !important;
+}
+
+.med_role_page .med_role_head {
+    animation: mediotRoleFadeUp .6s ease both !important;
+}
+
+.med_role_page .med_role_head h1 {
+    color: #12213D !important;
+    font-weight: 900 !important;
+    letter-spacing: -1px !important;
+}
+
+.med_role_page .med_role_head p {
+    color: #6E7C89 !important;
+    font-weight: 500 !important;
+}
+
+.med_role_page .med_role_cards {
+    gap: 42px !important;
+    animation: mediotRoleFadeUp .75s ease both !important;
+}
+
+.med_role_page .med_role_card {
+    width: 245px !important;
+    min-height: 260px !important;
+    background: rgba(255,255,255,0.92) !important;
+    border: 1px solid rgba(36,57,91,0.08) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 30px rgba(36,57,91,0.10) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform .24s ease, box-shadow .28s ease, border-color .28s ease !important;
+}
+
+.med_role_page .med_role_card::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 6px !important;
+    background: linear-gradient(90deg, #24395B, #B8A9C3, #6B4A60) !important;
+    transform: scaleX(.45) !important;
+    opacity: 0 !important;
+    transform-origin: center !important;
+    transition: transform .24s ease, opacity .24s ease !important;
+}
+
+.med_role_page .med_role_card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(184,169,195,0.45) !important;
+    box-shadow: 0 20px 46px rgba(36,57,91,0.16) !important;
+}
+
+.med_role_page .med_role_card:hover::after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+.med_role_page .med_role_card:active {
+    transform: scale(.98) !important;
+}
+
+.med_role_page .med_role_icon {
+    width: 88px !important;
+    height: 88px !important;
+    margin-bottom: 24px !important;
+    background: linear-gradient(135deg, #B8A9C3, #6B4A60) !important;
+    color: #ffffff !important;
+    box-shadow: 0 16px 34px rgba(107,74,96,0.20) !important;
+    animation: mediotRoleIconFloat 3.2s ease-in-out infinite !important;
+}
+
+.med_role_page .med_role_card.admin .med_role_icon,
+.med_role_page .med_role_card.doctor .med_role_icon {
+    background: linear-gradient(135deg, #B8A9C3, #6B4A60) !important;
+}
+
+.med_role_page .med_role_card:hover .med_role_icon {
+    box-shadow: 0 18px 42px rgba(107,74,96,0.28) !important;
+}
+
+.med_role_page .med_role_card h2 {
+    color: #12213D !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    margin-bottom: 10px !important;
+}
+
+.med_role_page .med_role_card p {
+    color: #6E7C89 !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    max-width: 200px !important;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_page .med_role_cards {
+        gap: 22px !important;
+    }
+
+    .med_role_page .med_role_card {
+        width: min(100%, 290px) !important;
+    }
+}
+
+/* ===== ROLE PAGE FINAL - LIGHT SELECTOR INSPO STYLE ===== */
+
+@keyframes mediotRolePanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mediotRoleCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes mediotRoleIconFloatFinal {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* whole page */
+.med_role_page {
+    position: relative !important;
+    min-height: 100vh !important;
+    background: #f2f2f2 !important;
+    padding: 44px 24px 60px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+/* remove dark/vague vibe */
+.med_role_page::before,
+.med_role_page::after {
+    content: none !important;
+}
+
+/* white centered main panel */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 980px !important;
+}
+
+.med_role_page .med_role_head {
+    background: #ffffff !important;
+    margin: 28px auto 0 !important;
+    padding: 46px 40px 18px !important;
+    text-align: left !important;
+    animation: mediotRolePanelIn 0.45s ease both !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+    border-radius: 0 !important;
+}
+
+/* title/subtitle */
+.med_role_page .med_role_head h1 {
+    color: #111111 !important;
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.4px !important;
+    text-align: left !important;
+    margin: 0 0 8px !important;
+}
+
+.med_role_page .med_role_head p {
+    color: #444444 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+/* cards area part of same panel */
+.med_role_page .med_role_cards {
+    background: #ffffff !important;
+    margin: 0 auto !important;
+    padding: 22px 40px 42px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 34px !important;
+    flex-wrap: wrap !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+    animation: mediotRolePanelIn 0.58s ease both !important;
+}
+
+/* cards */
+.med_role_page .med_role_card {
+    position: relative !important;
+    width: 196px !important;
+    min-height: 246px !important;
+    background: #ffffff !important;
+    border: 1px solid #ececec !important;
+    border-radius: 0 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
+    padding: 24px 18px 22px !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important;
+    animation: mediotRoleCardIn 0.55s ease both !important;
+}
+
+.med_role_page .med_role_card:nth-child(2) {
+    animation-delay: 0.06s !important;
+}
+
+/* blue bottom bar like the inspo */
+.med_role_page .med_role_card::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 6px !important;
+    background: #3B82F6 !important;
+    opacity: 0 !important;
+    transition: opacity 0.18s ease !important;
+}
+
+/* hover / selected feel */
+.med_role_page .med_role_card:hover {
+    transform: translateY(-3px) !important;
+    border-color: #d8e7ff !important;
+    box-shadow: 0 8px 18px rgba(59, 130, 246, 0.12) !important;
+}
+
+.med_role_page .med_role_card:hover::after,
+.med_role_page .med_role_card:focus::after,
+.med_role_page .med_role_card:active::after {
+    opacity: 1 !important;
+}
+
+.med_role_page .med_role_card:active {
+    transform: scale(0.985) !important;
+}
+
+/* icons */
+.med_role_page .med_role_icon {
+    width: 92px !important;
+    height: 92px !important;
+    margin: 0 auto 20px !important;
+    background: #f7f7f7 !important;
+    border-radius: 50% !important;
+    color: #3B82F6 !important;
+    box-shadow: none !important;
+    animation: mediotRoleIconFloatFinal 2.8s ease-in-out infinite !important;
+}
+
+/* make icon svg/font itself blue */
+.med_role_page .med_role_icon i,
+.med_role_page .med_role_icon svg {
+    color: #3B82F6 !important;
+    fill: #3B82F6 !important;
+}
+
+/* title on cards */
+.med_role_page .med_role_card h2 {
+    color: #111111 !important;
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    margin: 0 0 8px !important;
+}
+
+/* description */
+.med_role_page .med_role_card p {
+    color: #555555 !important;
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    max-width: 155px !important;
+    margin: 0 auto !important;
+}
+
+/* home button - make simpler */
+.med_role_page .med_role_home {
+    align-self: flex-start !important;
+    background: linear-gradient(135deg, #60A5FA, #5EEAD4) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: 0 8px 18px rgba(59,130,246,0.18) !important;
+    transition: transform .18s ease, box-shadow .18s ease !important;
+}
+
+.med_role_page .med_role_home:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 22px rgba(59,130,246,0.22) !important;
+}
+
+.med_role_page .med_role_home:active {
+    transform: scale(.98) !important;
+}
+
+/* desktop alignment */
+@media (min-width: 901px) {
+    .med_role_page .med_role_head,
+    .med_role_page .med_role_cards {
+        width: 820px !important;
+    }
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .med_role_page {
+        padding: 24px 16px 36px !important;
+    }
+
+    .med_role_page .med_role_head {
+        padding: 28px 20px 12px !important;
+    }
+
+    .med_role_page .med_role_cards {
+        padding: 18px 20px 28px !important;
+        gap: 18px !important;
+    }
+
+    .med_role_page .med_role_card {
+        width: min(100%, 240px) !important;
+    }
+}
+
+/* ===== ROLE PAGE V2 - INSPIRED BY CLEAN CARD SELECTOR ===== */
+
+@keyframes mediotRoleFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mediotRoleFloat {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+/* page background */
+.med_role_page,
+.med_role_selection_page,
+.role-selection-page,
+.med_role_screen,
+.med_role_wrapper,
+.med_role_container {
+    background:
+        radial-gradient(circle at 20% 18%, rgba(184, 169, 195, 0.18), transparent 24%),
+        radial-gradient(circle at 78% 20%, rgba(36, 57, 91, 0.12), transparent 26%),
+        linear-gradient(180deg, #f3f5f9 0%, #eef2f7 100%) !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* heading block */
+.med_role_page h1,
+.med_role_page h2,
+.med_role_selection_page h1,
+.med_role_selection_page h2,
+.role-selection-page h1,
+.role-selection-page h2,
+.med_role_screen h1,
+.med_role_screen h2,
+.med_role_wrapper h1,
+.med_role_wrapper h2 {
+    color: #111827 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    margin-bottom: 10px !important;
+    animation: mediotRoleFadeUp 0.55s ease both !important;
+}
+
+.med_role_page p,
+.med_role_selection_page p,
+.role-selection-page p,
+.med_role_screen p,
+.med_role_wrapper p {
+    color: #6B7280 !important;
+    text-align: center !important;
+    animation: mediotRoleFadeUp 0.7s ease both !important;
+}
+
+/* cards layout */
+.med_role_cards,
+.med_role_options,
+.role-selection-grid,
+.role-options,
+.med_role_grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 42px !important;
+    flex-wrap: wrap !important;
+    margin-top: 36px !important;
+    animation: mediotRoleFadeUp 0.85s ease both !important;
+}
+
+/* cards */
+.med_role_card,
+.med_role_option,
+.role-card,
+.role-option,
+.med_portal_role_card,
+.med_role_cards > div,
+.role-selection-grid > div {
+    position: relative !important;
+    width: 230px !important;
+    min-height: 250px !important;
+    padding: 30px 24px 24px !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(17, 24, 39, 0.06) !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease !important;
+    animation: mediotRoleFadeUp 0.9s ease both !important;
+}
+
+/* blue accent line like inspo */
+.med_role_card::after,
+.med_role_option::after,
+.role-card::after,
+.role-option::after,
+.med_portal_role_card::after,
+.med_role_cards > div::after,
+.role-selection-grid > div::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 6px !important;
+    background: #3B82F6 !important;
+    border-radius: 0 0 10px 10px !important;
+    opacity: 0 !important;
+    transform: scaleX(0.65) !important;
+    transform-origin: center !important;
+    transition: opacity 0.22s ease, transform 0.22s ease !important;
+}
+
+.med_role_card:hover,
+.med_role_option:hover,
+.role-card:hover,
+.role-option:hover,
+.med_portal_role_card:hover,
+.med_role_cards > div:hover,
+.role-selection-grid > div:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12) !important;
+    border-color: rgba(59, 130, 246, 0.22) !important;
+}
+
+.med_role_card:hover::after,
+.med_role_option:hover::after,
+.role-card:hover::after,
+.role-option:hover::after,
+.med_portal_role_card:hover::after,
+.med_role_cards > div:hover::after,
+.role-selection-grid > div:hover::after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+}
+
+/* click motion */
+.med_role_card:active,
+.med_role_option:active,
+.role-card:active,
+.role-option:active,
+.med_portal_role_card:active,
+.med_role_cards > div:active,
+.role-selection-grid > div:active {
+    transform: scale(0.98) !important;
+}
+
+/* icons */
+.med_role_icon,
+.role-icon,
+.icon-circle,
+.med_portal_role_card .icon,
+.med_role_card .icon,
+.med_role_option .icon {
+    width: 92px !important;
+    height: 92px !important;
+    margin: 0 auto 22px !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(59, 130, 246, 0.12) !important;
+    color: #3B82F6 !important;
+    box-shadow: none !important;
+    animation: mediotRoleFloat 3.2s ease-in-out infinite !important;
+}
+
+/* admin/doctor title */
+.med_role_card h3,
+.med_role_option h3,
+.role-card h3,
+.role-option h3,
+.med_portal_role_card h3,
+.med_role_cards > div h3,
+.role-selection-grid > div h3 {
+    color: #111827 !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    margin-bottom: 8px !important;
+}
+
+/* description */
+.med_role_card p,
+.med_role_option p,
+.role-card p,
+.role-option p,
+.med_portal_role_card p,
+.med_role_cards > div p,
+.role-selection-grid > div p {
+    color: #6B7280 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+    max-width: 170px !important;
+    margin: 0 auto !important;
+}
+
+/* home button */
+.med_role_page a[href="/"],
+.med_role_page a[href*="home"],
+.med_role_selection_page a[href="/"],
+.med_role_selection_page a[href*="home"],
+.role-selection-page a[href="/"],
+.role-selection-page a[href*="home"],
+.med_role_screen a[href="/"],
+.med_role_wrapper a[href="/"] {
+    background: linear-gradient(135deg, #60A5FA, #5EEAD4) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.med_role_page a[href="/"]:hover,
+.med_role_page a[href*="home"]:hover,
+.med_role_selection_page a[href="/"]:hover,
+.med_role_selection_page a[href*="home"]:hover,
+.role-selection-page a[href="/"]:hover,
+.role-selection-page a[href*="home"]:hover,
+.med_role_screen a[href="/"]:hover,
+.med_role_wrapper a[href="/"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 30px rgba(59, 130, 246, 0.24) !important;
+}
+
+.med_role_page a[href="/"]:active,
+.med_role_page a[href*="home"]:active,
+.med_role_selection_page a[href="/"]:active,
+.med_role_selection_page a[href*="home"]:active,
+.role-selection-page a[href="/"]:active,
+.role-selection-page a[href*="home"]:active,
+.med_role_screen a[href="/"]:active,
+.med_role_wrapper a[href="/"]:active {
+    transform: scale(0.98) !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_cards,
+    .med_role_options,
+    .role-selection-grid,
+    .role-options,
+    .med_role_grid {
+        gap: 18px !important;
+    }
+
+    .med_role_card,
+    .med_role_option,
+    .role-card,
+    .role-option,
+    .med_portal_role_card,
+    .med_role_cards > div,
+    .role-selection-grid > div {
+        width: min(100%, 280px) !important;
+        min-height: 230px !important;
+    }
+}
+
+/* ===== FINAL ROLE PAGE FIX - CENTER + MATCHED COLORS ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 110px 24px 60px !important;
+    background: #f2f2f2 !important;
+    position: relative !important;
+}
+
+.med_role_page .med_role_home {
+    position: fixed !important;
+    top: 24px !important;
+    left: 28px !important;
+    z-index: 20 !important;
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: 0 10px 24px rgba(107, 74, 96, 0.20) !important;
+}
+
+.med_role_page .med_role_home:hover {
+    background: linear-gradient(135deg, #C4B3CE 0%, #5B4154 100%) !important;
+    box-shadow: 0 14px 30px rgba(107, 74, 96, 0.24) !important;
+    transform: translateY(-2px) !important;
+}
+
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.med_role_page .med_role_head {
+    margin-top: 0 !important;
+    padding: 42px 42px 14px !important;
+    text-align: center !important;
+}
+
+.med_role_page .med_role_head h1 {
+    text-align: center !important;
+    margin-bottom: 10px !important;
+}
+
+.med_role_page .med_role_head p {
+    text-align: center !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+}
+
+.med_role_page .med_role_cards {
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 26px !important;
+    padding: 22px 36px 38px !important;
+}
+
+.med_role_page .med_role_card {
+    width: 234px !important;
+    min-height: 275px !important;
+    padding: 26px 18px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    border-radius: 8px !important;
+}
+
+.med_role_page .med_role_card::after {
+    background: linear-gradient(90deg, #B8A9C3 0%, #6B4A60 100%) !important;
+}
+
+.med_role_page .med_role_icon,
+.med_role_page .med_role_card.admin .med_role_icon,
+.med_role_page .med_role_card.doctor .med_role_icon {
+    width: 96px !important;
+    height: 96px !important;
+    margin: 0 auto 22px !important;
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 14px 30px rgba(107, 74, 96, 0.18) !important;
+}
+
+.med_role_page .med_role_icon i,
+.med_role_page .med_role_icon svg,
+.med_role_page .med_role_icon span {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+.med_role_page .med_role_card h2 {
+    margin: 0 0 10px !important;
+    text-align: center !important;
+}
+
+.med_role_page .med_role_card p {
+    max-width: 170px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    line-height: 1.45 !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_page {
+        padding: 92px 16px 36px !important;
+        justify-content: flex-start !important;
+    }
+
+    .med_role_page .med_role_home {
+        top: 18px !important;
+        left: 16px !important;
+    }
+
+    .med_role_page .med_role_head {
+        padding: 28px 20px 12px !important;
+    }
+
+    .med_role_page .med_role_cards {
+        padding: 18px 20px 28px !important;
+        gap: 18px !important;
+    }
+
+    .med_role_page .med_role_card {
+        width: min(100%, 250px) !important;
+        min-height: 255px !important;
+    }
+}
+
+/* ===== FINAL ROLE PAGE FIX - HORIZONTAL CARDS + NEW HOME BUTTON ===== */
+
+.med_role_page {
+    justify-content: center !important;
+    padding: 90px 24px 50px !important;
+}
+
+/* home button new color */
+.med_role_page .med_role_home {
+    position: fixed !important;
+    top: 24px !important;
+    left: 28px !important;
+    z-index: 20 !important;
+    background: #24395B !important;
+    color: #ffffff !important;
+    border: 1px solid #24395B !important;
+    border-radius: 999px !important;
+    box-shadow: 0 10px 24px rgba(36, 57, 91, 0.18) !important;
+}
+
+.med_role_page .med_role_home:hover {
+    background: #1B2E4A !important;
+    border-color: #1B2E4A !important;
+    transform: translateY(-2px) !important;
+}
+
+/* center the white block */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(860px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* cards horizontal */
+.med_role_page .med_role_cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+    padding: 24px 34px 34px !important;
+}
+
+/* cards less tall */
+.med_role_page .med_role_card {
+    width: 245px !important;
+    max-width: 245px !important;
+    min-height: 230px !important;
+    padding: 24px 18px 20px !important;
+}
+
+/* tighter content */
+.med_role_page .med_role_icon {
+    width: 88px !important;
+    height: 88px !important;
+    margin-bottom: 18px !important;
+}
+
+.med_role_page .med_role_card h2 {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+.med_role_page .med_role_card p {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    max-width: 175px !important;
+}
+
+/* mobile fallback */
+@media (max-width: 900px) {
+    .med_role_page {
+        padding: 88px 16px 36px !important;
+        justify-content: flex-start !important;
+    }
+
+    .med_role_page .med_role_home {
+        top: 18px !important;
+        left: 16px !important;
+    }
+
+    .med_role_page .med_role_cards {
+        flex-wrap: wrap !important;
+        gap: 18px !important;
+        padding: 18px 20px 28px !important;
+    }
+
+    .med_role_page .med_role_card {
+        width: min(100%, 250px) !important;
+        max-width: none !important;
+    }
+}
+
+/* ===== FINAL ROLE PAGE BLURRED BACKGROUND IMAGE ===== */
+
+.med_role_page {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    background: #f2f2f2 !important;
+}
+
+/* blurred image behind everything */
+.med_role_page::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -30px !important;
+    background: url('/med_iot_command_center/static/src/img/role_bg.png') center center / cover no-repeat !important;
+    filter: blur(18px) brightness(0.95) !important;
+    opacity: 0.38 !important;
+    transform: scale(1.08) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* soft white layer so cards stay readable */
+.med_role_page::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(242, 242, 242, 0.72) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* keep page content above background */
+.med_role_page .med_role_home,
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* ===== FIX ROLE BACKGROUND IMAGE PATH ===== */
+.med_role_page::before {
+    background: url('/med_iot_command_center/static/description/role_bg.png') center center / cover no-repeat !important;
+}
+
+/* ===== FINAL ROLE BACKGROUND USING EXISTING IMAGE ===== */
+.med_role_page::before {
+    background: url('/med_iot_command_center/static/description/hero_new.jpg') center center / cover no-repeat !important;
+    filter: blur(18px) brightness(0.88) !important;
+    opacity: 0.32 !important;
+    transform: scale(1.08) !important;
+}
+
+/* ===== FINAL ROLE PAGE - UPPER CENTERED + HOME BUTTON COLOR ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 90px 24px 40px !important;
+}
+
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.med_role_page .med_role_head {
+    margin-top: 40px !important;
+    text-align: center !important;
+    padding: 38px 34px 14px !important;
+}
+
+.med_role_page .med_role_head h1,
+.med_role_page .med_role_head p {
+    text-align: center !important;
+}
+
+.med_role_page .med_role_cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 30px !important;
+    padding: 24px 34px 34px !important;
+}
+
+.med_role_page .med_role_card {
+    width: 270px !important;
+    max-width: 270px !important;
+    min-height: 250px !important;
+}
+
+.med_role_page .med_role_home {
+    position: fixed !important;
+    top: 26px !important;
+    left: 34px !important;
+    z-index: 20 !important;
+    background: #6B4A60 !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 22px rgba(107, 74, 96, 0.18) !important;
+}
+
+.med_role_page .med_role_home:hover {
+    background: #533146 !important;
+    border-color: #533146 !important;
+    transform: translateY(-2px) !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_page {
+        padding: 82px 16px 30px !important;
+    }
+
+    .med_role_page .med_role_home {
+        top: 18px !important;
+        left: 16px !important;
+    }
+
+    .med_role_page .med_role_head {
+        margin-top: 20px !important;
+        padding: 28px 20px 12px !important;
+    }
+
+    .med_role_page .med_role_cards {
+        flex-wrap: wrap !important;
+        gap: 18px !important;
+        padding: 18px 20px 28px !important;
+    }
+
+    .med_role_page .med_role_card {
+        width: min(100%, 250px) !important;
+        max-width: none !important;
+    }
+}
+
+/* ===== FORCE ROLE BACKGROUND VISIBLE ===== */
+
+.med_role_page {
+    background: #e9edf2 !important;
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+}
+
+/* stronger blurred background */
+.med_role_page::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: -40px !important;
+    background-image: url('/med_iot_command_center/static/src/img/role_bg.png?v=rolebg2') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    filter: blur(10px) brightness(0.90) saturate(120%) !important;
+    opacity: 0.65 !important;
+    transform: scale(1.08) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* lighter overlay, not hiding the image */
+.med_role_page::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(242, 242, 242, 0.38) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* keep selector above */
+.med_role_page .med_role_home,
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* move selector slightly upper */
+.med_role_page .med_role_head {
+    margin-top: 10px !important;
+}
+
+/* ===== FORCE ROLE HOME BUTTON PLUM ===== */
+.med_role_page .med_role_home,
+.med_role_page a.med_role_home,
+a.med_role_home[href="/home-mediot"] {
+    background: #6B4A60 !important;
+    background-image: none !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(107, 74, 96, 0.25) !important;
+}
+
+.med_role_page .med_role_home:hover,
+.med_role_page a.med_role_home:hover,
+a.med_role_home[href="/home-mediot"]:hover {
+    background: #533146 !important;
+    background-image: none !important;
+    border-color: #533146 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ===== FORCE ROLE BACKGROUND MORE VISIBLE ===== */
+.med_role_page::before {
+    opacity: 0.90 !important;
+    filter: blur(8px) brightness(0.82) saturate(135%) !important;
+}
+
+.med_role_page::after {
+    background: rgba(242, 242, 242, 0.16) !important;
+}
+
+/* ===== FINAL ROLE PAGE - USE DESCRIPTION ROLE_BG + UPPER BOX ===== */
+
+.med_role_page::before {
+    background: url('/med_iot_command_center/static/description/role_bg.png?v=rolebgfinal') center center / cover no-repeat !important;
+    filter: blur(9px) brightness(0.82) saturate(120%) !important;
+    opacity: 0.80 !important;
+}
+
+.med_role_page::after {
+    background: rgba(245, 247, 250, 0.24) !important;
+}
+
+.med_role_page {
+    justify-content: flex-start !important;
+    padding-top: 55px !important;
+}
+
+.med_role_page .med_role_head {
+    margin-top: 35px !important;
+}
+
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ===== FINAL ROLE BG CONFIRMED PATH ===== */
+.med_role_page::before {
+    background: url('/med_iot_command_center/static/src/img/role_bg.png?v=confirmed1') center center / cover no-repeat !important;
+    filter: blur(9px) brightness(0.82) saturate(120%) !important;
+    opacity: 0.82 !important;
+}
+
+.med_role_page::after {
+    background: rgba(245, 247, 250, 0.22) !important;
+}
+
+.med_role_page {
+    justify-content: flex-start !important;
+    padding-top: 55px !important;
+}
+
+.med_role_page .med_role_head {
+    margin-top: 30px !important;
+}
+
+/* ===== FINAL ROLE PAGE - NEW IMAGE + BOX UPPER CENTER ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    padding-top: 28px !important;
+    padding-bottom: 40px !important;
+    background: #eef2f6 !important;
+}
+
+/* stronger and cleaner background image */
+.med_role_page::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: -20px !important;
+    background: url('/med_iot_command_center/static/description/cordinateur.jpg?v=rolefresh7') center center / cover no-repeat !important;
+    filter: blur(11px) brightness(0.72) saturate(110%) !important;
+    opacity: 0.88 !important;
+    transform: scale(1.05) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* light overlay */
+.med_role_page::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(244, 246, 249, 0.18) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* bring content above background */
+.med_role_page .med_role_home,
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* center the white selector block */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* upper position */
+.med_role_page .med_role_head {
+    margin-top: 16px !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 34px 28px 14px !important;
+    background: rgba(255,255,255,0.97) !important;
+}
+
+.med_role_page .med_role_cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+    padding: 26px 28px 34px !important;
+    background: rgba(255,255,255,0.97) !important;
+    box-shadow: 0 18px 50px rgba(20, 33, 61, 0.12) !important;
+}
+
+.med_role_page .med_role_card {
+    width: 270px !important;
+    max-width: 270px !important;
+    min-height: 255px !important;
+}
+
+@media (max-width: 900px) {
+    .med_role_page {
+        padding-top: 76px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .med_role_page .med_role_head,
+    .med_role_page .med_role_cards {
+        width: min(100%, 560px) !important;
+    }
+
+    .med_role_page .med_role_cards {
+        flex-wrap: wrap !important;
+        gap: 18px !important;
+    }
+}
+
+/* ===== FINAL ROLE BOX POSITION - UPPER + CENTERED ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-top: 12px !important;   /* move whole block upper */
+}
+
+/* center the two white sections */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* upper */
+.med_role_page .med_role_head {
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+}
+
+.med_role_page .med_role_cards {
+    margin-top: 0 !important;
+    justify-content: center !important;
+}
+
+/* ===== FINAL ROLE BOX POSITION - UPPER + CENTERED ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-top: 12px !important;   /* move whole block upper */
+}
+
+/* center the two white sections */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* upper */
+.med_role_page .med_role_head {
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+}
+
+.med_role_page .med_role_cards {
+    margin-top: 0 !important;
+    justify-content: center !important;
+}
+
+/* ===== FINAL FOOTER V2 SOCIAL ICON COLORS ===== */
+
+.mediot_footer_v2 .mediot_footer_socials_v2 a,
+.med_video_footer.mediot_footer_v2 .mediot_footer_socials_v2 a {
+    background: #6B4A60 !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 22px rgba(107, 74, 96, 0.24) !important;
+}
+
+.mediot_footer_v2 .mediot_footer_socials_v2 a i,
+.med_video_footer.mediot_footer_v2 .mediot_footer_socials_v2 a i {
+    color: #ffffff !important;
+}
+
+.mediot_footer_v2 .mediot_footer_socials_v2 a:hover,
+.med_video_footer.mediot_footer_v2 .mediot_footer_socials_v2 a:hover {
+    background: #533146 !important;
+    border-color: #533146 !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) scale(1.04) !important;
+    box-shadow: 0 14px 28px rgba(83, 49, 70, 0.30) !important;
+}
+
+/* ===== FINAL FOOTER V2 CONTACT ICON COLORS ===== */
+
+.mediot_footer_v2 .mediot_footer_contact_v2 i,
+.med_video_footer.mediot_footer_v2 .mediot_footer_contact_v2 i {
+    color: #6B4A60 !important;
+}
+
+.mediot_footer_v2 .mediot_footer_contact_v2 li:hover i,
+.med_video_footer.mediot_footer_v2 .mediot_footer_contact_v2 li:hover i {
+    color: #B8A9C3 !important;
+    transform: translateY(-1px) scale(1.08) !important;
+}
+
+.mediot_footer_v2 .mediot_footer_contact_v2 li,
+.med_video_footer.mediot_footer_v2 .mediot_footer_contact_v2 li {
+    transition: transform 0.22s ease, color 0.22s ease !important;
+}
+
+.mediot_footer_v2 .mediot_footer_contact_v2 li:hover,
+.med_video_footer.mediot_footer_v2 .mediot_footer_contact_v2 li:hover {
+    transform: translateX(3px) !important;
+}
+
+/* ===== FINAL ROLE BACKGROUND IMAGE - ROLEFINAL.PNG ===== */
+.med_role_page::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: url('/med_iot_command_center/static/src/img/rolefinal.png?v=rolefinal1') center center / cover no-repeat !important;
+    filter: blur(16px) brightness(0.72) saturate(105%) !important;
+    opacity: 0.60 !important;
+    transform: scale(1.05) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+
+/* ===== FINAL ROLE PAGE - ELEGANT OLD BACKGROUND ===== */
+
+/* old background restored: hero_new.jpg */
+.med_role_page::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: -32px !important;
+    background: url('/med_iot_command_center/static/description/hero_new.jpg?v=oldElegant1') center center / cover no-repeat !important;
+    filter: blur(12px) brightness(0.78) saturate(105%) !important;
+    opacity: 0.58 !important;
+    transform: scale(1.07) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* elegant dark-soft overlay */
+.med_role_page::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background:
+        linear-gradient(135deg, rgba(36, 57, 91, 0.38), rgba(107, 74, 96, 0.22)),
+        rgba(245, 247, 250, 0.22) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* keep selector above */
+.med_role_page .med_role_home,
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* make the white selector box more elegant */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* upper and centered */
+.med_role_page {
+    justify-content: flex-start !important;
+    padding-top: 45px !important;
+}
+
+.med_role_page .med_role_head {
+    margin-top: 28px !important;
+    box-shadow: 0 18px 50px rgba(20, 33, 61, 0.10) !important;
+}
+
+.med_role_page .med_role_cards {
+    box-shadow: 0 18px 50px rgba(20, 33, 61, 0.10) !important;
+}
+
+/* cleaner cards */
+.med_role_page .med_role_card {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border: 1px solid rgba(36, 57, 91, 0.08) !important;
+    box-shadow: 0 10px 26px rgba(20, 33, 61, 0.08) !important;
+}
+
+.med_role_page .med_role_card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 18px 42px rgba(20, 33, 61, 0.14) !important;
+}
+
+/* ===== FINAL ROLE PAGE - ROLEFINAL BACKGROUND + UPPER CENTERED BOX ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    padding-top: 38px !important;
+    padding-bottom: 40px !important;
+    background: #eef2f6 !important;
+}
+
+/* use the second picture: rolefinal.png */
+.med_role_page::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: -28px !important;
+    background: url('/med_iot_command_center/static/src/img/rolefinal.png?v=rolefinal_fixed2') center center / cover no-repeat !important;
+    filter: blur(11px) brightness(0.74) saturate(112%) !important;
+    opacity: 0.86 !important;
+    transform: scale(1.06) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* soft dark overlay, keeps design elegant */
+.med_role_page::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(20, 28, 42, 0.22) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* keep content above background */
+.med_role_page .med_role_home,
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* white box centered */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* box upper */
+.med_role_page .med_role_head {
+    margin-top: 26px !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 34px 28px 14px !important;
+}
+
+.med_role_page .med_role_head h1,
+.med_role_page .med_role_head p {
+    text-align: center !important;
+}
+
+.med_role_page .med_role_cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+    padding: 26px 28px 34px !important;
+    box-shadow: 0 18px 50px rgba(20, 33, 61, 0.16) !important;
+}
+
+.med_role_page .med_role_card {
+    width: 270px !important;
+    max-width: 270px !important;
+    min-height: 255px !important;
+}
+
+/* ===== FINAL ROLE BOX EXACT CENTER + SLIGHTLY UPPER ===== */
+
+.med_role_page {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 24px !important;
+    overflow: hidden !important;
+}
+
+/* move the whole white selector block a bit upper */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    width: min(760px, calc(100% - 32px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: translateY(-7vh) !important;
+}
+
+/* remove extra spacing */
+.med_role_page .med_role_head {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 34px 28px 14px !important;
+    text-align: center !important;
+}
+
+.med_role_page .med_role_cards {
+    margin-top: 0 !important;
+    padding: 26px 28px 34px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+}
+
+/* keep home button fixed */
+.med_role_page .med_role_home {
+    position: fixed !important;
+    top: 34px !important;
+    left: 42px !important;
+    z-index: 20 !important;
+    transform: none !important;
+}
+
+/* ===== FINAL ROLE BOX POSITION - A BIT LOWER ===== */
+.med_role_page .med_role_head,
+.med_role_page .med_role_cards {
+    transform: translateY(-4vh) !important;
+}
+
+/* ===== LOGIN PAGE SIGN UP LINK ===== */
+.med_login_signup_hint {
+    margin-top: 22px !important;
+    text-align: center !important;
+    color: #6E7C89 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+.med_login_signup_link {
+    margin-left: 6px !important;
+    color: #6B4A60 !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: color 0.22s ease, transform 0.22s ease !important;
+}
+
+.med_login_signup_link:hover {
+    color: #533146 !important;
+    transform: translateY(-1px) !important;
+    text-decoration: underline !important;
+}
+
+/* ===== FINAL LOGIN PAGE BUTTON COLORS + MOTION ===== */
+
+/* Home button on login */
+.med_auth_screen .med_role_home,
+.med_auth_screen a.med_role_home,
+.med_login_screen .med_role_home,
+.med_login_screen a.med_role_home,
+.med_auth_screen .med_auth_home,
+.med_login_screen .med_auth_home {
+    background: #6B4A60 !important;
+    background-image: none !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 26px rgba(107, 74, 96, 0.26) !important;
+    transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease !important;
+}
+
+.med_auth_screen .med_role_home:hover,
+.med_auth_screen a.med_role_home:hover,
+.med_login_screen .med_role_home:hover,
+.med_login_screen a.med_role_home:hover,
+.med_auth_screen .med_auth_home:hover,
+.med_login_screen .med_auth_home:hover {
+    background: #533146 !important;
+    border-color: #533146 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 16px 34px rgba(83, 49, 70, 0.32) !important;
+}
+
+.med_auth_screen .med_role_home:active,
+.med_auth_screen a.med_role_home:active,
+.med_login_screen .med_role_home:active,
+.med_login_screen a.med_role_home:active,
+.med_auth_screen .med_auth_home:active,
+.med_login_screen .med_auth_home:active {
+    transform: scale(0.97) !important;
+}
+
+/* Main Sign In button */
+.med_auth_screen .med_btn,
+.med_login_screen .med_btn,
+.med_auth_form_card .med_btn,
+.med_auth_form button[type="submit"],
+.med_login_form button[type="submit"] {
+    background: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 16px 36px rgba(107, 74, 96, 0.28) !important;
+    transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease !important;
+}
+
+.med_auth_screen .med_btn:hover,
+.med_login_screen .med_btn:hover,
+.med_auth_form_card .med_btn:hover,
+.med_auth_form button[type="submit"]:hover,
+.med_login_form button[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.05) !important;
+    box-shadow: 0 20px 44px rgba(83, 49, 70, 0.36) !important;
+}
+
+.med_auth_screen .med_btn:active,
+.med_login_screen .med_btn:active,
+.med_auth_form_card .med_btn:active,
+.med_auth_form button[type="submit"]:active,
+.med_login_form button[type="submit"]:active {
+    transform: scale(0.98) !important;
+}
+
+/* Sign Up link under login */
+.med_login_signup_link {
+    color: #6B4A60 !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+    transition: color 0.22s ease, transform 0.22s ease, letter-spacing 0.22s ease !important;
+}
+
+.med_login_signup_link:hover {
+    color: #533146 !important;
+    transform: translateY(-1px) !important;
+    letter-spacing: 0.2px !important;
+    text-decoration: underline !important;
+}
+
+.med_login_signup_link:active {
+    transform: scale(0.97) !important;
+}
+
+/* Forgot password link */
+.med_forgot_link {
+    color: #6B4A60 !important;
+    transition: color 0.22s ease, transform 0.22s ease !important;
+}
+
+.med_forgot_link:hover {
+    color: #533146 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Inputs focus color */
+.med_auth_screen input:focus,
+.med_login_screen input:focus,
+.med_auth_form_card input:focus {
+    border-color: #6B4A60 !important;
+    box-shadow: 0 0 0 4px rgba(107, 74, 96, 0.13) !important;
+}
+
+/* Left role chip icon color */
+.med_auth_screen .med_role_icon,
+.med_login_screen .med_role_icon,
+.med_auth_screen .med_login_role_icon,
+.med_login_screen .med_login_role_icon {
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 14px 30px rgba(107, 74, 96, 0.22) !important;
+}
+
+/* Soft entrance motion */
+@keyframes mediotLoginSoftIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.med_auth_form_card,
+.med_login_card,
+.med_auth_screen .med_auth_form_card {
+    animation: mediotLoginSoftIn 0.65s ease both !important;
+}
+
+.med_auth_screen .med_auth_left,
+.med_login_screen .med_auth_left,
+.med_auth_screen .med_login_left {
+    animation: mediotLoginSoftIn 0.75s ease both !important;
+}
+
+/* ===== FORCE LOGIN COLORS + MOTION - STRONG OVERRIDE ===== */
+
+/* Home button on login page */
+.med_auth_screen > a,
+.med_auth_screen a[href="/home-mediot"],
+.med_auth_screen a[class*="home"],
+.med_auth_screen a[class*="Home"],
+.med_auth_screen .med_home,
+.med_auth_screen .med_auth_home,
+.med_auth_screen .med_role_home {
+    background: #6B4A60 !important;
+    background-image: none !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(107, 74, 96, 0.28) !important;
+    transition: transform .22s ease, box-shadow .22s ease, background .22s ease !important;
+}
+
+.med_auth_screen > a:hover,
+.med_auth_screen a[href="/home-mediot"]:hover,
+.med_auth_screen a[class*="home"]:hover,
+.med_auth_screen .med_home:hover,
+.med_auth_screen .med_auth_home:hover,
+.med_auth_screen .med_role_home:hover {
+    background: #533146 !important;
+    border-color: #533146 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 16px 34px rgba(83, 49, 70, 0.35) !important;
+}
+
+/* Sign In button */
+.med_auth_screen form button[type="submit"],
+.med_auth_screen form .med_btn,
+.med_auth_screen .med_btn,
+.med_auth_form button[type="submit"],
+.med_auth_form .med_btn,
+.med_login_form button[type="submit"],
+button.med_btn {
+    background: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    background-image: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 16px 36px rgba(107, 74, 96, 0.30) !important;
+    transition: transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+}
+
+.med_auth_screen form button[type="submit"]:hover,
+.med_auth_screen form .med_btn:hover,
+.med_auth_screen .med_btn:hover,
+.med_auth_form button[type="submit"]:hover,
+.med_login_form button[type="submit"]:hover,
+button.med_btn:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.05) !important;
+    box-shadow: 0 20px 44px rgba(83, 49, 70, 0.38) !important;
+}
+
+.med_auth_screen form button[type="submit"]:active,
+.med_auth_screen form .med_btn:active,
+.med_auth_screen .med_btn:active,
+button.med_btn:active {
+    transform: scale(0.98) !important;
+}
+
+/* Forgot + Sign Up */
+.med_auth_screen .med_forgot_link,
+.med_auth_screen .med_login_signup_link,
+.med_forgot_link,
+.med_login_signup_link {
+    color: #6B4A60 !important;
+    font-weight: 900 !important;
+    transition: color .22s ease, transform .22s ease !important;
+}
+
+.med_auth_screen .med_forgot_link:hover,
+.med_auth_screen .med_login_signup_link:hover,
+.med_forgot_link:hover,
+.med_login_signup_link:hover {
+    color: #533146 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* input focus */
+.med_auth_screen input:focus,
+.med_auth_screen input:focus-visible,
+.med_auth_form input:focus,
+.med_auth_form input:focus-visible {
+    border-color: #6B4A60 !important;
+    box-shadow: 0 0 0 4px rgba(107, 74, 96, 0.14) !important;
+    outline: none !important;
+}
+
+/* left selected role icon/chip */
+.med_auth_screen .med_role_icon,
+.med_auth_screen .med_login_role_icon,
+.med_auth_screen [class*="role_icon"],
+.med_auth_screen [class*="role"] .fa {
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    color: #ffffff !important;
+}
+
+/* soft motion */
+@keyframes mediotLoginFinalIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.med_auth_screen .med_auth_form_card,
+.med_auth_screen form,
+.med_auth_screen .med_auth_left,
+.med_auth_screen [class*="card"] {
+    animation: mediotLoginFinalIn .65s ease both !important;
+}
+
+/* ===== FINAL LOGIN REAL CLASSES - COLORS + MOTION ===== */
+
+/* Home button */
+.med_login_role_page .med_role_home {
+    background: #6B4A60 !important;
+    background-image: none !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(107, 74, 96, 0.28) !important;
+    transition: transform .22s ease, box-shadow .22s ease, background .22s ease !important;
+}
+
+.med_login_role_page .med_role_home:hover {
+    background: #533146 !important;
+    border-color: #533146 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 16px 34px rgba(83, 49, 70, 0.35) !important;
+}
+
+.med_login_role_page .med_role_home:active {
+    transform: scale(0.97) !important;
+}
+
+/* Big left heart icon */
+.med_login_role_page .med_login_big_icon {
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    box-shadow: 0 22px 54px rgba(107, 74, 96, 0.24) !important;
+}
+
+/* Selected role card icon */
+.med_login_role_page .med_login_selected_icon {
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(107, 74, 96, 0.22) !important;
+}
+
+/* Sign In button */
+.med_login_role_page .med_btn,
+.med_login_role_page button.med_btn,
+.med_login_role_page form button[type="submit"] {
+    background: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    background-image: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 16px 36px rgba(107, 74, 96, 0.30) !important;
+    transition: transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+}
+
+.med_login_role_page .med_btn:hover,
+.med_login_role_page button.med_btn:hover,
+.med_login_role_page form button[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.05) !important;
+    box-shadow: 0 20px 44px rgba(83, 49, 70, 0.38) !important;
+}
+
+.med_login_role_page .med_btn:active,
+.med_login_role_page button.med_btn:active,
+.med_login_role_page form button[type="submit"]:active {
+    transform: scale(0.98) !important;
+}
+
+/* Links */
+.med_login_role_page .med_forgot_link,
+.med_login_role_page .med_login_signup_link {
+    color: #6B4A60 !important;
+    font-weight: 900 !important;
+    transition: color .22s ease, transform .22s ease !important;
+}
+
+.med_login_role_page .med_forgot_link:hover,
+.med_login_role_page .med_login_signup_link:hover {
+    color: #533146 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Inputs focus */
+.med_login_role_page .med_field input:focus,
+.med_login_role_page .med_field input:focus-visible {
+    border-color: #6B4A60 !important;
+    box-shadow: 0 0 0 4px rgba(107, 74, 96, 0.14) !important;
+    outline: none !important;
+}
+
+/* Soft motion */
+@keyframes mediotLoginRealIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.med_login_role_page .med_login_role_left,
+.med_login_role_page .med_login_box {
+    animation: mediotLoginRealIn .65s ease both !important;
+}
+
+.med_login_role_page .med_login_box {
+    animation-delay: .08s !important;
+}
+
+/* ===== LOGIN PAGE SMALL POSITION FIX ===== */
+.med_login_role_page .med_login_role_shell {
+    align-items: center !important;
+}
+
+.med_login_role_page .med_login_role_right {
+    transform: translateY(-24px) !important;
+}
+
+.med_login_role_page .med_login_role_left {
+    transform: translateY(-18px) !important;
+}
+
+.med_login_role_page .med_login_role_left h1,
+.med_login_role_page .med_login_role_left p,
+.med_login_role_page .med_login_selected_role {
+    position: relative !important;
+    top: -10px !important;
+}
+
+/* ===== LOGIN PAGE SMALL POSITION FIX ===== */
+.med_login_role_page .med_login_role_shell {
+    align-items: center !important;
+}
+
+.med_login_role_page .med_login_role_right {
+    transform: translateY(-24px) !important;
+}
+
+.med_login_role_page .med_login_role_left {
+    transform: translateY(-18px) !important;
+}
+
+.med_login_role_page .med_login_role_left h1,
+.med_login_role_page .med_login_role_left p,
+.med_login_role_page .med_login_selected_role {
+    position: relative !important;
+    top: -10px !important;
+}
+
+/* ===== FINAL SIGNUP REAL CLASSES - LOGO COLOR + BOX UP ===== */
+
+/* move signup form box slightly up */
+.med_auth_signup_screen .med_auth_signup_card,
+.med_auth_signup_screen .med_auth_form_card {
+    transform: translateY(-26px) !important;
+}
+
+/* move left welcome/logo block slightly up */
+.med_auth_signup_screen .med_auth_left {
+    transform: translateY(-22px) !important;
+}
+
+/* logo color same as login/role plum */
+.med_auth_signup_screen .med_auth_logo {
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    box-shadow: 0 22px 54px rgba(107, 74, 96, 0.26) !important;
+}
+
+.med_auth_signup_screen .med_auth_logo i {
+    color: #ffffff !important;
+}
+
+/* button same plum */
+.med_auth_signup_screen .med_auth_submit_btn,
+.med_auth_signup_screen button[type="submit"] {
+    background: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    border: 1px solid #6B4A60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 16px 36px rgba(107, 74, 96, 0.30) !important;
+    transition: transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+}
+
+.med_auth_signup_screen .med_auth_submit_btn:hover,
+.med_auth_signup_screen button[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.05) !important;
+    box-shadow: 0 20px 44px rgba(83, 49, 70, 0.38) !important;
+}
+
+/* input focus */
+.med_auth_signup_screen input:focus,
+.med_auth_signup_screen select:focus {
+    border-color: #6B4A60 !important;
+    box-shadow: 0 0 0 4px rgba(107, 74, 96, 0.14) !important;
+    outline: none !important;
+}
+
+/* ===== FINAL SIGNUP TWEAK - LOGIN STYLE LOGO + SMALLER BOX ===== */
+
+/* slightly smaller signup box */
+.med_auth_signup_screen .med_auth_signup_card,
+.med_auth_signup_screen .med_auth_form_card {
+    max-width: 560px !important;
+    width: 560px !important;
+    padding: 28px 32px !important;
+    transform: translateY(-34px) !important;
+    border-radius: 30px !important;
+}
+
+/* left content a bit up */
+.med_auth_signup_screen .med_auth_left {
+    transform: translateY(-12px) !important;
+}
+
+/* make heart logo match login plum/lavender */
+.med_auth_signup_screen .med_auth_logo,
+.med_auth_signup_screen .med_auth_left img.med_auth_logo {
+    border-radius: 28px !important;
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    box-shadow: 0 18px 40px rgba(73, 44, 62, 0.24) !important;
+    filter: hue-rotate(135deg) saturate(0.55) brightness(0.92) !important;
+}
+
+/* form spacing slightly tighter */
+.med_auth_signup_screen .med_auth_grid {
+    gap: 20px 18px !important;
+}
+
+.med_auth_signup_screen .med_auth_field input,
+.med_auth_signup_screen .med_auth_field select {
+    height: 58px !important;
+}
+
+/* upload box smaller */
+.med_auth_signup_screen .med_auth_upload_box {
+    padding: 18px 20px !important;
+}
+
+/* button polish */
+.med_auth_signup_screen .med_auth_submit_btn,
+.med_auth_signup_screen button[type="submit"] {
+    background: linear-gradient(135deg, #6B4A60 0%, #533146 100%) !important;
+    border: 1px solid #6B4A60 !important;
+    transition: all .25s ease !important;
+}
+
+.med_auth_signup_screen .med_auth_submit_btn:hover,
+.med_auth_signup_screen button[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 24px rgba(107, 74, 96, .24) !important;
+}
+
+/* ===== FIX SIGNUP - ACTUALLY SMALLER + PLUM LOGO ===== */
+
+/* make signup form smaller */
+.med_auth_signup_screen .med_auth_signup_card,
+.med_auth_signup_screen .med_auth_form_card {
+    width: 500px !important;
+    max-width: 500px !important;
+    padding: 24px 28px !important;
+    transform: translateY(-28px) !important;
+    border-radius: 28px !important;
+}
+
+/* tighter grid */
+.med_auth_signup_screen .med_auth_grid {
+    gap: 14px 14px !important;
+}
+
+/* smaller fields */
+.med_auth_signup_screen .med_auth_field input,
+.med_auth_signup_screen .med_auth_field select {
+    height: 50px !important;
+    font-size: 14px !important;
+    padding: 0 16px !important;
+}
+
+/* smaller upload box */
+.med_auth_signup_screen .med_auth_upload_box {
+    padding: 14px 16px !important;
+}
+
+/* smaller title spacing */
+.med_auth_signup_screen .med_auth_form_card h2,
+.med_auth_signup_screen .med_auth_signup_card h2 {
+    font-size: 34px !important;
+    margin-bottom: 6px !important;
+}
+
+.med_auth_signup_screen .med_auth_form_card p,
+.med_auth_signup_screen .med_auth_signup_card p {
+    margin-bottom: 20px !important;
+}
+
+/* force logo image to plum/lavender look */
+.med_auth_signup_screen img.med_auth_logo,
+.med_auth_signup_screen .med_auth_logo {
+    filter: grayscale(1) sepia(0.35) hue-rotate(250deg) saturate(0.85) brightness(0.82) contrast(0.95) !important;
+    box-shadow: 0 18px 40px rgba(107, 74, 96, 0.30) !important;
+    border-radius: 28px !important;
+}
+
+/* if browser allows blend, make it closer to login */
+.med_auth_signup_screen .med_auth_left .med_auth_logo {
+    background-color: #6B4A60 !important;
+    mix-blend-mode: normal !important;
+}
+
+/* keep left block slightly higher */
+.med_auth_signup_screen .med_auth_left {
+    transform: translateY(-18px) !important;
+}
+/* ===== FINAL SIGNUP BALANCE + PLUM HEART ===== */
+@media (min-width: 1100px) {
+    .med_auth_signup_screen .med_auth_container {
+        min-height: calc(100vh - 64px) !important;
+        align-items: center !important;
+        padding-top: 26px !important;
+        padding-bottom: 26px !important;
+    }
+
+    .med_auth_signup_screen .med_auth_left {
+        justify-content: center !important;
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .med_auth_signup_screen .med_auth_logo {
+        width: 228px !important;
+        max-width: 228px !important;
+        display: block !important;
+        margin: 0 auto 26px auto !important;
+        filter: grayscale(1) sepia(0.38) hue-rotate(248deg) saturate(0.82) brightness(0.83) contrast(0.96) !important;
+    }
+
+    .med_auth_signup_screen .med_auth_title {
+        margin-top: 0 !important;
+        margin-bottom: 14px !important;
+    }
+
+    .med_auth_signup_screen .med_auth_left > p {
+        margin-bottom: 0 !important;
+    }
+
+    .med_auth_signup_screen .med_auth_signup_card,
+    .med_auth_signup_screen .med_auth_form_card {
+        width: 500px !important;
+        max-width: 500px !important;
+        transform: translateY(10px) !important;
+    }
+}
+
+
+/* ===== FINAL SIGNUP HEART ONLY - MATCH LOGIN EXACTLY ===== */
+.med_auth_signup_screen .med_signup_heart_match {
+    width: 220px !important;
+    height: 220px !important;
+    min-width: 220px !important;
+    min-height: 220px !important;
+    border-radius: 34px !important;
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 34px auto !important;
+    padding: 0 !important;
+    box-shadow: 0 20px 42px rgba(107, 74, 96, 0.28) !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.med_auth_signup_screen .med_signup_heart_match::before,
+.med_auth_signup_screen .med_signup_heart_match::after {
+    content: none !important;
+    display: none !important;
+}
+
+.med_auth_signup_screen .med_signup_heart_match i {
+    font-size: 96px !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    background: transparent !important;
+    text-shadow: none !important;
+}
+
+/* kill any old broken signup logo styling */
+.med_auth_signup_screen .med_auth_logo,
+.med_auth_signup_screen .med_auth_logo_login_match {
+    display: none !important;
+}
+
+/* ===== FIX SIGNUP HEART OVERLAP - ONE CLEAN TILE ONLY ===== */
+
+/* remove any old hidden/behind logo layers */
+.med_auth_signup_screen .med_auth_brand::before,
+.med_auth_signup_screen .med_auth_brand::after,
+.med_auth_signup_screen .med_auth_left::before,
+.med_auth_signup_screen .med_auth_left::after,
+.med_auth_signup_screen .med_signup_heart_match::before,
+.med_auth_signup_screen .med_signup_heart_match::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+}
+
+/* make the heart tile clean and centered */
+.med_auth_signup_screen .med_signup_heart_match {
+    width: 210px !important;
+    height: 210px !important;
+    min-width: 210px !important;
+    min-height: 210px !important;
+    max-width: 210px !important;
+    max-height: 210px !important;
+
+    border-radius: 34px !important;
+    background: linear-gradient(135deg, #B8A9C3 0%, #6B4A60 100%) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 auto 34px auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+
+    box-shadow: 0 20px 42px rgba(107, 74, 96, 0.28) !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* center the heart and stop it from being cut */
+.med_auth_signup_screen .med_signup_heart_match i {
+    font-size: 82px !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+
+    color: #ffffff !important;
+    background: transparent !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    text-shadow: none !important;
+}
+
+/* make sure no old image logo appears */
+.med_auth_signup_screen img.med_auth_logo,
+.med_auth_signup_screen .med_auth_logo,
+.med_auth_signup_screen .med_auth_logo_login_match {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ===== SIGNUP HEART - PERFECTLY CENTERED ===== */
+.med_auth_signup_screen .med_signup_heart_match {
+    width: 195px !important;
+    height: 195px !important;
+    margin: 0 auto 28px auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+
+    border-radius: 34px !important;
+    background: linear-gradient(180deg, #C3B0C1 0%, #8C6A84 100%) !important;
+    box-shadow: 0 18px 42px rgba(20, 32, 64, 0.22) !important;
+}
+
+.med_auth_signup_screen .med_signup_heart_match i {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    display: block !important;
+
+    font-size: 86px !important;
+    line-height: 1 !important;
+    color: #FFFFFF !important;
+
+    transform: none !important;
+}
+
+.med_auth_signup_screen .med_signup_heart_match::before,
+.med_auth_signup_screen .med_signup_heart_match::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* ===== SIGNUP WHITE BOX - MOVE A BIT UPPER ===== */
+.med_auth_signup_screen .med_auth_signup_card,
+.med_auth_signup_screen .med_auth_form_card {
+    transform: translateY(-18px) !important;
+}
