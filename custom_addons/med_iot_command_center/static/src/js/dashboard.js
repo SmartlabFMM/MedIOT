@@ -285,3 +285,4 @@ class MedDashboard extends Component {
 }
 
 registry.category("actions").add("med_iot_command_center.dashboard", MedDashboard);
+
